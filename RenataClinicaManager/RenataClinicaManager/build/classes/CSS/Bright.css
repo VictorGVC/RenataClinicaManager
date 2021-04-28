@@ -1,0 +1,53 @@
+.split-pane:vertical > .split-pane-divider {
+    -fx-background-color: transparent;
+ }
+
+ .split-pane
+ {
+    -fx-background-color:  #75d3d3;
+ }
+
+ .table-view
+ {
+    -fx-background-color:  #8fcfcf;
+ }
+
+ .jfx-date-picker .date-picker-popup .calendar-grid .day-cell:hover,
+.jfx-date-picker .data-picker-list-cell:hover {
+    -fx-background-color: #50bfcf;
+    -fx-cursor: hand;
+}
+
+.jfx-date-picker .date-picker-popup
+{
+   -fx-background-color: #55cfcf;
+}
+
+.jfx-date-picker
+{
+   -jfx-default-color: #124444;
+}
+
+#filtro
+{
+   -fx-background-radius: 13;
+   -fx-border-radius: 13;
+   -fx-border-width: 1;
+   -fx-background-color: #50bfcf;
+   -fx-border-color: #03afc5;
+}
+
+.default
+{
+   -fx-background-color:  #75d3d3;
+}
+
+.labeli
+{
+   -fx-text-fill: black
+}
+
+.forth
+{
+   -fx-background-color: #328794;
+}

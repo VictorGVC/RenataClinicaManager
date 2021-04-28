@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane fx:id="pnprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaControlarTratamentoController">
+   <items>
+      <VBox prefHeight="768.0" prefWidth="1022.0">
+         <children>
+            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="61.0" prefWidth="1022.0" spacing="50.0">
+               <children>
+                  <JFXButton fx:id="btnovo" onAction="#clkBtNovo" text="Novo" />
+                  <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" text="Alterar" />
+                  <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
+                  <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
+               </children>
+            </HBox>
+            <Pane fx:id="pndados" prefHeight="254.0" prefWidth="1024.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="254.0" prefWidth="1023.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="72.0" prefWidth="1023.0" spacing="50.0">
+                           <children>
+                              <JFXTextField prefHeight="25.0" prefWidth="105.0" promptText="CPF" />
+                              <JFXComboBox editable="true" onAction="#preencheCPF" onMouseClicked="#clearPaciente" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
+                           </children>
+                        </HBox>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXComboBox prefHeight="25.0" prefWidth="344.0" promptText="Tratamento" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER" prefHeight="68.0" prefWidth="1023.0" spacing="50.0">
+                           <children>
+                              <JFXButton fx:id="btadicionar" onAction="#clkBtAdicionar" text="Iniciar" />
+                              <JFXButton fx:id="btremover" onAction="#clkBtRemover" text="Finalizar" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lbobg" text="* Campos Obrigatórios" textFill="RED" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <TableView fx:id="tvprodutos" onMouseClicked="#clkTabelaProdutos" prefHeight="517.0" prefWidth="1022.0">
+               <columns>
+                  <TableColumn prefWidth="261.0" text="Paciente" />
+                  <TableColumn fx:id="colprod" prefWidth="235.0" text="Tratamento" />
+                  <TableColumn fx:id="colcodbarras" minWidth="0.0" prefWidth="158.0" text="Periodicidade" />
+                  <TableColumn fx:id="colpreco" prefWidth="112.0" text="Valor" />
+                  <TableColumn prefWidth="148.0" text="Sessões" />
+                  <TableColumn prefWidth="107.0" text="Finalizado" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </items>
+</SplitPane>
