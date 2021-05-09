@@ -7,11 +7,6 @@
     -fx-background-color:  #042f38;
  }
 
- .table-view
- {
-    -fx-background-color:  #8fcfcf;
- }
-
  .jfx-date-picker .date-picker-popup .calendar-grid .day-cell:hover,
 .jfx-date-picker .data-picker-list-cell:hover {
     -fx-background-color: #50bfcf;
@@ -28,11 +23,26 @@
    -jfx-default-color: rgb(13, 164, 175);
 }
 
+.table-view
+{
+   -fx-background-color:  #8fcfcf;
+   -fx-border-color:#8fcfcf;
+}
+
+.table-row-cell {
+   -fx-background: #3b7c7c;
+   -fx-table-cell-border-color: #3b7c7c;
+}
+
+.table-row-cell:selected
+{
+   -fx-background-color: #042f38; 
+   -fx-table-cell-border-color: #042f38;
+}
 
 .table-view .column-header
 {
    -fx-background-color: black;
-   
 }
 
 .table-view .column-header .label

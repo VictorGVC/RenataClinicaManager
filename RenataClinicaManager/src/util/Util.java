@@ -139,4 +139,18 @@ public class Util
                 return (false);
         }
     }
+    
+    public static boolean isSPositive(String n)
+    {
+        try 
+        {
+            int i = Integer.parseInt(n);
+            if(i>=0)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

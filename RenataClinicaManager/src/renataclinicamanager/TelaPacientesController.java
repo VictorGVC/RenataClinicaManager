@@ -192,9 +192,10 @@ public class TelaPacientesController implements Initializable
         {
             if (n instanceof TextInputControl)
                 ((TextInputControl)n).setText("");
-            cbsexo.getSelectionModel().select(-1);
-            cbcategoria.getSelectionModel().select(-1);
         }
+        cbsexo.getSelectionModel().select(-1);
+        cbcategoria.getSelectionModel().select(-1);
+        dpdatanasc.setValue(null);
     }
     
     private void setMascaras() 
@@ -321,6 +322,14 @@ public class TelaPacientesController implements Initializable
             flag = true;
             setCorAlert(txnumero, "RED");
         }
+        if(!Util.isSPositive(txnumero.getText()))
+        {
+            setCorAlert(txnumero, "RED");
+            a.setContentText("Número do endereço inválido!");
+            a.setHeaderText("Alerta");
+            a.setTitle("Alerta");
+            a.showAndWait();
+        }
         if(flag)
         {
             a.setContentText("Campos obrigatórios não preenchidos!");
@@ -444,9 +453,8 @@ public class TelaPacientesController implements Initializable
     {
         if(cbcategoria.getSelectionModel().getSelectedIndex() != -1)
         {
-            
-            switch (cbcategoria.getSelectionModel().getSelectedIndex()) {
-                
+            switch (cbcategoria.getSelectionModel().getSelectedIndex()) 
+            {
                 case 1:
                     carregaTabela("UPPER(pac_cpf) LIKE '%" + tfiltro.getText().toUpperCase() + "%'");
                     break;
@@ -474,7 +482,6 @@ public class TelaPacientesController implements Initializable
             
             if(tvpaciente.getSelectionModel().getSelectedItem() != null)
             {
-                
                 Paciente p = (Paciente)tvpaciente.getSelectionModel().getSelectedItem();
                 
                 txcpf.setText(p.getCpf());
