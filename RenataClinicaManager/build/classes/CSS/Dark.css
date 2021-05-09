@@ -49,6 +49,15 @@
    -fx-highlight-fill: #8fcfcf;
 }
 
+.jfx-text-area
+{
+   -jfx-unfocus-color : #8fcfcf;
+   -jfx-focus-color: #4059a9;
+   -fx-prompt-text-fill: #8fcfcf;
+   -fx-text-inner-color: #8fcfcf;
+   -fx-highlight-fill: #8fcfcf;
+}
+
 .jfx-password-field 
 {
    -jfx-focus-color: #4059a9;
@@ -58,12 +67,17 @@
    -fx-highlight-fill: #8fcfcf;
 }
 
-.jfx-combo-box
+.jfx-combo-box 
 {
    -jfx-focus-color: #4059a9;
    -jfx-unfocus-color : #8fcfcf;
    -fx-prompt-text-fill: #8fcfcf;
    -fx-text-inner-color: #8fcfcf;
+}
+
+.combo-box .list-cell:filled:selected .text,
+.choice-box .list-cell:filled:selected .text {
+    -fx-fill: #8fcfcf;
 }
 
 .jfx-button

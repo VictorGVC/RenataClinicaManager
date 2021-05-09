@@ -44,13 +44,13 @@ public class RenataClinicaManager extends Application {
             
             if(JOptionPane.showConfirmDialog(null, "Deseja criar uma nova conexão?") == JOptionPane.YES_OPTION)
             {
-                if(!Banco.criarBD("malucidb"))
+                if(!Banco.criarBD("bancorenata"))
                     JOptionPane.showMessageDialog(null, "Não foi possivel criar uma nova conexão");
                 else{
                     
                     JOptionPane.showMessageDialog(null, "Conexão criada com sucesso, o sistema será reiniciado");
                     
-                    Banco.realizaBackupRestauracao("dbutil\\restore.bat");
+                    Banco.realizaBackupRestauracao("banco\\backup.bat");
                 }
             }
             System.exit(0);

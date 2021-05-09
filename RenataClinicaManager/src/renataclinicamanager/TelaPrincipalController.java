@@ -5,22 +5,29 @@
  */
 package renataclinicamanager;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -35,10 +42,6 @@ public class TelaPrincipalController implements Initializable {
     private VBox pncabecalho;
     @FXML
     private MenuBar mnbar;
-    @FXML
-    private MenuItem mifuncionario;
-    @FXML
-    private MenuItem miclientes;
     @FXML
     private MenuItem mifornecedores;
     @FXML
@@ -63,18 +66,11 @@ public class TelaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        
     }    
 
     @FXML
     private void clkChamaLogin(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkOpenFuncionarios(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkOpenClientes(ActionEvent event) {
     }
 
     @FXML
@@ -86,15 +82,16 @@ public class TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void clkBackup(ActionEvent event) {
-        pntotal.getScene().getStylesheets().clear();
-        pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+    private void clkBackup(ActionEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkRestore(ActionEvent event) {
+    private void clkRestore(ActionEvent event) 
+    {
         pntotal.getScene().getStylesheets().clear();
-        pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Bright.css").toExternalForm());
+        pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
     }
 
     @FXML
@@ -103,6 +100,26 @@ public class TelaPrincipalController implements Initializable {
 
     @FXML
     private void clkTabelaProdutos(MouseEvent event) {
+    }
+
+    @FXML
+    private void clkFuncionarios(ActionEvent event) {
+    }
+
+    @FXML
+    private void clkPacientes(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaPaciente.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.resizableProperty().setValue(Boolean.FALSE);
+            stage.setMaxWidth(1030);
+            //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+            stage.setTitle("Pacientes");
+            stage.setScene(scene);
+            stage.show();
     }
     
 }

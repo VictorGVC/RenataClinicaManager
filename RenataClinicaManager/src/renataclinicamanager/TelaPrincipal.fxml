@@ -31,8 +31,8 @@
                   </Menu>
                   <Menu mnemonicParsing="false" styleClass="default" text="Cadastros">
                      <items>
-                        <MenuItem fx:id="mifuncionario" mnemonicParsing="false" onAction="#clkOpenFuncionarios" styleClass="default" text="Funcionarios" />
-                        <MenuItem fx:id="miclientes" mnemonicParsing="false" onAction="#clkOpenClientes" text="Clientes" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkFuncionarios" styleClass="default" text="Funcionarios" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkPacientes" text="Pacientes" />
                         <MenuItem fx:id="mifornecedores" mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
                         <MenuItem fx:id="miproduto" mnemonicParsing="false" onAction="#clkOpenProduto" text="Produtos" />
                      </items>
