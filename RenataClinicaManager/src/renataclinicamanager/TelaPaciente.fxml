@@ -6,10 +6,13 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -33,7 +36,7 @@
                <children>
                   <JFXTextField fx:id="txcpf" focusColor="BLACK" labelFloat="true" layoutX="66.0" layoutY="37.0" onKeyReleased="#evtCpfDigitado" prefHeight="32.0" prefWidth="171.0" promptText="CPF *" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="261.0" layoutY="37.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
-                  <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="66.0" layoutY="97.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" styleClass="labeli" unFocusColor="BLACK" />
+                  <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="66.0" layoutY="97.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
                   <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="66.0" layoutY="168.0" prefHeight="32.0" prefWidth="171.0" promptText="Data de Nacimento" />
                   <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="261.0" layoutY="97.0" prefHeight="32.0" prefWidth="250.0" promptText="Telefone *" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txrua" focusColor="BLACK" labelFloat="true" layoutX="677.0" layoutY="112.0" prefHeight="32.0" prefWidth="183.0" promptText="Rua*" unFocusColor="BLACK" />
@@ -53,14 +56,32 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" maxWidth="1022.0" prefHeight="72.0" prefWidth="1022.0" spacing="100.0">
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" maxWidth="1022.0" prefHeight="72.0" prefWidth="1022.0" spacing="20.0">
                      <children>
-                        <JFXComboBox fx:id="cbcategoria" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="145.0" promptText="Categoria" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="tfiltro" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltro" onKeyReleased="#clkTFiltro" onKeyTyped="#clkTFiltro" prefHeight="38.0" prefWidth="410.0" text="Filtro" unFocusColor="BLACK">
+                        <JFXComboBox fx:id="cbcategoria" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="145.0" promptText="Categoria" unFocusColor="BLACK">
+                           <HBox.margin>
+                              <Insets right="100.0" />
+                           </HBox.margin></JFXComboBox>
+                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="410.0" promptText="Filtro" unFocusColor="BLACK">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
+                        <JFXButton alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="33.0" maxWidth="33.0" onAction="#clkTFiltro" prefHeight="32.0" prefWidth="32.0" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../icons/filter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="12.0" />
+                           </HBox.margin>
+                        </JFXButton>
                      </children>
                      <padding>
                         <Insets bottom="25.0" />

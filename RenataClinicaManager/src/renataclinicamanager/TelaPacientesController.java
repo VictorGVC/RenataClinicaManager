@@ -17,9 +17,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,14 +28,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -66,8 +66,6 @@ public class TelaPacientesController implements Initializable
     private VBox pnpesquisa;
     @FXML
     private JFXComboBox<String> cbcategoria;
-    @FXML
-    private JFXTextField tfiltro;
     @FXML
     private TableColumn<Paciente, String> colnome;
     @FXML
@@ -110,6 +108,8 @@ public class TelaPacientesController implements Initializable
     private JFXTextField txcidade;
     @FXML
     private JFXTextArea tarea;
+    @FXML
+    private JFXTextField txfiltro;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -118,6 +118,11 @@ public class TelaPacientesController implements Initializable
         listaSexo();
         listaCategoria();
         initColTb();
+        colrea.setCellValueFactory(param -> 
+        {
+            String result = String.join("\n",param.getValue().getRea());
+            return new SimpleStringProperty(result);
+        });
         estado(true);
     }    
     
@@ -138,7 +143,6 @@ public class TelaPacientesController implements Initializable
         list.add("CPF");
         list.add("Nome");
         list.add("Telefone");
-        list.add("Bairro");
         list.add("Rua");
         
         cbcategoria.setItems(FXCollections.observableArrayList(list));
@@ -162,13 +166,13 @@ public class TelaPacientesController implements Initializable
         btapagar.setDisable(!b);
         btalterar.setDisable(!b);
         btnovo.setDisable(!b);
-        tfiltro.setDisable(b);
+        txfiltro.setDisable(!b);
         if(b)
             pnfiltro.setStyle(null);
         else
         {
-            pnfiltro.setStyle("   -fx-background-color: transparent;" +
-                                "   -fx-border-color: transparent;");
+            pnfiltro.setStyle("-fx-background-color: transparent;" +
+                                "-fx-border-color: transparent;");
         }
       
         carregaTabela("");
@@ -397,7 +401,8 @@ public class TelaPacientesController implements Initializable
                     a.showAndWait();
                 }
             }
-            clkTFiltro(null);
+            ActionEvent ac = null;
+            clkTFiltro(ac);
         }
     }
     
@@ -449,37 +454,10 @@ public class TelaPacientesController implements Initializable
     }
 
     @FXML
-    private void clkTFiltro(KeyEvent event) 
-    {
-        if(cbcategoria.getSelectionModel().getSelectedIndex() != -1)
-        {
-            switch (cbcategoria.getSelectionModel().getSelectedIndex()) 
-            {
-                case 1:
-                    carregaTabela("UPPER(pac_cpf) LIKE '%" + tfiltro.getText().toUpperCase() + "%'");
-                    break;
-                case 2:
-                    carregaTabela("UPPER(pac_nome) LIKE '%" + tfiltro.getText().toUpperCase() + "%'");
-                    break;
-                case 3:
-                    carregaTabela("UPPER(cli_telefone) LIKE '%" + tfiltro.getText().toUpperCase() + "%'");
-                    break;
-                case 5:
-                    carregaTabela("UPPER(cli_rua) LIKE '%" + tfiltro.getText().toUpperCase() + "%'");
-                    break;
-                case 6:
-                    carregaTabela("UPPER(cli_numero) LIKE '%" + tfiltro.getText().toUpperCase() + "%'");
-                    break;
-            }
-        }
-    }
-
-    @FXML
     private void clkTabela(MouseEvent event) 
     {
         if(tvpaciente.getSelectionModel().getSelectedIndex() >= 0)
         {
-            
             if(tvpaciente.getSelectionModel().getSelectedItem() != null)
             {
                 Paciente p = (Paciente)tvpaciente.getSelectionModel().getSelectedItem();
@@ -503,5 +481,27 @@ public class TelaPacientesController implements Initializable
             }
         }
     }
-    
+
+    @FXML
+    private void clkTFiltro(ActionEvent event) 
+    {
+        if(cbcategoria.getSelectionModel().getSelectedIndex() != -1)
+        {
+            switch (cbcategoria.getSelectionModel().getSelectedIndex()) 
+            {
+                case 0:
+                   carregaTabela("UPPER(pac_cpf) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
+                    break;
+                case 1:
+                    carregaTabela("UPPER(pac_nome) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
+                    break;
+                case 2:
+                    carregaTabela("pac_telefone LIKE '%" + txfiltro.getText() + "%'");
+                    break;
+                case 3:
+                    carregaTabela("UPPER(pac_rua) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
+                    break;
+            }
+        }
+    }   
 }

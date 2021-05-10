@@ -29,6 +29,11 @@
    -fx-border-color:#8fcfcf;
 }
 
+.table-view .table-cell
+{
+   -fx-alignment: CENTER;
+}
+
 .table-row-cell {
    -fx-background: #3b7c7c;
    -fx-table-cell-border-color: #3b7c7c;
@@ -85,9 +90,17 @@
    -fx-text-inner-color: #8fcfcf;
 }
 
-.combo-box .list-cell:filled:selected .text,
-.choice-box .list-cell:filled:selected .text {
+.combo-box .list-cell:filled .text {
     -fx-fill: #8fcfcf;
+}
+
+.combo-box .list-cell:filled {
+   -fx-background-color:  #1e535d;
+   -fx-list-cell-border-color: #3b7c7c;
+}
+
+.combo-box .list-cell:hover{
+   -fx-background-color: #042f38;
 }
 
 .jfx-button
