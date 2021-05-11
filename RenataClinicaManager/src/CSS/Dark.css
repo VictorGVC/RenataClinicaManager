@@ -52,7 +52,7 @@
 
 .table-view .column-header .label
 {
-   -fx-text-fill : #8fcfcf;
+   -fx-text-fill : #3b7c7c;
 }
 
 .jfx-text-field 
@@ -90,6 +90,11 @@
    -fx-text-inner-color: #8fcfcf;
 }
 
+.combo-box .list-view
+{
+   -fx-background-color: #1e535d;
+}
+
 .combo-box .list-cell:filled .text {
     -fx-fill: #8fcfcf;
 }
@@ -97,6 +102,10 @@
 .combo-box .list-cell:filled {
    -fx-background-color:  #1e535d;
    -fx-list-cell-border-color: #3b7c7c;
+}
+
+.combo-box .list-cell:selected{
+   -fx-background-color: #042f38;
 }
 
 .combo-box .list-cell:hover{
@@ -120,6 +129,10 @@
    -fx-border-width: 1;
    -fx-background-color: #1e535d;
    -fx-border-color: #03afc5;
+}
+
+#filtro .combo-box .list-cell:selected{
+   -fx-background-color: #1e535d;
 }
 
 .default

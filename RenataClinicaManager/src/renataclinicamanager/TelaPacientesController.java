@@ -11,7 +11,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import db.DALs.DALPaciente;
+import db.DAL.DAOPaciente;
 import db.Models.Paciente;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,10 +28,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
@@ -50,6 +48,8 @@ import util.Util;
  */
 public class TelaPacientesController implements Initializable 
 {
+    Paciente pacatual;
+    
     @FXML
     private SplitPane pnprincipal;
     @FXML
@@ -174,13 +174,12 @@ public class TelaPacientesController implements Initializable
             pnfiltro.setStyle("-fx-background-color: transparent;" +
                                 "-fx-border-color: transparent;");
         }
-      
         carregaTabela("");
     }
     
     private void carregaTabela(String filtro) 
     {
-        DALPaciente dal = new DALPaciente();
+        DAOPaciente dal = new DAOPaciente();
         List<Paciente> res = dal.getList(filtro);
         ObservableList<Paciente> modelo;
         
@@ -218,7 +217,6 @@ public class TelaPacientesController implements Initializable
     private void clkBtNovo(ActionEvent event) 
     {
         estado(false);
-        txcpf.setDisable(false);
         limparCampos();
         pnpesquisa.setDisable(true);
     }
@@ -229,7 +227,6 @@ public class TelaPacientesController implements Initializable
         if(tvpaciente.getSelectionModel().getSelectedIndex() != -1)
         {
             estado(false);
-            txcpf.setDisable(true);
             pnpesquisa.setDisable(false);
         }
         else
@@ -255,7 +252,7 @@ public class TelaPacientesController implements Initializable
             a.getButtonTypes().add(ButtonType.YES);
             if (a.showAndWait().get() == ButtonType.YES)
             {
-                DALPaciente dal = new DALPaciente();
+                DAOPaciente dal = new DAOPaciente();
                 Paciente p;
                 p = tvpaciente.getSelectionModel().getSelectedItem();
                 String result = dal.apagar(p);
@@ -346,7 +343,7 @@ public class TelaPacientesController implements Initializable
             try {id = txcpf.getText();}
             catch (NumberFormatException e) {id = "";}
 
-            char sexo = ' ';
+            char sexo = 'C';
 
             if(cbsexo.getSelectionModel().getSelectedIndex() == 0)
                 sexo = 'M';
@@ -361,7 +358,7 @@ public class TelaPacientesController implements Initializable
                                     tarea.getText(),
                                     Integer.parseInt(txnumero.getText()),
                                     sexo,dpdatanasc.getValue());
-            DALPaciente dal = new DALPaciente();
+            DAOPaciente dal = new DAOPaciente();
 
             setNormalColor();
 
@@ -385,7 +382,7 @@ public class TelaPacientesController implements Initializable
             }
             else
             {
-                String error = dal.alterar(c);
+                String error = dal.alterar(c,pacatual.getCpf());
                 if(error.isEmpty())
                 {
                     JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
@@ -401,8 +398,7 @@ public class TelaPacientesController implements Initializable
                     a.showAndWait();
                 }
             }
-            ActionEvent ac = null;
-            clkTFiltro(ac);
+            clkTFiltro(null);
         }
     }
     
@@ -460,7 +456,9 @@ public class TelaPacientesController implements Initializable
         {
             if(tvpaciente.getSelectionModel().getSelectedItem() != null)
             {
-                Paciente p = (Paciente)tvpaciente.getSelectionModel().getSelectedItem();
+                
+                Paciente p = new Paciente();
+                p = (Paciente)tvpaciente.getSelectionModel().getSelectedItem();
                 
                 txcpf.setText(p.getCpf());
                 txnome.setText(p.getNome());
@@ -468,6 +466,8 @@ public class TelaPacientesController implements Initializable
                     cbsexo.getSelectionModel().selectFirst();
                 else if(p.getSexo() == 'F')
                     cbsexo.getSelectionModel().selectLast();
+                else
+                    cbsexo.getSelectionModel().select(-1);
                 dpdatanasc.setValue(p.getDtnacimento());
                 txtelefone.setText(p.getTelefone());
                 tarea.setText(p.getRea());
@@ -478,6 +478,7 @@ public class TelaPacientesController implements Initializable
                 pndados.setDisable(false); 
                 if(btconfirmar.isDisable())
                     pndados.setDisable(true);
+                pacatual = p;
             }
         }
     }
@@ -503,5 +504,5 @@ public class TelaPacientesController implements Initializable
                     break;
             }
         }
-    }   
+    }
 }

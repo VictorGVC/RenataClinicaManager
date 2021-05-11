@@ -8,6 +8,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,21 +20,19 @@
          <children>
             <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="50.0" prefWidth="798.0" spacing="70.0">
                <children>
-                  <JFXButton fx:id="btNovoFornecedor" onAction="#NovoFornecedor" prefHeight="25.0" prefWidth="48.0" text="Novo" />
-                  <JFXButton fx:id="btEditarFornecedor" onAction="#EditarFornecedor" prefHeight="25.0" prefWidth="52.0" text="Alterar" />
-                  <JFXButton fx:id="btRemoverFornecedor" onAction="#RemoverFornecedor" prefHeight="25.0" prefWidth="55.0" text="Apagar" />
-                  <JFXButton fx:id="btAddFornecedor" onAction="#SalvarFornecedor" prefHeight="25.0" prefWidth="69.0" text="Confirmar" />
-                  <JFXButton fx:id="btCancelarFornecedor" onAction="#CancelarFornecedor" prefHeight="25.0" prefWidth="69.0" text="Cancelar" />
+                  <JFXButton fx:id="btnovo" onAction="#clkBtNovo" prefHeight="25.0" prefWidth="48.0" text="Novo" />
+                  <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" prefHeight="25.0" prefWidth="52.0" text="Alterar" />
+                  <JFXButton fx:id="btapagar" onAction="#clkBtApagar" prefHeight="25.0" prefWidth="55.0" text="Apagar" />
+                  <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" prefHeight="25.0" prefWidth="69.0" text="Confirmar" />
+                  <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" prefHeight="25.0" prefWidth="69.0" text="Cancelar" />
                </children>
             </HBox>
             <Pane fx:id="pndados" prefHeight="232.0" prefWidth="798.0">
                <children>
-                  <JFXTextField fx:id="txCNPJ" focusColor="BLACK" labelFloat="true" layoutX="287.0" layoutY="37.0" onKeyTyped="#evtCnpjDigitado" prefHeight="25.0" prefWidth="220.0" promptText="CNPJ *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txNomeForcenedor" focusColor="BLACK" labelFloat="true" layoutX="515.0" layoutY="37.0" prefHeight="25.0" prefWidth="220.0" promptText="Nome do Fornecedor *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txEmail" focusColor="BLACK" labelFloat="true" layoutX="287.0" layoutY="98.0" prefHeight="25.0" prefWidth="220.0" promptText="Email *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txTelefone" focusColor="BLACK" labelFloat="true" layoutX="515.0" layoutY="98.0" prefHeight="25.0" prefWidth="220.0" promptText="Telefone" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txIE" focusColor="BLACK" labelFloat="true" layoutX="287.0" layoutY="170.0" prefHeight="25.0" prefWidth="220.0" promptText="Inscrição Estadual *" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="564.0" layoutY="174.0" text="* Campos Obrigatorios" textFill="RED" />
+                  <JFXTextField fx:id="txcnpj" focusColor="BLACK" labelFloat="true" layoutX="280.0" layoutY="37.0" onKeyReleased="#evtCnpjDigitado" prefHeight="25.0" prefWidth="220.0" promptText="CNPJ *" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="530.0" layoutY="37.0" prefHeight="25.0" prefWidth="220.0" promptText="Nome do Fornecedor *" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="405.0" layoutY="104.0" prefHeight="25.0" prefWidth="220.0" promptText="Telefone" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="450.0" layoutY="171.0" text="* Campos Obrigatorios" textFill="RED" />
                </children>
             </Pane>
          </children>
@@ -41,24 +41,37 @@
          <children>
             <Pane fx:id="pnfiltros" prefHeight="142.0" prefWidth="1022.0">
                <children>
-                  <HBox id="filtro" alignment="CENTER" prefHeight="75.0" prefWidth="1022.0" spacing="50.0">
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" layoutY="4.0" prefHeight="75.0" prefWidth="1022.0" spacing="20.0">
                      <children>
-                        <JFXComboBox fx:id="cbFiltro" focusColor="BLACK" prefHeight="38.0" prefWidth="111.0" promptText="Filtro" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="txPesquisar" focusColor="BLACK" onKeyPressed="#FiltrarFornecedor" onKeyReleased="#FiltrarFornecedor" onKeyTyped="#FiltrarFornecedor" prefHeight="38.0" prefWidth="455.0" text="Filtro" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="cbfiltro" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="111.0" promptText="Filtro" unFocusColor="BLACK">
+                           <HBox.margin>
+                              <Insets right="100.0" />
+                           </HBox.margin></JFXComboBox>
+                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" prefHeight="38.0" prefWidth="455.0" promptText="Filtro" unFocusColor="BLACK" />
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkBtFiltro" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/filter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXButton>
                      </children>
                      <padding>
-                        <Insets bottom="9.0" />
+                        <Insets bottom="20.0" />
                      </padding>
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvFornecedores" prefHeight="500.0" prefWidth="1022.0">
+            <TableView fx:id="tvFornecedores" onMouseClicked="#clkBtTabela" prefHeight="500.0" prefWidth="1022.0">
                <columns>
-                  <TableColumn fx:id="ColCNPJ" prefWidth="130.0" text="CNPJ" />
-                  <TableColumn fx:id="ColFornecedor" prefWidth="323.0" text="Fornecedor" />
-                  <TableColumn fx:id="ColIE" prefWidth="159.0" text="Inscrição Estadual" />
-                  <TableColumn fx:id="ColTelefone" minWidth="0.0" prefWidth="151.0" text="Telefone" />
-                  <TableColumn fx:id="ColEmail" minWidth="3.0" prefWidth="258.0" text="Email" />
+                  <TableColumn fx:id="colcnpj" prefWidth="130.0" text="CNPJ" />
+                  <TableColumn fx:id="colfornecedor" prefWidth="728.0" text="Fornecedor" />
+                  <TableColumn fx:id="coltelefone" minWidth="0.0" prefWidth="162.0" text="Telefone" />
                </columns>
             </TableView>
          </children>

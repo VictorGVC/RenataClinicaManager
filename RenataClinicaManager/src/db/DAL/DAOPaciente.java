@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db.DALs;
+package db.DAL;
 
 import db.Banco.Banco;
 import db.Models.Paciente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  *
  * @author vicga
  */
-public class DALPaciente 
+public class DAOPaciente 
 {
 
     public List<Paciente> getList(String filtro) 
@@ -30,13 +31,20 @@ public class DALPaciente
         ResultSet rs = Banco.getCon().consultar(sql);
         
         try {
-            
+            LocalDate ld;
             while(rs.next())
+            {
+                try {
+                    ld = rs.getDate("pac_data").toLocalDate();   
+                } catch (Exception e) {
+                    ld = null;
+                }                                     
                 aux.add(new Paciente(rs.getString("pac_cpf"), rs.getString("pac_nome"), 
                         rs.getString("pac_telefone"), rs.getString("pac_rua"), 
                         rs.getString("pac_cidade"), rs.getString("pac_bairro"),
                         rs.getString("pac_rea"), rs.getInt("pac_numero"), rs.getString("pac_sexo").charAt(0),
-                        rs.getDate("pac_data").toLocalDate()));
+                        ld));
+            }
         } 
         catch(SQLException ex) {
             System.out.println(ex);
@@ -82,9 +90,12 @@ public class DALPaciente
             sql = sql.replaceAll("#5", "" + c.getRua());
             sql = sql.replaceAll("#6", "" + c.getNumero());
             sql = sql.replaceAll("#7", "" + c.getBairro());
-            sql = sql.replaceAll("#8", "" + c.getDtnacimento().toString());
-            sql = sql.replaceAll("#9", "" + c.getRea());
             sql = sql.replaceAll("&1", "" + c.getSexo());
+            if(c.getDtnacimento()!=null)
+                sql = sql.replaceAll("#8", "" + c.getDtnacimento().toString());
+            else
+                sql = sql.replaceAll("'#8'", "null");
+            sql = sql.replaceAll("#9", "" + c.getRea());
         }
         else
             return "Paciente com o CPF informado já cadastrado!";
@@ -95,21 +106,44 @@ public class DALPaciente
         return "Erro ao Gravar";
     }
 
-    public String alterar(Paciente c)
+    public String alterar(Paciente c,String cpfantigo)
     {
-        String sql = "UPDATE PACIENTE SET pac_nome='#2',pac_sexo='#3', pac_data='#4', "
-                + "pac_telefone='#6', pac_rua='#8', pac_numero=#9, pac_bairro='#5', "
-                + "pac_cidade='#7', pac_rea='#a' WHERE pac_cpf='" + c.getCpf()+ "'";
+        String sql = "";
+        int cont = 0;
+        if(!cpfantigo.equals(c.getCpf()))
+        {
+            ResultSet rs = Banco.getCon().consultar("SELECT * FROM paciente "
+            + "WHERE pac_cpf = '"+c.getCpf()+"'");
         
-        sql = sql.replaceAll("#2", "" + c.getNome());
-        sql = sql.replaceAll("#3", "" + c.getSexo());
-        sql = sql.replaceAll("#4", "" + c.getDtnacimento().toString());
-        sql = sql.replaceAll("#6", "" + c.getTelefone());
-        sql = sql.replaceAll("#8", "" + c.getRua());
-        sql = sql.replaceAll("#9", "" + c.getNumero());
-        sql = sql.replaceAll("#5", "" + c.getBairro());
-        sql = sql.replaceAll("#7", "" + c.getCidade());
-        sql = sql.replaceAll("#a", "" + c.getRea());
+            try
+            {
+                if(rs.next())
+                    cont++;
+            } 
+            catch(SQLException ex) 
+            {
+                System.out.println(ex);
+            }
+        }
+        if(cont == 0)
+        {
+            sql = "UPDATE PACIENTE SET pac_cpf='#1',pac_nome='#2',pac_sexo='#3', pac_data='#4', "
+                + "pac_telefone='#6', pac_rua='#8', pac_numero=#9, pac_bairro='#5', "
+                + "pac_cidade='#7', pac_rea='#a' WHERE pac_cpf='" + cpfantigo+ "'";
+        
+            sql = sql.replaceAll("#1", "" + c.getCpf());
+            sql = sql.replaceAll("#2", "" + c.getNome());
+            sql = sql.replaceAll("#3", "" + c.getSexo());
+            sql = sql.replaceAll("#4", "" + c.getDtnacimento().toString());
+            sql = sql.replaceAll("#6", "" + c.getTelefone());
+            sql = sql.replaceAll("#8", "" + c.getRua());
+            sql = sql.replaceAll("#9", "" + c.getNumero());
+            sql = sql.replaceAll("#5", "" + c.getBairro());
+            sql = sql.replaceAll("#7", "" + c.getCidade());
+            sql = sql.replaceAll("#a", "" + c.getRea());
+        }
+        else
+            return "CPF já existente!";
         
         if(Banco.getCon().manipular(sql))
             return "";

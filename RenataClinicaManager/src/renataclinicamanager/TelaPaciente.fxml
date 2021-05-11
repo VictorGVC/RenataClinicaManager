@@ -67,7 +67,7 @@
                               <Font size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXButton alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="33.0" maxWidth="33.0" onAction="#clkTFiltro" prefHeight="32.0" prefWidth="32.0" text=" ">
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="33.0" maxWidth="33.0" onAction="#clkTFiltro" prefHeight="32.0" prefWidth="32.0" text=" ">
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>

@@ -74,7 +74,19 @@ public class TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void clkOpenFornecedores(ActionEvent event) {
+    private void clkOpenFornecedores(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaFornecedor.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.resizableProperty().setValue(Boolean.FALSE);
+            stage.setMaxWidth(1030);
+            //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+            stage.setTitle("Fornecedores");
+            stage.setScene(scene);
+            stage.show();
     }
 
     @FXML
