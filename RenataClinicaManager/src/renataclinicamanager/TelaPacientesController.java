@@ -323,7 +323,7 @@ public class TelaPacientesController implements Initializable
             flag = true;
             setCorAlert(txnumero, "RED");
         }
-        if(!Util.isSPositive(txnumero.getText()))
+        else if(!Util.isSIPositive(txnumero.getText()))
         {
             setCorAlert(txnumero, "RED");
             a.setContentText("Número do endereço inválido!");

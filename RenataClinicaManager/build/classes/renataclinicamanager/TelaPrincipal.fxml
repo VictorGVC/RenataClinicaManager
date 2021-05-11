@@ -33,8 +33,8 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#clkFuncionarios" styleClass="default" text="Funcionarios" />
                         <MenuItem mnemonicParsing="false" onAction="#clkPacientes" text="Pacientes" />
-                        <MenuItem fx:id="mifornecedores" mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
-                        <MenuItem fx:id="miproduto" mnemonicParsing="false" onAction="#clkOpenProduto" text="Produtos" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkOpenMateriais" text="Materiais" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />

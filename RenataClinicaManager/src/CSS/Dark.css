@@ -181,3 +181,9 @@
 {
     -fx-background-color: #042f38;
 }
+
+.transparent
+{
+   -fx-background-color:transparent;
+   -fx-text-inner-color: #8fcfcf;
+}

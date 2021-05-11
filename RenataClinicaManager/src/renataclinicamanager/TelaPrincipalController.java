@@ -43,10 +43,6 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private MenuBar mnbar;
     @FXML
-    private MenuItem mifornecedores;
-    @FXML
-    private MenuItem miproduto;
-    @FXML
     private ToolBar tbatalhos;
     @FXML
     private AnchorPane pnmeio;
@@ -77,21 +73,18 @@ public class TelaPrincipalController implements Initializable {
     private void clkOpenFornecedores(ActionEvent event) throws IOException 
     {
         Parent root = FXMLLoader.load(getClass().getResource("TelaFornecedor.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
 
-            stage.resizableProperty().setValue(Boolean.FALSE);
-            stage.setMaxWidth(1030);
-            //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
-            stage.setTitle("Fornecedores");
-            stage.setScene(scene);
-            stage.show();
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(1030);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Fornecedores");
+        stage.setScene(scene);
+        stage.show();
     }
 
-    @FXML
-    private void clkOpenProduto(ActionEvent event) {
-    }
 
     @FXML
     private void clkBackup(ActionEvent event) 
@@ -122,16 +115,32 @@ public class TelaPrincipalController implements Initializable {
     private void clkPacientes(ActionEvent event) throws IOException 
     {
         Parent root = FXMLLoader.load(getClass().getResource("TelaPaciente.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
 
-            stage.resizableProperty().setValue(Boolean.FALSE);
-            stage.setMaxWidth(1030);
-            //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
-            stage.setTitle("Pacientes");
-            stage.setScene(scene);
-            stage.show();
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(1030);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Pacientes");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void clkOpenMateriais(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaMateriais.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(1030);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Materiais");
+        stage.setScene(scene);
+        stage.show();
     }
     
 }

@@ -140,11 +140,25 @@ public class Util
         }
     }
     
-    public static boolean isSPositive(String n)
+    public static boolean isSIPositive(String n)
     {
         try 
         {
             int i = Integer.parseInt(n);
+            if(i>=0)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isSDPositive(String n)
+    {
+        try 
+        {
+            double i = Double.parseDouble(n);
             if(i>=0)
                 return true;
             else

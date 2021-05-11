@@ -89,9 +89,6 @@ public class TelaFornecedorController implements Initializable {
     @FXML
     private HBox pnfiltro;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {

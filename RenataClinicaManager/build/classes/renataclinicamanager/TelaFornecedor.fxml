@@ -31,7 +31,7 @@
                <children>
                   <JFXTextField fx:id="txcnpj" focusColor="BLACK" labelFloat="true" layoutX="280.0" layoutY="37.0" onKeyReleased="#evtCnpjDigitado" prefHeight="25.0" prefWidth="220.0" promptText="CNPJ *" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="530.0" layoutY="37.0" prefHeight="25.0" prefWidth="220.0" promptText="Nome do Fornecedor *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="405.0" layoutY="104.0" prefHeight="25.0" prefWidth="220.0" promptText="Telefone" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="405.0" layoutY="104.0" prefHeight="25.0" prefWidth="220.0" promptText="Telefone*" unFocusColor="BLACK" />
                   <Label fx:id="lbobg" layoutX="450.0" layoutY="171.0" text="* Campos Obrigatorios" textFill="RED" />
                </children>
             </Pane>
