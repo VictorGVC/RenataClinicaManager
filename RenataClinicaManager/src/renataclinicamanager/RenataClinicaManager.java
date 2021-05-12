@@ -24,7 +24,7 @@ public class RenataClinicaManager extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("TelaPrincipal.fxml"));
         
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
 
         stage.setScene(scene);
         stage.show();
