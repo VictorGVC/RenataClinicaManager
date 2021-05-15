@@ -108,7 +108,19 @@ public class TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void clkFuncionarios(ActionEvent event) {
+    private void clkFuncionarios(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaFuncionario.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(1030);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Funcionários");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

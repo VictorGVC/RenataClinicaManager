@@ -83,4 +83,25 @@ public class DAOCargo {
         return aux;
     }
     
+    public Cargo get(int cod) 
+    {
+        String sql = "SELECT * FROM cargo WHERE car_cod = "+cod;
+        
+        Cargo aux = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        JSONArray ja;
+        try {
+            if(rs.next())
+            {                                 
+                ja = new JSONArray(rs.getString("car_acesso"));
+                aux = new Cargo(rs.getInt("car_cod"), ja, 
+                        rs.getString("car_nome"));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
 }

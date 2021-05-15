@@ -6,6 +6,7 @@
 package db.Models;
 
 import java.time.LocalDate;
+import org.json.JSONArray;
 
 /**
  *
@@ -15,9 +16,9 @@ public class Funcionario
 {
     private Cargo c;
     private String nome,login,telefone;
-    //private JsonObject horarios;
+    private JSONArray horarios;
     private LocalDate dtnasc;
-    private boolean ativo;
+    private char ativo,sexo;
 
     public Funcionario() {
     }
@@ -26,12 +27,49 @@ public class Funcionario
         this.login = login;
     }
 
+    public Funcionario(Cargo c, String nome, String telefone, JSONArray horarios, LocalDate dtnasc, char ativo, char sexo) {
+        this.c = c;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.horarios = horarios;
+        this.dtnasc = dtnasc;
+        this.ativo = ativo;
+        this.sexo = sexo;
+    }
+
+    public Funcionario(Cargo c, String nome, String login, String telefone, JSONArray horarios, LocalDate dtnasc, char ativo, char sexo) {
+        this.c = c;
+        this.nome = nome;
+        this.login = login;
+        this.telefone = telefone;
+        this.horarios = horarios;
+        this.dtnasc = dtnasc;
+        this.ativo = ativo;
+        this.sexo = sexo;
+    }
+
+    public JSONArray getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(JSONArray horarios) {
+        this.horarios = horarios;
+    }
+
     public Cargo getC() {
         return c;
     }
 
     public void setC(Cargo c) {
         this.c = c;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
     }
 
     public String getNome() {
@@ -66,11 +104,11 @@ public class Funcionario
         this.dtnasc = dtnasc;
     }
 
-    public boolean isAtivo() {
+    public char getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(boolean ativo) {
+    public void setAtivo(char ativo) {
         this.ativo = ativo;
     }
     

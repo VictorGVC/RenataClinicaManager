@@ -18,6 +18,11 @@ public class Cargo
     private JSONArray acesso;
     private String nome;
 
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+    
     public Cargo() {
     }
 
