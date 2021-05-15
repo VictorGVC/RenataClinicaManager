@@ -28,28 +28,22 @@
                   <JFXButton fx:id="btativdesativ" onAction="#clkBtAtivar" text="Ativar/Desativar" />
                   <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
-                  <JFXButton fx:id="btvoltar" onAction="#clkBtVoltar" text="Voltar" />
                </children>
             </HBox>
             <Pane fx:id="pndados" prefHeight="273.0" prefWidth="798.0">
                <children>
-                  <JFXTextField fx:id="tcpf" focusColor="BLACK" labelFloat="true" layoutX="97.0" layoutY="38.0" onKeyTyped="#evtCpfDigitado" prefHeight="32.0" prefWidth="171.0" promptText="CPF *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="tnome" labelFloat="true" layoutX="278.0" layoutY="38.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
-                  <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="544.0" layoutY="38.0" prefHeight="32.0" prefWidth="145.0" promptText="Sexo" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="temail" labelFloat="true" layoutX="97.0" layoutY="95.0" prefHeight="32.0" prefWidth="250.0" promptText="E-Mail *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="ttelefone" labelFloat="true" layoutX="357.0" layoutY="95.0" prefHeight="32.0" prefWidth="171.0" promptText="Telefone *" unFocusColor="BLACK" />
-                  <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="539.0" layoutY="95.0" prefHeight="32.0" prefWidth="155.0" promptText="Data de Nacimento" />
-                  <JFXTextField fx:id="trua" labelFloat="true" layoutX="96.0" layoutY="146.0" prefHeight="32.0" prefWidth="300.0" promptText="Rua" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="tnumero" labelFloat="true" layoutX="409.0" layoutY="146.0" prefHeight="32.0" prefWidth="52.0" promptText="Numero" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="tbairro" labelFloat="true" layoutX="97.0" layoutY="191.0" prefHeight="32.0" prefWidth="171.0" promptText="Bairro" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="tcidade" labelFloat="true" layoutX="290.0" layoutY="191.0" prefHeight="32.0" prefWidth="171.0" promptText="Cidade *" unFocusColor="BLACK" />
-                  <Line endX="-11.0" endY="126.0" layoutX="761.0" layoutY="72.0" startX="-11.0" startY="-40.0" />
-                  <JFXTextField fx:id="txlogin" focusColor="BLACK" labelFloat="true" layoutX="815.0" layoutY="26.0" promptText="Usuário *" unFocusColor="BLACK" />
-                  <JFXPasswordField fx:id="txsenha" focusColor="BLACK" labelFloat="true" layoutX="815.0" layoutY="70.0" promptText="Senha Atual *" unFocusColor="BLACK" />
-                  <JFXPasswordField fx:id="txsenhan" focusColor="BLACK" labelFloat="true" layoutX="815.0" layoutY="115.0" promptText="Nova Senha" unFocusColor="BLACK" />
-                  <JFXComboBox fx:id="cbCargo" focusColor="BLACK" layoutX="815.0" layoutY="155.0" prefHeight="25.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="528.0" layoutY="183.0" text="* Campos Obrigatorios" textFill="RED" />
-                  <Label layoutX="346.0" layoutY="18.0" styleClass="labeli" text="Dados Pessoais" />
+                  <JFXTextField fx:id="tnome" labelFloat="true" layoutX="176.0" layoutY="61.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                  <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="426.0" layoutY="133.0" prefHeight="32.0" prefWidth="200.0" promptText="Sexo" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="ttelefone" labelFloat="true" layoutX="454.0" layoutY="61.0" prefHeight="32.0" prefWidth="171.0" promptText="Telefone *" unFocusColor="BLACK" />
+                  <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="176.0" layoutY="133.0" prefHeight="32.0" prefWidth="186.0" promptText="Data de Nacimento" />
+                  <Line endX="-11.0" endY="135.0" layoutX="761.0" layoutY="84.0" startX="-11.0" startY="-50.0" />
+                  <JFXTextField fx:id="txlogin" focusColor="BLACK" labelFloat="true" layoutX="814.0" layoutY="64.0" promptText="Usuário *" unFocusColor="BLACK" />
+                  <JFXPasswordField fx:id="txsenha" focusColor="BLACK" labelFloat="true" layoutX="814.0" layoutY="105.0" promptText="Senha Atual *" unFocusColor="BLACK" />
+                  <JFXPasswordField fx:id="txsenhan" focusColor="BLACK" labelFloat="true" layoutX="814.0" layoutY="149.0" promptText="Nova Senha" unFocusColor="BLACK" />
+                  <JFXComboBox fx:id="cbCargo" disable="true" focusColor="BLACK" layoutX="814.0" layoutY="193.0" prefHeight="25.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="332.0" layoutY="211.0" text="* Campos Obrigatorios" textFill="RED" />
+                  <Label layoutX="352.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
+                  <Label layoutX="835.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />
                </children>
             </Pane>
          </children>
@@ -76,13 +70,11 @@
             </Pane>
             <TableView fx:id="tvclientes" onMouseClicked="#clkTabela" prefHeight="479.0" prefWidth="1022.0" scaleShape="false">
                <columns>
-                  <TableColumn fx:id="collogin" prefWidth="130.0" text="Usuário" />
-                  <TableColumn fx:id="colnome" prefWidth="343.0" text="Nome" />
-                  <TableColumn fx:id="colcpf" prefWidth="115.0" text="CPF" />
-                  <TableColumn fx:id="colemail" prefWidth="199.0" text="E-Mail" />
-                  <TableColumn fx:id="coltelefone" minWidth="8.0" prefWidth="122.0" text="Telefone" />
-                  <TableColumn fx:id="colativo" minWidth="0.0" prefWidth="58.0" text="Ativo" />
-                  <TableColumn fx:id="colnivel" minWidth="0.0" prefWidth="54.0" text="Nível" />
+                  <TableColumn fx:id="collogin" prefWidth="162.0" text="Usuário" />
+                  <TableColumn fx:id="colnome" prefWidth="431.0" text="Nome" />
+                  <TableColumn fx:id="coltelefone" minWidth="8.0" prefWidth="215.0" text="Telefone" />
+                  <TableColumn fx:id="colativo" minWidth="0.0" prefWidth="81.0" text="Ativo" />
+                  <TableColumn fx:id="colcargo" minWidth="0.0" prefWidth="131.0" text="Cargo" />
                </columns>
             </TableView>
          </children>

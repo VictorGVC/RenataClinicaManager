@@ -192,3 +192,29 @@
    -fx-background-color:transparent;
    -fx-text-inner-color: #8fcfcf;
 }
+
+.lv
+{
+   -fx-background-color:#1e535d;
+}
+
+.lv .scroll-bar:vertical {
+   -fx-background-color: transparent;
+}
+
+.lv .list-cell:filled .text {
+   -fx-fill: #8fcfcf;
+}
+
+.lv .list-cell:filled {
+   -fx-background-color:  #1e535d;
+   -fx-list-cell-border-color: #3b7c7c;
+}
+
+.lv .list-cell:selected{
+   -fx-background-color: #042f38;
+}
+
+.lv .list-cell:hover{
+   -fx-background-color: #042f38;
+}

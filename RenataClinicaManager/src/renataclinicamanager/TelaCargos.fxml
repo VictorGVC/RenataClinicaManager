@@ -1,11 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaCargosController">
-    
-</AnchorPane>
+<SplitPane fx:id="pnprincipal" dividerPositions="0.6150375939849624" maxHeight="667.0" maxWidth="549.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="667.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaCargosController">
+   <items>
+      <VBox prefHeight="266.0" prefWidth="1022.0">
+         <children>
+            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="70.0" prefWidth="547.0" spacing="50.0">
+               <children>
+                  <JFXButton fx:id="btnovo" onAction="#clkBtNovo" text="Novo" />
+                  <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" text="Alterar" />
+                  <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
+                  <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
+                  <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
+               </children>
+            </HBox>
+            <Pane fx:id="pndados" prefHeight="386.0" prefWidth="547.0">
+               <children>
+                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="148.0" layoutY="27.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="213.0" layoutY="337.0" text="* Campos Obrigatórios" textFill="RED" />
+                  <Line endX="-100.0" endY="201.0" layoutX="373.0" layoutY="116.0" startX="-100.0" startY="-18.0" />
+                  <JFXListView fx:id="lvnaccess" layoutX="319.0" layoutY="144.0" onMouseClicked="#clkBtNa" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
+                  <JFXListView fx:id="lvaccess" layoutX="28.0" layoutY="144.0" onMouseClicked="#clkBtAc" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="112.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/correcttooth.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="403.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/crosstooth.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <VBox fx:id="pnpesquisa" prefHeight="255.0" prefWidth="1022.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" maxWidth="1022.0" prefHeight="46.0" prefWidth="547.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="169.0" promptText="Filtro" unFocusColor="BLACK">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="33.0" maxWidth="33.0" onAction="#clkTFiltro" prefHeight="32.0" prefWidth="32.0" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../icons/filter.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="40.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Pane>
+            <TableView fx:id="tvcargo" onMouseClicked="#clkTabela" prefHeight="361.0" prefWidth="547.0">
+               <columns>
+                  <TableColumn fx:id="colnome" prefWidth="546.0" text="Cargo" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </items>
+</SplitPane>

@@ -35,6 +35,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#clkPacientes" text="Pacientes" />
                         <MenuItem mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
                         <MenuItem mnemonicParsing="false" onAction="#clkOpenMateriais" text="Materiais" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkCargos" text="Cargos" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />
