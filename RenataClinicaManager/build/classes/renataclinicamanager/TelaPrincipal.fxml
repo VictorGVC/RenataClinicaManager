@@ -37,6 +37,9 @@
                         <MenuItem mnemonicParsing="false" onAction="#clkOpenMateriais" text="Materiais" />
                         <MenuItem mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
                         <MenuItem mnemonicParsing="false" onAction="#clkOpenTratamento" text="Tratamentos" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkOpenFeriado" text="Feriados" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkOpenAtestado" text="Modelo de Atestado" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkOpenReceituário" text="Modelo de Receituário" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />

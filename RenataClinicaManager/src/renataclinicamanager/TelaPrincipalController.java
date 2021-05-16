@@ -186,5 +186,53 @@ public class TelaPrincipalController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void clkOpenFeriado(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaFeriado.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(555);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Feriados");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void clkOpenAtestado(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaAtestado.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(555);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Modelo de Atestado");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void clkOpenReceituário(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaReceituário.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(555);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Modelo de Receituário");
+        stage.setScene(scene);
+        stage.show();
+    }
     
 }
