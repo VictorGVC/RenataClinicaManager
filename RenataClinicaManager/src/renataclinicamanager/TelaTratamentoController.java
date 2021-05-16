@@ -6,16 +6,13 @@
 package renataclinicamanager;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOTratamento;
 import db.Models.Tratamento;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,14 +27,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import util.MaskFieldUtil;
-import util.Util;
 
 /**
  * FXML Controller class
@@ -314,7 +309,7 @@ public class TelaTratamentoController implements Initializable
                 
                 Tratamento t = (Tratamento)tvpaciente.getSelectionModel().getSelectedItem();
                 
-                txvalor.setText(""+t.getValor());
+                txvalor.setText(String.format("%6.2f", t.getValor()));
                 txnome.setText(t.getNome());
                 pndados.setDisable(false); 
                 if(btconfirmar.isDisable())

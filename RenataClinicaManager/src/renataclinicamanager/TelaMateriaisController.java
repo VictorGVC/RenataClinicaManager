@@ -11,7 +11,6 @@ import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOMaterial;
 import db.Models.Material;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -28,7 +27,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -354,7 +352,7 @@ public class TelaMateriaisController implements Initializable {
             {
                 Material m = (Material)tvmateriais.getSelectionModel().getSelectedItem();
                 
-                txvalor.setText(""+m.getValor());
+                txvalor.setText(String.format("%6.2f", m.getValor()));
                 txnome.setText(m.getNome());
                 txqtde.setText(""+m.getQtde());
                 pndados.setDisable(false); 
