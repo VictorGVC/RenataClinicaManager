@@ -188,6 +188,7 @@ public class TelaFornecedorController implements Initializable {
         estado(false);
         limparCampos();
         pnpesquisa.setDisable(true);
+        txcnpj.requestFocus();
     }
     
     private void setCorAlert(JFXTextField tf, String cor) 
@@ -213,6 +214,7 @@ public class TelaFornecedorController implements Initializable {
         {
             estado(false);
             pnpesquisa.setDisable(false);
+            txcnpj.requestFocus();
         }
         else
         {

@@ -392,6 +392,7 @@ public class TelaFuncionarioController implements Initializable {
         estado(false);
         limparCampos();
         pnpesquisa.setDisable(true);
+        txnome.requestFocus();
     }
 
     @FXML
@@ -401,6 +402,7 @@ public class TelaFuncionarioController implements Initializable {
         {
             estado(false);
             pnpesquisa.setDisable(false);
+            txnome.requestFocus();
         }
         else
         {

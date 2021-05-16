@@ -35,8 +35,8 @@
                   <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="148.0" layoutY="27.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
                   <Label fx:id="lbobg" layoutX="213.0" layoutY="337.0" text="* Campos Obrigatórios" textFill="RED" />
                   <Line endX="-100.0" endY="201.0" layoutX="373.0" layoutY="116.0" startX="-100.0" startY="-18.0" />
-                  <JFXListView fx:id="lvnaccess" layoutX="319.0" layoutY="144.0" onMouseClicked="#clkBtNa" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
                   <JFXListView fx:id="lvaccess" layoutX="28.0" layoutY="144.0" onMouseClicked="#clkBtAc" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
+                  <JFXListView fx:id="lvnaccess" layoutX="319.0" layoutY="144.0" onMouseClicked="#clkBtNa" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
                   <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="112.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/correcttooth.png" />

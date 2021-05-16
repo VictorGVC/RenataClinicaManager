@@ -219,6 +219,7 @@ public class TelaPacientesController implements Initializable
         estado(false);
         limparCampos();
         pnpesquisa.setDisable(true);
+        txcpf.requestFocus();
     }
 
     @FXML
@@ -228,6 +229,7 @@ public class TelaPacientesController implements Initializable
         {
             estado(false);
             pnpesquisa.setDisable(false);
+            txcpf.requestFocus();
         }
         else
         {

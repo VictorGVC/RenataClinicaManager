@@ -218,6 +218,7 @@ public class TelaCargosController implements Initializable
         pnpesquisa.setDisable(true);
         setJson();
         setListJson();
+        txnome.requestFocus();
     }
 
     @FXML
@@ -227,6 +228,7 @@ public class TelaCargosController implements Initializable
         {
             estado(false);
             pnpesquisa.setDisable(false);
+            txnome.requestFocus();
         }
         else
         {
