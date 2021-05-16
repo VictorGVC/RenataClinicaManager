@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaPacientesController.java</file>
-            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaFuncionarioController.java</file>
-            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/Models/Cargo.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaTratamento.fxml</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/Models/Tratamento.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaTratamentoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/DAL/DAOMaterial.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/Models/Material.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaPrincipalController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaControlarTratamentoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/DAL/DAOTratamento.java</file>
         </group>
     </open-files>
 </project-private>

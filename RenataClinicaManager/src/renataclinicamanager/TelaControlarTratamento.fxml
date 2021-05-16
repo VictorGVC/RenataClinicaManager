@@ -23,6 +23,7 @@
                   <JFXButton fx:id="btnovo" onAction="#clkBtNovo" text="Novo" />
                   <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" text="Alterar" />
                   <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
+                  <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                </children>
             </HBox>
