@@ -139,7 +139,7 @@ public class TelaFeriadoController implements Initializable
             if (n instanceof TextInputControl)
                 ((TextInputControl)n).setText("");
         }
-        dpdata.setValue(null);
+        dpdata.setValue(LocalDate.now());
     }
     
     private void setMascaras() 

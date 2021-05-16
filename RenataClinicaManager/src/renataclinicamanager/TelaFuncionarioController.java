@@ -13,10 +13,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOCargo;
-import db.DAL.DAOFornecedor;
 import db.DAL.DAOFuncionario;
 import db.Models.Cargo;
-import db.Models.Fornecedor;
 import db.Models.Funcionario;
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,7 +33,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SplitPane;
@@ -43,7 +40,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
-import static javafx.scene.input.KeyCode.R;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -160,6 +156,7 @@ public class TelaFuncionarioController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(TelaFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        cbcategoria.getSelectionModel().select(0);
     }    
     
     private void initColTb()
@@ -640,26 +637,6 @@ public class TelaFuncionarioController implements Initializable {
         }
         pnpesquisa.setDisable(false);
     }
-    
-    @FXML
-    private void clkTFiltro(KeyEvent event) throws SQLException 
-    {
-        if(cbcategoria.getSelectionModel().getSelectedIndex() != -1)
-        {
-            switch (cbcategoria.getSelectionModel().getSelectedIndex()) 
-            {
-                case 0:
-                   carregaTabela("UPPER(fun_login) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
-                    break;
-                case 1:
-                    carregaTabela("UPPER(fun_nome) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
-                    break;
-                case 2:
-                    carregaTabela("UPPER(fun_cargo) LIKE '%" + txfiltro.getText() + "%'");
-                    break;
-            }
-        }
-    }
 
     @FXML
     private void clkTabela(MouseEvent event) 
@@ -797,5 +774,24 @@ public class TelaFuncionarioController implements Initializable {
             selectListObjects(lvsabado, lsab);
         }
     }
-    
+
+    @FXML
+    private void clkTFiltro(ActionEvent event) throws SQLException 
+    {
+        if(cbcategoria.getSelectionModel().getSelectedIndex() != -1)
+        {
+            switch (cbcategoria.getSelectionModel().getSelectedIndex()) 
+            {
+                case 0:
+                   carregaTabela("UPPER(fun_login) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
+                    break;
+                case 1:
+                    carregaTabela("UPPER(fun_nome) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
+                    break;
+                case 2:
+                    carregaTabela("UPPER(fun_cargo) LIKE '%" + txfiltro.getText() + "%'");
+                    break;
+            }
+        }
+    }
 }

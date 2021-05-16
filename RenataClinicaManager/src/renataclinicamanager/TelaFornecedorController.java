@@ -96,6 +96,7 @@ public class TelaFornecedorController implements Initializable {
         listaCategoria();
         initColTb();
         estado(true);
+        cbfiltro.getSelectionModel().select(1);
     }    
     
     private void setMascaras()

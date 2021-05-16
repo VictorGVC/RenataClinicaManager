@@ -82,14 +82,6 @@
    -fx-highlight-fill: #8fcfcf;
 }
 
-.jfx-combo-box 
-{
-   -jfx-focus-color: #4059a9;
-   -jfx-unfocus-color : #8fcfcf;
-   -fx-prompt-text-fill: #8fcfcf;
-   -fx-text-inner-color: #8fcfcf;
-}
-
 .combo-box .list-view
 {
    -fx-background-color: #1e535d;
@@ -97,6 +89,10 @@
 
 .combo-box .list-cell:filled .text {
     -fx-fill: #8fcfcf;
+}
+
+.combo-box-base .text{
+   -fx-fill: #8fcfcf;
 }
 
 .combo-box .list-cell:filled {
@@ -110,6 +106,14 @@
 
 .combo-box .list-cell:hover{
    -fx-background-color: #042f38;
+}
+
+.jfx-combo-box 
+{
+   -jfx-focus-color: #4059a9;
+   -jfx-unfocus-color : #8fcfcf;
+   -fx-prompt-text-fill: #8fcfcf;
+   -fx-text-inner-color: #8fcfcf;
 }
 
 .jfx-button
@@ -132,7 +136,7 @@
 }
 
 #filtro .combo-box .list-cell:selected{
-   -fx-background-color: #1e535d;
+   -fx-background-color: #042f38;
 }
 
 .default

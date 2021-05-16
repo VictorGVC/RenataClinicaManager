@@ -124,6 +124,7 @@ public class TelaPacientesController implements Initializable
             return new SimpleStringProperty(result);
         });
         estado(true);
+        cbcategoria.getSelectionModel().select(1);
     }    
     
     private void listaSexo() 
