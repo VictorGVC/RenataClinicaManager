@@ -30,7 +30,7 @@ import javafx.scene.layout.VBox;
  *
  * @author vicga
  */
-public class TelaCompras implements Initializable {
+public class TelaComprasController implements Initializable {
 
     @FXML
     private SplitPane pnprincipal;
