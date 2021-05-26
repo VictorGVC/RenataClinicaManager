@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.35259259259259257" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="677.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaTratamentoController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.35259259259259257" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="610.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaTratamentoController">
    <items>
       <VBox prefHeight="266.0" prefWidth="1022.0">
          <children>
@@ -39,7 +39,7 @@
       </VBox>
       <VBox fx:id="pnpesquisa" prefHeight="442.0" prefWidth="1022.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="249.0" prefWidth="536.0">
                <children>
                   <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" maxWidth="1022.0" prefHeight="72.0" prefWidth="536.0" spacing="20.0">
                      <children>

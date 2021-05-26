@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.2754569190600522" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaMateriaisController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.328149300155521" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="645.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaMateriaisController">
    <items>
       <VBox prefHeight="372.0" prefWidth="1022.0">
          <children>
@@ -26,7 +26,7 @@
                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                </children>
             </HBox>
-            <Pane fx:id="pndados" prefHeight="211.0" prefWidth="1022.0">
+            <Pane fx:id="pndados" prefHeight="244.0" prefWidth="1022.0">
                <children>
                   <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="359.0" layoutY="22.0" prefHeight="25.0" prefWidth="220.0" promptText="Nome do Material *" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txvalor" focusColor="BLACK" labelFloat="true" layoutX="596.0" layoutY="22.0" prefHeight="25.0" prefWidth="80.0" promptText="Valor *" unFocusColor="BLACK" />
@@ -36,9 +36,9 @@
             </Pane>
          </children>
       </VBox>
-      <VBox fx:id="pnpesquisa" prefHeight="297.0" prefWidth="798.0">
+      <VBox fx:id="pnpesquisa" prefHeight="403.0" prefWidth="1022.0">
          <children>
-            <Pane fx:id="pnfiltros" prefHeight="71.0" prefWidth="1022.0">
+            <Pane fx:id="pnfiltros" prefHeight="45.0" prefWidth="1022.0">
                <children>
                   <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="65.0" prefWidth="1022.0" spacing="20.0">
                      <children>
@@ -62,7 +62,7 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvmateriais" editable="true" onMouseClicked="#clkBtTabela" prefHeight="522.0" prefWidth="1022.0">
+            <TableView fx:id="tvmateriais" editable="true" onMouseClicked="#clkBtTabela" prefHeight="387.0" prefWidth="1022.0">
                <columns>
                   <TableColumn fx:id="colcodigo" prefWidth="159.0" text="Codigo" />
                   <TableColumn fx:id="colnome" prefWidth="510.0" text="Material" />

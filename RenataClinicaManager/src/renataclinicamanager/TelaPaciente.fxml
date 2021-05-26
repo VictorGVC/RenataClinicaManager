@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.3877284595300261" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPacientesController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.3877284595300261" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="712.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPacientesController">
    <items>
       <VBox prefHeight="266.0" prefWidth="1022.0">
          <children>
@@ -89,7 +89,7 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvpaciente" onMouseClicked="#clkTabela" prefHeight="570.0" prefWidth="1022.0">
+            <TableView fx:id="tvpaciente" onMouseClicked="#clkTabela" prefHeight="538.0" prefWidth="1022.0">
                <columns>
                   <TableColumn fx:id="colcpf" prefWidth="127.0" text="CPF" />
                   <TableColumn fx:id="colnome" prefWidth="330.0" text="Nome" />

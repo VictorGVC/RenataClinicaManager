@@ -20,9 +20,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFuncionarioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFuncionarioController">
    <children>
-      <SplitPane fx:id="pnprincipal" dividerPositions="0.5326370757180157" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0">
+      <SplitPane fx:id="pnprincipal" dividerPositions="0.4751958224543081" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="710.0" prefWidth="1024.0">
          <items>
             <VBox prefHeight="317.0" prefWidth="798.0">
                <children>
@@ -66,9 +66,9 @@
                   </Pane>
                </children>
             </VBox>
-            <VBox fx:id="pnpesquisa" prefHeight="180.0" prefWidth="1022.0">
+            <VBox fx:id="pnpesquisa" prefHeight="277.0" prefWidth="1022.0">
                <children>
-                  <Pane fx:id="pnfiltros" prefHeight="59.0" prefWidth="1022.0">
+                  <Pane fx:id="pnfiltros" prefHeight="52.0" prefWidth="1022.0">
                      <children>
                         <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="61.0" prefWidth="1022.0" spacing="20.0">
                            <children>
