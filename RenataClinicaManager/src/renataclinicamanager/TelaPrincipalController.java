@@ -312,7 +312,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkOpenReceituário(ActionEvent event) throws IOException 
     {
-        Parent root = FXMLLoader.load(getClass().getResource("TelaReceituário.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("TelaReceituario.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 

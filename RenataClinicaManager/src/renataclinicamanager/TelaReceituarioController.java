@@ -6,37 +6,22 @@
 package renataclinicamanager;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import db.DAL.DAOFeriado;
+import db.DAL.DAOModelos;
 import db.Models.Feriado;
+import db.Models.Modelos;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputControl;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
-import util.MaskFieldUtil;
 
 /**
  * FXML Controller class
@@ -51,31 +36,12 @@ public class TelaReceituarioController implements Initializable
     private SplitPane pnprincipal;
     @FXML
     private HBox pnbotoes;
+    @FXML
     private Pane pndados;
     @FXML
-    private VBox pnpesquisa;
+    private Label lbobg;
     @FXML
-    private TableColumn<Feriado, String> colnome;
-    @FXML
-    private JFXButton btnovo;
-    @FXML
-    private JFXButton btalterar;
-    @FXML
-    private JFXButton btapagar;
-    @FXML
-    private JFXButton btconfirmar;
-    @FXML
-    private JFXButton btcancelar;
-    @FXML
-    private HBox pnfiltro;
-    private JFXTextField txnome;
-    @FXML
-    private JFXTextField txfiltro;
-    @FXML
-    private TableColumn<Feriado, Date> coldata;
-    private JFXDatePicker dpdata;
-    @FXML
-    private TableView<Feriado> tvferiado;
+    private JFXButton btsalvar;
     @FXML
     private JFXTextArea tacabecalho;
     @FXML
@@ -84,146 +50,38 @@ public class TelaReceituarioController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        setMascaras();
-        initColTb();
-        estado(true);
-        initData();
-    }  
-    
-    private void initData()
-    {
-        dpdata.setValue(LocalDate.now());
+        carregaCampos();
     }
     
-    private void initColTb() 
+    private void carregaCampos()
     {
-        coldata.setCellValueFactory(new PropertyValueFactory("data"));
-        colnome.setCellValueFactory(new PropertyValueFactory("nome"));
-    }
-    
-    private void estado(boolean b) 
-    {
-        pndados.setDisable(b);
-        btconfirmar.setDisable(b);
-        btcancelar.setDisable(b);
-        btapagar.setDisable(!b);
-        btalterar.setDisable(!b);
-        btnovo.setDisable(!b);
-        txfiltro.setDisable(!b);
-        if(b)
-            pnfiltro.setStyle(null);
-        else
-        {
-            pnfiltro.setStyle("-fx-background-color: transparent;" +
-                                "-fx-border-color: transparent;");
+        DAOModelos dm = new DAOModelos();
+        Modelos m = dm.getReceita();
+        
+        try {
+            tacabecalho.setText(m.getCabecalho());
+            tarodape.setText(m.getRodape());
+        } catch (Exception e) {
         }
-        carregaTabela("");
-    }
-    
-    private void carregaTabela(String filtro) 
-    {
-        DAOFeriado dal = new DAOFeriado();
-        List<Feriado> res = dal.getList(filtro);
-        ObservableList<Feriado> modelo;
         
-        modelo = FXCollections.observableArrayList(res);
-        tvferiado.setItems(modelo);
-    }
-    
-    private void limparCampos() {
-        
-        ObservableList <Node> componentes = pndados.getChildren();
-        
-        for(Node n : componentes) 
-        {
-            if (n instanceof TextInputControl)
-                ((TextInputControl)n).setText("");
-        }
-        dpdata.setValue(LocalDate.now());
-    }
-    
-    private void setMascaras() 
-    {
-        MaskFieldUtil.maxField(txnome, 30);
-        MaskFieldUtil.dateField(dpdata.getEditor());
     }
 
     @FXML
-    private void clkBtNovo(ActionEvent event) 
-    {
-        estado(false);
-        limparCampos();
-        pnpesquisa.setDisable(true);
-        txnome.requestFocus();
-    }
-
-    @FXML
-    private void clkBtAlterar(ActionEvent event) 
-    {
-        if(tvferiado.getSelectionModel().getSelectedIndex() != -1)
-        {
-            estado(false);
-            pnpesquisa.setDisable(false);
-            txnome.requestFocus();
-        }
-        else
-        {
-            JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-            
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Selecione algum paciente!")));
-        }
-    }
-
-    @FXML
-    private void clkBtApagar(ActionEvent event) 
-    {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        
-        if(tvferiado.getSelectionModel().getSelectedIndex() != -1)
-        {
-            a.setHeaderText("Exclusão!");
-            a.setTitle("Exclusão");
-            a.setContentText("Confirma a exclusão");
-            a.getButtonTypes().clear();
-            a.getButtonTypes().add(ButtonType.NO);
-            a.getButtonTypes().add(ButtonType.YES);
-            if (a.showAndWait().get() == ButtonType.YES)
-            {
-                DAOFeriado dal = new DAOFeriado();
-                Feriado f;
-                f = tvferiado.getSelectionModel().getSelectedItem();
-                if(dal.apagar(f.getCod()))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Excluído com Sucesso!")));
-                }
-                else
-                { 
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.getButtonTypes().clear();
-                    a.getButtonTypes().add(ButtonType.OK);
-                    a.setHeaderText("ERRO");
-                    a.setTitle("ERRO!");
-                    a.setContentText("Erro ao apagar!");
-                    a.showAndWait();
-                }
-                carregaTabela("");
-                limparCampos();
-            }
-        }
-    }
-
-    @FXML
-    private void clkBtConfirmar(ActionEvent event) 
+    private void clkBtSalvar(ActionEvent event) 
     {
         String id;
         boolean flag = false;
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         
-        if(txnome.getText().isEmpty())
+        if(tacabecalho.getText().isEmpty())
         {
             flag = true;
-            setCorAlert(txnome, "RED");
+            setCorAlert(tacabecalho, "RED");
+        }
+        if(tarodape.getText().isEmpty())
+        {
+            flag = true;
+            setCorAlert(tarodape, "RED");
         }
         if(flag)
         {
@@ -234,96 +92,33 @@ public class TelaReceituarioController implements Initializable
         }
         else
         {
-            Feriado f = new Feriado(txnome.getText(),dpdata.getValue());
-            DAOFeriado dal = new DAOFeriado();
+            Modelos md = new Modelos(tarodape.getText(), tacabecalho.getText());
+            DAOModelos dm = new DAOModelos();
 
             setNormalColor();
-
-            if(pnpesquisa.isDisable())
+            
+            if(dm.salvarCRR(md))
             {
-                if(dal.gravar(f))
-                {
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
-                    estado(true);
-                    limparCampos();
-                    pnpesquisa.setDisable(false);
-                }
-                else
-                {
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.setContentText("Erro ao gravar!");
-                    a.showAndWait();
-                }
+                JFXSnackbar sb = new JFXSnackbar(pndados); 
+                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
             }
             else
             {
-                f.setCod(feratual.getCod());
-                if(dal.alterar(f))
-                {
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Alterado com Sucesso!")));
-                    estado(true);
-                    limparCampos();
-                    pnpesquisa.setDisable(false);
-                }
-                else
-                {
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.setContentText("erro ao gravar");
-                    a.showAndWait();
-                }
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText("Não foi possível salvar!");
+                a.showAndWait();
             }
-            clkTFiltro(null);
         }
     }
-    
     private void setNormalColor()
     {
-        txnome.setFocusColor(null);
-        txnome.setUnFocusColor(null);
+        tacabecalho.setFocusColor(null);
+        tarodape.setUnFocusColor(null);
     }
     
-    private void setCorAlert(JFXTextField tf, String cor) 
+    private void setCorAlert(JFXTextArea tf, String cor) 
     {
         tf.setFocusColor(Paint.valueOf(cor));
         tf.setUnFocusColor(Paint.valueOf(cor));
-    }
-
-    @FXML
-    private void clkBtCancelar(ActionEvent event) 
-    {
-        if (!pndados.isDisabled())
-        {
-            estado(true);
-            limparCampos();
-        }
-        pnpesquisa.setDisable(false);
-    }
-
-    @FXML
-    private void clkTabela(MouseEvent event) 
-    {
-        if(tvferiado.getSelectionModel().getSelectedIndex() >= 0)
-        {
-            if(tvferiado.getSelectionModel().getSelectedItem() != null)
-            {
-                
-                Feriado f = (Feriado)tvferiado.getSelectionModel().getSelectedItem();
-                
-                dpdata.setValue(f.getData());
-                txnome.setText(f.getNome());
-                pndados.setDisable(false); 
-                if(btconfirmar.isDisable())
-                    pndados.setDisable(true);
-                feratual = f;
-            }
-        }
-    }
-
-    @FXML
-    private void clkTFiltro(ActionEvent event) 
-    {
-        carregaTabela("UPPER(fer_nome) LIKE '%" + txfiltro.getText().toUpperCase() + "%'");
     }
 }

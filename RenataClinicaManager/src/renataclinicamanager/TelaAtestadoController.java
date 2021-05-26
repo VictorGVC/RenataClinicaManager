@@ -58,8 +58,11 @@ public class TelaAtestadoController implements Initializable
         DAOModelos dm = new DAOModelos();
         Modelos m = dm.getAtestado();
         
-        tacabecalho.setText(m.getCabecalho());
-        tarodape.setText(m.getRodape());
+        try {
+            tacabecalho.setText(m.getCabecalho());
+            tarodape.setText(m.getRodape());
+        } catch (Exception e) {
+        }
     }
 
     @FXML
@@ -93,17 +96,17 @@ public class TelaAtestadoController implements Initializable
 
             setNormalColor();
             
-            if(dm.salvarCR(md))
+            if(dm.salvarCRA(md))
             {
-                    JFXSnackbar sb = new JFXSnackbar(pndados); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
-                }
-                else
-                {
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.setContentText("Não foi possível salvar!");
-                    a.showAndWait();
-                }
+                JFXSnackbar sb = new JFXSnackbar(pndados); 
+                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
+            }
+            else
+            {
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText("Não foi possível salvar!");
+                a.showAndWait();
+            }
         }
     }
     private void setNormalColor()

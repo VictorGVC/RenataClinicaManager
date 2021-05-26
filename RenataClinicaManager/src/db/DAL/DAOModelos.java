@@ -33,7 +33,24 @@ public class DAOModelos
         return aux;
     }
     
-    public boolean salvarCR(Modelos m) 
+    public Modelos getReceita()
+    {
+        Modelos aux = null;
+        ResultSet rs = Banco.getCon().consultar("SELECT * FROM receita");
+        
+        try{
+            
+            if(rs.next())
+                aux = new Modelos(rs.getString("rec_rodape"),rs.getString("rec_cabecalho"));
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
+    
+    public boolean salvarCRA(Modelos m) 
     {
         String sql = "";
         if(getAtestado()== null)
@@ -47,6 +64,27 @@ public class DAOModelos
         else
         {
             sql = "UPDATE atestado SET ate_cabecalho='#1',ate_rodape='#2'";
+        
+            sql = sql.replaceAll("#1", "" + m.getCabecalho());
+            sql = sql.replaceAll("#2", "" + m.getRodape());
+        }
+        return Banco.getCon().manipular(sql);
+    }
+    
+    public boolean salvarCRR(Modelos m) 
+    {
+        String sql = "";
+        if(getReceita()== null)
+        {
+            sql = "INSERT INTO Receita(rec_cabecalho, rec_rodape) "
+                + "VALUES ('#1','#2'); ";
+
+            sql = sql.replaceAll("#1", "" + m.getCabecalho());
+            sql = sql.replaceAll("#2", "" + m.getRodape());
+        }
+        else
+        {
+            sql = "UPDATE Receita SET rec_cabecalho='#1',rec_rodape='#2'";
         
             sql = sql.replaceAll("#1", "" + m.getCabecalho());
             sql = sql.replaceAll("#2", "" + m.getRodape());
