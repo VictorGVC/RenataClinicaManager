@@ -31,15 +31,15 @@
                   </Menu>
                   <Menu mnemonicParsing="false" styleClass="default" text="Cadastros">
                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#clkFuncionarios" styleClass="default" text="Funcionarios" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkCargos" text="Cargos" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkPacientes" text="Pacientes" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkOpenMateriais" text="Materiais" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkOpenTratamento" text="Tratamentos" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkOpenFeriado" text="Feriados" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkOpenAtestado" text="Modelo de Atestado" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkOpenReceituário" text="Modelo de Receituário" />
+                        <MenuItem fx:id="mifuncionario" mnemonicParsing="false" onAction="#clkFuncionarios" styleClass="default" text="Funcionarios" />
+                        <MenuItem fx:id="micargo" mnemonicParsing="false" onAction="#clkCargos" text="Cargos" />
+                        <MenuItem fx:id="mipaciente" mnemonicParsing="false" onAction="#clkPacientes" text="Pacientes" />
+                        <MenuItem fx:id="mimaterial" mnemonicParsing="false" onAction="#clkOpenMateriais" text="Materiais" />
+                        <MenuItem fx:id="mifornecedor" mnemonicParsing="false" onAction="#clkOpenFornecedores" text="Fornecedores" />
+                        <MenuItem fx:id="mitratamento" mnemonicParsing="false" onAction="#clkOpenTratamento" text="Tratamentos" />
+                        <MenuItem fx:id="miferiado" mnemonicParsing="false" onAction="#clkOpenFeriado" text="Feriados" />
+                        <MenuItem fx:id="miatestado" mnemonicParsing="false" onAction="#clkOpenAtestado" text="Modelo de Atestado" />
+                        <MenuItem fx:id="mireceituario" mnemonicParsing="false" onAction="#clkOpenReceituário" text="Modelo de Receituário" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />

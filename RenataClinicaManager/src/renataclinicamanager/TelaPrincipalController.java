@@ -5,6 +5,7 @@
  */
 package renataclinicamanager;
 
+import db.Models.Funcionario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,12 +29,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
  * @author vicga
  */
 public class TelaPrincipalController implements Initializable {
+    
+    public static Funcionario sessao;
     
     private Label label;
     @FXML
@@ -58,15 +63,97 @@ public class TelaPrincipalController implements Initializable {
     private TableView<?> tvprodutos;
     @FXML
     private TableColumn<?, ?> colprod;
+    @FXML
+    private MenuItem mifuncionario;
+    @FXML
+    private MenuItem micargo;
+    @FXML
+    private MenuItem mipaciente;
+    @FXML
+    private MenuItem mimaterial;
+    @FXML
+    private MenuItem mifornecedor;
+    @FXML
+    private MenuItem mitratamento;
+    @FXML
+    private MenuItem miferiado;
+    @FXML
+    private MenuItem miatestado;
+    @FXML
+    private MenuItem mireceituario;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
-        
-    }    
+        setAcessoSessao();
+    }  
+    
+    public static void setSessao(Funcionario sess)
+    {
+        sessao = sess;
+    }
+    
+    private void setAcessoSessao()
+    {
+        JSONArray ja = sessao.getC().getAcesso();
+        for (int i = 0; i < ja.length(); i++) 
+        {
+            JSONObject jo = ja.getJSONObject(i);
+            if(jo.get("acesso").equals("n"))
+            {
+                desabilitaBasica((String)jo.get("nome"));
+            }
+        }
+    }
+    
+    private void desabilitaBasica(String basica)
+    {
+        switch(basica)
+        {
+            case "Pacientes":
+                mipaciente.setVisible(false);
+            break;
+            case "Fornecedores":
+                mifornecedor.setVisible(false);
+            break;
+            case "Funcionários":
+                mifuncionario.setVisible(false);
+            break;
+            case "Materiais":
+                mimaterial.setVisible(false);
+            break;
+            case "Tratamentos":
+                mitratamento.setVisible(false);
+            break;
+            case "Feriados":
+                miferiado.setVisible(false);
+            break;
+            case "Receituário":
+                mireceituario.setVisible(false);
+            break;
+            case "Atestado":
+                miatestado.setVisible(false);
+            break;
+            case "Cargos":
+                micargo.setVisible(false);
+            break;
+        }
+    }
 
     @FXML
-    private void clkChamaLogin(ActionEvent event) {
+    private void clkChamaLogin(ActionEvent event) throws IOException 
+    {
+        Stage stage = (Stage) mnbar.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
+        Scene scene = new Scene(root);
+        
+        stage.close();
+        stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+        stage.setTitle("Login");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -95,16 +182,19 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkRestore(ActionEvent event) 
     {
-        pntotal.getScene().getStylesheets().clear();
-        pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        
     }
 
     @FXML
-    private void clkConfiguracoes(ActionEvent event) {
+    private void clkConfiguracoes(ActionEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkTabelaProdutos(MouseEvent event) {
+    private void clkTabelaProdutos(MouseEvent event) 
+    {
+        
     }
 
     @FXML

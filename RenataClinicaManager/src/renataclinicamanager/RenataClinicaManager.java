@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javax.swing.JOptionPane;
 
@@ -25,13 +26,12 @@ public class RenataClinicaManager extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("TelaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
         
         Scene scene = new Scene(root);
         
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
-        stage.resizableProperty().setValue(false);     
-        stage.setTitle("Renata Clinica Manager");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         stage.setScene(scene);
         stage.show();

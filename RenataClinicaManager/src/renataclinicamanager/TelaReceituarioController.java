@@ -1,8 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package renataclinicamanager;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOFeriado;
 import db.Models.Feriado;
@@ -37,7 +43,7 @@ import util.MaskFieldUtil;
  *
  * @author vicga
  */
-public class TelaFeriadoController implements Initializable 
+public class TelaReceituarioController implements Initializable 
 {
     Feriado feratual;
     
@@ -45,10 +51,7 @@ public class TelaFeriadoController implements Initializable
     private SplitPane pnprincipal;
     @FXML
     private HBox pnbotoes;
-    @FXML
     private Pane pndados;
-    @FXML
-    private Label lbobg;
     @FXML
     private VBox pnpesquisa;
     @FXML
@@ -65,16 +68,18 @@ public class TelaFeriadoController implements Initializable
     private JFXButton btcancelar;
     @FXML
     private HBox pnfiltro;
-    @FXML
     private JFXTextField txnome;
     @FXML
     private JFXTextField txfiltro;
     @FXML
     private TableColumn<Feriado, Date> coldata;
-    @FXML
     private JFXDatePicker dpdata;
     @FXML
     private TableView<Feriado> tvferiado;
+    @FXML
+    private JFXTextArea tacabecalho;
+    @FXML
+    private JFXTextArea tarodape;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 

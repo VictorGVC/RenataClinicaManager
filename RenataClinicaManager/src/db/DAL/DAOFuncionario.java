@@ -221,4 +221,32 @@ public class DAOFuncionario
         
         return "Erro ao Excluir";
     }
+    
+    public Funcionario getF(String login)
+    {
+        Funcionario aux = null;
+        ResultSet rs = Banco.getCon().consultar("SELECT * FROM Funcionario WHERE fun_login='" +login+"'");
+        
+        DAOCargo dc = new DAOCargo();
+        
+        try{
+            LocalDate ld;
+            if(rs.next())
+            {
+                try {
+                    ld = rs.getDate("fun_dtnasc").toLocalDate();
+                } catch (Exception e) {
+                    ld = null;
+                }
+                aux = new Funcionario(dc.get(rs.getInt("car_cod")),rs.getString("fun_nome"), 
+                        rs.getString("fun_login"),rs.getString("fun_telefone"), new JSONArray(rs.getString("fun_horarios")),
+                        ld,rs.getString("fun_ativo").charAt(0), rs.getString("fun_sexo").charAt(0));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
 }
