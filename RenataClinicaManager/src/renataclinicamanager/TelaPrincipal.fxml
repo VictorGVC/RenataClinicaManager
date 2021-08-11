@@ -42,6 +42,11 @@
                         <MenuItem fx:id="mireceituario" mnemonicParsing="false" onAction="#clkOpenReceituário" text="Modelo de Receituário" />
                      </items>
                   </Menu>
+                  <Menu mnemonicParsing="false" text="Funções">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
+                    </items>
+                  </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />
                   <Menu mnemonicParsing="false" text="Ferramentas">
                      <items>

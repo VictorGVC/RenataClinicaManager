@@ -38,7 +38,7 @@
       </VBox>
       <VBox fx:id="pnpesquisa" prefHeight="403.0" prefWidth="1022.0">
          <children>
-            <Pane fx:id="pnfiltros" prefHeight="45.0" prefWidth="1022.0">
+            <Pane fx:id="pnfiltros" prefHeight="56.0" prefWidth="1022.0">
                <children>
                   <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="65.0" prefWidth="1022.0" spacing="20.0">
                      <children>

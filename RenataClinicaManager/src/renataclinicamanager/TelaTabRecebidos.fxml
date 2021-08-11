@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="pnprincipal1" dividerPositions="0.3639344262295082" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="612.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaTabRecebidosController">
+   <items>
+      <VBox prefHeight="299.0" prefWidth="798.0">
+         <children>
+            <HBox fx:id="pnbotoes1" alignment="CENTER" prefHeight="72.0" prefWidth="798.0" spacing="50.0">
+               <children>
+                  <JFXButton fx:id="btestornar" onAction="#clkBtEstornar" text="Estornar" />
+                  <JFXButton fx:id="btcancelar1" onAction="#clkBtCancelar" text="Limpar/Cancelar" />
+               </children>
+            </HBox>
+            <Pane fx:id="pndados1" prefHeight="180.0" prefWidth="798.0">
+               <children>
+                  <JFXTextField fx:id="tparcelas1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="499.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" promptText="Parcela" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="tcodigo1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="133.0" layoutY="25.0" prefHeight="32.0" prefWidth="54.0" promptText="Código" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="tcodvenda1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="196.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" promptText="Paciente" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="tvalor1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="630.0" layoutY="25.0" prefHeight="32.0" prefWidth="62.0" promptText="Valor" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="tcontato1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="499.0" layoutY="89.0" prefHeight="32.0" prefWidth="170.0" promptText="Contato" unFocusColor="BLACK" />
+                  <JFXDatePicker fx:id="dpdatapag" defaultColor="BLACK" editable="false" layoutX="314.0" layoutY="89.0" prefHeight="32.0" prefWidth="170.0" promptText="Data de Pagamento" />
+                  <JFXTextField fx:id="ttipo1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="180.0" layoutY="89.0" prefHeight="32.0" prefWidth="120.0" promptText="Tipo" unFocusColor="BLACK" />
+                  <JFXComboBox editable="true" labelFloat="true" layoutX="316.0" layoutY="25.0" prefHeight="32.0" prefWidth="166.0" promptText="Tratamento" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <VBox fx:id="pnpesquisa1" prefHeight="79.0" prefWidth="798.0">
+         <children>
+            <Pane fx:id="pnfiltros1" prefHeight="89.0" prefWidth="798.0">
+               <children>
+                  <HBox id="filtro" alignment="CENTER" prefHeight="68.0" prefWidth="798.0" spacing="9.0">
+                     <children>
+                        <JFXComboBox fx:id="cbcategoria1" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="90.0" promptText="Categoria" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="tfiltro1" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltro1" onKeyReleased="#clkTFiltro1" onKeyTyped="#clkTFiltro1" prefHeight="38.0" prefWidth="224.0" unFocusColor="BLACK">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXDatePicker fx:id="dpdatainicial1" defaultColor="BLACK" editable="false" prefHeight="38.0" prefWidth="110.0" promptText="Data Inicial" />
+                        <JFXDatePicker fx:id="dpdatafinal1" defaultColor="BLACK" editable="false" prefHeight="38.0" prefWidth="110.0" promptText="Data Final" />
+                        <JFXButton fx:id="btlimpar1" onAction="#clkBtLimpar1" prefHeight="25.0" prefWidth="100.0" text="Limpar Período" />
+                        <JFXButton fx:id="btfiltrar1" onAction="#clkBtFiltrar1" prefHeight="25.0" prefWidth="91.0" text="Filtrar Período" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </Pane>
+            <TableView fx:id="tvrecebimentos1" onMouseClicked="#clkTabela" prefHeight="360.0" prefWidth="798.0">
+               <columns>
+                  <TableColumn fx:id="colcod1" prefWidth="52.0" text="Código" />
+                  <TableColumn fx:id="colvenda1" prefWidth="252.0" text="Paciente" />
+                  <TableColumn prefWidth="117.0" text="Tratamento" />
+                  <TableColumn fx:id="colparcela1" minWidth="8.0" prefWidth="51.0" text="Parcela" />
+                  <TableColumn fx:id="colvalor1" prefWidth="62.0" text="Valor" />
+                  <TableColumn fx:id="coldatavenc1" prefWidth="120.0" text="Data de Vencimento" />
+                  <TableColumn fx:id="coltipo1" prefWidth="51.0" text="Tipo" />
+                  <TableColumn fx:id="colcontato1" prefWidth="93.0" text="Contato" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </items>
+</SplitPane>

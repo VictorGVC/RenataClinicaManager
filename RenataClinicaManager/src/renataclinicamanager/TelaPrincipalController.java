@@ -324,5 +324,20 @@ public class TelaPrincipalController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
+    @FXML
+    private void clkRecebimento(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaRecebimentos.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(800);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Recebimento");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
