@@ -44,6 +44,7 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Funções">
                     <items>
+                        <MenuItem mnemonicParsing="false" text="Controlar Tratamento" />
                         <MenuItem mnemonicParsing="false" text="Agendamento" />
                         <MenuItem mnemonicParsing="false" text="Atendimento" />
                       <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
