@@ -44,7 +44,10 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Funções">
                     <items>
+                        <MenuItem mnemonicParsing="false" text="Agendamento" />
+                        <MenuItem mnemonicParsing="false" text="Atendimento" />
                       <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
+                        <MenuItem mnemonicParsing="false" text="Pagamento" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />
