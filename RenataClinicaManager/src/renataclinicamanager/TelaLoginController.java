@@ -31,6 +31,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import util.MaskFieldUtil;
 import util.Util;
@@ -78,10 +79,12 @@ public class TelaLoginController implements Initializable
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         
+        //stage.setResizable(false);
         stage.setMaximized(true);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Renata Clinica Manager");
+        
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

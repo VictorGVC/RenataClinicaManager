@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.328149300155521" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="645.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaMateriaisController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.30793157076205285" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="571.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaMateriaisController">
    <items>
       <VBox prefHeight="372.0" prefWidth="1022.0">
          <children>
@@ -28,10 +28,10 @@
             </HBox>
             <Pane fx:id="pndados" prefHeight="244.0" prefWidth="1022.0">
                <children>
-                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="359.0" layoutY="22.0" prefHeight="25.0" prefWidth="220.0" promptText="Nome do Material *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txvalor" focusColor="BLACK" labelFloat="true" layoutX="596.0" layoutY="22.0" prefHeight="25.0" prefWidth="80.0" promptText="Valor *" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="450.0" layoutY="113.0" text="* Campos Obrigatórios" textFill="RED" />
-                  <JFXTextField fx:id="txqtde" labelFloat="true" layoutX="444.0" layoutY="65.0" promptText="Quantidade*" />
+                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="296.0" layoutY="22.0" prefHeight="25.0" prefWidth="220.0" promptText="Nome do Material *" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txvalor" focusColor="BLACK" labelFloat="true" layoutX="534.0" layoutY="22.0" prefHeight="25.0" prefWidth="80.0" promptText="Valor *" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="393.0" layoutY="112.0" text="* Campos Obrigatórios" textFill="RED" />
+                  <JFXTextField fx:id="txqtde" labelFloat="true" layoutX="387.0" layoutY="65.0" promptText="Quantidade*" />
                </children>
             </Pane>
          </children>
@@ -40,7 +40,7 @@
          <children>
             <Pane fx:id="pnfiltros" prefHeight="56.0" prefWidth="1022.0">
                <children>
-                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="65.0" prefWidth="1022.0" spacing="20.0">
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="66.0" prefWidth="909.0" spacing="20.0">
                      <children>
                         <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="423.0" promptText="Pesquisar" unFocusColor="BLACK" />
                         <JFXButton alignment="CENTER" contentDisplay="CENTER" onAction="#clkBtFiltro" text=" ">
@@ -62,12 +62,12 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvmateriais" editable="true" onMouseClicked="#clkBtTabela" prefHeight="387.0" prefWidth="1022.0">
+            <TableView fx:id="tvmateriais" editable="true" onMouseClicked="#clkBtTabela" prefHeight="342.0" prefWidth="909.0">
                <columns>
                   <TableColumn fx:id="colcodigo" prefWidth="159.0" text="Codigo" />
                   <TableColumn fx:id="colnome" prefWidth="510.0" text="Material" />
-                  <TableColumn fx:id="colquantidade" prefWidth="171.0" text="Quantidade" />
-                  <TableColumn fx:id="colvalor" prefWidth="181.0" text="Valor" />
+                  <TableColumn fx:id="colquantidade" prefWidth="135.0" text="Quantidade" />
+                  <TableColumn fx:id="colvalor" prefWidth="101.0" text="Valor" />
                </columns>
             </TableView>
          </children>

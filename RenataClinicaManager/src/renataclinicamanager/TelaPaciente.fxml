@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.3877284595300261" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="712.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPacientesController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.4859154929577465" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="621.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPacientesController">
    <items>
       <VBox prefHeight="266.0" prefWidth="1022.0">
          <children>
@@ -32,29 +32,29 @@
                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                </children>
             </HBox>
-            <Pane fx:id="pndados" prefHeight="240.0" prefWidth="630.0">
+            <Pane fx:id="pndados" prefHeight="294.0" prefWidth="1022.0">
                <children>
-                  <JFXTextField fx:id="txcpf" focusColor="BLACK" labelFloat="true" layoutX="66.0" layoutY="37.0" onKeyReleased="#evtCpfDigitado" prefHeight="32.0" prefWidth="171.0" promptText="CPF *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="261.0" layoutY="37.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
-                  <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="66.0" layoutY="97.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="261.0" layoutY="97.0" prefHeight="32.0" prefWidth="250.0" promptText="Telefone *" unFocusColor="BLACK" />
-                  <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="66.0" layoutY="168.0" prefHeight="32.0" prefWidth="171.0" promptText="Data de Nacimento" />
-                  <JFXTextArea fx:id="tarea" labelFloat="true" layoutX="261.0" layoutY="153.0" prefHeight="49.0" prefWidth="250.0" promptText="Alergias e remedios" />
-                  <JFXTextField fx:id="txcidade" focusColor="BLACK" labelFloat="true" layoutX="677.0" layoutY="50.0" prefHeight="32.0" prefWidth="196.0" promptText="Cidade *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txrua" focusColor="BLACK" labelFloat="true" layoutX="677.0" layoutY="112.0" prefHeight="32.0" prefWidth="183.0" promptText="Rua*" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txnumero" focusColor="BLACK" labelFloat="true" layoutX="873.0" layoutY="112.0" prefHeight="32.0" prefWidth="55.0" promptText="Numero*" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txbairro" focusColor="BLACK" labelFloat="true" layoutX="677.0" layoutY="168.0" prefHeight="32.0" prefWidth="250.0" promptText="Bairro" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="450.0" layoutY="208.0" text="* Campos Obrigatórios" textFill="RED" />
-                  <Line endX="-100.0" endY="162.0" layoutX="684.0" layoutY="42.0" startX="-100.0" />
-                  <Label layoutX="237.0" layoutY="-2.0" styleClass="labeli" text="Informações Pessoais" />
-                  <Label layoutX="777.0" layoutY="6.0" styleClass="labeli" text="Endereço" />
+                  <JFXTextField fx:id="txcpf" focusColor="BLACK" labelFloat="true" layoutX="84.0" layoutY="53.0" onKeyReleased="#evtCpfDigitado" prefHeight="32.0" prefWidth="171.0" promptText="CPF *" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="282.0" layoutY="53.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                  <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="84.0" layoutY="121.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="282.0" layoutY="121.0" prefHeight="32.0" prefWidth="250.0" promptText="Telefone *" unFocusColor="BLACK" />
+                  <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="84.0" layoutY="184.0" prefHeight="32.0" prefWidth="171.0" promptText="Data de Nacimento" />
+                  <JFXTextArea fx:id="tarea" labelFloat="true" layoutX="282.0" layoutY="168.0" prefHeight="49.0" prefWidth="250.0" promptText="Alergias e remedios" />
+                  <JFXTextField fx:id="txcidade" focusColor="BLACK" labelFloat="true" layoutX="687.0" layoutY="53.0" prefHeight="32.0" prefWidth="196.0" promptText="Cidade *" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txrua" focusColor="BLACK" labelFloat="true" layoutX="685.0" layoutY="121.0" prefHeight="32.0" prefWidth="183.0" promptText="Rua*" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txnumero" focusColor="BLACK" labelFloat="true" layoutX="882.0" layoutY="121.0" prefHeight="32.0" prefWidth="55.0" promptText="Numero*" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txbairro" focusColor="BLACK" labelFloat="true" layoutX="685.0" layoutY="184.0" prefHeight="32.0" prefWidth="250.0" promptText="Bairro" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="232.0" layoutY="251.0" text="* Campos Obrigatórios" textFill="RED" />
+                  <Line endX="-100.0" endY="206.0" layoutX="710.0" layoutY="56.0" startX="-100.0" startY="-24.0" />
+                  <Label layoutX="236.0" layoutY="20.0" styleClass="labeli" text="Informações Pessoais" />
+                  <Label layoutX="785.0" layoutY="20.0" styleClass="labeli" text="Endereço" />
                   </children>
             </Pane>
          </children>
       </VBox>
-      <VBox fx:id="pnpesquisa" prefHeight="442.0" prefWidth="1022.0">
+      <VBox fx:id="pnpesquisa" prefHeight="335.0" prefWidth="1022.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="54.0" prefWidth="1022.0">
                <children>
                   <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" maxWidth="1022.0" prefHeight="72.0" prefWidth="1022.0" spacing="20.0">
                      <children>
@@ -89,14 +89,14 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvpaciente" onMouseClicked="#clkTabela" prefHeight="538.0" prefWidth="1022.0">
+            <TableView fx:id="tvpaciente" onMouseClicked="#clkTabela" prefHeight="262.0" prefWidth="1022.0">
                <columns>
                   <TableColumn fx:id="colcpf" prefWidth="127.0" text="CPF" />
                   <TableColumn fx:id="colnome" prefWidth="330.0" text="Nome" />
                   <TableColumn fx:id="colrea" prefWidth="277.0" text="Remedios e Alergias" />
                   <TableColumn fx:id="coltelefone" minWidth="2.0" prefWidth="116.0" text="Telefone" />
                   <TableColumn fx:id="colrua" prefWidth="125.0" text="Rua" />
-                  <TableColumn fx:id="colnum" prefWidth="46.0" text="Nº" />
+                  <TableColumn fx:id="colnum" maxWidth="44.0" prefWidth="43.0" text="Nº" />
                </columns>
             </TableView>
          </children>

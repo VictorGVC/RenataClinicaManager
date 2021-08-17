@@ -16,11 +16,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.35259259259259257" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="677.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFeriadoController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.36106194690265486" maxHeight="768.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="567.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFeriadoController">
    <items>
       <VBox prefHeight="266.0" prefWidth="1022.0">
          <children>
-            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="49.0" prefWidth="1022.0" spacing="50.0">
+            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="82.0" prefWidth="536.0" spacing="50.0">
                <children>
                   <JFXButton fx:id="btnovo" onAction="#clkBtNovo" text="Novo" />
                   <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" text="Alterar" />
@@ -29,20 +29,20 @@
                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                </children>
             </HBox>
-            <Pane fx:id="pndados" prefHeight="210.0" prefWidth="536.0">
+            <Pane fx:id="pndados" prefHeight="229.0" prefWidth="536.0">
                <children>
-                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="143.0" layoutY="49.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="207.0" layoutY="164.0" text="* Campos Obrigatórios" textFill="RED" />
-                  <JFXDatePicker fx:id="dpdata" layoutX="143.0" layoutY="109.0" prefHeight="28.0" prefWidth="250.0" promptText="Data" />
+                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="143.0" layoutY="29.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="207.0" layoutY="135.0" text="* Campos Obrigatórios" textFill="RED" />
+                  <JFXDatePicker fx:id="dpdata" layoutX="143.0" layoutY="87.0" prefHeight="28.0" prefWidth="250.0" promptText="Data" />
                </children>
             </Pane>
          </children>
       </VBox>
       <VBox fx:id="pnpesquisa" prefHeight="442.0" prefWidth="1022.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="205.0" prefWidth="536.0">
                <children>
-                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" maxWidth="1022.0" prefHeight="72.0" prefWidth="536.0" spacing="20.0">
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" layoutY="7.0" maxWidth="1022.0" prefHeight="65.0" prefWidth="536.0" spacing="20.0">
                      <children>
                         <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="176.0" promptText="Filtro" unFocusColor="BLACK">
                            <font>
@@ -71,7 +71,7 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvferiado" onMouseClicked="#clkTabela" prefHeight="536.0" prefWidth="536.0">
+            <TableView fx:id="tvferiado" onMouseClicked="#clkTabela" prefHeight="453.0" prefWidth="536.0">
                <columns>
                   <TableColumn fx:id="colnome" prefWidth="264.0" text="Nome" />
                   <TableColumn fx:id="coldata" prefWidth="271.0" text="Data" />

@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.6150375939849624" maxHeight="667.0" maxWidth="549.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="667.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaCargosController">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.6214405360134003" maxHeight="667.0" maxWidth="549.0" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="599.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaCargosController">
    <items>
       <VBox prefHeight="266.0" prefWidth="1022.0">
          <children>
@@ -32,17 +32,17 @@
             </HBox>
             <Pane fx:id="pndados" prefHeight="386.0" prefWidth="547.0">
                <children>
-                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="148.0" layoutY="27.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="213.0" layoutY="337.0" text="* Campos Obrigatórios" textFill="RED" />
-                  <Line endX="-100.0" endY="201.0" layoutX="373.0" layoutY="116.0" startX="-100.0" startY="-18.0" />
-                  <JFXListView fx:id="lvaccess" layoutX="28.0" layoutY="144.0" onMouseClicked="#clkBtAc" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
-                  <JFXListView fx:id="lvnaccess" layoutX="319.0" layoutY="144.0" onMouseClicked="#clkBtNa" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
-                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="112.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                  <JFXTextField fx:id="txnome" focusColor="BLACK" labelFloat="true" layoutX="148.0" layoutY="14.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="210.0" layoutY="311.0" prefHeight="19.0" prefWidth="125.0" text="* Campos Obrigatórios" textFill="RED" />
+                  <Line endX="-100.0" endY="201.0" layoutX="373.0" layoutY="104.0" startX="-100.0" startY="6.0" />
+                  <JFXListView fx:id="lvaccess" layoutX="28.0" layoutY="107.0" onMouseClicked="#clkBtAc" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
+                  <JFXListView fx:id="lvnaccess" layoutX="319.0" layoutY="107.0" onMouseClicked="#clkBtNa" prefHeight="174.0" prefWidth="200.0" styleClass="lv" />
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="112.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/correcttooth.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="403.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="403.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/crosstooth.png" />
                      </image>
@@ -87,9 +87,9 @@
                   <Insets />
                </VBox.margin>
             </Pane>
-            <TableView fx:id="tvcargo" onMouseClicked="#clkTabela" prefHeight="361.0" prefWidth="547.0">
+            <TableView fx:id="tvcargo" onMouseClicked="#clkTabela" prefHeight="324.0" prefWidth="547.0">
                <columns>
-                  <TableColumn fx:id="colnome" prefWidth="546.0" text="Cargo" />
+                  <TableColumn fx:id="colnome" maxWidth="546.0" prefWidth="543.0" text="Cargo" />
                </columns>
             </TableView>
          </children>

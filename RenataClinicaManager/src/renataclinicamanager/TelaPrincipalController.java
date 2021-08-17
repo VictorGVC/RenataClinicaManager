@@ -164,7 +164,7 @@ public class TelaPrincipalController implements Initializable {
         Stage stage = new Stage();
 
         stage.resizableProperty().setValue(Boolean.FALSE);
-        stage.setMaxWidth(1030);
+        stage.setMaxWidth(850);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Fornecedores");
@@ -206,6 +206,7 @@ public class TelaPrincipalController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(1030);
+        stage.setMaxHeight(678);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Funcionários");
@@ -237,7 +238,7 @@ public class TelaPrincipalController implements Initializable {
         Stage stage = new Stage();
 
         stage.resizableProperty().setValue(Boolean.FALSE);
-        stage.setMaxWidth(1030);
+        stage.setMaxWidth(917);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Materiais");
@@ -269,7 +270,7 @@ public class TelaPrincipalController implements Initializable {
         Stage stage = new Stage();
 
         stage.resizableProperty().setValue(Boolean.FALSE);
-        stage.setMaxWidth(555);
+        stage.setMaxWidth(544);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Tratamentos");
@@ -285,7 +286,7 @@ public class TelaPrincipalController implements Initializable {
         Stage stage = new Stage();
 
         stage.resizableProperty().setValue(Boolean.FALSE);
-        stage.setMaxWidth(555);
+        stage.setMaxWidth(544);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Feriados");

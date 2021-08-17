@@ -20,9 +20,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFuncionarioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFuncionarioController">
    <children>
-      <SplitPane fx:id="pnprincipal" dividerPositions="0.4751958224543081" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="710.0" prefWidth="1024.0">
+      <SplitPane fx:id="pnprincipal" dividerPositions="0.4751958224543081" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="650.0" prefWidth="1024.0">
          <items>
             <VBox prefHeight="317.0" prefWidth="798.0">
                <children>
@@ -38,39 +38,37 @@
                   </HBox>
                   <Pane fx:id="pndados" prefHeight="358.0" prefWidth="1022.0">
                      <children>
-                        <JFXTextField fx:id="txnome" labelFloat="true" layoutX="176.0" layoutY="84.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="453.0" layoutY="84.0" prefHeight="32.0" prefWidth="171.0" promptText="Telefone *" unFocusColor="BLACK" />
-                        <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="176.0" layoutY="149.0" prefHeight="32.0" prefWidth="186.0" promptText="Data de Nacimento" />
-                        <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="426.0" layoutY="149.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="txnome" labelFloat="true" layoutX="78.0" layoutY="68.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="374.0" layoutY="68.0" prefHeight="32.0" prefWidth="171.0" promptText="Telefone *" unFocusColor="BLACK" />
+                        <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="78.0" layoutY="150.0" prefHeight="32.0" prefWidth="186.0" promptText="Data de Nacimento" />
+                        <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="374.0" layoutY="150.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
                         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="374.0" layoutY="229.0" onAction="#clkBtHrario" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/schedule.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                            <padding>
                               <Insets left="5.0" />
                            </padding>
                         </JFXButton>
-                        <Line endX="-11.0" endY="233.0" layoutX="733.0" layoutY="80.0" startX="-11.0" startY="-50.0" />
-                        <JFXTextField fx:id="txlogin" focusColor="BLACK" labelFloat="true" layoutX="814.0" layoutY="87.0" promptText="Usuário *" unFocusColor="BLACK" />
-                        <JFXPasswordField fx:id="txsenha" focusColor="BLACK" labelFloat="true" layoutX="814.0" layoutY="153.0" promptText="Senha Atual *" unFocusColor="BLACK" />
-                        <JFXPasswordField fx:id="txsenhan" focusColor="BLACK" labelFloat="true" layoutX="814.0" layoutY="220.0" promptText="Nova Senha" unFocusColor="BLACK" />
-                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" layoutX="814.0" layoutY="283.0" prefHeight="25.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
-                        <Label fx:id="lbobg" layoutX="325.0" layoutY="296.0" text="* Campos Obrigatorios" textFill="RED" />
-                        <Label layoutX="352.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
-                        <Label layoutX="835.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />
+                        <Line endX="-11.0" endY="177.0" layoutX="641.0" layoutY="74.0" startX="-11.0" startY="-32.0" />
+                        <JFXTextField fx:id="txlogin" focusColor="BLACK" labelFloat="true" layoutX="700.0" layoutY="88.0" promptText="Usuário *" unFocusColor="BLACK" />
+                        <JFXPasswordField fx:id="txsenha" focusColor="BLACK" labelFloat="true" layoutX="859.0" layoutY="88.0" promptText="Senha Atual *" unFocusColor="BLACK" />
+                        <JFXPasswordField fx:id="txsenhan" focusColor="BLACK" labelFloat="true" layoutX="776.0" layoutY="153.0" promptText="Nova Senha" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" layoutX="776.0" layoutY="213.0" prefHeight="32.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
+                        <Label fx:id="lbobg" layoutX="256.0" layoutY="252.0" text="* Campos Obrigatorios" textFill="RED" />
+                        <Label layoutX="284.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
+                        <Label layoutX="798.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="309.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/schedule.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                </children>
             </VBox>
-            <VBox fx:id="pnpesquisa" prefHeight="277.0" prefWidth="1022.0">
+            <VBox fx:id="pnpesquisa" prefHeight="322.0" prefWidth="1022.0">
                <children>
                   <Pane fx:id="pnfiltros" prefHeight="52.0" prefWidth="1022.0">
                      <children>
-                        <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="61.0" prefWidth="1022.0" spacing="20.0">
+                        <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="76.0" prefWidth="1022.0" spacing="20.0">
                            <children>
                               <JFXComboBox fx:id="cbcategoria" focusColor="BLACK" labelFloat="true" prefHeight="36.0" prefWidth="145.0" promptText="Categoria" unFocusColor="BLACK">
                                  <HBox.margin>
@@ -98,15 +96,19 @@
                         </HBox>
                      </children>
                   </Pane>
-                  <TableView fx:id="tvfuncionarios" onMouseClicked="#clkTabela" prefHeight="317.0" prefWidth="1022.0" scaleShape="false">
-                     <columns>
-                        <TableColumn fx:id="collogin" prefWidth="162.0" text="Usuário" />
-                        <TableColumn fx:id="colnome" prefWidth="431.0" text="Nome" />
-                        <TableColumn fx:id="coltelefone" minWidth="8.0" prefWidth="215.0" text="Telefone" />
-                        <TableColumn fx:id="colativo" minWidth="0.0" prefWidth="81.0" text="Ativo" />
-                        <TableColumn fx:id="colcargo" minWidth="0.0" prefWidth="131.0" text="Cargo" />
-                     </columns>
-                  </TableView>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tvfuncionarios" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="274.0" prefWidth="1022.0" scaleShape="false">
+                           <columns>
+                              <TableColumn fx:id="collogin" prefWidth="162.0" text="Usuário" />
+                              <TableColumn fx:id="colnome" prefWidth="431.0" text="Nome" />
+                              <TableColumn fx:id="coltelefone" minWidth="8.0" prefWidth="215.0" text="Telefone" />
+                              <TableColumn fx:id="colativo" minWidth="0.0" prefWidth="81.0" text="Ativo" />
+                              <TableColumn fx:id="colcargo" maxWidth="129.0" minWidth="0.0" prefWidth="129.0" text="Cargo" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
          </items>
