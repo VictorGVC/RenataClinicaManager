@@ -3,9 +3,9 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -14,9 +14,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.4347258485639687" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaCompras">
+<SplitPane fx:id="pnprincipal" dividerPositions="0.5438311688311688" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="618.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaComprasController">
    <items>
       <VBox prefHeight="366.0" prefWidth="1022.0">
          <children>
@@ -30,44 +29,40 @@
             </HBox>
             <Pane fx:id="pndados" prefHeight="278.0" prefWidth="798.0">
                <children>
-                  <JFXTextField fx:id="txTotal" editable="false" focusColor="BLACK" labelFloat="true" layoutX="258.0" layoutY="13.0" prefHeight="25.0" prefWidth="55.0" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="189.0" layoutY="249.0" prefHeight="17.0" prefWidth="139.0" text="* Campos Obrigatorios" textFill="RED" />
-                  <JFXComboBox fx:id="cbFornecedor" focusColor="BLACK" labelFloat="true" layoutX="121.0" layoutY="60.0" prefHeight="25.0" prefWidth="275.0" promptText="Fornecedor" unFocusColor="BLACK" />
-                  <Label fx:id="lbtotal" ellipsisString="" layoutX="210.0" layoutY="21.0" styleClass="labeli" text="TOTAL" />
-                  <JFXButton fx:id="btAddItem" layoutX="177.0" layoutY="207.0" onAction="#clkBtAddItem" text="Adicionar" />
-                  <JFXButton fx:id="btRemoverProd" layoutX="274.0" layoutY="207.0" onAction="#clkBtRemoverItem" text="Remover" />
-                  <JFXComboBox fx:id="cbMarca" focusColor="BLACK" labelFloat="true" layoutX="120.0" layoutY="109.0" onAction="#clkCbMarca" prefHeight="25.0" prefWidth="131.0" promptText="Tipo" unFocusColor="BLACK" />
-                  <JFXComboBox fx:id="cbProduto" focusColor="BLACK" labelFloat="true" layoutX="266.0" layoutY="109.0" prefHeight="25.0" prefWidth="131.0" promptText="Material" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txQuantidade" focusColor="BLACK" labelFloat="true" layoutX="120.0" layoutY="169.0" prefHeight="25.0" prefWidth="131.0" promptText="Quantidade *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txPreco" focusColor="BLACK" labelFloat="true" layoutX="266.0" layoutY="169.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
-                  <TableView fx:id="tvProduto" layoutX="538.0" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="259.0" prefWidth="470.0" scaleShape="false">
+                  <JFXTextField fx:id="txtotal" editable="false" focusColor="BLACK" labelFloat="true" layoutX="55.0" layoutY="25.0" prefHeight="25.0" prefWidth="279.0" promptText="TOTAL" unFocusColor="BLACK" />
+                  <Label fx:id="lbobg" layoutX="133.0" layoutY="237.0" prefHeight="17.0" prefWidth="139.0" text="* Campos Obrigatorios" textFill="RED" />
+                  <JFXComboBox fx:id="cbfornecedor" editable="true" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="79.0" onKeyReleased="#preencheFornecedores" prefHeight="25.0" prefWidth="131.0" promptText="Fornecedor*" unFocusColor="BLACK" />
+                  <JFXButton fx:id="btadditem" layoutX="111.0" layoutY="193.0" onAction="#clkBtAddItem" text="Adicionar" />
+                  <JFXButton fx:id="btremoveitem" layoutX="208.0" layoutY="193.0" onAction="#clkBtRemoverItem" text="Remover" />
+                  <JFXComboBox fx:id="cbproduto" editable="true" focusColor="BLACK" labelFloat="true" layoutX="201.0" layoutY="79.0" onKeyReleased="#preencheMateriais" prefHeight="25.0" prefWidth="131.0" promptText="Material*" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txquantidade" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Quantidade *" unFocusColor="BLACK" />
+                  <JFXTextField fx:id="txpreco" focusColor="BLACK" labelFloat="true" layoutX="202.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
+                  <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="259.0" prefWidth="470.0" scaleShape="false">
                      <columns>
-                        <TableColumn fx:id="ColProduto" prefWidth="271.0" text="Produto" />
-                        <TableColumn fx:id="ColPreco" prefWidth="104.0" text="Preço" />
-                        <TableColumn fx:id="ColQtd" prefWidth="94.0" text="Quantidade" />
+                        <TableColumn fx:id="colproduto" prefWidth="271.0" text="Produto" />
+                        <TableColumn fx:id="colpreco" prefWidth="104.0" text="Preço" />
+                        <TableColumn fx:id="colquantidade" prefWidth="94.0" text="Quantidade" />
                      </columns>
                   </TableView>
-                  <Line endX="14.0" endY="161.0" layoutX="452.0" layoutY="73.0" startX="14.0" startY="-30.0" />
+                  <Line endX="14.0" endY="161.0" layoutX="362.0" layoutY="73.0" startX="14.0" startY="-30.0" />
                </children>
             </Pane>
          </children>
       </VBox>
-      <VBox fx:id="pnpesquisa" prefHeight="265.0" prefWidth="798.0">
+      <VBox fx:id="pnpesquisa" prefHeight="332.0" prefWidth="1022.0">
          <children>
             <Pane fx:id="pnfiltros" prefHeight="52.0" prefWidth="1022.0">
                <children>
-                  <HBox id="filtro" alignment="CENTER" prefHeight="67.0" prefWidth="1022.0" spacing="50.0">
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="67.0" prefWidth="909.0" spacing="50.0">
                      <children>
-                        <JFXTextField fx:id="txFiltro" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltro" prefHeight="38.0" prefWidth="240.0" unFocusColor="BLACK">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
+                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltro" prefHeight="29.0" prefWidth="240.0" promptText="Fornecedor" unFocusColor="BLACK">
+                           <HBox.margin>
+                              <Insets right="60.0" />
+                           </HBox.margin>
                         </JFXTextField>
-                        <Label fx:id="lbForncedor" prefHeight="17.0" prefWidth="69.0" styleClass="labeli" text="Fornecedor" />
-                        <JFXButton fx:id="btFechar" onAction="#clkBtFechar" text="Fechar" />
-                        <CheckBox fx:id="ckbAberto" mnemonicParsing="false" onAction="#clickAberto" styleClass="labeli" text="Apenas Abertas" />
+                        <JFXRadioButton fx:id="rbaberto" onAction="#clkAberto" styleClass="labeli" text="Apenas Abertas" />
                         <JFXDatePicker fx:id="dtpInicio" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Inicial" />
-                        <JFXDatePicker fx:id="dtpFinal" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Final" />
+                        <JFXDatePicker fx:id="dtpfinal" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Final" />
                      </children>
                      <padding>
                         <Insets bottom="11.0" />
@@ -75,13 +70,13 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvCompra" onMouseClicked="#clkTabela" prefHeight="382.0" prefWidth="1022.0" scaleShape="false">
+            <TableView fx:id="tvcompra" onMouseClicked="#clkTabela" prefHeight="227.0" prefWidth="909.0" scaleShape="false">
                <columns>
-                  <TableColumn fx:id="ColCod" prefWidth="105.0" text="Codigo" />
-                  <TableColumn fx:id="ColData" prefWidth="179.0" text="Data da Compra" />
-                  <TableColumn fx:id="ColFornecedor" prefWidth="559.0" text="Fornecedor" />
-                  <TableColumn fx:id="ColStatus" prefWidth="67.0" text="Status" />
-                  <TableColumn fx:id="ColTotal" prefWidth="111.0" text="Total" />
+                  <TableColumn fx:id="colcod" prefWidth="105.0" text="Codigo" />
+                  <TableColumn fx:id="coldata" prefWidth="179.0" text="Data da Compra" />
+                  <TableColumn fx:id="colfornecedor" prefWidth="401.0" text="Fornecedor" />
+                  <TableColumn fx:id="colstatus" prefWidth="83.0" text="Status" />
+                  <TableColumn fx:id="coltotal" prefWidth="137.0" text="Total" />
                </columns>
             </TableView>
          </children>

@@ -358,4 +358,20 @@ public class TelaPrincipalController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void clkCompra(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaCompras.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(917);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Compra");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="RenataClinicaManager.jar" size="169479" download="eager" />
+    <jar href="RenataClinicaManager.jar" size="173154" download="eager" />
     <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
     <jar href="lib\json.jar" size="69710" download="eager" />
     <jar href="lib\postgresql-9.4.1209.jar" size="678049" download="eager" />

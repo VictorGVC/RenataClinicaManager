@@ -102,13 +102,13 @@ public class TelaControlarTratamentoController implements Initializable {
     {
         setMascaras();
         initColTb();
-        initcbfiltro();
+        initCbFiltro();
         estado(true);
         carregaTratamentos("");
         carregaPacientes("");
     }   
     
-    private void initcbfiltro()
+    private void initCbFiltro()
     {
         List<String> l = new ArrayList();
         l.add("Paciente");

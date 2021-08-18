@@ -15,6 +15,11 @@ public class Material
     private double valor;
     private String nome;
 
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+    
     public Material() {
     }
 

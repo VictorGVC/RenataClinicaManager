@@ -13,6 +13,11 @@ public class Fornecedor
 {
     private String cnpj, nome, telefone;
 
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+    
     public Fornecedor() {
     }
 
