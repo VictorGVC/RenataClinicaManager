@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFuncionarioController">
+   <children>
+      <SplitPane fx:id="pnprincipal" dividerPositions="0.4751958224543081" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="650.0" prefWidth="1024.0">
+         <items>
+            <VBox prefHeight="317.0" prefWidth="798.0">
+               <children>
+                  <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="50.0" prefWidth="798.0" spacing="50.0">
+                     <children>
+                        <JFXButton fx:id="btnovo" layoutX="91.0" layoutY="23.0" onAction="#clkBtNovo" text="Novo" />
+                        <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" text="Alterar" />
+                        <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
+                        <JFXButton fx:id="btativdesativ" onAction="#clkBtAtivar" text="Ativar/Desativar" />
+                        <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
+                        <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
+                     </children>
+                  </HBox>
+                  <Pane fx:id="pndados" prefHeight="358.0" prefWidth="1022.0">
+                     <children>
+                        <JFXTextField fx:id="txnome" labelFloat="true" layoutX="78.0" layoutY="68.0" prefHeight="32.0" prefWidth="250.0" promptText="Nome *" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="374.0" layoutY="68.0" prefHeight="32.0" prefWidth="171.0" promptText="Telefone *" unFocusColor="BLACK" />
+                        <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="78.0" layoutY="150.0" prefHeight="32.0" prefWidth="186.0" promptText="Data de Nacimento" />
+                        <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="374.0" layoutY="150.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="374.0" layoutY="229.0" onAction="#clkBtHrario" text=" ">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </JFXButton>
+                        <Line endX="-11.0" endY="177.0" layoutX="641.0" layoutY="74.0" startX="-11.0" startY="-32.0" />
+                        <JFXTextField fx:id="txlogin" focusColor="BLACK" labelFloat="true" layoutX="700.0" layoutY="88.0" promptText="Usuário *" unFocusColor="BLACK" />
+                        <JFXPasswordField fx:id="txsenha" focusColor="BLACK" labelFloat="true" layoutX="859.0" layoutY="88.0" promptText="Senha Atual *" unFocusColor="BLACK" />
+                        <JFXPasswordField fx:id="txsenhan" focusColor="BLACK" labelFloat="true" layoutX="776.0" layoutY="153.0" promptText="Nova Senha" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" layoutX="776.0" layoutY="213.0" prefHeight="32.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
+                        <Label fx:id="lbobg" layoutX="256.0" layoutY="252.0" text="* Campos Obrigatorios" textFill="RED" />
+                        <Label layoutX="284.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
+                        <Label layoutX="798.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="309.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/schedule.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox fx:id="pnpesquisa" prefHeight="322.0" prefWidth="1022.0">
+               <children>
+                  <Pane fx:id="pnfiltros" prefHeight="52.0" prefWidth="1022.0">
+                     <children>
+                        <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="76.0" prefWidth="1022.0" spacing="20.0">
+                           <children>
+                              <JFXComboBox fx:id="cbcategoria" focusColor="BLACK" labelFloat="true" prefHeight="36.0" prefWidth="145.0" promptText="Categoria" unFocusColor="BLACK">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" right="50.0" />
+                                 </HBox.margin>
+                              </JFXComboBox>
+                              <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="11.0" prefWidth="418.0" promptText="Filtro" unFocusColor="BLACK">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkTFiltro" text=" ">
+                                 <HBox.margin>
+                                    <Insets bottom="11.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/filter.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="284.0" prefWidth="1022.0">
+                     <children>
+                        <TableView fx:id="tvfuncionarios" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="274.0" prefWidth="1022.0" scaleShape="false">
+                           <columns>
+                              <TableColumn fx:id="collogin" prefWidth="162.0" text="Usuário" />
+                              <TableColumn fx:id="colnome" prefWidth="431.0" text="Nome" />
+                              <TableColumn fx:id="coltelefone" minWidth="8.0" prefWidth="215.0" text="Telefone" />
+                              <TableColumn fx:id="colativo" minWidth="0.0" prefWidth="81.0" text="Ativo" />
+                              <TableColumn fx:id="colcargo" maxWidth="129.0" minWidth="0.0" prefWidth="129.0" text="Cargo" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+      <AnchorPane fx:id="pnhrarios" layoutX="175.0" layoutY="188.0" prefHeight="368.0" prefWidth="748.0" styleClass="fifth" visible="false">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="363.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/schedule.png" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="551.0" onAction="#clkBtFecharHrarios" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+            </JFXButton>
+            <JFXListView fx:id="lvsegunda" layoutX="31.0" layoutY="140.0" onMouseClicked="#clkSegunda" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
+            <JFXListView fx:id="lvquarta" layoutX="263.0" layoutY="140.0" onMouseClicked="#clkQuarta" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
+            <JFXListView fx:id="lvterca" layoutX="147.0" layoutY="140.0" onMouseClicked="#clkTerca" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
+            <JFXListView fx:id="lvquinta" layoutX="379.0" layoutY="140.0" onMouseClicked="#clkQuinta" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
+            <JFXListView fx:id="lvsexta" layoutX="495.0" layoutY="140.0" onMouseClicked="#clkSexta" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
+            <JFXListView fx:id="lvsabado" layoutX="611.0" layoutY="140.0" onMouseClicked="#clkSabado" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
+            <Label layoutX="63.0" layoutY="109.0" styleClass="labeli" text="Segunda" />
+            <Label layoutX="188.0" layoutY="109.0" styleClass="labeli" text="Terça" />
+            <Label layoutX="300.0" layoutY="109.0" styleClass="labeli" text="Quarta" />
+            <Label layoutX="416.0" layoutY="109.0" styleClass="labeli" text="Quinta" />
+            <Label layoutX="536.0" layoutY="109.0" styleClass="labeli" text="Sexta" />
+            <Label layoutX="646.0" layoutY="109.0" styleClass="labeli" text="Sábado" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
