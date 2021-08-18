@@ -151,4 +151,34 @@ public class DAOPaciente
             return "Erro ao alterar!";
     }
     
+    public Paciente get(String CPF)
+    {
+        String sql = "SELECT * FROM PACIENTE WHERE pac_cpf = '"+CPF+"'";
+        
+        Paciente aux = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        try {
+            LocalDate ld;
+            if(rs.next())
+            {
+                try {
+                    ld = rs.getDate("pac_data").toLocalDate();   
+                } catch (Exception e) {
+                    ld = null;
+                }                                     
+                aux = new Paciente(rs.getString("pac_cpf"), rs.getString("pac_nome"), 
+                        rs.getString("pac_telefone"), rs.getString("pac_rua"), 
+                        rs.getString("pac_cidade"), rs.getString("pac_bairro"),
+                        rs.getString("pac_rea"), rs.getInt("pac_numero"), rs.getString("pac_sexo").charAt(0),
+                        ld);
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
+    
 }

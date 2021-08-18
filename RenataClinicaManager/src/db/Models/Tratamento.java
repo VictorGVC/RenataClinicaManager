@@ -15,6 +15,11 @@ public class Tratamento
     private String nome;
     private double valor;
 
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+    
     public Tratamento() {
     }
 
@@ -56,6 +61,4 @@ public class Tratamento
     public void setValor(double valor) {
         this.valor = valor;
     }
-    
-    
 }

@@ -10,6 +10,11 @@ public class Paciente
     private char sexo;
     private LocalDate dtnacimento;
 
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+    
     public Paciente() {
     }
 

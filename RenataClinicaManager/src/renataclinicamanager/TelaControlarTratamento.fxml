@@ -2,42 +2,50 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaControlarTratamentoController">
+<SplitPane fx:id="pnprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="587.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaControlarTratamentoController">
    <items>
       <VBox prefHeight="768.0" prefWidth="1022.0">
          <children>
-            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="61.0" prefWidth="1022.0" spacing="50.0">
+            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="67.0" prefWidth="1022.0" spacing="50.0">
                <children>
                   <JFXButton fx:id="btnovo" onAction="#clkBtNovo" text="Novo" />
-                  <JFXButton fx:id="btalterar" onAction="#clkBtAlterar" text="Alterar" />
                   <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
-                  <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
+                  <JFXButton fx:id="btiniciar" onAction="#clkBtIniciar" text="Iniciar" />
+                  <JFXButton fx:id="btfinalizar" onAction="#clkBtFinalizar" text="Finalizar" />
                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                </children>
             </HBox>
-            <Pane fx:id="pndados" prefHeight="254.0" prefWidth="1024.0">
+            <Pane fx:id="pndados" prefHeight="251.0" prefWidth="868.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="254.0" prefWidth="1023.0">
+                  <VBox alignment="CENTER" layoutY="6.0" prefHeight="193.0" prefWidth="868.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="72.0" prefWidth="1023.0" spacing="50.0">
+                        <HBox alignment="CENTER" prefHeight="66.0" prefWidth="868.0" spacing="50.0">
                            <children>
-                              <JFXTextField prefHeight="25.0" prefWidth="105.0" promptText="CPF" />
-                              <JFXComboBox editable="true" onAction="#preencheCPF" onMouseClicked="#clearPaciente" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
+                              <JFXTextField fx:id="txcpf" onKeyReleased="#completaPaciente" prefHeight="25.0" prefWidth="105.0" promptText="CPF" />
+                              <JFXComboBox fx:id="cbpaciente" editable="true" onAction="#preencheCPF" onKeyReleased="#preenchePacientes" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
                         </HBox>
-                        <GridPane>
+                        <GridPane prefHeight="36.0" prefWidth="868.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -47,30 +55,64 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXComboBox prefHeight="25.0" prefWidth="344.0" promptText="Tratamento" GridPane.columnIndex="1" />
+                              <JFXComboBox fx:id="cbtratamento" editable="true" onKeyReleased="#preencheTratamentos" prefHeight="25.0" prefWidth="344.0" promptText="Tratamento*" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
-                        <HBox alignment="CENTER" prefHeight="68.0" prefWidth="1023.0" spacing="50.0">
-                           <children>
-                              <JFXButton fx:id="btadicionar" onAction="#clkBtAdicionar" text="Iniciar" />
-                              <JFXButton fx:id="btremover" onAction="#clkBtRemover" text="Finalizar" />
-                           </children>
-                        </HBox>
-                        <Label fx:id="lbobg" text="* Campos Obrigatórios" textFill="RED" />
+                        <Label fx:id="lbobg" text="* Campos Obrigatórios" textFill="RED">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin></Label>
                      </children>
                   </VBox>
                </children>
             </Pane>
-            <TableView fx:id="tvprodutos" onMouseClicked="#clkTabelaProdutos" prefHeight="517.0" prefWidth="1022.0">
-               <columns>
-                  <TableColumn prefWidth="261.0" text="Paciente" />
-                  <TableColumn fx:id="colprod" prefWidth="235.0" text="Tratamento" />
-                  <TableColumn fx:id="colcodbarras" minWidth="0.0" prefWidth="158.0" text="Periodicidade" />
-                  <TableColumn fx:id="colpreco" prefWidth="112.0" text="Valor" />
-                  <TableColumn prefWidth="148.0" text="Sessões" />
-                  <TableColumn prefWidth="107.0" text="Finalizado" />
-               </columns>
-            </TableView>
+            <Pane fx:id="pnpesquisa" prefHeight="302.0" prefWidth="868.0">
+               <children>
+                  <Pane fx:id="pnfiltros" prefHeight="54.0" prefWidth="868.0">
+                     <children>
+                        <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" layoutY="-12.0" prefHeight="77.0" prefWidth="868.0" spacing="20.0">
+                           <children>
+                              <JFXComboBox fx:id="cbcategoria" focusColor="BLACK" labelFloat="true" prefHeight="36.0" prefWidth="145.0" promptText="Categoria" unFocusColor="BLACK">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" right="50.0" />
+                                 </HBox.margin>
+                              </JFXComboBox>
+                              <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="30.0" prefWidth="298.0" promptText="Filtro" unFocusColor="BLACK">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkTFiltro" text=" ">
+                                 <HBox.margin>
+                                    <Insets bottom="11.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/filter.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXRadioButton fx:id="rbativo" onAction="#clkTFiltro" styleClass="labeli" text="Ativo">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="40.0" />
+                                 </HBox.margin>
+                              </JFXRadioButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="tvtratamentos" layoutY="51.0" onMouseClicked="#clkTabelaProdutos" prefHeight="239.0" prefWidth="868.0">
+                     <columns>
+                        <TableColumn fx:id="colpaciente" prefWidth="345.0" text="Paciente" />
+                        <TableColumn fx:id="coltratamento" prefWidth="293.0" text="Tratamento" />
+                        <TableColumn fx:id="colvalor" prefWidth="109.0" text="Valor" />
+                        <TableColumn fx:id="colfinalizado" prefWidth="117.0" text="Ativo" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
          </children>
       </VBox>
    </items>

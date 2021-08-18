@@ -341,4 +341,21 @@ public class TelaPrincipalController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void clkControlarTratamento(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaControlarTratamento.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(876);
+        stage.setMaxHeight(589);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Controlar Tratamento");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

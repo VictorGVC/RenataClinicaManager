@@ -96,7 +96,7 @@
                         </HBox>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="284.0" prefWidth="1022.0">
                      <children>
                         <TableView fx:id="tvfuncionarios" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="274.0" prefWidth="1022.0" scaleShape="false">
                            <columns>
