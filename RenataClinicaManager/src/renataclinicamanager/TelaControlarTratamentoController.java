@@ -441,7 +441,6 @@ public class TelaControlarTratamentoController implements Initializable {
                         DAOPaciente dp = new DAOPaciente();
                         cbpaciente.setValue(dp.get(txcpf.getText()));
                     }
-                    
                     return null;
                 }
             };
