@@ -20,13 +20,13 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -40,11 +40,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import util.MaskFieldUtil;
 
-/**
- * FXML Controller class
- *
- * @author vicga
- */
 public class TelaComprasController implements Initializable {
 
     @FXML
@@ -94,8 +89,6 @@ public class TelaComprasController implements Initializable {
     @FXML
     private JFXTextField txfiltro;
     @FXML
-    private JFXRadioButton rbaberto;
-    @FXML
     private JFXDatePicker dtpfinal;
     @FXML
     private TableView<Compra> tvcompra;
@@ -105,8 +98,6 @@ public class TelaComprasController implements Initializable {
     private TableColumn<Compra, LocalDate> coldata;
     @FXML
     private TableColumn<Compra, String> colfornecedor;
-    @FXML
-    private TableColumn<Compra, String> colstatus;
     @FXML
     private TableColumn<Compra, Double> coltotal;
     @FXML
@@ -151,11 +142,10 @@ public class TelaComprasController implements Initializable {
         colpreco.setCellValueFactory(new PropertyValueFactory("valor"));
         
         //SETAR OS VALORES CORRETOS DEPOIS
-        colcod.setCellValueFactory(new PropertyValueFactory("cnpj"));
-        colfornecedor.setCellValueFactory(new PropertyValueFactory("cnpj"));
-        coldata.setCellValueFactory(new PropertyValueFactory("cnpj"));
-        coltotal.setCellValueFactory(new PropertyValueFactory("cnpj"));
-        colstatus.setCellValueFactory(new PropertyValueFactory("cnpj"));
+        colcod.setCellValueFactory(new PropertyValueFactory("id"));
+        colfornecedor.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
+        coldata.setCellValueFactory(new PropertyValueFactory("dtcompra"));
+        coltotal.setCellValueFactory(new PropertyValueFactory("total"));
     }
     
     private void estado(boolean b) 
@@ -173,8 +163,7 @@ public class TelaComprasController implements Initializable {
             pnfiltro.setStyle("-fx-background-color: transparent;" +
                                 "-fx-border-color: transparent;");
         }
-      
-        //carregaTabela("");
+        carregaTabela("");
     }
     
     private void carregaTabela(String filtro) 
@@ -229,33 +218,39 @@ public class TelaComprasController implements Initializable {
     }
 
     @FXML
-    private void clkBtCancelar(ActionEvent event) {
+    private void clkBtCancelar(ActionEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkBtAddItem(ActionEvent event) {
+    private void clkBtAddItem(ActionEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkBtRemoverItem(ActionEvent event) {
-    }
-
-
-    @FXML
-    private void clkTabela(MouseEvent event) {
+    private void clkBtRemoverItem(ActionEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkTFiltro(KeyEvent event) {
-    }
-
-
-    @FXML
-    private void dtpData(ActionEvent event) {
+    private void clkTabela(MouseEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkAberto(ActionEvent event) {
+    private void clkTFiltro(KeyEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void dtpData(ActionEvent event) 
+    {
+        
     }
 
     @FXML
@@ -269,5 +264,4 @@ public class TelaComprasController implements Initializable {
     {
         carregaMateriais("UPPER(mat_nome) LIKE '%" + cbproduto.getValue() + "%'");
     }
-    
 }

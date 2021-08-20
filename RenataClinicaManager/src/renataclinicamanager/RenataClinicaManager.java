@@ -51,28 +51,31 @@ public class RenataClinicaManager extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
+        
+        boolean b = true;
         Banco.conectar();
-        if(Banco.getCon().getEstadoConexao())
-            launch(args);
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Erro: " + Banco.getCon().getMensagemErro());
+        
+        if(!Banco.getCon().getEstadoConexao()) {
             
-            if(JOptionPane.showConfirmDialog(null, "Deseja criar uma nova conexão?") == JOptionPane.YES_OPTION)
-            {
+            b = false;
+            JOptionPane.showMessageDialog(null, "Erro: " + Banco.getCon().getMensagemErro());  
+            if(JOptionPane.showConfirmDialog(null, "Deseja Criar Uma Nova Conexão?") == JOptionPane.YES_OPTION) {
+                
                 if(!Banco.criarBD("bancorenata"))
-                    JOptionPane.showMessageDialog(null, "Não foi possivel criar uma nova conexão");
-                else{
+                    JOptionPane.showMessageDialog(null, "Não Foi Possivel Criar Uma Nova Conexão");
+                else {
                     
-                    JOptionPane.showMessageDialog(null, "Conexão criada com sucesso, o sistema será reiniciado");
-                    
+                    JOptionPane.showMessageDialog(null, "Conexão Criada Com Sucesso, o Sistema Será Reiniciado");
                     Banco.realizaBackupRestauracao("banco\\backup.bat");
+                    b = true;
                 }
             }
-            System.exit(0);
         }
-    }
+        if(b)
+            launch(args);
+        else
+            System.exit(0);
+    } 
     
 }

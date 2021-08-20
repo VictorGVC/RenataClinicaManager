@@ -42,10 +42,17 @@
                         <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="374.0" layoutY="68.0" prefHeight="32.0" prefWidth="171.0" promptText="Telefone *" unFocusColor="BLACK" />
                         <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="78.0" layoutY="150.0" prefHeight="32.0" prefWidth="186.0" promptText="Data de Nacimento" />
                         <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="374.0" layoutY="150.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
-                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="374.0" layoutY="229.0" onAction="#clkBtHrario" text=" ">
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="306.0" layoutY="206.0" onAction="#clkBtHrario" text=" ">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/schedule.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </JFXButton>
                         <Line endX="-11.0" endY="177.0" layoutX="641.0" layoutY="74.0" startX="-11.0" startY="-32.0" />
                         <JFXTextField fx:id="txlogin" focusColor="BLACK" labelFloat="true" layoutX="700.0" layoutY="88.0" promptText="Usuário *" unFocusColor="BLACK" />
@@ -55,11 +62,6 @@
                         <Label fx:id="lbobg" layoutX="256.0" layoutY="252.0" text="* Campos Obrigatorios" textFill="RED" />
                         <Label layoutX="284.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
                         <Label layoutX="798.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />
-                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="309.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/schedule.png" />
-                           </image>
-                        </ImageView>
                      </children>
                   </Pane>
                </children>
