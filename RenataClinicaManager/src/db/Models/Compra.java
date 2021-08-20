@@ -5,6 +5,7 @@
  */
 package db.Models;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class Compra
     private double total;
     private Fornecedor fornecedor;
     private List<Material> produtos;
+    private LocalDate dtcompra;
 
     public Compra() {
     }
@@ -25,11 +27,12 @@ public class Compra
         this.id = id;
     }
 
-    public Compra(int id, double total, Fornecedor fornecedor, List<Material> produtos) {
+    public Compra(int id, double total, LocalDate dtcompra, Fornecedor fornecedor, List<Material> produtos) {
         this.id = id;
         this.total = total;
         this.fornecedor = fornecedor;
         this.produtos = produtos;
+        this.dtcompra = dtcompra;
     }
 
     public Compra(int id, Fornecedor fornecedor, List<Material> produtos) {
@@ -81,6 +84,14 @@ public class Compra
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public LocalDate getDtcompra() {
+        return dtcompra;
+    }
+
+    public void setDtcompra(LocalDate dtcompra) {
+        this.dtcompra = dtcompra;
     }
     
 }

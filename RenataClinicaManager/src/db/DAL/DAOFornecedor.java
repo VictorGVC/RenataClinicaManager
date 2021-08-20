@@ -119,5 +119,25 @@ public class DAOFornecedor {
         else
             return "Erro ao alterar!";
     }
+
+    Fornecedor get(String cnpj) 
+    {
+        String sql = "SELECT * FROM Fornecedor WHERE for_cnpj = '"+cnpj+"'";
+        
+        Fornecedor aux = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        try {
+            
+            while(rs.next())
+                aux = new Fornecedor(rs.getString("for_cnpj"), rs.getString("for_nome"), 
+                        rs.getString("for_telefone"));
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
     
 }

@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -44,7 +43,7 @@
                         <TableColumn fx:id="colquantidade" prefWidth="94.0" text="Quantidade" />
                      </columns>
                   </TableView>
-                  <Line endX="14.0" endY="161.0" layoutX="362.0" layoutY="73.0" startX="14.0" startY="-30.0" />
+                  <Line endX="14.0" endY="161.0" layoutX="360.0" layoutY="73.0" startX="14.0" startY="-30.0" />
                </children>
             </Pane>
          </children>
@@ -60,7 +59,6 @@
                               <Insets right="60.0" />
                            </HBox.margin>
                         </JFXTextField>
-                        <JFXRadioButton fx:id="rbaberto" onAction="#clkAberto" styleClass="labeli" text="Apenas Abertas" />
                         <JFXDatePicker fx:id="dtpInicio" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Inicial" />
                         <JFXDatePicker fx:id="dtpfinal" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Final" />
                      </children>
@@ -73,10 +71,9 @@
             <TableView fx:id="tvcompra" onMouseClicked="#clkTabela" prefHeight="227.0" prefWidth="909.0" scaleShape="false">
                <columns>
                   <TableColumn fx:id="colcod" prefWidth="105.0" text="Codigo" />
-                  <TableColumn fx:id="coldata" prefWidth="179.0" text="Data da Compra" />
-                  <TableColumn fx:id="colfornecedor" prefWidth="401.0" text="Fornecedor" />
-                  <TableColumn fx:id="colstatus" prefWidth="83.0" text="Status" />
-                  <TableColumn fx:id="coltotal" prefWidth="137.0" text="Total" />
+                  <TableColumn fx:id="coldata" prefWidth="303.0" text="Data da Compra" />
+                  <TableColumn fx:id="colfornecedor" prefWidth="380.0" text="Fornecedor" />
+                  <TableColumn fx:id="coltotal" prefWidth="117.0" text="Total" />
                </columns>
             </TableView>
          </children>
