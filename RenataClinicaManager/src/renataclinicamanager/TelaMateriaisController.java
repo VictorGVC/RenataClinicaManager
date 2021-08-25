@@ -63,11 +63,7 @@ public class TelaMateriaisController implements Initializable {
     @FXML
     private TableColumn<Material, String> colquantidade;
     @FXML
-    private TableColumn<Material, Double> colvalor;
-    @FXML
     private JFXTextField txnome;
-    @FXML
-    private JFXTextField txvalor;
     @FXML
     private JFXTextField txqtde;
     @FXML
@@ -99,7 +95,6 @@ public class TelaMateriaisController implements Initializable {
     
     private void setMascaras()
     {
-        MaskFieldUtil.monetaryField(txvalor);
         MaskFieldUtil.maxField(txnome, 35);
         MaskFieldUtil.numericField(txqtde);
         MaskFieldUtil.maxField(txqtde, 5);
@@ -110,7 +105,6 @@ public class TelaMateriaisController implements Initializable {
         colcodigo.setCellValueFactory(new PropertyValueFactory("id"));
         colnome.setCellValueFactory(new PropertyValueFactory("nome"));
         colquantidade.setCellValueFactory(new PropertyValueFactory("qtde"));
-        colvalor.setCellValueFactory(new PropertyValueFactory("valor"));
     }
     
      private void estado(boolean b) 
@@ -155,8 +149,6 @@ public class TelaMateriaisController implements Initializable {
         txqtde.setUnFocusColor(null);
         txnome.setFocusColor(null);
         txnome.setUnFocusColor(null);
-        txvalor.setFocusColor(null);
-        txvalor.setUnFocusColor(null);
     }
     
     private void limparCampos() 
@@ -250,27 +242,6 @@ public class TelaMateriaisController implements Initializable {
             flag = true;
             setCorAlert(txqtde, "RED");
         }
-        else if(Util.isSIPositive(txvalor.getText()))
-        {
-            setCorAlert(txvalor, "RED");
-            a.setContentText("Valor inválido!");
-            a.setHeaderText("Alerta");
-            a.setTitle("Alerta");
-            a.showAndWait();
-        }
-        if(txvalor.getText().isEmpty())
-        {
-            flag = true;
-            setCorAlert(txvalor, "RED");
-        }
-        else if(Util.isSDPositive(txvalor.getText()))
-        {
-            setCorAlert(txvalor, "RED");
-            a.setContentText("Valor inválido!");
-            a.setHeaderText("Alerta");
-            a.setTitle("Alerta");
-            a.showAndWait();
-        }
         if(flag)
         {
             a.setContentText("Campos obrigatórios não preenchidos!");
@@ -281,8 +252,7 @@ public class TelaMateriaisController implements Initializable {
         else
         {
 
-            Material m = new Material(Integer.parseInt(txqtde.getText()),
-                    Double.parseDouble(txvalor.getText().replace(",", ".")),txnome.getText());
+            Material m = new Material(Integer.parseInt(txqtde.getText()),txnome.getText());
             DAOMaterial dal = new DAOMaterial();
 
             setNormalColor();
@@ -352,7 +322,6 @@ public class TelaMateriaisController implements Initializable {
             {
                 Material m = (Material)tvmateriais.getSelectionModel().getSelectedItem();
                 
-                txvalor.setText(String.format("%6.2f", m.getValor()));
                 txnome.setText(m.getNome());
                 txqtde.setText(""+m.getQtde());
                 pndados.setDisable(false); 

@@ -23,6 +23,11 @@ public class Material
     public Material() {
     }
 
+    public Material(int qtde, String nome) {
+        this.qtde = qtde;
+        this.nome = nome;
+    }
+
     public Material(int qtde, double valor, String nome) {
         this.qtde = qtde;
         this.valor = valor;
@@ -37,6 +42,12 @@ public class Material
         this.id = id;
         this.qtde = qtde;
         this.valor = valor;
+        this.nome = nome;
+    }
+
+    public Material(int id, int qtde, String nome) {
+        this.id = id;
+        this.qtde = qtde;
         this.nome = nome;
     }
 

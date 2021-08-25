@@ -103,7 +103,7 @@
                         </HBox>
                      </children>
                   </Pane>
-                  <TableView fx:id="tvtratamentos" layoutY="51.0" onMouseClicked="#clkTabelaProdutos" prefHeight="239.0" prefWidth="868.0">
+                  <TableView fx:id="tvtratamentos" layoutY="51.0" onMouseClicked="#clkTabela" prefHeight="239.0" prefWidth="868.0">
                      <columns>
                         <TableColumn fx:id="colpaciente" prefWidth="345.0" text="Paciente" />
                         <TableColumn fx:id="coltratamento" prefWidth="293.0" text="Tratamento" />

@@ -9,18 +9,28 @@
 
  .jfx-date-picker .date-picker-popup .calendar-grid .day-cell:hover,
 .jfx-date-picker .data-picker-list-cell:hover {
-    -fx-background-color: #50bfcf;
+    -fx-background-color: #2e7985;
     -fx-cursor: hand;
+}
+
+.jfx-date-picker .jfx-button
+{
+   -fx-background-color: #26626b; 
+}
+
+.jfx-date-picker .jfx-button:hover
+{
+   -fx-cursor: hand;
 }
 
 .jfx-date-picker .date-picker-popup
 {
-   -fx-background-color: #55cfcf;
+   -fx-background-color: #042f38;
 }
 
 .jfx-date-picker
 {
-   -jfx-default-color: rgb(13, 164, 175);
+   -jfx-default-color: #2196a8;
 }
 
 .table-view

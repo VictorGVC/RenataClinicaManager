@@ -574,7 +574,6 @@ public class TelaFuncionarioController implements Initializable {
                     
                     if (result.isEmpty())
                     {
-
                         JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
                         sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
                         estado(true);

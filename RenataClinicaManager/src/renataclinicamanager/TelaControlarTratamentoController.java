@@ -277,7 +277,7 @@ public class TelaControlarTratamentoController implements Initializable {
     }
 
     @FXML
-    private void clkTabelaProdutos(MouseEvent event) 
+    private void clkTabela(MouseEvent event) 
     {
         if(tvtratamentos.getSelectionModel().getSelectedIndex() >= 0)
         {

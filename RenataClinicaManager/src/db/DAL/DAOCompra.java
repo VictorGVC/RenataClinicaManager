@@ -22,10 +22,7 @@ public class DAOCompra {
 
     public List<Compra> getList(String filtro) 
     {
-        String sql = "SELECT * FROM compra";
-        
-        if(!filtro.isEmpty())
-            sql += " WHERE " + filtro;
+        String sql = "SELECT * FROM compra c "+filtro;
         
         List <Compra> aux = new ArrayList();
         ResultSet rs = Banco.getCon().consultar(sql);
@@ -67,6 +64,16 @@ public class DAOCompra {
         }
         
         return aux;
+    }
+
+    public boolean apagar(int id) 
+    {
+        return Banco.getCon().manipular("DELETE FROM compra WHERE com_cod=" + id);
+    }
+    
+    public String gravar(Compra c)
+    {
+        return "";
     }
     
 }

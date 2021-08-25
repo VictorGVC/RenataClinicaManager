@@ -6,6 +6,7 @@
 package db.Models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,11 +20,16 @@ public class Compra
     private Fornecedor fornecedor;
     private List<Material> produtos;
     private LocalDate dtcompra;
+    private List<Conta> parcelas;
 
-    public Compra() {
+    public Compra() 
+    {
+        produtos = new ArrayList<>();
     }
 
-    public Compra(int id) {
+    public Compra(int id) 
+    {
+        produtos = new ArrayList<>();
         this.id = id;
     }
 
@@ -92,6 +98,14 @@ public class Compra
 
     public void setDtcompra(LocalDate dtcompra) {
         this.dtcompra = dtcompra;
+    }
+
+    public List<Conta> getParcelas() {
+        return parcelas;
+    }
+
+    public void setParcelas(List<Conta> parcelas) {
+        this.parcelas = parcelas;
     }
     
 }

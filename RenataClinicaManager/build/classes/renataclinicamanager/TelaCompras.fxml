@@ -5,78 +5,141 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<SplitPane fx:id="pnprincipal" dividerPositions="0.5438311688311688" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="618.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaComprasController">
-   <items>
-      <VBox prefHeight="366.0" prefWidth="1022.0">
-         <children>
-            <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="50.0" prefWidth="798.0" spacing="50.0">
-               <children>
-                  <JFXButton fx:id="btnovo" layoutX="91.0" layoutY="23.0" onAction="#clkBtNovo" text="Novo" />
-                  <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
-                  <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
-                  <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
-               </children>
-            </HBox>
-            <Pane fx:id="pndados" prefHeight="278.0" prefWidth="798.0">
-               <children>
-                  <JFXTextField fx:id="txtotal" editable="false" focusColor="BLACK" labelFloat="true" layoutX="55.0" layoutY="25.0" prefHeight="25.0" prefWidth="279.0" promptText="TOTAL" unFocusColor="BLACK" />
-                  <Label fx:id="lbobg" layoutX="133.0" layoutY="237.0" prefHeight="17.0" prefWidth="139.0" text="* Campos Obrigatorios" textFill="RED" />
-                  <JFXComboBox fx:id="cbfornecedor" editable="true" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="79.0" onKeyReleased="#preencheFornecedores" prefHeight="25.0" prefWidth="131.0" promptText="Fornecedor*" unFocusColor="BLACK" />
-                  <JFXButton fx:id="btadditem" layoutX="111.0" layoutY="193.0" onAction="#clkBtAddItem" text="Adicionar" />
-                  <JFXButton fx:id="btremoveitem" layoutX="208.0" layoutY="193.0" onAction="#clkBtRemoverItem" text="Remover" />
-                  <JFXComboBox fx:id="cbproduto" editable="true" focusColor="BLACK" labelFloat="true" layoutX="201.0" layoutY="79.0" onKeyReleased="#preencheMateriais" prefHeight="25.0" prefWidth="131.0" promptText="Material*" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txquantidade" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Quantidade *" unFocusColor="BLACK" />
-                  <JFXTextField fx:id="txpreco" focusColor="BLACK" labelFloat="true" layoutX="202.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
-                  <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="259.0" prefWidth="470.0" scaleShape="false">
-                     <columns>
-                        <TableColumn fx:id="colproduto" prefWidth="271.0" text="Produto" />
-                        <TableColumn fx:id="colpreco" prefWidth="104.0" text="Preço" />
-                        <TableColumn fx:id="colquantidade" prefWidth="94.0" text="Quantidade" />
-                     </columns>
-                  </TableView>
-                  <Line endX="14.0" endY="161.0" layoutX="360.0" layoutY="73.0" startX="14.0" startY="-30.0" />
-               </children>
-            </Pane>
-         </children>
-      </VBox>
-      <VBox fx:id="pnpesquisa" prefHeight="332.0" prefWidth="1022.0">
-         <children>
-            <Pane fx:id="pnfiltros" prefHeight="52.0" prefWidth="1022.0">
-               <children>
-                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="67.0" prefWidth="909.0" spacing="50.0">
-                     <children>
-                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltro" prefHeight="29.0" prefWidth="240.0" promptText="Fornecedor" unFocusColor="BLACK">
-                           <HBox.margin>
-                              <Insets right="60.0" />
-                           </HBox.margin>
-                        </JFXTextField>
-                        <JFXDatePicker fx:id="dtpInicio" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Inicial" />
-                        <JFXDatePicker fx:id="dtpfinal" defaultColor="BLACK" onAction="#dtpData" prefHeight="25.0" prefWidth="103.0" promptText="Data Final" />
-                     </children>
-                     <padding>
-                        <Insets bottom="11.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </Pane>
-            <TableView fx:id="tvcompra" onMouseClicked="#clkTabela" prefHeight="227.0" prefWidth="909.0" scaleShape="false">
-               <columns>
-                  <TableColumn fx:id="colcod" prefWidth="105.0" text="Codigo" />
-                  <TableColumn fx:id="coldata" prefWidth="303.0" text="Data da Compra" />
-                  <TableColumn fx:id="colfornecedor" prefWidth="380.0" text="Fornecedor" />
-                  <TableColumn fx:id="coltotal" prefWidth="117.0" text="Total" />
-               </columns>
-            </TableView>
-         </children>
-      </VBox>
-   </items>
-</SplitPane>
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaComprasController">
+    <SplitPane fx:id="pnprincipal" dividerPositions="0.5438311688311688" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="618.0" prefWidth="911.0">
+    <items>
+       <VBox prefHeight="366.0" prefWidth="1022.0">
+          <children>
+             <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="50.0" prefWidth="798.0" spacing="50.0">
+                <children>
+                   <JFXButton fx:id="btnovo" layoutX="91.0" layoutY="23.0" onAction="#clkBtNovo" text="Novo" />
+                   <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
+                   <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
+                   <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
+                </children>
+             </HBox>
+             <Pane fx:id="pndados" prefHeight="278.0" prefWidth="798.0">
+                <children>
+                   <JFXTextField fx:id="txtotal" editable="false" focusColor="BLACK" labelFloat="true" layoutX="55.0" layoutY="25.0" prefHeight="25.0" prefWidth="279.0" promptText="TOTAL" unFocusColor="BLACK" />
+                   <JFXComboBox fx:id="cbfornecedor" editable="true" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="79.0" onKeyReleased="#preencheFornecedores" prefHeight="25.0" prefWidth="131.0" promptText="Fornecedor*" unFocusColor="BLACK" />
+                   <JFXComboBox fx:id="cbproduto" editable="true" focusColor="BLACK" labelFloat="true" layoutX="201.0" layoutY="79.0" onKeyReleased="#preencheMateriais" prefHeight="25.0" prefWidth="131.0" promptText="Material*" unFocusColor="BLACK" />
+                   <JFXTextField fx:id="txquantidade" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Quantidade *" unFocusColor="BLACK" />
+                   <JFXTextField fx:id="txpreco" focusColor="BLACK" labelFloat="true" layoutX="202.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
+                   <JFXButton layoutX="111.0" layoutY="193.0" onAction="#clkBtAddItem" text="Adicionar" />
+                   <JFXButton layoutX="208.0" layoutY="193.0" onAction="#clkBtRemoverItem" text="Remover" />
+                   <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="259.0" prefWidth="470.0" scaleShape="false">
+                   <Label fx:id="lbobg" layoutX="133.0" layoutY="237.0" prefHeight="17.0" prefWidth="139.0" text="* Campos Obrigatorios" textFill="RED" />
+                      <columns>
+                         <TableColumn fx:id="colproduto" prefWidth="271.0" text="Produto" />
+                         <TableColumn fx:id="colpreco" prefWidth="104.0" text="Preço" />
+                         <TableColumn fx:id="colquantidade" prefWidth="91.0" text="Quantidade" />
+                      </columns>
+                   </TableView>
+                   <Line endX="14.0" endY="161.0" layoutX="360.0" layoutY="73.0" startX="14.0" startY="-30.0" />
+                </children>
+             </Pane>
+          </children>
+       </VBox>
+       <VBox fx:id="pnpesquisa" prefHeight="332.0" prefWidth="1022.0">
+          <children>
+             <Pane fx:id="pnfiltros" prefHeight="52.0" prefWidth="1022.0">
+                <children>
+                   <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" prefHeight="67.0" prefWidth="909.0" spacing="50.0">
+                      <children>
+                         <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltroT" prefHeight="29.0" prefWidth="240.0" promptText="Fornecedor" unFocusColor="BLACK">
+                            <HBox.margin>
+                               <Insets right="60.0" />
+                            </HBox.margin>
+                         </JFXTextField>
+                         <JFXDatePicker fx:id="dtpInicio" defaultColor="BLACK" onAction="#clkTFiltro" prefHeight="25.0" prefWidth="103.0" promptText="Data Inicial" />
+                         <JFXDatePicker fx:id="dtpfinal" defaultColor="BLACK" onAction="#clkTFiltro" prefHeight="25.0" prefWidth="103.0" promptText="Data Final" />
+                      </children>
+                      <padding>
+                         <Insets bottom="11.0" />
+                      </padding>
+                   </HBox>
+                </children>
+             </Pane>
+             <TableView fx:id="tvcompra" onMouseClicked="#clkTabela" prefHeight="227.0" prefWidth="909.0" scaleShape="false">
+                <columns>
+                   <TableColumn fx:id="colcod" prefWidth="105.0" text="Codigo" />
+                   <TableColumn fx:id="coldata" prefWidth="303.0" text="Data da Compra" />
+                   <TableColumn fx:id="colfornecedor" prefWidth="380.0" text="Fornecedor" />
+                   <TableColumn fx:id="coltotal" prefWidth="117.0" text="Total" />
+                </columns>
+             </TableView>
+          </children>
+       </VBox>
+    </items>
+ </SplitPane>
+   <AnchorPane fx:id="pnparcelas" layoutX="220.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="471.0" styleClass="fifth" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0">
+      <children>
+         <JFXTextField fx:id="txqtdparcelas" labelFloat="true" layoutX="27.0" layoutY="45.0" onKeyReleased="#atualizaParcelas" prefHeight="28.0" prefWidth="192.0" promptText="Quantidade de Parcelas" />
+         <JFXDatePicker fx:id="dtpparcelas" layoutX="252.0" layoutY="45.0" onAction="#atualizaParcelasD" prefHeight="28.0" prefWidth="192.0" promptText="Data do primeiro pagamento" />
+         <TableView fx:id="tvparcelas" layoutX="27.0" layoutY="92.0" prefHeight="396.0" prefWidth="417.0">
+            <columns>
+               <TableColumn fx:id="colparcela" prefWidth="116.0" text="Parcela" />
+               <TableColumn fx:id="coldtvencimentoparcela" prefWidth="190.0" text="Data Vencimento" />
+               <TableColumn fx:id="colvalorparcela" prefWidth="107.0" text="Valor" />
+            </columns>
+         </TableView>
+         <JFXTextField fx:id="txtotalparcelas" labelFloat="true" layoutX="274.0" layoutY="506.0" prefHeight="28.0" prefWidth="170.0" promptText="TOTAL" />
+         <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="27.0" layoutY="546.0" onAction="#clkBtConfirmaParcela" prefHeight="40.0" prefWidth="417.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+            <graphic>
+               <ImageView fitHeight="28.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../icons/correcttooth.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXTextField fx:id="txalocadoparcelas" labelFloat="true" layoutX="27.0" layoutY="506.0" prefHeight="28.0" prefWidth="170.0" promptText="Falta Alocar" />
+         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="4.0" onAction="#clkBtFecharParcelas" style="-fx-background-radius: 10;" text=" ">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../icons/close.png" />
+                  </image>
+                  <cursor>
+                     <Cursor fx:constant="OPEN_HAND" />
+                  </cursor>
+               </ImageView>
+            </graphic>
+            <padding>
+               <Insets top="1.0" />
+            </padding>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="210.0" layoutY="500.0" onAction="#clkBtResetParcelas" prefHeight="40.0" prefWidth="52.0" style="-fx-border-color: #8fcfcf; -fx-background-radius: 8; -fx-border-radius: 8;" text=" ">
+            <graphic>
+               <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../icons/refresh%20(1).png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+      </children>
+   </AnchorPane>
+</AnchorPane>

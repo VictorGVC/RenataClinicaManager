@@ -31,8 +31,8 @@ public class DAOMaterial {
         try {
             while(rs.next())
             {                                 
-                aux.add(new Material(rs.getInt("mat_cod"), rs.getInt("mat_estoque"), 
-                        rs.getDouble("mat_valor"), rs.getString("mat_nome")));
+                aux.add(new Material(rs.getInt("mat_cod"), rs.getInt("mat_estoque")
+                        , rs.getString("mat_nome")));
             }
         } 
         catch(SQLException ex) {
@@ -49,24 +49,22 @@ public class DAOMaterial {
 
     public boolean alterar(Material m) 
     {
-        String sql = "UPDATE material SET mat_nome='#1',mat_estoque=#2,mat_valor=#3"
+        String sql = "UPDATE material SET mat_nome='#1',mat_estoque=#2"
                 + " WHERE mat_cod=" + m.getId();
         
             sql = sql.replaceAll("#1", "" + m.getNome());
             sql = sql.replaceAll("#2", "" + m.getQtde());
-            sql = sql.replaceAll("#3", "" + m.getValor());
         
         return Banco.getCon().manipular(sql);
     }
 
     public boolean gravar(Material m) 
     {
-        String sql = "INSERT INTO material(mat_nome, mat_estoque, mat_valor) "
-                + "VALUES ('#1',#2,#3); ";
+        String sql = "INSERT INTO material(mat_nome, mat_estoque) "
+                + "VALUES ('#1',#2); ";
 
         sql = sql.replaceAll("#1", "" + m.getNome());
         sql = sql.replaceAll("#2", "" + m.getQtde());
-        sql = sql.replaceAll("#3", "" + m.getValor());
         
         return Banco.getCon().manipular(sql);
     }
