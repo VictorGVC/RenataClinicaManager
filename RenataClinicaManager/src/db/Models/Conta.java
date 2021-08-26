@@ -3,6 +3,7 @@ package db.Models;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.time.LocalDate;
+import util.MaskFieldUtil;
 
 public class Conta 
 {
@@ -24,7 +25,8 @@ public class Conta
         this.codigo = codigo;
     }
 
-    public Conta(int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, String tipo, Fornecedor fornecedor) {
+    public Conta(int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, String tipo, Fornecedor fornecedor) 
+    {
         this.numero = numero;
         this.dtvencimento = dtvencimento;
         this.dtpagamento = dtpagamento;
@@ -127,6 +129,7 @@ public class Conta
 
     public void setVdtvencimento(JFXDatePicker vdtvencimento) {
         this.vdtvencimento = vdtvencimento;
+        this.vdtvencimento.setMaxWidth(100);
     }
 
     public JFXTextField getVvalor() {
@@ -135,6 +138,7 @@ public class Conta
 
     public void setVvalor(JFXTextField vvalor) {
         this.vvalor = vvalor;
+        this.vvalor.setMaxWidth(60);
+        MaskFieldUtil.monetaryField(this.vvalor);
     }
-    
 }

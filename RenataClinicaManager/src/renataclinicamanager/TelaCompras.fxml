@@ -40,7 +40,7 @@
                    <JFXTextField fx:id="txpreco" focusColor="BLACK" labelFloat="true" layoutX="202.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
                    <JFXButton layoutX="111.0" layoutY="193.0" onAction="#clkBtAddItem" text="Adicionar" />
                    <JFXButton layoutX="208.0" layoutY="193.0" onAction="#clkBtRemoverItem" text="Remover" />
-                   <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="259.0" prefWidth="470.0" scaleShape="false">
+                   <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="10.0" onMouseClicked="#clkTabela" prefHeight="259.0" prefWidth="470.0" scaleShape="false" styleClass="parelas">
                    <Label fx:id="lbobg" layoutX="133.0" layoutY="237.0" prefHeight="17.0" prefWidth="139.0" text="* Campos Obrigatorios" textFill="RED" />
                       <columns>
                          <TableColumn fx:id="colproduto" prefWidth="271.0" text="Produto" />
@@ -85,7 +85,7 @@
        </VBox>
     </items>
  </SplitPane>
-   <AnchorPane fx:id="pnparcelas" layoutX="220.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="471.0" styleClass="fifth" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0">
+   <AnchorPane fx:id="pnparcelas" layoutX="220.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="471.0" styleClass="fifth" visible="false" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0">
       <children>
          <JFXTextField fx:id="txqtdparcelas" labelFloat="true" layoutX="27.0" layoutY="45.0" onKeyReleased="#atualizaParcelas" prefHeight="28.0" prefWidth="192.0" promptText="Quantidade de Parcelas" />
          <JFXDatePicker fx:id="dtpparcelas" layoutX="252.0" layoutY="45.0" onAction="#atualizaParcelasD" prefHeight="28.0" prefWidth="192.0" promptText="Data do primeiro pagamento" />

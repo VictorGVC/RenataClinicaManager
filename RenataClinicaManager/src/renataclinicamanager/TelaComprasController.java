@@ -18,7 +18,9 @@ import db.Models.Conta;
 import db.Models.Fornecedor;
 import db.Models.Material;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -185,6 +187,38 @@ public class TelaComprasController implements Initializable
         colparcela.setCellValueFactory(new PropertyValueFactory("numero"));
     }
     
+    private void initEvents(Compra c)
+    {
+        List<Conta> list = c.getParcelas();
+        
+        for (Conta conta : list) 
+        {
+            JFXTextField jtx = conta.getVvalor();
+            jtx.setOnKeyReleased((e)->
+            {
+                double total = Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.'));
+                double soma = 0; 
+                for (Conta parcela : comatual.getParcelas()) 
+                {
+                    if(parcela.getVvalor().getText().isEmpty())
+                        parcela.setValor(0);
+                    else
+                    {
+                        parcela.setValor(Double.parseDouble(parcela.getVvalor()
+                            .getText().replace(".", "").replace(',', '.')));
+                        soma += parcela.getValor();
+                    }
+                }
+                double dif = total-soma;
+                if(dif<0)
+                    txalocadoparcelas.setUnFocusColor(Paint.valueOf("RED"));
+                else
+                    txalocadoparcelas.setUnFocusColor(Paint.valueOf("#8fcfcf"));
+                txalocadoparcelas.setText(String.format("%.2f", dif));
+            });
+        }
+    }
+    
     private void estado(boolean b) 
     {
         pndados.setDisable(b);
@@ -304,7 +338,7 @@ public class TelaComprasController implements Initializable
             flag = true;
             setCorAlert(cbfornecedor, "RED");
         }
-        else if(txtotal.getText().isEmpty() || Double.parseDouble(txtotal.getText().replace(',', '.')) == 0)
+        else if(txtotal.getText().isEmpty() || Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.')) == 0)
             flag = true;
         if(flag)
         {
@@ -339,7 +373,7 @@ public class TelaComprasController implements Initializable
     {
         boolean flag = true;
         Material m = new Material(Integer.parseInt(txquantidade.getText()), 
-                Double.parseDouble(txpreco.getText().replace(',', '.')), 
+                Double.parseDouble(txpreco.getText().replace(".", "").replace(',', '.')), 
                 ""+cbproduto.getValue());
         for (Material produto : comatual.getProdutos()) 
         {
@@ -424,7 +458,7 @@ public class TelaComprasController implements Initializable
         DAOCompra dc = new DAOCompra();
         comatual.setFornecedor(cbfornecedor.getSelectionModel().getSelectedItem());
         comatual.setDtcompra(LocalDate.now());
-        comatual.setTotal(Double.parseDouble(txtotal.getText().replace(',', '.')));
+        comatual.setTotal(Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.')));
 
         setNormalColor();
         String result = dc.gravar(comatual);
@@ -462,7 +496,29 @@ public class TelaComprasController implements Initializable
     @FXML
     private void atualizaParcelas(KeyEvent event) 
     {
-        
+        try 
+        {
+            int qtde = Integer.parseInt(txqtdparcelas.getText());
+            double total = Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.'));
+            double valpar = Double.parseDouble(new DecimalFormat("#.##").format(total/qtde).replace(',', '.'))
+                    ,soma = 0;
+
+            comatual.setParcelas(new ArrayList<>());
+            for (int i = 0; i < qtde; i++) 
+            {
+                comatual.getParcelas().add(new Conta(i, dtpparcelas.getValue().plusMonths(i), valpar));
+                soma += valpar;
+            }
+            double dif = total-soma;
+            comatual.getParcelas().get(0).setValor(comatual.getParcelas().get(0).getValor()+dif);
+            comatual.getParcelas().get(0).getVvalor().setText(String.format("%.2f", comatual.getParcelas().get(0).getValor()));
+            txalocadoparcelas.setText(String.format("%.2f", 0.00));
+            initEvents(comatual);
+
+            tvparcelas.setItems(FXCollections.observableArrayList(comatual.getParcelas()));
+            tvparcelas.refresh();
+        } 
+        catch (Exception e) {}
     }
 
     @FXML
