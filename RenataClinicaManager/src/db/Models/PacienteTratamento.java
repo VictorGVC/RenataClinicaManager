@@ -8,8 +8,16 @@ public class PacienteTratamento {
     private Paciente paciente;
     private Tratamento tratamento;
     private char ativo;
+    private int codigo;
 
     public PacienteTratamento() {
+    }
+
+    public PacienteTratamento(Paciente paciente, Tratamento tratamento, char ativo, int codigo) {
+        this.paciente = paciente;
+        this.tratamento = tratamento;
+        this.ativo = ativo;
+        this.codigo = codigo;
     }
 
     public PacienteTratamento(Paciente paciente, Tratamento tratamento, char ativo) {
@@ -45,5 +53,13 @@ public class PacienteTratamento {
 
     public void setAtivo(char ativo) {
         this.ativo = ativo;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 }

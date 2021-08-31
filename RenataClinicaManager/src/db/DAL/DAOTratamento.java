@@ -109,7 +109,7 @@ public class DAOTratamento {
             {                                 
                 aux.add(new PacienteTratamento(dp.get(rs.getString("pac_cpf")),
                         dt.get(rs.getInt("tra_cod")), 
-                        rs.getString("pt_ativo").charAt(0)));
+                        rs.getString("pt_ativo").charAt(0),rs.getInt("pt_cod")));
             }
         } 
         catch(SQLException ex) {
@@ -120,13 +120,13 @@ public class DAOTratamento {
     }
 
     public boolean apagarPT(PacienteTratamento pt) {
-        return Banco.getCon().manipular("DELETE FROM pessoatratamento WHERE tra_cod=" + pt.getTratamento().getCod()+" AND pac_cpf='"+ pt.getPaciente().getCpf()+"'");
+        return Banco.getCon().manipular("DELETE FROM pessoatratamento WHERE pt_cod=" + pt.getCodigo());
     }
 
     public boolean iniciarTratamento(PacienteTratamento pt) 
     {
         ResultSet rs = Banco.getCon().consultar("SELECT * FROM pessoatratamento "
-                + "WHERE pac_cpf ='" + pt.getPaciente().getCpf()+"' AND tra_cod = "+pt.getTratamento().getCod());
+                +"WHERE pac_cpf='"+pt.getPaciente().getCpf()+"' AND tra_cod="+pt.getTratamento().getCod());
         int cont = 0;
 
         try{
@@ -137,8 +137,7 @@ public class DAOTratamento {
             System.out.println(ex);
         }
         if(cont > 0)
-            return Banco.getCon().manipular("UPDATE pessoatratamento SET pt_ativo = 'S' WHERE pac_cpf='" + pt.getPaciente().getCpf() +
-                    "' AND tra_cod = "+pt.getTratamento().getCod());
+            return Banco.getCon().manipular("UPDATE pessoatratamento SET pt_ativo = 'S' WHERE pt_cod=" + pt.getCodigo());
         else
         {
             String sql = "INSERT INTO pessoatratamento(pac_cpf, tra_cod, pt_ativo) "
@@ -152,8 +151,7 @@ public class DAOTratamento {
     }
 
     public boolean desativarPT(PacienteTratamento pt) {
-        return Banco.getCon().manipular("UPDATE pessoatratamento SET pt_ativo = 'N' WHERE pac_cpf='" + pt.getPaciente().getCpf() +
-                    "' AND tra_cod = "+pt.getTratamento().getCod());
+        return Banco.getCon().manipular("UPDATE pessoatratamento SET pt_ativo = 'N' WHERE pt_cod=" + pt.getCodigo());
     }
     
 }

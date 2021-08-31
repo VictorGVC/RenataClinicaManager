@@ -18,6 +18,7 @@ import db.Models.Conta;
 import db.Models.Fornecedor;
 import db.Models.Material;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -157,6 +158,8 @@ public class TelaComprasController implements Initializable
             if (n instanceof TextInputControl)
                 ((TextInputControl)n).setText("");
         }
+        cbfornecedor.getSelectionModel().clearSelection();
+        cbproduto.getSelectionModel().clearSelection();
     }
     
     private void setMascaras()
@@ -272,6 +275,20 @@ public class TelaComprasController implements Initializable
         tf.setFocusColor(Paint.valueOf(cor));
         tf.setUnFocusColor(Paint.valueOf(cor));
     }
+    
+    private void atualizaTotal()
+    {
+        double soma = 0;
+        for (Material produto : comatual.getProdutos()) 
+            soma += produto.getValor()*produto.getQtde();
+        txtotal.setText(String.format("%.2f", soma));
+    }
+    
+    private void setNormalColor()
+    {
+        cbfornecedor.setFocusColor(null);
+        cbfornecedor.setUnFocusColor(null);
+    }
 
     @FXML
     private void clkBtNovo(ActionEvent event) 
@@ -319,12 +336,6 @@ public class TelaComprasController implements Initializable
                 limparCampos();
             }
         }
-    }
-    
-    private void setNormalColor()
-    {
-        cbfornecedor.setFocusColor(null);
-        cbfornecedor.setUnFocusColor(null);
     }
 
     @FXML
@@ -407,15 +418,13 @@ public class TelaComprasController implements Initializable
         atualizaTotal();
     }
     
-    private void atualizaTotal()
+    
+    
+    private void carregaTabelaProdutos(String filtro)
     {
-        double soma = 0;
-        for (Material produto : comatual.getProdutos()) 
-            soma += produto.getValor()*produto.getQtde();
-        txtotal.setText(String.format("%.2f", soma));
+        
     }
 
-    @FXML
     private void clkTabela(MouseEvent event) 
     {
         if(tvcompra.getSelectionModel().getSelectedIndex() >= 0)
@@ -452,11 +461,11 @@ public class TelaComprasController implements Initializable
     }
 
     @FXML
-    private void clkBtConfirmaParcela(ActionEvent event) 
+    private void clkBtConfirmaParcela(ActionEvent event) throws SQLException 
     {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         DAOCompra dc = new DAOCompra();
-        comatual.setFornecedor(cbfornecedor.getSelectionModel().getSelectedItem());
+        comatual.setFornecedor(cbfornecedor.getItems().get(cbfornecedor.getSelectionModel().getSelectedIndex()));
         comatual.setDtcompra(LocalDate.now());
         comatual.setTotal(Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.')));
 
@@ -526,4 +535,15 @@ public class TelaComprasController implements Initializable
     {
         atualizaParcelas(null);
     }
+
+    @FXML
+    private void clkTabelaCompra(MouseEvent event) 
+    {
+        if(tvcompra.getSelectionModel().getSelectedIndex() != -1)
+            tvprodutos.setItems(FXCollections.observableList(tvcompra
+                    .getSelectionModel().getSelectedItem().getProdutos()));
+    }
+
+    
+
 }

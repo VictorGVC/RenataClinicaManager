@@ -142,6 +142,9 @@ public class TelaControlarTratamentoController implements Initializable {
             if (n instanceof TextInputControl)
                 ((TextInputControl)n).setText("");
         }
+        cbpaciente.getSelectionModel().clearSelection();
+        cbtratamento.getSelectionModel().clearSelection();
+        txcpf.clear();
     }
     
     private void carregaTabela(String filtro) 
@@ -152,6 +155,7 @@ public class TelaControlarTratamentoController implements Initializable {
         
         modelo = FXCollections.observableArrayList(res);
         tvtratamentos.setItems(modelo);
+        tvtratamentos.refresh();
     }
     
     private void carregaTratamentos(String filtro)
@@ -308,6 +312,7 @@ public class TelaControlarTratamentoController implements Initializable {
                     break;
             }
         }
+        tvtratamentos.refresh();
     }
 
 

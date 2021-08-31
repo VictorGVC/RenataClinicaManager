@@ -69,7 +69,46 @@ public class DAOMaterial {
         return Banco.getCon().manipular(sql);
     }
 
-    public Material get(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Material get(int cod) {
+        String sql = "SELECT * FROM material WHERE mat_cod="+cod;
+        
+        Material aux = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        try {
+            if(rs.next())
+            {                                 
+                aux = new Material(rs.getInt("mat_cod"), rs.getInt("mat_estoque")
+                        , rs.getString("mat_nome"));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        return aux;
+    }
+    
+    public Material get(String filtro)
+    {
+        String sql = "SELECT * FROM material";
+        
+        if(!filtro.isEmpty())
+            sql += " WHERE " + filtro;
+        
+        Material m = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        try {
+            if(rs.next())
+            {                                 
+                m = new Material(rs.getInt("mat_cod"), rs.getInt("mat_estoque")
+                        , rs.getString("mat_nome"));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return m;
     }
 }
