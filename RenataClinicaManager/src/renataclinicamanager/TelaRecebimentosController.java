@@ -34,6 +34,8 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private Tab tabreceber;
     @FXML
+    private Tab tabrecebidas;
+    @FXML
     private SplitPane pnprincipal;
     @FXML
     private HBox pnbotoes;
@@ -42,53 +44,21 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private JFXButton btcancelar;
     @FXML
-    private Pane pndados;
+    private Pane pndados11;
     @FXML
-    private JFXTextField tparcelas;
+    private JFXTextField tparcelas11;
     @FXML
-    private JFXTextField tcodigo;
+    private JFXTextField tcodigo11;
     @FXML
-    private JFXDatePicker dpdatavenc;
+    private JFXTextField tvalor11;
     @FXML
-    private JFXTextField tcodvenda;
+    private JFXTextField tcontato11;
     @FXML
-    private JFXTextField tvalor;
+    private JFXDatePicker dpdatapag1;
     @FXML
-    private JFXTextField tcontato;
+    private JFXTextField ttipo11;
     @FXML
-    private VBox pnpesquisa;
-    @FXML
-    private Pane pnfiltros;
-    @FXML
-    private JFXComboBox<?> cbcategoria;
-    @FXML
-    private JFXTextField tfiltro;
-    @FXML
-    private JFXDatePicker dpdatainicial;
-    @FXML
-    private JFXDatePicker dpdatafinal;
-    @FXML
-    private JFXButton btlimpar;
-    @FXML
-    private JFXButton btfiltrar;
-    @FXML
-    private TableView<?> tvrecebimentos;
-    @FXML
-    private TableColumn<?, ?> colcod;
-    @FXML
-    private TableColumn<?, ?> colvenda;
-    @FXML
-    private TableColumn<?, ?> colparcela;
-    @FXML
-    private TableColumn<?, ?> colvalor;
-    @FXML
-    private TableColumn<?, ?> coldatavenc;
-    @FXML
-    private TableColumn<?, ?> coltipo;
-    @FXML
-    private TableColumn<?, ?> colcontato;
-    @FXML
-    private Tab tabrecebidas;
+    private JFXTextField tfiltro1;
     @FXML
     private SplitPane pnprincipal1;
     @FXML
@@ -97,6 +67,42 @@ public class TelaRecebimentosController implements Initializable {
     private JFXButton btestornar;
     @FXML
     private JFXButton btcancelar1;
+    @FXML
+    private VBox pnpesquisa1;
+    @FXML
+    private Pane pnfiltros1;
+    @FXML
+    private JFXComboBox<?> cbcategoria1;
+    @FXML
+    private JFXDatePicker dpdatainicial1;
+    @FXML
+    private JFXDatePicker dpdatafinal1;
+    @FXML
+    private JFXTextField tcodvenda11;
+    @FXML
+    private Pane pnfiltros11;
+    @FXML
+    private JFXComboBox<?> cbcategoria11;
+    @FXML
+    private JFXDatePicker dpdatainicial11;
+    @FXML
+    private JFXDatePicker dpdatafinal11;
+    @FXML
+    private TableView<?> tvrecebimentos11;
+    @FXML
+    private TableColumn<?, ?> colcod11;
+    @FXML
+    private TableColumn<?, ?> colvenda11;
+    @FXML
+    private TableColumn<?, ?> colparcela11;
+    @FXML
+    private TableColumn<?, ?> colvalor11;
+    @FXML
+    private TableColumn<?, ?> coldatavenc11;
+    @FXML
+    private TableColumn<?, ?> coltipo11;
+    @FXML
+    private TableColumn<?, ?> colcontato11;
     @FXML
     private Pane pndados1;
     @FXML
@@ -114,23 +120,9 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private JFXTextField ttipo1;
     @FXML
-    private VBox pnpesquisa1;
+    private JFXTextField tfiltrorecebidos;
     @FXML
-    private Pane pnfiltros1;
-    @FXML
-    private JFXComboBox<?> cbcategoria1;
-    @FXML
-    private JFXTextField tfiltro1;
-    @FXML
-    private JFXDatePicker dpdatainicial1;
-    @FXML
-    private JFXDatePicker dpdatafinal1;
-    @FXML
-    private JFXButton btlimpar1;
-    @FXML
-    private JFXButton btfiltrar1;
-    @FXML
-    private TableView<?> tvrecebidas;
+    private TableView<?> tvrecebimentos1;
     @FXML
     private TableColumn<?, ?> colcod1;
     @FXML
@@ -140,7 +132,7 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private TableColumn<?, ?> colvalor1;
     @FXML
-    private TableColumn<?, ?> coldatapag;
+    private TableColumn<?, ?> coldatavenc1;
     @FXML
     private TableColumn<?, ?> coltipo1;
     @FXML
@@ -151,7 +143,7 @@ public class TelaRecebimentosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    
     }    
 
     @FXML
@@ -163,15 +155,7 @@ public class TelaRecebimentosController implements Initializable {
     }
 
     @FXML
-    private void clkTFiltro(KeyEvent event) {
-    }
-
-    @FXML
-    private void clkBtLimpar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkBtFiltrar(ActionEvent event) {
+    private void clkTFiltro1(KeyEvent event) {
     }
 
     @FXML
@@ -179,23 +163,8 @@ public class TelaRecebimentosController implements Initializable {
     }
 
     @FXML
-    private void clkBtEstonar(ActionEvent event) {
+    private void clkBtEstornar(ActionEvent event) {
     }
 
-    @FXML
-    private void clkTFiltro1(KeyEvent event) {
-    }
-
-    @FXML
-    private void clkBtLimpar1(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkBtFiltrar1(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkTabelaRecebidas(MouseEvent event) {
-    }
     
 }

@@ -334,7 +334,8 @@ public class TelaPrincipalController implements Initializable {
         Stage stage = new Stage();
 
         stage.resizableProperty().setValue(Boolean.FALSE);
-        stage.setMaxWidth(800);
+        stage.setMaxWidth(804);
+        stage.setMaxHeight(638);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Recebimento");
@@ -369,6 +370,23 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(917);
         stage.setMaxHeight(643);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Compra");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void clkPagamento(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaPagamentos.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(804);
+        stage.setMaxHeight(660);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Compra");

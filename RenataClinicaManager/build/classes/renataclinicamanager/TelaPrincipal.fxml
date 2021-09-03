@@ -49,7 +49,7 @@
                         <MenuItem mnemonicParsing="false" text="Atendimento" />
                       <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
                         <MenuItem mnemonicParsing="false" onAction="#clkCompra" text="Compra" />
-                        <MenuItem mnemonicParsing="false" text="Pagamento" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkPagamento" text="Pagamento" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios" />

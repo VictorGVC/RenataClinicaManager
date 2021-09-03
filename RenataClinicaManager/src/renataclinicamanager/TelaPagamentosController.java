@@ -6,23 +6,33 @@
 package renataclinicamanager;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import db.DAL.DAOConta;
+import db.Models.Conta;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import util.MaskFieldUtil;
 
 /**
  * FXML Controller class
@@ -31,149 +41,233 @@ import javafx.scene.layout.VBox;
  */
 public class TelaPagamentosController implements Initializable {
 
+    
+    //CONTAS A PAGAR
     @FXML
-    private Tab tabNaoPago;
+    private Tab tabreceber;
     @FXML
-    private AnchorPane pnprincipal;
+    private TableView<Conta> tvpagamentosap;
     @FXML
-    private HBox pnbotoes;
+    private TableColumn<Conta, Integer> colcodap;
     @FXML
-    private JFXButton btQuitar;
+    private TableColumn<Conta, String> colfornecedorap;
     @FXML
-    private JFXButton btvoltar;
+    private TableColumn<Conta, Integer> colparcelaap;
     @FXML
-    private Pane pndados;
+    private TableColumn<Conta, String> colvalorap;
     @FXML
-    private CheckBox ckVencidos;
+    private TableColumn<Conta, LocalDate> coldatavencap;
     @FXML
-    private JFXTextField txfiltro;
+    private TableColumn<Conta, String> coltipoap;
     @FXML
-    private Label dtvencimentop;
+    private TableColumn<Conta, String> colcontatoap;
     @FXML
-    private JFXDatePicker dtPagamentosinicial;
+    private SplitPane pnprincipalap;
     @FXML
-    private JFXDatePicker dtPagamentosfinal;
+    private HBox pnbotoesap;
     @FXML
-    private JFXButton btLimpar;
+    private Pane pndadosap;
     @FXML
-    private VBox pnpesquisa;
+    private VBox pnpesquisaap;
     @FXML
-    private TableView<?> tvContas;
+    private Pane pnfiltrosap;
     @FXML
-    private TableColumn<?, ?> colCod;
+    private JFXComboBox<String> cbcategoriaap;
     @FXML
-    private TableColumn<?, ?> colParcela;
+    private JFXTextField txfiltroap;
     @FXML
-    private TableColumn<?, ?> colFornecedor;
+    private JFXDatePicker dpdatainicialap;
     @FXML
-    private TableColumn<?, ?> colValor;
+    private JFXDatePicker dpdatafinalap;
     @FXML
-    private TableColumn<?, ?> colVencimento;
+    private JFXButton btadddespesa;
+    
+    //CONTAS PAGAS
     @FXML
-    private TableColumn<?, ?> colPag;
+    private JFXButton btestornar;
     @FXML
-    private TableColumn<?, ?> colTipo;
+    private TableView<Conta> tvpagamentosp;
     @FXML
-    private TableColumn<?, ?> colContato;
+    private TableColumn<Conta, Integer> colcodp;
     @FXML
-    private Tab tabPago;
+    private TableColumn<Conta, String> colfornecedorp;
     @FXML
-    private AnchorPane pnprincipal1;
+    private TableColumn<Conta, Integer> colparcelap;
     @FXML
-    private HBox pnbotoes1;
+    private TableColumn<Conta, String> colvalorp;
     @FXML
-    private JFXButton btExtornar;
+    private TableColumn<Conta, String> coltipop;
     @FXML
-    private JFXButton btvoltarPag;
+    private TableColumn<Conta, String> colcontatop;
     @FXML
-    private Pane pndados1;
+    private SplitPane pnprincipalp;
     @FXML
-    private JFXTextField txfiltroPag;
+    private HBox pnbotoesp;
     @FXML
-    private Label lbDtPagamentoPag;
+    private VBox pnpesquisap;
     @FXML
-    private JFXButton btLimparPag;
+    private Pane pnfiltrosp;
     @FXML
-    private Label lbDTVencimentoPag;
+    private JFXComboBox<String> cbcategoriap;
     @FXML
-    private JFXDatePicker dtVencimentoPagFinal;
+    private JFXTextField txfiltrop;
     @FXML
-    private JFXDatePicker dtVencimentoPagInicial;
+    private JFXDatePicker dpdatainicialp;
     @FXML
-    private JFXDatePicker dtPagamentosPagFinal;
+    private JFXDatePicker dpdatafinalp;
     @FXML
-    private JFXDatePicker dtPagamentosPagInicial;
+    private JFXButton btliquidar;
     @FXML
-    private VBox pnpesquisa1;
+    private Tab tabpagas;
     @FXML
-    private TableView<?> tvContasPag;
-    @FXML
-    private TableColumn<?, ?> colCodPag;
-    @FXML
-    private TableColumn<?, ?> colParcelaPag;
-    @FXML
-    private TableColumn<?, ?> colFornecedorPag;
-    @FXML
-    private TableColumn<?, ?> colValorPag;
-    @FXML
-    private TableColumn<?, ?> colVencimentoPag;
-    @FXML
-    private TableColumn<?, ?> colPagPag;
-    @FXML
-    private TableColumn<?, ?> colTipoPag;
-    @FXML
-    private TableColumn<?, ?> colContatoPag;
+    private TableColumn<Conta, LocalDate> coldatapagamentop;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void clkbtQuitar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkBtVoltar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickCKVenc(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkTFiltro(KeyEvent event) {
-    }
-
-    @FXML
-    private void clkDTVencimento(ActionEvent event) {
-    }
-
-    @FXML
-    private void LimparTelaNaoPag(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkbtExtornar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkTFiltroPag(KeyEvent event) {
-    }
-
-    @FXML
-    private void LimparTelaPag(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkDTVencimentoPag(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkDTPagamento(ActionEvent event) {
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        initCbFiltro();
+        initColAPagar();
+        initColPagas();
+        initDates();
+        clkTFiltrop(null);
+        clkTFiltroap(null);
+    }  
+    
+    private void initDates()
+    {
+        dpdatafinalap.setValue(LocalDate.now().plusMonths(5));
+        dpdatafinalp.setValue(LocalDate.now().plusMonths(5));
+        dpdatainicialap.setValue(LocalDate.now().minusMonths(3));
+        dpdatainicialp.setValue(LocalDate.now().minusMonths(3));
     }
     
+    private void initCbFiltro()
+    {
+        List<String> l = new ArrayList();
+        l.add("Fornecedor");
+        l.add("Tipo");
+        
+        cbcategoriap.setItems(FXCollections.observableArrayList(l));
+        cbcategoriaap.setItems(FXCollections.observableArrayList(l));
+                
+        cbcategoriap.getSelectionModel().select(0);
+        cbcategoriaap.getSelectionModel().select(0);
+    }
+    
+    private void initColAPagar() 
+    {
+        colcodap.setCellValueFactory(new PropertyValueFactory("codigo"));
+        colfornecedorap.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
+        colparcelaap.setCellValueFactory(new PropertyValueFactory("numero"));
+        colvalorap.setCellValueFactory((v) -> new SimpleStringProperty(""+String.format("%.2f", v.getValue().getValor())));
+        coldatavencap.setCellValueFactory(new PropertyValueFactory("dtvencimento"));
+        coltipoap.setCellValueFactory(new PropertyValueFactory("tipo"));
+        colcontatoap.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getTelefone()));
+    }
+    
+    private void initColPagas() 
+    {
+        colcodp.setCellValueFactory(new PropertyValueFactory("codigo"));
+        colfornecedorp.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
+        colparcelap.setCellValueFactory(new PropertyValueFactory("numero"));
+        colvalorap.setCellValueFactory((v) -> new SimpleStringProperty(""+String.format("%.2f", v.getValue().getValor())));
+        coldatapagamentop.setCellValueFactory(new PropertyValueFactory("dtpagamento"));
+        coltipop.setCellValueFactory(new PropertyValueFactory("tipo"));
+        colcontatop.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getTelefone()));
+    }
+    
+    private void carregaTabelaap(String filtro)
+    {
+        DAOConta dc = new DAOConta();
+        List<Conta> res = dc.getContas(filtro);
+        ObservableList<Conta> modelo;
+        
+        modelo = FXCollections.observableArrayList(res);
+        tvpagamentosap.setItems(modelo);
+        tvpagamentosap.refresh();
+    }
+
+    @FXML
+    private void clkBtLiquidar(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkBtEstornar(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTabelaap(MouseEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTabelap(MouseEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkBtAddDespesa(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTFiltroap(KeyEvent event) 
+    {
+        if(cbcategoriaap.getSelectionModel().getSelectedIndex() != -1)
+        {
+            switch (cbcategoriaap.getSelectionModel().getSelectedIndex()) 
+            {
+                case 0:
+                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
+                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"'");
+                    break;
+                case 1:
+                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
+                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"'");
+                    break;
+            }
+        }
+    }
+    
+
+    @FXML
+    private void clkTFiltroapd(ActionEvent event) 
+    {
+        clkTFiltroap(null);
+    }
+
+    @FXML
+    private void clkTFiltropd(ActionEvent event) 
+    {
+        clkTFiltrop(null);
+    }
+
+    @FXML
+    private void clkTFiltrop(KeyEvent event) 
+    {
+        if(cbcategoriaap.getSelectionModel().getSelectedIndex() != -1)
+        {
+            switch (cbcategoriaap.getSelectionModel().getSelectedIndex()) 
+            {
+                case 0:
+                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
+                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"'");
+                    break;
+                case 1:
+                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
+                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"'");
+                    break;
+            }
+        }
+    }
 }
