@@ -8,6 +8,7 @@ package renataclinicamanager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOConta;
 import db.Models.Conta;
@@ -22,6 +23,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -32,7 +36,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import util.MaskFieldUtil;
 
 /**
  * FXML Controller class
@@ -173,7 +176,7 @@ public class TelaPagamentosController implements Initializable {
         colcodp.setCellValueFactory(new PropertyValueFactory("codigo"));
         colfornecedorp.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
         colparcelap.setCellValueFactory(new PropertyValueFactory("numero"));
-        colvalorap.setCellValueFactory((v) -> new SimpleStringProperty(""+String.format("%.2f", v.getValue().getValor())));
+        colvalorp.setCellValueFactory((v) -> new SimpleStringProperty(""+String.format("%.2f", v.getValue().getValor())));
         coldatapagamentop.setCellValueFactory(new PropertyValueFactory("dtpagamento"));
         coltipop.setCellValueFactory(new PropertyValueFactory("tipo"));
         colcontatop.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getTelefone()));
@@ -189,11 +192,55 @@ public class TelaPagamentosController implements Initializable {
         tvpagamentosap.setItems(modelo);
         tvpagamentosap.refresh();
     }
+    
+    private void carregaTabelap(String filtro)
+    {
+        DAOConta dc = new DAOConta();
+        List<Conta> res = dc.getContas(filtro);
+        ObservableList<Conta> modelo;
+        
+        modelo = FXCollections.observableArrayList(res);
+        tvpagamentosp.setItems(modelo);
+        tvpagamentosp.refresh();
+    }
 
     @FXML
     private void clkBtLiquidar(ActionEvent event) 
     {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
         
+        if(tvpagamentosap.getSelectionModel().getSelectedIndex() != -1)
+        {
+            a.setHeaderText("Liquidar!");
+            a.setTitle("Liquidar");
+            a.setContentText("Confirma o Pagamento da Parcela?");
+            a.getButtonTypes().clear();
+            a.getButtonTypes().add(ButtonType.NO);
+            a.getButtonTypes().add(ButtonType.YES);
+            if (a.showAndWait().get() == ButtonType.YES)
+            {
+                DAOConta dal = new DAOConta();
+                Conta c;
+                c = tvpagamentosap.getSelectionModel().getSelectedItem();
+                if(dal.pagar(c))
+                {      
+                    JFXSnackbar sb = new JFXSnackbar(pnpesquisaap); 
+                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Finalizado com Sucesso!")));
+                }
+                else
+                { 
+                    a.setAlertType(Alert.AlertType.ERROR);
+                    a.getButtonTypes().clear();
+                    a.getButtonTypes().add(ButtonType.OK);
+                    a.setHeaderText("ERRO");
+                    a.setTitle("ERRO!");
+                    a.setContentText("Erro ao Finalizar!");
+                    a.showAndWait();
+                }
+                clkTFiltroap(null);
+                clkTFiltrop(null);
+            }
+        }
     }
 
     @FXML
@@ -238,7 +285,6 @@ public class TelaPagamentosController implements Initializable {
             }
         }
     }
-    
 
     @FXML
     private void clkTFiltroapd(ActionEvent event) 
@@ -260,11 +306,12 @@ public class TelaPagamentosController implements Initializable {
             switch (cbcategoriaap.getSelectionModel().getSelectedIndex()) 
             {
                 case 0:
-                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
-                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"'");
+                    carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
+                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
+                                   + "AND ");
                     break;
                 case 1:
-                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
+                    carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"'");
                     break;
             }

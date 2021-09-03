@@ -70,7 +70,9 @@ public class DAOConta
     {
         String sql = "UPDATE contaspagar SET pag_dtpagamento = '#1', pag_valor=#2 WHERE pag_cod="+c.getCodigo();
         
-        sql = sql.replaceAll("#1","" +c.getDtpagamento());
+        //DEPOIS QUE PERGUNTAR
+        //sql = sql.replaceAll("#1","" +c.getDtpagamento());
+        sql = sql.replaceAll("#1","" +LocalDate.now());
         sql = sql.replaceAll("#2","" +c.getValor());
 
         return Banco.getCon().manipular(sql);
