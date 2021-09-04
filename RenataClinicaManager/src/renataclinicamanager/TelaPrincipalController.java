@@ -386,10 +386,10 @@ public class TelaPrincipalController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(804);
-        stage.setMaxHeight(660);
+        stage.setMaxHeight(610);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
-        stage.setTitle("Compra");
+        stage.setTitle("Pagamento");
         stage.setScene(scene);
         stage.show();
     }
