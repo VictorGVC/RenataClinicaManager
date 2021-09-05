@@ -7,11 +7,11 @@ package db.DAL;
 
 import db.Banco.Banco;
 import db.Models.Conta;
+import db.Models.Fornecedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -28,11 +28,12 @@ public class DAOConta
         ResultSet rs = Banco.getCon().consultar(sql);
         
         DAOFornecedor df = new DAOFornecedor();
-        
+        Fornecedor f;
         try {
             LocalDate venc,pag;
             while(rs.next())
             {     
+                f = df.get(rs.getString("for_cnpj"));
                 try 
                 {
                     venc = rs.getDate("pag_dtvencimento").toLocalDate();   
@@ -49,9 +50,13 @@ public class DAOConta
                 {
                     pag = null;
                 }  
+                if(f == null)
+                {
+                    f = new Fornecedor("", "");
+                }
                 aux.add(new Conta(rs.getInt("pag_cod"), rs.getInt("pag_parcela"), 
                         venc, pag, rs.getDouble("pag_valor"), rs.getString("pag_tipo"), 
-                        df.get(rs.getString("for_cnpj"))));
+                        f));
             }
         } 
         catch(SQLException ex) {
@@ -70,9 +75,7 @@ public class DAOConta
     {
         String sql = "UPDATE contaspagar SET pag_dtpagamento = '#1', pag_valor=#2 WHERE pag_cod="+c.getCodigo();
         
-        //DEPOIS QUE PERGUNTAR
-        //sql = sql.replaceAll("#1","" +c.getDtpagamento());
-        sql = sql.replaceAll("#1","" +LocalDate.now());
+        sql = sql.replaceAll("#1","" +c.getDtpagamento());
         sql = sql.replaceAll("#2","" +c.getValor());
 
         return Banco.getCon().manipular(sql);
@@ -81,7 +84,7 @@ public class DAOConta
     public boolean estornarp(Conta c)
     {
         String sql = "UPDATE contaspagar SET "
-                + "pag_dtpagamento =null WHERE pag_cod="+c.getCodigo();
+                + "pag_dtpagamento = null WHERE pag_cod="+c.getCodigo();
 
         return Banco.getCon().manipular(sql);
     }
@@ -89,5 +92,18 @@ public class DAOConta
     public boolean estornarr(Conta c)
     {
         return true;
+    }
+    
+    public boolean gerarDespesa(Conta c)
+    {
+        String sql = "INSERT INTO contaspagar (pag_parcela, pag_dtvencimento, "
+                        + "pag_valor, pag_tipo) VALUES(#1,'#2',#3,'#4')";
+
+        sql = sql.replaceAll("#1", "" + (1));
+        sql = sql.replaceAll("#2", "" + c.getDtvencimento());
+        sql = sql.replaceAll("#3", "" + c.getValor());
+        sql = sql.replaceAll("#4", c.getTipo());
+
+        return Banco.getCon().manipular(sql);
     }
 }

@@ -71,11 +71,11 @@
                         <TableView fx:id="tvpagamentosap" onMouseClicked="#clkTabelaap" prefHeight="356.0" prefWidth="798.0">
                            <columns>
                               <TableColumn fx:id="colcodap" prefWidth="52.0" text="Código" />
-                              <TableColumn fx:id="colfornecedorap" prefWidth="238.0" text="Fornecedor" />
-                              <TableColumn fx:id="colparcelaap" minWidth="8.0" prefWidth="59.0" text="Parcela" />
-                              <TableColumn fx:id="colvalorap" prefWidth="92.0" text="Valor" />
-                              <TableColumn fx:id="coldatavencap" prefWidth="152.0" text="Data de Vencimento" />
-                              <TableColumn fx:id="coltipoap" prefWidth="86.0" text="Tipo" />
+                              <TableColumn fx:id="colfornecedorap" prefWidth="189.0" text="Fornecedor" />
+                              <TableColumn fx:id="colparcelaap" minWidth="8.0" prefWidth="48.0" text="Parcela" />
+                              <TableColumn fx:id="colvalorap" prefWidth="76.0" text="Valor" />
+                              <TableColumn fx:id="coldatavencap" prefWidth="119.0" text="Data de Vencimento" />
+                              <TableColumn fx:id="coltipoap" prefWidth="195.0" text="Tipo" />
                               <TableColumn fx:id="colcontatoap" prefWidth="115.0" text="Contato" />
                            </columns>
                         </TableView>

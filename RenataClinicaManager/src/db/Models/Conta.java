@@ -55,7 +55,8 @@ public class Conta
         setVvalor(new JFXTextField(String.format("%.2f", valor)));
     }
 
-    public Conta(int codigo, int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, String tipo, Fornecedor fornecedor) {
+    public Conta(int codigo, int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, String tipo, Fornecedor fornecedor) 
+    {
         this.codigo = codigo;
         this.numero = numero;
         this.dtvencimento = dtvencimento;
@@ -66,6 +67,12 @@ public class Conta
         setVdtvencimento(new JFXDatePicker(dtvencimento));
         setVvalor(new JFXTextField(String.format("%.2f", valor)));
     }
+
+    public Conta(LocalDate dtvencimento, double valor, String tipo) {
+        this.dtvencimento = dtvencimento;
+        this.valor = valor;
+        this.tipo = tipo;
+    }    
 
     public int getCodigo() {
         return codigo;

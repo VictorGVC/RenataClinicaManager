@@ -50,7 +50,7 @@
                            <children>
                               <HBox id="filtro" alignment="CENTER" prefHeight="69.0" prefWidth="798.0" spacing="9.0">
                                  <children>
-                                    <JFXComboBox fx:id="cbcategoriaap" focusColor="BLACK" labelFloat="true" onAction="#clkTFiltroapd" prefHeight="38.0" prefWidth="90.0" promptText="Categoria" unFocusColor="BLACK" />
+                                    <JFXComboBox fx:id="cbcategoriaap" focusColor="BLACK" labelFloat="true" onAction="#clkTFiltroapd" prefHeight="38.0" prefWidth="133.0" promptText="Categoria" unFocusColor="BLACK" />
                                     <JFXTextField fx:id="txfiltroap" focusColor="BLACK" labelFloat="true" onKeyReleased="#clkTFiltroap" prefHeight="38.0" prefWidth="224.0" unFocusColor="BLACK">
                                        <font>
                                           <Font size="17.0" />
@@ -71,12 +71,12 @@
                         <TableView fx:id="tvpagamentosap" onMouseClicked="#clkTabelaap" prefHeight="356.0" prefWidth="798.0">
                            <columns>
                               <TableColumn fx:id="colcodap" prefWidth="52.0" text="Código" />
-                              <TableColumn fx:id="colfornecedorap" prefWidth="238.0" text="Fornecedor" />
-                              <TableColumn fx:id="colparcelaap" minWidth="8.0" prefWidth="59.0" text="Parcela" />
-                              <TableColumn fx:id="colvalorap" prefWidth="92.0" text="Valor" />
-                              <TableColumn fx:id="coldatavencap" prefWidth="152.0" text="Data de Vencimento" />
-                              <TableColumn fx:id="coltipoap" prefWidth="86.0" text="Tipo" />
-                              <TableColumn fx:id="colcontatoap" prefWidth="119.0" text="Contato" />
+                              <TableColumn fx:id="colfornecedorap" prefWidth="189.0" text="Fornecedor" />
+                              <TableColumn fx:id="colparcelaap" minWidth="8.0" prefWidth="48.0" text="Parcela" />
+                              <TableColumn fx:id="colvalorap" prefWidth="76.0" text="Valor" />
+                              <TableColumn fx:id="coldatavencap" prefWidth="119.0" text="Data de Vencimento" />
+                              <TableColumn fx:id="coltipoap" prefWidth="195.0" text="Tipo" />
+                              <TableColumn fx:id="colcontatoap" prefWidth="115.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>
@@ -87,7 +87,7 @@
       </Tab>
       <Tab fx:id="tabpagas" text="Contas Pagas">
          <content>
-            <SplitPane fx:id="pnprincipalp" dividerPositions="0.08379888268156424" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="539.0" prefWidth="800.0">
+            <SplitPane fx:id="pnprincipalp" dividerPositions="0.08379888268156424" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="544.0" prefWidth="800.0">
                <items>
                   <VBox prefHeight="21.0" prefWidth="798.0">
                      <children>
@@ -130,7 +130,7 @@
                               <TableColumn fx:id="colvalorp" prefWidth="84.0" text="Valor" />
                               <TableColumn fx:id="coldatapagamentop" prefWidth="152.0" text="Data de Pagamento" />
                               <TableColumn fx:id="coltipop" prefWidth="86.0" text="Tipo" />
-                              <TableColumn fx:id="colcontatop" prefWidth="119.0" text="Contato" />
+                              <TableColumn fx:id="colcontatop" prefWidth="115.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>

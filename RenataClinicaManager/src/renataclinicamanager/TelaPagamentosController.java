@@ -143,8 +143,8 @@ public class TelaPagamentosController implements Initializable {
         initColAPagar();
         initColPagas();
         initDates();
-        clkTFiltrop(null);
         clkTFiltroap(null);
+        clkTFiltrop(null);
     }  
     
     private void initDateFormat() 
@@ -163,8 +163,8 @@ public class TelaPagamentosController implements Initializable {
     private void initCbFiltro()
     {
         List<String> l = new ArrayList();
-        l.add("Fornecedor");
         l.add("Tipo");
+        l.add("Fornecedor");
         
         cbcategoriap.setItems(FXCollections.observableArrayList(l));
         cbcategoriaap.setItems(FXCollections.observableArrayList(l));
@@ -204,6 +204,7 @@ public class TelaPagamentosController implements Initializable {
         modelo = FXCollections.observableArrayList(res);
         tvpagamentosap.setItems(modelo);
         tvpagamentosap.refresh();
+        tvpagamentosap.getItems();
     }
     
     private void carregaTabelap(String filtro)
@@ -297,9 +298,21 @@ public class TelaPagamentosController implements Initializable {
     }
 
     @FXML
-    private void clkBtAddDespesa(ActionEvent event) 
+    private void clkBtAddDespesa(ActionEvent event) throws IOException 
     {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaAddDespesa.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Despesa");
+        stage.setScene(scene);
+        stage.show();
         
+        clkTFiltroap(null);
+        clkTFiltrop(null);
     }
 
     @FXML
@@ -309,13 +322,13 @@ public class TelaPagamentosController implements Initializable {
         {
             switch (cbcategoriaap.getSelectionModel().getSelectedIndex()) 
             {
-                case 0:
-                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
+                case 1:
+                    carregaTabelaap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
                             + "AND c.pag_dtpagamento IS NULL");
                     break;
-                case 1:
-                    carregaTabelaap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
+                case 0:
+                    carregaTabelaap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
                             + "AND c.pag_dtpagamento IS NULL");
                     break;
@@ -342,12 +355,12 @@ public class TelaPagamentosController implements Initializable {
         {
             switch (cbcategoriaap.getSelectionModel().getSelectedIndex()) 
             {
-                case 0:
+                case 1:
                     carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
                                    + "AND c.pag_dtpagamento IS NOT NULL");
                     break;
-                case 1:
+                case 0:
                     carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
                                     + "AND c.pag_dtpagamento IS NOT NULL");
