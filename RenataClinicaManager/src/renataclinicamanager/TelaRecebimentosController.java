@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import db.Models.Conta;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,112 +32,81 @@ import javafx.scene.layout.VBox;
  */
 public class TelaRecebimentosController implements Initializable {
 
+    // A Receber
     @FXML
     private Tab tabreceber;
     @FXML
+    private TableView<Conta> tvrecebimentosar;
+    @FXML
+    private SplitPane pnprincipalap;
+    @FXML
+    private HBox pnbotoesp;
+    @FXML
+    private VBox pnpesquisap;
+    @FXML
+    private Pane pnfiltrosp;
+    @FXML
+    private HBox pnbotoesap1;
+    @FXML
+    private JFXButton btreceber;
+    @FXML
+    private VBox pnpesquisaar;
+    @FXML
+    private Pane pnfiltrosar;
+    @FXML
+    private JFXComboBox<String> cbcategoriaar;
+    @FXML
+    private JFXTextField txfiltroar;
+    @FXML
+    private JFXDatePicker dpdatainicialar;
+    @FXML
+    private JFXDatePicker dpdatafinalar;
+    @FXML
+    private TableColumn<Conta, Integer> colcodar;
+    @FXML
+    private TableColumn<Conta, String> colpacientear;
+    @FXML
+    private TableColumn<Conta, Integer> colparcelaar;
+    @FXML
+    private TableColumn<Conta, Double> colvalorar;
+    @FXML
+    private TableColumn<Conta, String> coldatavencar;
+    @FXML
+    private TableColumn<Conta, String> coltipoar;
+    @FXML
+    private TableColumn<Conta, String> colcontatoar;
+    
+    //Recebidas
+    @FXML
     private Tab tabrecebidas;
     @FXML
-    private SplitPane pnprincipal;
+    private JFXComboBox<String> cbcategoriar;
     @FXML
-    private HBox pnbotoes;
+    private JFXTextField txfiltror;
     @FXML
-    private JFXButton btquitar;
+    private JFXDatePicker dpdatainicialr;
     @FXML
-    private JFXButton btcancelar;
+    private JFXDatePicker dpdatafinalr;
     @FXML
-    private Pane pndados11;
+    private TableColumn<Conta, Integer> colcodr;
     @FXML
-    private JFXTextField tparcelas11;
+    private TableColumn<Conta, String> colpacienter;
     @FXML
-    private JFXTextField tcodigo11;
+    private TableColumn<Conta, Integer> colparcelar;
     @FXML
-    private JFXTextField tvalor11;
+    private TableColumn<Conta, Double> colvalorr;
     @FXML
-    private JFXTextField tcontato11;
+    private TableColumn<Conta, String> coldatapagamentor;
     @FXML
-    private JFXDatePicker dpdatapag1;
+    private TableColumn<Conta, String> coltipor;
     @FXML
-    private JFXTextField ttipo11;
-    @FXML
-    private JFXTextField tfiltro1;
-    @FXML
-    private SplitPane pnprincipal1;
-    @FXML
-    private HBox pnbotoes1;
+    private TableColumn<Conta, String> colcontator;
     @FXML
     private JFXButton btestornar;
     @FXML
-    private JFXButton btcancelar1;
+    private SplitPane pnprincipalp;
     @FXML
-    private VBox pnpesquisa1;
-    @FXML
-    private Pane pnfiltros1;
-    @FXML
-    private JFXComboBox<?> cbcategoria1;
-    @FXML
-    private JFXDatePicker dpdatainicial1;
-    @FXML
-    private JFXDatePicker dpdatafinal1;
-    @FXML
-    private JFXTextField tcodvenda11;
-    @FXML
-    private Pane pnfiltros11;
-    @FXML
-    private JFXComboBox<?> cbcategoria11;
-    @FXML
-    private JFXDatePicker dpdatainicial11;
-    @FXML
-    private JFXDatePicker dpdatafinal11;
-    @FXML
-    private TableView<?> tvrecebimentos11;
-    @FXML
-    private TableColumn<?, ?> colcod11;
-    @FXML
-    private TableColumn<?, ?> colvenda11;
-    @FXML
-    private TableColumn<?, ?> colparcela11;
-    @FXML
-    private TableColumn<?, ?> colvalor11;
-    @FXML
-    private TableColumn<?, ?> coldatavenc11;
-    @FXML
-    private TableColumn<?, ?> coltipo11;
-    @FXML
-    private TableColumn<?, ?> colcontato11;
-    @FXML
-    private Pane pndados1;
-    @FXML
-    private JFXTextField tparcelas1;
-    @FXML
-    private JFXTextField tcodigo1;
-    @FXML
-    private JFXTextField tcodvenda1;
-    @FXML
-    private JFXTextField tvalor1;
-    @FXML
-    private JFXTextField tcontato1;
-    @FXML
-    private JFXDatePicker dpdatapag;
-    @FXML
-    private JFXTextField ttipo1;
-    @FXML
-    private JFXTextField tfiltrorecebidos;
-    @FXML
-    private TableView<?> tvrecebimentos1;
-    @FXML
-    private TableColumn<?, ?> colcod1;
-    @FXML
-    private TableColumn<?, ?> colvenda1;
-    @FXML
-    private TableColumn<?, ?> colparcela1;
-    @FXML
-    private TableColumn<?, ?> colvalor1;
-    @FXML
-    private TableColumn<?, ?> coldatavenc1;
-    @FXML
-    private TableColumn<?, ?> coltipo1;
-    @FXML
-    private TableColumn<?, ?> colcontato1;
+    private TableView<Conta> tvrecebimentosr;
 
     /**
      * Initializes the controller class.
@@ -144,27 +114,53 @@ public class TelaRecebimentosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     
-    }    
-
-    @FXML
-    private void clkBtQuitar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkBtCancelar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clkTFiltro1(KeyEvent event) {
-    }
-
-    @FXML
-    private void clkTabela(MouseEvent event) {
-    }
-
-    @FXML
-    private void clkBtEstornar(ActionEvent event) {
-    }
-
+    }   
     
+    @FXML
+    private void clkBtEstornar(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTFiltroapd(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTFiltroap(KeyEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTabelaap(MouseEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTFiltropd(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTFiltrop(KeyEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkTabelap(MouseEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void clkBtReceber(ActionEvent event) 
+    {
+        
+    }
 }

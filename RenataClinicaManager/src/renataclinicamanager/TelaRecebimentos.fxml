@@ -15,42 +15,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane prefHeight="638.0" prefWidth="800.0" stylesheets="@../CSS/estilotab.css" tabMinWidth="395.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaRecebimentosController">
+<JFXTabPane prefHeight="580.0" prefWidth="800.0" stylesheets="@../CSS/estilotab.css" tabMinWidth="395.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaRecebimentosController">
    <tabs>
       <Tab fx:id="tabreceber" text="Contas a Receber">
          <content>
-            <SplitPane fx:id="pnprincipal" dividerPositions="0.3795986622073579" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
+            <SplitPane fx:id="pnprincipalap" dividerPositions="0.06839186691312385" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="543.0" prefWidth="800.0">
                <items>
-                  <VBox prefHeight="200.0" prefWidth="798.0">
+                  <HBox fx:id="pnbotoesap1" alignment="CENTER" prefHeight="56.0" prefWidth="798.0" spacing="50.0">
                      <children>
-                        <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="72.0" prefWidth="798.0" spacing="50.0">
-                           <children>
-                              <JFXButton fx:id="btquitar" onAction="#clkBtQuitar" text="Liquidar" />
-                              <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Limpar/Cancelar" />
-                           </children>
-                        </HBox>
-                        <Pane fx:id="pndados11" prefHeight="170.0" prefWidth="798.0">
-                           <children>
-                              <JFXTextField fx:id="tparcelas11" editable="false" focusColor="BLACK" labelFloat="true" layoutX="499.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" promptText="Parcela" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tcodigo11" editable="false" focusColor="BLACK" labelFloat="true" layoutX="133.0" layoutY="25.0" prefHeight="32.0" prefWidth="54.0" promptText="Código" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tcodvenda11" editable="false" focusColor="BLACK" labelFloat="true" layoutX="196.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" promptText="Paciente" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tvalor11" editable="false" focusColor="BLACK" labelFloat="true" layoutX="630.0" layoutY="25.0" prefHeight="32.0" prefWidth="62.0" promptText="Valor" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tcontato11" editable="false" focusColor="BLACK" labelFloat="true" layoutX="499.0" layoutY="89.0" prefHeight="32.0" prefWidth="170.0" promptText="Contato" unFocusColor="BLACK" />
-                              <JFXDatePicker fx:id="dpdatapag1" defaultColor="BLACK" editable="false" layoutX="314.0" layoutY="89.0" prefHeight="32.0" prefWidth="170.0" promptText="Data de Pagamento" />
-                              <JFXTextField fx:id="ttipo11" editable="false" focusColor="BLACK" labelFloat="true" layoutX="180.0" layoutY="89.0" prefHeight="32.0" prefWidth="120.0" promptText="Tipo" unFocusColor="BLACK" />
-                              <JFXComboBox editable="true" labelFloat="true" layoutX="316.0" layoutY="25.0" prefHeight="32.0" prefWidth="166.0" promptText="Tratamento" />
-                           </children>
-                        </Pane>
+                        <JFXButton fx:id="btreceber" onAction="#clkBtReceber" text="Receber" />
                      </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </HBox>
+                  <VBox fx:id="pnpesquisaar" prefHeight="371.0" prefWidth="798.0">
                      <children>
-                        <Pane fx:id="pnfiltros11" prefHeight="60.0" prefWidth="798.0">
+                        <Pane fx:id="pnfiltrosar" prefHeight="64.0" prefWidth="798.0">
                            <children>
-                              <HBox id="filtro" alignment="CENTER" prefHeight="75.0" prefWidth="798.0" spacing="9.0">
+                              <HBox id="filtro" alignment="CENTER" prefHeight="69.0" prefWidth="798.0" spacing="9.0">
                                  <children>
-                                    <JFXComboBox fx:id="cbcategoria11" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="90.0" promptText="Categoria" unFocusColor="BLACK" />
-                                    <JFXTextField fx:id="tfiltro1" focusColor="BLACK" labelFloat="true" onKeyPressed="#clkTFiltro1" onKeyReleased="#clkTFiltro1" onKeyTyped="#clkTFiltro1" prefHeight="38.0" prefWidth="224.0" unFocusColor="BLACK">
+                                    <JFXComboBox fx:id="cbcategoriaar" focusColor="BLACK" labelFloat="true" onAction="#clkTFiltroapd" prefHeight="38.0" prefWidth="133.0" promptText="Categoria" unFocusColor="BLACK" />
+                                    <JFXTextField fx:id="txfiltroar" focusColor="BLACK" labelFloat="true" onKeyReleased="#clkTFiltroap" prefHeight="38.0" prefWidth="224.0" unFocusColor="BLACK">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -58,8 +44,8 @@
                                           <Insets right="70.0" />
                                        </HBox.margin>
                                     </JFXTextField>
-                                    <JFXDatePicker fx:id="dpdatainicial11" defaultColor="BLACK" editable="false" prefHeight="38.0" prefWidth="110.0" promptText="Data Inicial" />
-                                    <JFXDatePicker fx:id="dpdatafinal11" defaultColor="BLACK" editable="false" prefHeight="38.0" prefWidth="110.0" promptText="Data Final" />
+                                    <JFXDatePicker fx:id="dpdatainicialar" defaultColor="BLACK" editable="false" onAction="#clkTFiltroapd" prefHeight="38.0" prefWidth="110.0" promptText="Data Inicial" />
+                                    <JFXDatePicker fx:id="dpdatafinalar" defaultColor="BLACK" editable="false" onAction="#clkTFiltroapd" prefHeight="38.0" prefWidth="110.0" promptText="Data Final" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" />
@@ -67,57 +53,47 @@
                               </HBox>
                            </children>
                         </Pane>
-                        <TableView fx:id="tvrecebimentos11" onMouseClicked="#clkTabela" prefHeight="314.0" prefWidth="798.0">
+                        <TableView fx:id="tvrecebimentosar" onMouseClicked="#clkTabelaap" prefHeight="449.0" prefWidth="798.0">
                            <columns>
-                              <TableColumn fx:id="colcod11" prefWidth="52.0" text="Código" />
-                              <TableColumn fx:id="colvenda11" prefWidth="252.0" text="Paciente" />
-                              <TableColumn prefWidth="117.0" text="Tratamento" />
-                              <TableColumn fx:id="colparcela11" minWidth="8.0" prefWidth="51.0" text="Parcela" />
-                              <TableColumn fx:id="colvalor11" prefWidth="62.0" text="Valor" />
-                              <TableColumn fx:id="coldatavenc11" prefWidth="120.0" text="Data de Vencimento" />
-                              <TableColumn fx:id="coltipo11" prefWidth="51.0" text="Tipo" />
-                              <TableColumn fx:id="colcontato11" prefWidth="93.0" text="Contato" />
+                              <TableColumn fx:id="colcodar" prefWidth="52.0" text="Código" />
+                              <TableColumn fx:id="colpacientear" prefWidth="189.0" text="Paciente" />
+                              <TableColumn fx:id="colparcelaar" minWidth="8.0" prefWidth="48.0" text="Parcela" />
+                              <TableColumn fx:id="colvalorar" prefWidth="76.0" text="Valor" />
+                              <TableColumn fx:id="coldatavencar" prefWidth="119.0" text="Data de Vencimento" />
+                              <TableColumn fx:id="coltipoar" prefWidth="195.0" text="Tipo" />
+                              <TableColumn fx:id="colcontatoar" prefWidth="115.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>
                   </VBox>
                </items>
             </SplitPane>
-         </content></Tab>
+         </content>
+      </Tab>
       <Tab fx:id="tabrecebidas" text="Contas Recebidas">
          <content>
-            <SplitPane fx:id="pnprincipal1" dividerPositions="0.3639344262295082" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="612.0" prefWidth="800.0">
+            <SplitPane fx:id="pnprincipalp" dividerPositions="0.08379888268156424" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="544.0" prefWidth="800.0">
                <items>
-                  <VBox prefHeight="299.0" prefWidth="798.0">
+                  <VBox prefHeight="21.0" prefWidth="798.0">
                      <children>
-                        <HBox fx:id="pnbotoes1" alignment="CENTER" prefHeight="72.0" prefWidth="798.0" spacing="50.0">
+                        <HBox fx:id="pnbotoesp" alignment="CENTER" prefHeight="163.0" prefWidth="798.0" spacing="50.0">
                            <children>
                               <JFXButton fx:id="btestornar" onAction="#clkBtEstornar" text="Estornar" />
-                              <JFXButton fx:id="btcancelar1" onAction="#clkBtCancelar" text="Limpar/Cancelar" />
                            </children>
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
                         </HBox>
-                        <Pane fx:id="pndados1" prefHeight="180.0" prefWidth="798.0">
-                           <children>
-                              <JFXTextField fx:id="tparcelas1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="499.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" promptText="Parcela" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tcodigo1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="133.0" layoutY="25.0" prefHeight="32.0" prefWidth="54.0" promptText="Código" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tcodvenda1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="196.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" promptText="Paciente" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tvalor1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="630.0" layoutY="25.0" prefHeight="32.0" prefWidth="62.0" promptText="Valor" unFocusColor="BLACK" />
-                              <JFXTextField fx:id="tcontato1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="499.0" layoutY="89.0" prefHeight="32.0" prefWidth="170.0" promptText="Contato" unFocusColor="BLACK" />
-                              <JFXDatePicker fx:id="dpdatapag" defaultColor="BLACK" editable="false" layoutX="314.0" layoutY="89.0" prefHeight="32.0" prefWidth="170.0" promptText="Data de Pagamento" />
-                              <JFXTextField fx:id="ttipo1" editable="false" focusColor="BLACK" labelFloat="true" layoutX="180.0" layoutY="89.0" prefHeight="32.0" prefWidth="120.0" promptText="Tipo" unFocusColor="BLACK" />
-                              <JFXComboBox editable="true" labelFloat="true" layoutX="316.0" layoutY="25.0" prefHeight="32.0" prefWidth="166.0" promptText="Tratamento" />
-                           </children>
-                        </Pane>
                      </children>
                   </VBox>
-                  <VBox fx:id="pnpesquisa1" prefHeight="79.0" prefWidth="798.0">
+                  <VBox fx:id="pnpesquisap" prefHeight="297.0" prefWidth="798.0">
                      <children>
-                        <Pane fx:id="pnfiltros1" prefHeight="89.0" prefWidth="798.0">
+                        <Pane fx:id="pnfiltrosp" prefHeight="98.0" prefWidth="798.0">
                            <children>
-                              <HBox id="filtro" alignment="CENTER" prefHeight="68.0" prefWidth="798.0" spacing="9.0">
+                              <HBox id="filtro" alignment="CENTER" prefHeight="70.0" prefWidth="798.0" spacing="9.0">
                                  <children>
-                                    <JFXComboBox fx:id="cbcategoria1" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="90.0" promptText="Categoria" unFocusColor="BLACK" />
-                                    <JFXTextField fx:id="tfiltrorecebidos" focusColor="BLACK" labelFloat="true" onKeyReleased="#clkTFiltro1" prefHeight="38.0" prefWidth="224.0" unFocusColor="BLACK">
+                                    <JFXComboBox fx:id="cbcategoriar" focusColor="BLACK" labelFloat="true" onAction="#clkTFiltropd" prefHeight="38.0" prefWidth="90.0" promptText="Categoria" unFocusColor="BLACK" />
+                                    <JFXTextField fx:id="txfiltror" focusColor="BLACK" labelFloat="true" onKeyReleased="#clkTFiltrop" prefHeight="38.0" prefWidth="224.0" unFocusColor="BLACK">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -125,8 +101,8 @@
                                           <Insets right="70.0" />
                                        </HBox.margin>
                                     </JFXTextField>
-                                    <JFXDatePicker fx:id="dpdatainicial1" defaultColor="BLACK" editable="false" prefHeight="38.0" prefWidth="110.0" promptText="Data Inicial" />
-                                    <JFXDatePicker fx:id="dpdatafinal1" defaultColor="BLACK" editable="false" prefHeight="38.0" prefWidth="110.0" promptText="Data Final" />
+                                    <JFXDatePicker fx:id="dpdatainicialr" defaultColor="BLACK" editable="false" onAction="#clkTFiltropd" prefHeight="38.0" prefWidth="110.0" promptText="Data Inicial" />
+                                    <JFXDatePicker fx:id="dpdatafinalr" defaultColor="BLACK" editable="false" onAction="#clkTFiltropd" prefHeight="38.0" prefWidth="110.0" promptText="Data Final" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" />
@@ -134,22 +110,22 @@
                               </HBox>
                            </children>
                         </Pane>
-                        <TableView fx:id="tvrecebimentos1" onMouseClicked="#clkTabela" prefHeight="360.0" prefWidth="798.0">
+                        <TableView fx:id="tvrecebimentosr" onMouseClicked="#clkTabelap" prefHeight="474.0" prefWidth="798.0">
                            <columns>
-                              <TableColumn fx:id="colcod1" prefWidth="52.0" text="Código" />
-                              <TableColumn fx:id="colvenda1" prefWidth="252.0" text="Paciente" />
-                              <TableColumn prefWidth="117.0" text="Tratamento" />
-                              <TableColumn fx:id="colparcela1" minWidth="8.0" prefWidth="51.0" text="Parcela" />
-                              <TableColumn fx:id="colvalor1" prefWidth="62.0" text="Valor" />
-                              <TableColumn fx:id="coldatavenc1" prefWidth="120.0" text="Data de Vencimento" />
-                              <TableColumn fx:id="coltipo1" prefWidth="51.0" text="Tipo" />
-                              <TableColumn fx:id="colcontato1" prefWidth="93.0" text="Contato" />
+                              <TableColumn fx:id="colcodr" prefWidth="52.0" text="Código" />
+                              <TableColumn fx:id="colpacienter" prefWidth="240.0" text="Paciente" />
+                              <TableColumn fx:id="colparcelar" minWidth="8.0" prefWidth="55.0" text="Parcela" />
+                              <TableColumn fx:id="colvalorr" prefWidth="81.0" text="Valor" />
+                              <TableColumn fx:id="coldatapagamentor" prefWidth="121.0" text="Data de Pagamento" />
+                              <TableColumn fx:id="coltipor" prefWidth="143.0" text="Tipo" />
+                              <TableColumn fx:id="colcontator" prefWidth="102.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>
                   </VBox>
                </items>
             </SplitPane>
-         </content></Tab>
+         </content>
+      </Tab>
    </tabs>
 </JFXTabPane>
