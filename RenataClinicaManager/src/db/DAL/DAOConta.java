@@ -8,6 +8,7 @@ package db.DAL;
 import db.Banco.Banco;
 import db.Models.Conta;
 import db.Models.Fornecedor;
+import db.Models.Paciente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class DAOConta 
 {
-    public List<Conta> getContas(String filtro)
+    public List<Conta> getContasP(String filtro)
     {
         String sql = "SELECT * FROM contaspagar c "+filtro;
         
@@ -64,16 +65,61 @@ public class DAOConta
         }
         
         return aux;
-        
     }
+    
+    public List<Conta> getContasR(String filtro)
+    {
+        String sql = "SELECT * FROM contasreceber c "+filtro;
+        
+        List <Conta> aux = new ArrayList();
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        DAOPaciente dp = new DAOPaciente();
+        DAOTratamento dt = new DAOTratamento();
+        try {
+            LocalDate venc,rec;
+            while(rs.next())
+            {     
+                try 
+                {
+                    venc = rs.getDate("rec_dtvencimento").toLocalDate();   
+                } 
+                catch (Exception e) 
+                {
+                    venc = null;
+                }  
+                try 
+                {
+                    rec = rs.getDate("rec_dtpagamento").toLocalDate();   
+                } 
+                catch (Exception e) 
+                {
+                    rec = null;
+                } 
+                aux.add(new Conta(rs.getInt("rec_cod"), rs.getInt("rec_parcela"), venc, rec, rs.getDouble("rec_valor"), 
+                        dt.get(rs.getInt("rec_cod")), dp.get("pac_cpf")));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
+    
     public boolean receber(Conta c)
     {
-        return true;
+        String sql = "UPDATE contasreceber SET rec_dtpagamento = '#1', rec_valor=#2 WHERE rec_cod="+c.getCodigo();
+        
+        sql = sql.replaceAll("#1","" +c.getDtpagamento());
+        sql = sql.replaceAll("#2","" +c.getValor());
+
+        return Banco.getCon().manipular(sql);
     }
     
     public boolean pagar(Conta c)
     {
-        String sql = "UPDATE contaspagar SET pag_dtpagamento = '#1', pag_valor=#2 WHERE pag_cod="+c.getCodigo();
+        String sql = "UPDATE contaspagar SET pag_dtrecebimento = '#1', pag_valor=#2 WHERE pag_cod="+c.getCodigo();
         
         sql = sql.replaceAll("#1","" +c.getDtpagamento());
         sql = sql.replaceAll("#2","" +c.getValor());
@@ -91,7 +137,10 @@ public class DAOConta
     
     public boolean estornarr(Conta c)
     {
-        return true;
+        String sql = "UPDATE contasreceber SET "
+                + "rec_dtrecebimento = null WHERE rec_cod="+c.getCodigo();
+
+        return Banco.getCon().manipular(sql);
     }
     
     public boolean gerarDespesa(Conta c)

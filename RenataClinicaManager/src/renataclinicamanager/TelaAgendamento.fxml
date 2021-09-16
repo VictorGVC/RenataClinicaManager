@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -12,11 +13,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -29,47 +27,48 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="304.0" prefWidth="591.0">
+                        <VBox alignment="CENTER" prefHeight="304.0" prefWidth="571.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="72.0" prefWidth="1023.0" spacing="50.0">
                                  <children>
-                                    <JFXTextField focusColor="BLACK" labelFloat="true" prefHeight="25.0" prefWidth="105.0" promptText="CPF*" />
-                                    <JFXComboBox editable="true" focusColor="BLACK" labelFloat="true" onAction="#preencheCPF" onMouseClicked="#clearPaciente" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
+                                    <JFXTextField fx:id="txcpf" focusColor="BLACK" labelFloat="true" onKeyReleased="#preenchePaciente" prefHeight="25.0" prefWidth="105.0" promptText="CPF*" />
+                                    <JFXComboBox fx:id="cbpaciente" editable="true" focusColor="BLACK" labelFloat="true" onAction="#preencheCPF" onKeyReleased="#procuraPaciente" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
                                  </children>
+                                 <VBox.margin>
+                                    <Insets bottom="50.0" />
+                                 </VBox.margin>
                               </HBox>
-                              <GridPane>
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <JFXComboBox editable="true" focusColor="BLACK" labelFloat="true" prefHeight="25.0" prefWidth="344.0" promptText="Tratamento*" GridPane.columnIndex="1" />
-                                 </children>
-                              </GridPane>
-                              <HBox alignment="CENTER" prefHeight="68.0" prefWidth="733.0" spacing="50.0" />
                               <Label fx:id="lbobg" prefHeight="23.0" prefWidth="122.0" text="* Campos Obrigatórios" textFill="RED" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <TableView prefHeight="242.0" prefWidth="567.0">
-                    <columns>
-                        <TableColumn prefWidth="308.0" text="Tratamento" />
-                      <TableColumn prefWidth="105.0" text="Valor" />
-                    </columns>
-                  </TableView>
-                  <Pane prefHeight="310.0" prefWidth="170.0" />
+                  <VBox prefHeight="308.0" prefWidth="417.0">
+                     <children>
+                        <VBox prefHeight="308.0" prefWidth="405.0">
+                           <children>
+                              <JFXTextField fx:id="txtratamento" promptText="Tratamento">
+                                 <VBox.margin>
+                                    <Insets bottom="15.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <TableView fx:id="tvtratamentos" prefHeight="287.0" prefWidth="417.0">
+                                <columns>
+                                    <TableColumn prefWidth="308.0" text="Tratamento" />
+                                  <TableColumn prefWidth="105.0" text="Valor" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <Pane prefHeight="41.0" prefWidth="1022.0" />
             <HBox prefHeight="378.0" prefWidth="1022.0">
                <children>
                   <Pane prefHeight="381.0" prefWidth="18.0" />
-                  <TableView fx:id="tvprodutos" onMouseClicked="#clkTabelaProdutos" prefHeight="58.0" prefWidth="553.0">
+                  <TableView fx:id="tvagenda" onMouseClicked="#clkTabelaHorarios" prefHeight="58.0" prefWidth="553.0">
                      <columns>
                         <TableColumn fx:id="colprod" prefWidth="113.0" text="Horário" />
                         <TableColumn prefWidth="272.0" text="Paciente" />
@@ -78,12 +77,12 @@
                   </TableView>
                   <AnchorPane prefHeight="378.0" prefWidth="452.0">
                      <children>
-                        <JFXDatePicker layoutX="149.0" layoutY="89.0" prefHeight="68.0" prefWidth="171.0" />
-                        <JFXButton buttonType="RAISED" ellipsisString="" layoutX="85.0" layoutY="123.0" prefHeight="27.0" prefWidth="27.0">
+                        <JFXDatePicker layoutX="157.0" layoutY="89.0" prefHeight="68.0" prefWidth="171.0" />
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="85.0" layoutY="123.0" prefHeight="27.0" prefWidth="27.0" text=" ">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/previous.png" />
+                                    <Image url="@../icons/previous.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -96,11 +95,11 @@
                            <font>
                               <Font size="1.0" />
                            </font></JFXButton>
-                        <JFXButton buttonType="RAISED" ellipsisString="" layoutX="345.0" layoutY="120.0" prefHeight="27.0" prefWidth="27.0" style="-fx-background-image: url('\icons\next.png');">
+                        <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="345.0" layoutY="120.0" prefHeight="27.0" prefWidth="27.0" style="-fx-background-image: url('\icons\next.png');" text=" ">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/next.png" />
+                                    <Image url="@../icons/next.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -112,7 +111,14 @@
                            <font>
                               <Font size="1.0" />
                            </font></JFXButton>
-                        <JFXButton layoutX="198.0" layoutY="211.0" text="Agendar" />
+                        <JFXButton layoutX="190.0" layoutY="210.0" text="Agendar">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/correcttooth.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></JFXButton>
                      </children>
                   </AnchorPane>
                </children>

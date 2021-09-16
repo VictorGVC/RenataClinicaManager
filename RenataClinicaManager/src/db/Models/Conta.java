@@ -13,10 +13,12 @@ public class Conta
     private double valor;
     private String tipo;
     private Fornecedor fornecedor;
+    private Tratamento tratamento;
+    private Paciente paciente;
     
     //View
-    JFXDatePicker vdtvencimento;
-    JFXTextField vvalor;
+    private JFXDatePicker vdtvencimento;
+    private JFXTextField vvalor;
 
     public Conta() {
     }
@@ -66,6 +68,16 @@ public class Conta
         this.fornecedor = fornecedor;
         setVdtvencimento(new JFXDatePicker(dtvencimento));
         setVvalor(new JFXTextField(String.format("%.2f", valor)));
+    }
+
+    public Conta(int codigo, int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, Tratamento tratamento, Paciente paciente) {
+        this.codigo = codigo;
+        this.numero = numero;
+        this.dtvencimento = dtvencimento;
+        this.dtpagamento = dtpagamento;
+        this.valor = valor;
+        this.tratamento = tratamento;
+        this.paciente = paciente;
     }
 
     public Conta(LocalDate dtvencimento, double valor, String tipo) {

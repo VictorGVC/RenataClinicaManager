@@ -198,7 +198,7 @@ public class TelaPagamentosController implements Initializable {
     private void carregaTabelaap(String filtro)
     {
         DAOConta dc = new DAOConta();
-        List<Conta> res = dc.getContas(filtro);
+        List<Conta> res = dc.getContasP(filtro);
         ObservableList<Conta> modelo;
         
         modelo = FXCollections.observableArrayList(res);
@@ -210,7 +210,7 @@ public class TelaPagamentosController implements Initializable {
     private void carregaTabelap(String filtro)
     {
         DAOConta dc = new DAOConta();
-        List<Conta> res = dc.getContas(filtro);
+        List<Conta> res = dc.getContasP(filtro);
         ObservableList<Conta> modelo;
         
         modelo = FXCollections.observableArrayList(res);
@@ -226,7 +226,7 @@ public class TelaPagamentosController implements Initializable {
         if(tvpagamentosap.getSelectionModel().getSelectedIndex() != -1)
         {
             TelaConfirmarPagamentoController controller = new TelaConfirmarPagamentoController();
-            controller.setConta(conap);
+            controller.setContaP(conap);
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaConfirmarPagamento.fxml"));
             Parent root = loader.load();
@@ -324,12 +324,12 @@ public class TelaPagamentosController implements Initializable {
             {
                 case 1:
                     carregaTabelaap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
-                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
+                           + txfiltroap.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
                             + "AND c.pag_dtpagamento IS NULL");
                     break;
                 case 0:
                     carregaTabelaap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
-                           + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
+                           + txfiltroap.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
                             + "AND c.pag_dtpagamento IS NULL");
                     break;
             }
@@ -351,9 +351,9 @@ public class TelaPagamentosController implements Initializable {
     @FXML
     private void clkTFiltrop(KeyEvent event) 
     {
-        if(cbcategoriaap.getSelectionModel().getSelectedIndex() != -1)
+        if(cbcategoriap.getSelectionModel().getSelectedIndex() != -1)
         {
-            switch (cbcategoriaap.getSelectionModel().getSelectedIndex()) 
+            switch (cbcategoriap.getSelectionModel().getSelectedIndex()) 
             {
                 case 1:
                     carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 

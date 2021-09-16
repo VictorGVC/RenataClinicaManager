@@ -16,6 +16,7 @@ public class TelaConfirmarPagamentoController implements Initializable {
 
     static Conta con;
     static char conf;
+    static boolean pr;
     
     @FXML
     private JFXDatePicker dtpagamento;
@@ -34,9 +35,16 @@ public class TelaConfirmarPagamentoController implements Initializable {
         dtpagamento.setValue(LocalDate.now());
     }
     
-    static public void setConta(Conta c)
+    static public void setContaP(Conta c)
     {
         con = c;
+        pr = true;
+    }
+    
+    static public void setContaR(Conta c)
+    {
+        con = c;
+        pr = false;
     }
     
     static public char getConfirmado()
@@ -54,15 +62,27 @@ public class TelaConfirmarPagamentoController implements Initializable {
     @FXML
     private void clkBtConfirmar(ActionEvent event) 
     {
-        con.setDtpagamento(dtpagamento.getValue());
-        con.setValor(Double.parseDouble(txvalor.getText().replace(".", "").replace(',', '.')));
-        DAOConta dc = new DAOConta();
-        if(dc.pagar(con))
-            conf = 'a';
-        else
-            conf = 'n';
+        
+            con.setDtpagamento(dtpagamento.getValue());
+            con.setValor(Double.parseDouble(txvalor.getText().replace(".", "").replace(',', '.')));
+            DAOConta dc = new DAOConta();
             
-        Stage stage = (Stage) txvalor.getScene().getWindow();
-        stage.close();
+            if(pr)
+            {
+                if(dc.pagar(con))
+                    conf = 'a';
+                else
+                    conf = 'n';
+            }
+            else
+            {
+                if(dc.receber(con))
+                    conf = 'a';
+                else
+                    conf = 'n';
+            }
+
+            Stage stage = (Stage) txvalor.getScene().getWindow();
+            stage.close();
     }
 }
