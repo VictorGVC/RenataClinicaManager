@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,11 +14,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pntotal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="733.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPrincipalController">
+<AnchorPane fx:id="pntotal" maxHeight="650.0" maxWidth="1280.0" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPrincipalController">
    <children>
       <VBox fx:id="pncabecalho" alignment="TOP_CENTER" prefHeight="65.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -45,8 +46,8 @@
                   <Menu mnemonicParsing="false" text="Funções">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#clkControlarTratamento" text="Controlar Tratamento" />
-                        <MenuItem mnemonicParsing="false" text="Agendamento" />
-                        <MenuItem mnemonicParsing="false" text="Atendimento" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkAgendamento" text="Agendamento" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkAtendimento" text="Atendimento" />
                       <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
                         <MenuItem mnemonicParsing="false" onAction="#clkCompra" text="Compra" />
                         <MenuItem mnemonicParsing="false" onAction="#clkPagamento" text="Pagamento" />
@@ -82,41 +83,165 @@
             </ToolBar>
          </children>
       </VBox>
-      <AnchorPane fx:id="pnmeio" layoutY="65.0" prefHeight="415.0" prefWidth="800.0" styleClass="default" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+      <AnchorPane layoutY="66.0" prefHeight="627.0" prefWidth="1024.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
-            <TableView fx:id="tvprodutos" layoutX="66.0" layoutY="34.0" onMouseClicked="#clkTabelaProdutos" prefHeight="525.0" prefWidth="885.0">
-               <columns>
-                  <TableColumn fx:id="colprod" prefWidth="113.0" text="Horário" />
-                  <TableColumn prefWidth="399.0" text="Paciente" />
-                  <TableColumn prefWidth="187.0" text="Tratamento" />
-                  <TableColumn prefWidth="185.0" text="Telefone" />
-               </columns>
-            </TableView>
-            <JFXDatePicker layoutX="427.0" layoutY="591.0" />
-            <JFXButton buttonType="RAISED" ellipsisString="" layoutX="350.0" layoutY="588.0" prefHeight="35.0" prefWidth="0.0" wrapText="true">
-               <font>
-                  <Font size="1.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/previous.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" ellipsisString="" layoutX="630.0" layoutY="588.0" prefHeight="35.0" prefWidth="11.0" textAlignment="RIGHT">
-               <font>
-                  <Font name="Arial" size="1.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/next.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
+            <BorderPane layoutY="67.0" prefHeight="626.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <bottom>
+                  <HBox alignment="CENTER" maxHeight="45.0" minHeight="45.0" prefHeight="45.0" prefWidth="210.0" spacing="50.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" onAction="#clkSubDay" prefHeight="35.0" prefWidth="0.0" text=" " wrapText="true">
+                           <font>
+                              <Font size="1.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/previous.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" onAction="#clkAgendar" text="Agendar">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/schedule.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" onAction="#clkAddDay" prefHeight="35.0" prefWidth="11.0" text=" " textAlignment="RIGHT">
+                           <font>
+                              <Font name="Arial" size="1.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/next.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </bottom>
+               <center>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="527.0" prefWidth="1280.0">
+                           <children>
+                              <HBox alignment="CENTER" layoutY="-95.0" prefHeight="27.0" prefWidth="1280.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="204.0" minWidth="204.0" prefHeight="17.0" prefWidth="204.0" styleClass="labeli" text="Segunda-Feira" />
+                                    <Label alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" text="Terça-Feira" />
+                                    <Label alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" text="Quarta-Feira" />
+                                    <Label alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" text="Quinta-Feira" />
+                                    <Label alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" text="Sexta-Feira" />
+                                    <Label alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" text="Sábado" />
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="pnfade" layoutY="16.0" prefHeight="157.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="1280.0" spacing="2.0">
+                                       <children>
+                                          <Label fx:id="lbseg" alignment="CENTER" contentDisplay="CENTER" maxWidth="204.0" minWidth="204.0" prefHeight="17.0" prefWidth="204.0" styleClass="labeli" />
+                                          <Label fx:id="lbter" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" />
+                                          <Label fx:id="lbqua" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" />
+                                          <Label fx:id="lbqui" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" />
+                                          <Label fx:id="lbsex" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" />
+                                          <Label fx:id="lbsab" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" />
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="pntables" alignment="CENTER" prefHeight="430.0" prefWidth="1280.0" spacing="2.0">
+                                       <children>
+                                          <TableView fx:id="tvseg" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
+                                             <columns>
+                                                <TableColumn fx:id="colhrseg" prefWidth="36.0" text="Hora" />
+                                                <TableColumn fx:id="colnomeseg" prefWidth="164.0" text="Nome" />
+                                             </columns>
+                                             <contextMenu>
+                                                <ContextMenu styleClass="cm">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                  </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                          <TableView fx:id="tvter" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
+                                             <columns>
+                                                <TableColumn fx:id="colhrter" prefWidth="36.0" text="Hora" />
+                                                <TableColumn fx:id="colnometer" prefWidth="164.0" text="Nome" />
+                                             </columns>
+                                             <contextMenu>
+                                                <ContextMenu styleClass="cm">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                          <TableView fx:id="tvqua" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
+                                             <columns>
+                                                <TableColumn fx:id="colhrqua" prefWidth="36.0" text="Hora" />
+                                                <TableColumn fx:id="colnomequa" prefWidth="164.0" text="Nome" />
+                                             </columns>
+                                             <contextMenu>
+                                                <ContextMenu styleClass="cm">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                          <TableView fx:id="tvqui" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
+                                             <columns>
+                                                <TableColumn fx:id="colhrqui" prefWidth="36.0" text="Hora" />
+                                                <TableColumn fx:id="colnomequi" prefWidth="164.0" text="Nome" />
+                                             </columns>
+                                             <contextMenu>
+                                                <ContextMenu styleClass="cm">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                          <TableView fx:id="tvsex" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
+                                             <columns>
+                                                <TableColumn fx:id="colhrsex" prefWidth="36.0" text="Hora" />
+                                                <TableColumn fx:id="colnomesex" prefWidth="164.0" text="Nome" />
+                                             </columns>
+                                             <contextMenu>
+                                                <ContextMenu styleClass="cm">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                          <TableView fx:id="tvsab" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
+                                             <columns>
+                                                <TableColumn fx:id="colhrsab" prefWidth="36.0" text="Hora" />
+                                                <TableColumn fx:id="colnomesab" prefWidth="164.0" text="Nome" />
+                                             </columns>
+                                             <contextMenu>
+                                                <ContextMenu styleClass="cm">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                   </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </TableView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
          </children>
       </AnchorPane>
       <HBox fx:id="pnrodape" alignment="CENTER" layoutY="475.0" prefHeight="40.0" prefWidth="800.0" spacing="20.0" styleClass="forth" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

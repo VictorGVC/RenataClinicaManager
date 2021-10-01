@@ -270,7 +270,7 @@ public class TelaRecebimentosController implements Initializable {
             if(conf == 'a')
             {      
                 JFXSnackbar sb = new JFXSnackbar(pnpesquisaar); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Pago com Sucesso!")));
+                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Recebido com Sucesso!")));
             }
             else if(conf == 'n')
             { 

@@ -16,6 +16,8 @@ public class Paciente
     }
     
     public Paciente() {
+        this.nome = "";
+        this.telefone = "";
     }
 
     public Paciente(String cpf) {

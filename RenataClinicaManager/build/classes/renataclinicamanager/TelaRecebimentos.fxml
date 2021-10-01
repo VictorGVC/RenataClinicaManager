@@ -114,10 +114,10 @@
                            <columns>
                               <TableColumn fx:id="colcodr" prefWidth="52.0" text="Código" />
                               <TableColumn fx:id="colpacienter" prefWidth="240.0" text="Paciente" />
+                              <TableColumn fx:id="coltipor" prefWidth="143.0" text="Tratamento" />
                               <TableColumn fx:id="colparcelar" minWidth="8.0" prefWidth="55.0" text="Parcela" />
                               <TableColumn fx:id="colvalorr" prefWidth="81.0" text="Valor" />
                               <TableColumn fx:id="coldatapagamentor" prefWidth="121.0" text="Data de Pagamento" />
-                              <TableColumn fx:id="coltipor" prefWidth="143.0" text="Tipo" />
                               <TableColumn fx:id="colcontator" prefWidth="102.0" text="Contato" />
                            </columns>
                         </TableView>

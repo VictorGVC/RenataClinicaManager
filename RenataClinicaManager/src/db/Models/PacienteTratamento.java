@@ -11,6 +11,8 @@ public class PacienteTratamento {
     private int codigo;
 
     public PacienteTratamento() {
+        paciente = new Paciente();
+        tratamento = new Tratamento();
     }
 
     public PacienteTratamento(Paciente paciente, Tratamento tratamento, char ativo, int codigo) {

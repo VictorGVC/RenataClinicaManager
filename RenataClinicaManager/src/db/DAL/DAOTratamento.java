@@ -154,4 +154,27 @@ public class DAOTratamento {
         return Banco.getCon().manipular("UPDATE pessoatratamento SET pt_ativo = 'N' WHERE pt_cod=" + pt.getCodigo());
     }
     
+    public PacienteTratamento getPT(int cod)
+    {
+        String sql = "SELECT * FROM pessoatratamento WHERE pt_cod = "+cod;
+        
+        PacienteTratamento aux = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        DAOPaciente dp = new DAOPaciente();
+        DAOTratamento dt = new DAOTratamento();
+        
+        try {
+            if(rs.next())
+            {                           
+                aux = new PacienteTratamento(dp.get(rs.getString("pac_cpf")),
+                        dt.get(rs.getInt("tra_cod")), 
+                        rs.getString("pt_ativo").charAt(0),rs.getInt("pt_cod"));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
 }

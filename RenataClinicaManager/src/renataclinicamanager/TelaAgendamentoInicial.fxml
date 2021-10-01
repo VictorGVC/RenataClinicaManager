@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="289.0" prefWidth="440.0" styleClass="fifth" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="renataclinicamanager.TelaAgendamentoInicialController">
+   <children>
+      <JFXComboBox layoutX="216.0" layoutY="75.0" prefHeight="25.0" prefWidth="157.0" promptText="Paciente" />
+      <JFXComboBox layoutX="90.0" layoutY="126.0" prefHeight="25.0" prefWidth="195.0" promptText="Tratamento" />
+      <JFXTextField fx:id="txcpf" layoutX="87.0" layoutY="75.0" prefHeight="25.0" prefWidth="92.0" promptText="CPF" />
+      <JFXTextField fx:id="txvalor" layoutX="320.0" layoutY="126.0" prefHeight="25.0" prefWidth="56.0" promptText="Valor" />
+      <JFXButton alignment="CENTER" layoutX="164.0" layoutY="200.0" prefHeight="39.0" prefWidth="112.0" text="Agendar">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/schedule.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

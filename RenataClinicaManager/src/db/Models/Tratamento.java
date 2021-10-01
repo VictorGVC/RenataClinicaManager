@@ -21,6 +21,7 @@ public class Tratamento
     }
     
     public Tratamento() {
+        this.nome = "";
     }
 
     public Tratamento(int cod) {

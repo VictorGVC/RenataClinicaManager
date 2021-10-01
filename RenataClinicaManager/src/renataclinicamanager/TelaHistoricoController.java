@@ -70,11 +70,15 @@ public class TelaHistoricoController implements Initializable {
     }
 
     @FXML
-    private void clkBtFiltrar(ActionEvent event) {
+    private void clkBtFiltrar(ActionEvent event) 
+    {
+        
     }
 
     @FXML
-    private void clkTabelaVendas(MouseEvent event) {
+    private void clkTabelaVendas(MouseEvent event) 
+    {
+        
     }
     
 }

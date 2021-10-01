@@ -33,10 +33,40 @@
    -jfx-default-color: #2196a8;
 }
 
+.cm .context-menu .menu-item
+{
+   -fx-background-color: #8fcfcf;
+}
+
+.cm .context-menu .menu-item .label
+{
+   -fx-text-fill: #042f38;
+}
+
+.cm .context-menu .menu-item:hover
+{
+    -fx-background-color: #042f38;
+}
+
+.cm .context-menu .menu-item:hover .label
+{
+   -fx-text-fill: #8fcfcf;
+}
+
 .table-view
 {
    -fx-background-color:  #8fcfcf;
    -fx-border-color:#8fcfcf;
+}
+
+.table-view .scroll-bar * {
+   -fx-min-width: 0;
+   -fx-pref-width: 0;
+   -fx-max-width: 0;
+
+   -fx-min-height: 0;
+   -fx-pref-height: 0;
+   -fx-max-height: 0;
 }
 
 .table-view .table-cell

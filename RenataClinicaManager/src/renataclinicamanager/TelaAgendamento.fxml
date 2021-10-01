@@ -6,7 +6,9 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -18,16 +20,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="pnprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAgendamentoController">
+<SplitPane fx:id="pnprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAgendamentoController">
    <items>
-      <VBox prefHeight="768.0" prefWidth="1022.0">
+      <VBox prefHeight="694.0" prefWidth="1022.0">
          <children>
             <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="20.0" prefWidth="1022.0" spacing="50.0" />
-            <HBox alignment="CENTER" prefHeight="308.0" prefWidth="1022.0">
+            <HBox alignment="CENTER" prefHeight="241.0" prefWidth="1022.0">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="304.0" prefWidth="571.0">
+                        <VBox alignment="CENTER" prefHeight="277.0" prefWidth="571.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="72.0" prefWidth="1023.0" spacing="50.0">
                                  <children>
@@ -43,19 +45,19 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <VBox prefHeight="308.0" prefWidth="417.0">
+                  <VBox prefHeight="270.0" prefWidth="417.0">
                      <children>
-                        <VBox prefHeight="308.0" prefWidth="405.0">
+                        <VBox prefHeight="253.0" prefWidth="417.0">
                            <children>
-                              <JFXTextField fx:id="txtratamento" promptText="Tratamento">
+                              <JFXTextField fx:id="txtratamento" onKeyReleased="#clkPreencheTratamentos" promptText="Tratamento">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </JFXTextField>
-                              <TableView fx:id="tvtratamentos" prefHeight="287.0" prefWidth="417.0">
+                              <TableView fx:id="tvtratamentos" prefHeight="210.0" prefWidth="417.0">
                                 <columns>
-                                    <TableColumn prefWidth="308.0" text="Tratamento" />
-                                  <TableColumn prefWidth="105.0" text="Valor" />
+                                    <TableColumn fx:id="coltratamento" prefWidth="308.0" text="Tratamento" />
+                                  <TableColumn fx:id="colvalor" prefWidth="105.0" text="Valor" />
                                 </columns>
                               </TableView>
                            </children>
@@ -64,21 +66,29 @@
                   </VBox>
                </children>
             </HBox>
-            <Pane prefHeight="41.0" prefWidth="1022.0" />
-            <HBox prefHeight="378.0" prefWidth="1022.0">
+            <Pane fx:id="pnaviso" prefHeight="16.0" prefWidth="1022.0" />
+            <HBox prefHeight="310.0" prefWidth="1022.0">
                <children>
                   <Pane prefHeight="381.0" prefWidth="18.0" />
-                  <TableView fx:id="tvagenda" onMouseClicked="#clkTabelaHorarios" prefHeight="58.0" prefWidth="553.0">
+                  <TableView fx:id="tvagenda" prefHeight="330.0" prefWidth="553.0" styleClass="coluna">
                      <columns>
-                        <TableColumn fx:id="colprod" prefWidth="113.0" text="Horário" />
-                        <TableColumn prefWidth="272.0" text="Paciente" />
-                        <TableColumn prefWidth="167.0" text="Tratamento" />
+                        <TableColumn fx:id="colhorario" prefWidth="113.0" text="Horário" />
+                        <TableColumn fx:id="colpaciente" prefWidth="206.0" text="Paciente" />
+                        <TableColumn fx:id="coltratamentoh" prefWidth="135.0" text="Tratamento" />
+                        <TableColumn fx:id="colcontato" prefWidth="95.0" text="Contato" />
                      </columns>
+                     <contextMenu>
+                        <ContextMenu styleClass="cm">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#clkCancelarAgendamento" text="Cancelar Agendamento" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
                   </TableView>
                   <AnchorPane prefHeight="378.0" prefWidth="452.0">
                      <children>
-                        <JFXDatePicker layoutX="157.0" layoutY="89.0" prefHeight="68.0" prefWidth="171.0" />
-                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="85.0" layoutY="123.0" prefHeight="27.0" prefWidth="27.0" text=" ">
+                        <JFXDatePicker fx:id="dtpdata" layoutX="159.0" layoutY="106.0" prefHeight="35.0" prefWidth="171.0" />
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="84.0" layoutY="109.0" onAction="#subDay" prefHeight="27.0" prefWidth="27.0" text=" ">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -95,7 +105,7 @@
                            <font>
                               <Font size="1.0" />
                            </font></JFXButton>
-                        <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="345.0" layoutY="120.0" prefHeight="27.0" prefWidth="27.0" style="-fx-background-image: url('\icons\next.png');" text=" ">
+                        <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="357.0" layoutY="109.0" onAction="#addDay" prefHeight="27.0" prefWidth="27.0" style="-fx-background-image: url('\icons\next.png');" text=" ">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -111,7 +121,7 @@
                            <font>
                               <Font size="1.0" />
                            </font></JFXButton>
-                        <JFXButton layoutX="190.0" layoutY="210.0" text="Agendar">
+                        <JFXButton layoutX="198.0" layoutY="183.0" onAction="#clkAgendar" text="Agendar">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
