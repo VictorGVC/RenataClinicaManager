@@ -5,6 +5,7 @@
  */
 package renataclinicamanager;
 
+import com.jfoenix.controls.JFXSnackbar;
 import db.DAL.DAOAgendamento;
 import db.Models.Atendimento;
 import db.Models.Funcionario;
@@ -62,7 +63,7 @@ public class TelaPrincipalController implements Initializable {
     private DateFormat df1,df2;
     private LocalDate dia;
     private Atendimento sat;
-    DateTimeFormatter form;
+    private DateTimeFormatter form;
     
     private Label label;
     @FXML
@@ -630,11 +631,42 @@ public class TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void clkAgendar(ActionEvent event) 
+    private void clkAgendar(ActionEvent event) throws IOException 
     {
-        
-        
-        initTables();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        if(!sat.getHorario().before(Timestamp.valueOf(LocalDate.now().atStartOfDay()))
+                && sat.getPt().getPaciente().getNome().equals(""))
+        {
+            TelaAgendamentoInicialController controller = new TelaAgendamentoInicialController();
+            controller.setHorario(sat);
+            
+            Parent root = FXMLLoader.load(getClass().getResource("TelaAgendamentoInicial.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.resizableProperty().setValue(Boolean.FALSE);
+            //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+            stage.setTitle("Agendamento");
+            stage.setScene(scene);
+            stage.showAndWait();
+            if(controller.getAccepted())
+            {
+                JFXSnackbar sb = new JFXSnackbar(pnfade); 
+                Label text = new Label("Agendado com Sucesso!");
+                text.setStyle("-fx-text-fill: green");
+                sb.enqueue(new JFXSnackbar.SnackbarEvent(text));
+            }
+            
+            initTables();
+        }
+        else
+        {
+            a.setHeaderText("Alerta");
+            a.setTitle("Alerta!");
+            a.setContentText("Selecione um horário válido!");
+            a.showAndWait();
+        }
     }
 
     @FXML
@@ -705,5 +737,11 @@ public class TelaPrincipalController implements Initializable {
             
             limpaSelecao(ftv, index);
         }
+    }
+
+    @FXML
+    private void clkRegistraAtendimento(ActionEvent event) 
+    {
+        
     }
 }

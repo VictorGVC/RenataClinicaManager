@@ -241,7 +241,7 @@ public class TelaAgendamentoController implements Initializable {
             };
             new Thread(task).start();
         }
-        }
+    }
 
     @FXML
     private void procuraPaciente(KeyEvent event) 

@@ -9,7 +9,12 @@ public class PacienteTratamento {
     private Tratamento tratamento;
     private char ativo;
     private int codigo;
-
+    
+    @Override
+    public String toString() {
+        return this.getTratamento().getNome();
+    }
+    
     public PacienteTratamento() {
         paciente = new Paciente();
         tratamento = new Tratamento();

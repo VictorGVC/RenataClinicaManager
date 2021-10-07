@@ -162,7 +162,8 @@
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="Mostrar Informações" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#clkRegistraAtendimento" text="Registrar Atendimento" />
                                                   </items>
                                                 </ContextMenu>
                                              </contextMenu>
@@ -175,7 +176,8 @@
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
                                                    <items>
-                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="Mostrar Informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkRegistraAtendimento" text="Registrar Atendimento" />
                                                    </items>
                                                 </ContextMenu>
                                              </contextMenu>
@@ -188,7 +190,8 @@
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
                                                    <items>
-                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="Mostrar Informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkRegistraAtendimento" text="Registrar Atendimento" />
                                                    </items>
                                                 </ContextMenu>
                                              </contextMenu>
@@ -201,7 +204,8 @@
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
                                                    <items>
-                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="Mostrar Informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkRegistraAtendimento" text="Registrar Atendimento" />
                                                    </items>
                                                 </ContextMenu>
                                              </contextMenu>
@@ -214,7 +218,8 @@
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
                                                    <items>
-                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="Mostrar Informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkRegistraAtendimento" text="Registrar Atendimento" />
                                                    </items>
                                                 </ContextMenu>
                                              </contextMenu>
@@ -227,7 +232,8 @@
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
                                                    <items>
-                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="mostrar informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkMostrarInfo" text="Mostrar Informações" />
+                                                      <MenuItem mnemonicParsing="false" onAction="#clkRegistraAtendimento" text="Registrar Atendimento" />
                                                    </items>
                                                 </ContextMenu>
                                              </contextMenu>
