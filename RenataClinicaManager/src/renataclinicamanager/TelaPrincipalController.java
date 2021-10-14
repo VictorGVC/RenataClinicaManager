@@ -43,6 +43,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -152,6 +153,30 @@ public class TelaPrincipalController implements Initializable {
     private Label lbsab;
     @FXML
     private VBox pnfade;
+    @FXML
+    private MenuItem miinfo1;
+    @FXML
+    private MenuItem miinfo2;
+    @FXML
+    private MenuItem miinfo3;
+    @FXML
+    private MenuItem miinfo4;
+    @FXML
+    private MenuItem miinfo5;
+    @FXML
+    private MenuItem miinfo6;
+    @FXML
+    private MenuItem miregate1;
+    @FXML
+    private MenuItem miregate2;
+    @FXML
+    private MenuItem miregate3;
+    @FXML
+    private MenuItem miregate4;
+    @FXML
+    private MenuItem miregate5;
+    @FXML
+    private MenuItem miregate6;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -244,6 +269,26 @@ public class TelaPrincipalController implements Initializable {
         tvqui.setItems(FXCollections.observableArrayList(agendaqui));
         tvsex.setItems(FXCollections.observableArrayList(agendasex));
         tvsab.setItems(FXCollections.observableArrayList(agendasab));
+    }
+    
+    private void estado()
+    {
+        boolean minfo = sat.getPt().getPaciente().getNome().isEmpty();
+        miinfo1.setDisable(minfo);
+        miinfo2.setDisable(minfo);
+        miinfo3.setDisable(minfo);
+        miinfo4.setDisable(minfo);
+        miinfo5.setDisable(minfo);
+        miinfo6.setDisable(minfo);
+        
+        boolean miregate = minfo || 
+                sat.getHorario().after(Timestamp.valueOf(LocalDate.now().plusDays(1).atStartOfDay()));
+        miregate1.setDisable(miregate);
+        miregate2.setDisable(miregate);
+        miregate3.setDisable(miregate);
+        miregate4.setDisable(miregate);
+        miregate5.setDisable(miregate);
+        miregate6.setDisable(miregate);
     }
     
     private List<Atendimento> getAgenda(LocalDate d, List<Atendimento> li)
@@ -702,28 +747,17 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkMostrarInfo(ActionEvent event) throws IOException 
     {
-        if(!sat.getPt().getPaciente().getNome().isEmpty())
-        {
-            TelaPacienteInfoController controller = new TelaPacienteInfoController();
-            controller.setInfo(sat);
+        TelaPacienteInfoController controller = new TelaPacienteInfoController();
+        controller.setInfo(sat);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaPacienteInfo.fxml"));
-            Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaPacienteInfo.fxml"));
+        Parent root = loader.load();
 
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        }
-        else
-        {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText("Alerta");
-            a.setTitle("Alerta!");
-            a.setContentText("Nenhum Paciente agendado nesse horário!");
-            a.showAndWait();
-        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -735,13 +769,24 @@ public class TelaPrincipalController implements Initializable {
             int index = ftv.getSelectionModel().getSelectedIndex();
             sat = (Atendimento)ftv.getSelectionModel().getSelectedItem();
             
+            if(event.getButton() == MouseButton.SECONDARY)
+                estado();
             limpaSelecao(ftv, index);
         }
     }
 
     @FXML
-    private void clkRegistraAtendimento(ActionEvent event) 
+    private void clkRegistraAtendimento(ActionEvent event) throws IOException 
     {
-        
+        Parent root = FXMLLoader.load(getClass().getResource("TelaAtendimento.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        stage.setTitle("Atendimento");
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -59,8 +59,6 @@ public class TelaComprasController implements Initializable
     @FXML
     private JFXButton btnovo;
     @FXML
-    private JFXButton btapagar;
-    @FXML
     private JFXButton btconfirmar;
     @FXML
     private JFXButton btcancelar;
@@ -227,7 +225,6 @@ public class TelaComprasController implements Initializable
         pndados.setDisable(b);
         btconfirmar.setDisable(b);
         btcancelar.setDisable(b);
-        btapagar.setDisable(!b);
         btnovo.setDisable(!b);
         txfiltro.setDisable(!b);
         if(b)
@@ -297,45 +294,6 @@ public class TelaComprasController implements Initializable
         limparCampos();
         pnpesquisa.setDisable(true);
         cbfornecedor.requestFocus();
-    }
-
-    @FXML
-    private void clkBtApagar(ActionEvent event) 
-    {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        
-        if(tvcompra.getSelectionModel().getSelectedIndex() != -1)
-        {
-            a.setHeaderText("Exclusão!");
-            a.setTitle("Exclusão");
-            a.setContentText("Confirma a exclusão");
-            a.getButtonTypes().clear();
-            a.getButtonTypes().add(ButtonType.NO);
-            a.getButtonTypes().add(ButtonType.YES);
-            if (a.showAndWait().get() == ButtonType.YES)
-            {
-                DAOCompra dal = new DAOCompra();
-                Compra c;
-                c = tvcompra.getSelectionModel().getSelectedItem();
-                if(dal.apagar(c.getId()))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Excluído com Sucesso!")));
-                }
-                else
-                { 
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.getButtonTypes().clear();
-                    a.getButtonTypes().add(ButtonType.OK);
-                    a.setHeaderText("ERRO");
-                    a.setTitle("ERRO!");
-                    a.setContentText("Erro ao Excluir!");
-                    a.showAndWait();
-                }
-                clkTFiltro(null);
-                limparCampos();
-            }
-        }
     }
 
     @FXML

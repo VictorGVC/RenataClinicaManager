@@ -20,6 +20,11 @@ public class Funcionario
     private LocalDate dtnasc;
     private char ativo,sexo;
 
+        @Override
+    public String toString() {
+        return this.getNome();
+    }
+    
     public Funcionario() {
     }
 

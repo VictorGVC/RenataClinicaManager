@@ -26,7 +26,6 @@
              <HBox fx:id="pnbotoes" alignment="CENTER" prefHeight="50.0" prefWidth="798.0" spacing="50.0">
                 <children>
                    <JFXButton fx:id="btnovo" layoutX="91.0" layoutY="23.0" onAction="#clkBtNovo" text="Novo" />
-                   <JFXButton fx:id="btapagar" onAction="#clkBtApagar" text="Apagar" />
                    <JFXButton fx:id="btconfirmar" onAction="#clkBtConfirmar" text="Confirmar" />
                    <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                 </children>
