@@ -111,4 +111,26 @@ public class DAOMaterial {
         
         return m;
     }
+    
+    public List<Material> getItensAtendimento(int codate)
+    {
+        String sql = "SELECT * FROM itensatendimento i INNER JOIN "
+                + "material m ON i.mat_cod = i.mat_cod WHERE age_cod="+codate;
+        
+        List <Material> aux = new ArrayList();
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        try {
+            while(rs.next())
+            {                                 
+                aux.add(new Material(rs.getInt("mat_cod"), rs.getInt("mat_qtde")
+                        , rs.getString("mat_nome")));
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
 }

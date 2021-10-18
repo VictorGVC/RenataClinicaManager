@@ -188,8 +188,8 @@ public class TelaPacientesController implements Initializable
         tvpaciente.setItems(modelo);
     }
     
-    private void limparCampos() {
-        
+    private void limparCampos() 
+    {
         ObservableList <Node> componentes = pndados.getChildren();
         
         for(Node n : componentes) 

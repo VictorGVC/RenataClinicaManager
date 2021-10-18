@@ -7,6 +7,7 @@ package db.DAL;
 
 import db.Banco.Banco;
 import db.Models.Atendimento;
+import db.Models.Material;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -30,11 +31,25 @@ public class DAOAgendamento
         ResultSet rs = Banco.getCon().consultar(sql);
         
         DAOTratamento dt = new DAOTratamento();
+        DAOFuncionario df = new DAOFuncionario();
+        DAOMaterial dm = new DAOMaterial();
         
         try {
             while(rs.next())
-            {                                 
-                aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dt.getPT(rs.getInt("pt_cod"))));
+            {      
+                try {
+                    aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
+                            rs.getInt("age_cod"), 
+                            rs.getString("age_observacoes"), 
+                            dt.getPT(rs.getInt("pt_cod")), 
+                            df.getF(rs.getString("fun_login")), 
+                            dm.getItensAtendimento(rs.getInt("age_cod")),
+                                    rs.getString("age_dentes")));
+                } 
+                catch (Exception e) 
+                {
+                    aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dt.getPT(rs.getInt("pt_cod"))));
+                }
             }
         } 
         catch(SQLException ex) {
@@ -58,5 +73,66 @@ public class DAOAgendamento
     public boolean apagar(Atendimento ag) 
     {
         return Banco.getCon().manipular("DELETE FROM agendamento WHERE age_cod=" + ag.getCodigo());
+    }
+    
+    public String salvarAtendimento(Atendimento ate) throws SQLException
+    {
+        Banco.getCon().getConnect().setAutoCommit(false);
+                
+        String sql;
+        try 
+        {
+            for (Material item : ate.getItens())
+            {
+                int cont = 0;
+                sql = "SELECT * FROM itensatendimento WHERE age_cod="+ate.getCodigo()+" AND "
+                + "mat_cod="+item.getId();
+                ResultSet rs = Banco.getCon().consultar(sql);
+                
+                if(rs.next())
+                    cont++;
+                
+                if(cont == 0)
+                {
+                    sql = "INSERT INTO itensatendimento(age_cod, mat_cod, mat_qtde) "
+                    + "VALUES (#1,#2,#3); ";
+
+                    sql = sql.replaceAll("#1", "" + ate.getCodigo());
+                    sql = sql.replaceAll("#2", "" + item.getId());
+                    sql = sql.replaceAll("#3", "" + item.getQtde());
+
+                    Banco.getCon().manipular(sql);
+                }
+                else
+                {
+                    sql = "UPDATE itensatendimento SET mat_qtde="+item.getQtde()+" WHERE age_cod="+ate.getCodigo()+" AND "
+                    + "mat_cod="+item.getId();
+                    
+                    Banco.getCon().manipular(sql);
+                }
+            }   
+        }
+        catch (Exception e)
+        {
+            return "Erro ao Gravar os Itens!";
+        }
+        try 
+        {
+            sql = "UPDATE agendamento SET fun_login='#1',age_observacoes='#2', age_dentes='#3'"
+                + " WHERE age_cod=" + ate.getCodigo();
+            
+            sql = sql.replaceAll("#1", "" + ate.getDentista().getLogin());
+            sql = sql.replaceAll("#2", "" + ate.getObservacoes());
+            sql = sql.replaceAll("#3", "" + ate.getDentes());
+            
+            Banco.getCon().manipular(sql);
+        } 
+        catch (Exception e) 
+        {
+            return "Erro ao Registrar Atendimento!";
+        }
+        
+        Banco.getCon().getConnect().commit();
+        return "";
     }
 }

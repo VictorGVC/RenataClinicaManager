@@ -269,7 +269,7 @@ public class TelaFornecedorController implements Initializable {
     {
         String id;
         boolean flag = false;
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        Alert a = new Alert(Alert.AlertType.WARNING);
         
         if(txcnpj.getText().isEmpty())
         {

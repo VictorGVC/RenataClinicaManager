@@ -778,6 +778,9 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkRegistraAtendimento(ActionEvent event) throws IOException 
     {
+        TelaAtendimentoController controller = new TelaAtendimentoController();
+        controller.setAtendimento(sat);
+        
         Parent root = FXMLLoader.load(getClass().getResource("TelaAtendimento.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -787,6 +790,14 @@ public class TelaPrincipalController implements Initializable {
         scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         stage.setTitle("Atendimento");
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait(); 
+        
+        if(controller.getSuccess())
+        {
+            JFXSnackbar sb = new JFXSnackbar(pnfade); 
+            Label text = new Label("Atendimento Salvo com Sucesso!");
+            text.setStyle("-fx-text-fill: green");
+            sb.enqueue(new JFXSnackbar.SnackbarEvent(text));
+        }
     }
 }

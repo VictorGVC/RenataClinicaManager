@@ -72,7 +72,7 @@ public class TelaAgendamentoInicialController implements Initializable
         DAOTratamento dt = new DAOTratamento();
         List<PacienteTratamento> res = dt.getPTList("INNER JOIN tratamento t "
                 + "ON t.tra_cod = pt.tra_cod WHERE pt.pac_cpf = '"+cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()).getCpf()+"' "+
-                " AND UPPER(t.tra_nome) LIKE '%" +cbtratamento.getEditor().getText().toUpperCase()+ "%'");
+                " AND UPPER(t.tra_nome) LIKE '%" +cbtratamento.getEditor().getText().toUpperCase()+ "%' AND pt.pt_ativo = 'S'");
         ObservableList<PacienteTratamento> modelo;
         
         modelo = FXCollections.observableArrayList(res);

@@ -6,28 +6,30 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="724.0" prefWidth="600.0" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAtendimentoController">
+<AnchorPane id="AnchorPane" fx:id="pnprincipal" prefHeight="747.0" prefWidth="600.0" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAtendimentoController">
    <children>
-      <JFXComboBox fx:id="cbfuncionario" labelFloat="true" layoutX="183.0" layoutY="73.0" onKeyReleased="#pesquisaDentista" prefHeight="25.0" prefWidth="234.0" promptText="Dentista" />
-      <ImageView fitHeight="289.0" fitWidth="914.0" layoutX="29.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <JFXComboBox fx:id="cbfuncionario" editable="true" labelFloat="true" layoutX="183.0" layoutY="93.0" onKeyReleased="#pesquisaDentista" prefHeight="25.0" prefWidth="234.0" promptText="Dentista" />
+      <ImageView fitHeight="289.0" fitWidth="914.0" layoutX="29.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/dentes.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="txobservacoes" labelFloat="true" layoutX="29.0" layoutY="427.0" prefHeight="50.0" prefWidth="542.0" promptText="Observações" />
-      <Label fx:id="lbtratamento" alignment="CENTER" layoutX="93.0" layoutY="35.0" prefHeight="17.0" prefWidth="28.0" styleClass="labeli" text="Label" />
-      <Label fx:id="lbpaciente" layoutX="286.0" layoutY="35.0" styleClass="labeli" text="Label" />
-      <Label fx:id="lbhorario" layoutX="466.0" layoutY="35.0" styleClass="labeli" text="Label" />
-      <JFXComboBox fx:id="cbitens" editable="true" labelFloat="true" layoutX="29.0" layoutY="499.0" onKeyReleased="#pesquisaMaterial" prefHeight="25.0" prefWidth="186.0" promptText="Material" />
-      <JFXTextField fx:id="txquantidade" labelFloat="true" layoutX="29.0" layoutY="541.0" prefHeight="25.0" prefWidth="186.0" promptText="Quantidade" />
-      <JFXButton id="filtro" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="585.0" onAction="#clkBtAddUsado" prefHeight="34.0" prefWidth="186.0" text=" ">
+      <JFXTextArea fx:id="txobservacoes" labelFloat="true" layoutX="29.0" layoutY="447.0" prefHeight="50.0" prefWidth="542.0" promptText="Observações" />
+      <JFXComboBox fx:id="cbitens" editable="true" labelFloat="true" layoutX="29.0" layoutY="519.0" onKeyReleased="#pesquisaMaterial" prefHeight="25.0" prefWidth="186.0" promptText="Material" />
+      <JFXTextField fx:id="txquantidade" labelFloat="true" layoutX="29.0" layoutY="561.0" prefHeight="25.0" prefWidth="186.0" promptText="Quantidade" />
+      <JFXButton id="filtro" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="605.0" onAction="#clkBtAddUsado" prefHeight="34.0" prefWidth="186.0" text=" ">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,13 +41,20 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView fx:id="tvitensutilizados" layoutX="240.0" layoutY="499.0" prefHeight="128.0" prefWidth="331.0">
+      <TableView fx:id="tvitensutilizados" layoutX="240.0" layoutY="519.0" prefHeight="128.0" prefWidth="331.0">
         <columns>
           <TableColumn fx:id="colproduto" prefWidth="244.0" text="Produto" />
           <TableColumn fx:id="colqtde" minWidth="0.0" prefWidth="83.0" text="Quantidade" />
         </columns>
+         <contextMenu>
+            <ContextMenu styleClass="cm">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#minusDente" text="Excluir" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </TableView>
-      <JFXButton id="filtro" contentDisplay="CENTER" layoutX="29.0" layoutY="652.0" onAction="#clkBtRegistrarAt" prefHeight="54.0" prefWidth="542.0" text=" ">
+      <JFXButton id="filtro" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="672.0" onAction="#clkBtRegistrarAt" prefHeight="54.0" prefWidth="542.0" text=" ">
          <graphic>
             <ImageView fitHeight="51.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,482 +66,281 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="1">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="68.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="2">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="68.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
+         </cursor>
          <padding>
             <Insets bottom="40.0" right="4.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="107.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="45.0" style="-fx-background-color: black;" text="3">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="107.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="45.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
+         </cursor>
          <padding>
             <Insets bottom="40.0" right="4.0" />
          </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="153.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <padding>
-            <Insets bottom="40.0" />
-         </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="153.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="4">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="181.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="181.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="5">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="209.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="36.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="209.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="36.0" style="-fx-background-color: black;" text="6">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="245.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="22.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="245.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="22.0" style="-fx-background-color: black;" text="7">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="267.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="32.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="267.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="8">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <padding>
+            <Insets bottom="40.0" />
+         </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="298.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="32.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="298.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="9">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
          <padding>
             <Insets bottom="40.0" left="5.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="330.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="26.0" style="-fx-background-color: black;" text="10">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="330.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="22.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="356.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="11">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="356.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="32.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="390.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="12">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="390.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="13">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="47.0" style="-fx-background-color: black;" text="14">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="47.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" left="5.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="493.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="15">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="493.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="532.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" ripplerFill="BLACK" style="-fx-background-color: black;" text="16">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="532.0" layoutY="124.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="128.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets bottom="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="17">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="68.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="18">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="68.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="107.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="45.0" style="-fx-background-color: black;" text="19">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="107.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="45.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets right="5.0" top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="153.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="20">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="153.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="181.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="21">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="181.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="209.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="36.0" style="-fx-background-color: black;" text="22">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="209.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="36.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="245.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="23">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="245.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="271.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="24">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="271.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="298.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="25">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="298.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="324.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="26">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="324.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="356.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="27">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="356.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="32.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="390.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="28">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="390.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="29">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="28.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="47.0" style="-fx-background-color: black;" text="30">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="47.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets left="5.0" top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="493.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="31">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="493.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets right="3.0" top="40.0" />
          </padding>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="532.0" layoutY="301.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="32">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="532.0" layoutY="282.0" onAction="#clkSelectDente" opacity="0.0" prefHeight="129.0" prefWidth="39.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/cancel.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <padding>
             <Insets right="3.0" top="40.0" />
          </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </JFXButton>
+      <HBox alignment="CENTER" layoutX="-2.0" layoutY="23.0" prefHeight="42.0" prefWidth="600.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="lbtratamento" alignment="CENTER" styleClass="labeli" text="Label">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbpaciente" styleClass="labeli" text="Label">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbhorario" styleClass="labeli" text="Label">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Line endX="270.0" layoutX="298.0" layoutY="72.0" startX="-266.0" />
    </children>
 </AnchorPane>

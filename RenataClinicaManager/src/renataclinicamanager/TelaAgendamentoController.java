@@ -21,7 +21,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,9 +38,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
@@ -196,7 +193,7 @@ public class TelaAgendamentoController implements Initializable {
         DAOTratamento dt = new DAOTratamento();
         List<PacienteTratamento> res = dt.getPTList("INNER JOIN tratamento t "
                 + "ON t.tra_cod = pt.tra_cod WHERE pt.pac_cpf = '"+cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()).getCpf()+"' "+
-                " AND UPPER(t.tra_nome) LIKE '%" +txtratamento.getText().toUpperCase()+ "%'");
+                " AND UPPER(t.tra_nome) LIKE '%" +txtratamento.getText().toUpperCase()+ "%' AND pt.pt_ativo='S'");
         ObservableList<PacienteTratamento> modelo;
         
         modelo = FXCollections.observableArrayList(res);
