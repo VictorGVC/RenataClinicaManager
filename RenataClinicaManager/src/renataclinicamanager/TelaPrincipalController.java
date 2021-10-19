@@ -194,6 +194,19 @@ public class TelaPrincipalController implements Initializable {
         setInfo();
     }  
     
+    private boolean isSomethingSelected()
+    {
+        ObservableList <Node> componentes = pntables.getChildren();
+        
+        for(Node n : componentes) 
+        {
+            if (n instanceof TableView)
+                if(((TableView)n).getSelectionModel().getSelectedIndex() != -1)
+                    return true;
+        }
+        return false;
+    }
+    
     private void setInfo()
     {
         DAOConfig dc = new DAOConfig();
@@ -740,7 +753,7 @@ public class TelaPrincipalController implements Initializable {
     private void clkAgendar(ActionEvent event) throws IOException 
     {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
-        if(!sat.getHorario().before(Timestamp.valueOf(LocalDate.now().atStartOfDay()))
+        if(isSomethingSelected() && !sat.getHorario().before(Timestamp.valueOf(LocalDate.now().atStartOfDay()))
                 && sat.getPt().getPaciente().getNome().equals(""))
         {
             TelaAgendamentoInicialController controller = new TelaAgendamentoInicialController();

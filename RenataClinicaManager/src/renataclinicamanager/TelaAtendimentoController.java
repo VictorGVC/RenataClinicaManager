@@ -84,7 +84,7 @@ public class TelaAtendimentoController implements Initializable {
         dentes = new int[32];
         setDateFormat();
         try {
-            carregaDentistas("UPPER(fun_nome) LIKE '%%'");
+            carregaDentistas("UPPER(fun_nome) LIKE '%%' AND fun_crm != ''");
             setLabels();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -291,7 +291,7 @@ public class TelaAtendimentoController implements Initializable {
     @FXML
     private void pesquisaDentista(KeyEvent event) throws SQLException 
     {
-        carregaDentistas("UPPER(fun_nome) LIKE '%"+cbfuncionario.getEditor().getText().toUpperCase()+"%'");
+        carregaDentistas("UPPER(fun_nome) LIKE '%"+cbfuncionario.getEditor().getText().toUpperCase()+"%' AND fun_crm != ''");
     }
 
     @FXML

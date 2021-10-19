@@ -40,7 +40,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -139,6 +138,8 @@ public class TelaFuncionarioController implements Initializable {
     private JFXTextField txfiltro;
     @FXML
     private HBox pnfiltro;
+    @FXML
+    private JFXTextField txcrm;
 
     /**
      * Initializes the controller class.
@@ -554,7 +555,7 @@ public class TelaFuncionarioController implements Initializable {
             
             Funcionario f = new Funcionario(cbCargo.getValue(),txnome.getText(),
                     txlogin.getText(),txtelefone.getText(),getJsonArray(),
-                    dpdatanasc.getValue(), 'S',sexo);
+                    dpdatanasc.getValue(), 'S',sexo,txcrm.getText());
             DAOFuncionario dal = new DAOFuncionario();
             
             if(pnpesquisa.isDisable())
@@ -660,6 +661,7 @@ public class TelaFuncionarioController implements Initializable {
                 funatual = f;
                 txlogin.setText(f.getLogin());
                 selecionaCargo(f.getC());
+                txcrm.setText(f.getCrm());
                 dpdatanasc.setValue(f.getDtnasc());
                 setListsJson();
             }

@@ -15,7 +15,7 @@ import org.json.JSONArray;
 public class Funcionario 
 {
     private Cargo c;
-    private String nome,login,telefone;
+    private String nome,login,telefone,crm;
     private JSONArray horarios;
     private LocalDate dtnasc;
     private char ativo,sexo;
@@ -42,7 +42,7 @@ public class Funcionario
         this.sexo = sexo;
     }
 
-    public Funcionario(Cargo c, String nome, String login, String telefone, JSONArray horarios, LocalDate dtnasc, char ativo, char sexo) {
+    public Funcionario(Cargo c, String nome, String login, String telefone, JSONArray horarios, LocalDate dtnasc, char ativo, char sexo, String crm) {
         this.c = c;
         this.nome = nome;
         this.login = login;
@@ -51,6 +51,15 @@ public class Funcionario
         this.dtnasc = dtnasc;
         this.ativo = ativo;
         this.sexo = sexo;
+        this.crm = crm;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
     }
 
     public JSONArray getHorarios() {
