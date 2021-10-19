@@ -7,7 +7,9 @@ package renataclinicamanager;
 
 import com.jfoenix.controls.JFXSnackbar;
 import db.DAL.DAOAgendamento;
+import db.DAL.DAOConfig;
 import db.Models.Atendimento;
+import db.Models.Config;
 import db.Models.Funcionario;
 import db.Models.PacienteTratamento;
 import java.io.IOException;
@@ -16,11 +18,12 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 import javafx.animation.FadeTransition;
@@ -40,7 +43,6 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputControl;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
@@ -77,12 +79,6 @@ public class TelaPrincipalController implements Initializable {
     private ToolBar tbatalhos;
     @FXML
     private HBox pnrodape;
-    @FXML
-    private Label lbnome;
-    @FXML
-    private Label lbrua;
-    @FXML
-    private Label lbcep;
     @FXML
     private MenuItem mifuncionario;
     @FXML
@@ -177,16 +173,47 @@ public class TelaPrincipalController implements Initializable {
     private MenuItem miregate5;
     @FXML
     private MenuItem miregate6;
+    @FXML
+    private Label lbbomdia;
+    @FXML
+    private Label lbdata;
+    @FXML
+    private Label lbnomeempresa;
+    @FXML
+    private Label lbcidade;
+    @FXML
+    private Label lbendereco;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //pntotal.getScene().getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
         initDateFormat();
         setTimePattern();
         setAcessoSessao();
         initColTB();
         initTables();
+        setInfo();
     }  
+    
+    private void setInfo()
+    {
+        DAOConfig dc = new DAOConfig();
+        Config c = dc.get();
+        lbbomdia.setText("Bom dia, "+sessao.getNome());
+        lbdata.setText("Hoje é "+LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault())+", "
+                + LocalDate.now().getDayOfMonth()+" de "+LocalDate.now().getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault())+" "
+                        + "de "+LocalDate.now().getYear());
+        lbcidade.setText(c.getCidade());
+        lbendereco.setText(c.getEndereco());
+        lbnomeempresa.setText(c.getNome());
+    }
+    
+    private void setTema()
+    {
+        DAOConfig dc = new DAOConfig();
+        
+        pncabecalho.getScene().getStylesheets().clear();
+        pncabecalho.getScene().getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
+    }
     
     private void initDateFormat() 
     {
@@ -408,6 +435,10 @@ public class TelaPrincipalController implements Initializable {
         stage = new Stage();
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
@@ -423,7 +454,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(850);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Fornecedores");
         stage.setScene(scene);
         stage.show();
@@ -458,7 +491,9 @@ public class TelaPrincipalController implements Initializable {
         stage.setMaxWidth(1030);
         stage.setMaxHeight(678);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Funcionários");
         stage.setScene(scene);
         stage.show();
@@ -474,7 +509,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(1030);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Pacientes");
         stage.setScene(scene);
         stage.show();
@@ -490,7 +527,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(800);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Materiais");
         stage.setScene(scene);
         stage.show();
@@ -506,7 +545,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(555);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Cargos");
         stage.setScene(scene);
         stage.show();
@@ -522,7 +563,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(544);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Tratamentos");
         stage.setScene(scene);
         stage.show();
@@ -538,7 +581,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(544);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Feriados");
         stage.setScene(scene);
         stage.show();
@@ -554,7 +599,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(555);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Modelo de Atestado");
         stage.setScene(scene);
         stage.show();
@@ -570,7 +617,9 @@ public class TelaPrincipalController implements Initializable {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(555);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Modelo de Receituário");
         stage.setScene(scene);
         stage.show();
@@ -587,7 +636,9 @@ public class TelaPrincipalController implements Initializable {
         stage.setMaxWidth(804);
         stage.setMaxHeight(638);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Recebimento");
         stage.setScene(scene);
         stage.show();
@@ -604,7 +655,9 @@ public class TelaPrincipalController implements Initializable {
         stage.setMaxWidth(876);
         stage.setMaxHeight(589);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Controlar Tratamento");
         stage.setScene(scene);
         stage.show();
@@ -621,7 +674,9 @@ public class TelaPrincipalController implements Initializable {
         stage.setMaxWidth(917);
         stage.setMaxHeight(643);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Compra");
         stage.setScene(scene);
         stage.show();
@@ -638,7 +693,9 @@ public class TelaPrincipalController implements Initializable {
         stage.setMaxWidth(804);
         stage.setMaxHeight(610);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Pagamento");
         stage.setScene(scene);
         stage.show();
@@ -653,7 +710,9 @@ public class TelaPrincipalController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Agendamento");
         stage.setScene(scene);
         stage.showAndWait();
@@ -669,7 +728,9 @@ public class TelaPrincipalController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Atendimento");
         stage.setScene(scene);
         stage.show();
@@ -691,7 +752,9 @@ public class TelaPrincipalController implements Initializable {
             
             stage.resizableProperty().setValue(Boolean.FALSE);
             //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-            scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+            DAOConfig dc = new DAOConfig();
+        
+            scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
             stage.setTitle("Agendamento");
             stage.setScene(scene);
             stage.showAndWait();
@@ -754,7 +817,9 @@ public class TelaPrincipalController implements Initializable {
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
@@ -787,7 +852,9 @@ public class TelaPrincipalController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Atendimento");
         stage.setScene(scene);
         stage.showAndWait(); 
@@ -799,5 +866,24 @@ public class TelaPrincipalController implements Initializable {
             text.setStyle("-fx-text-fill: green");
             sb.enqueue(new JFXSnackbar.SnackbarEvent(text));
         }
+    }
+
+    @FXML
+    private void clkOpenConfig(ActionEvent event) throws IOException 
+    {        
+        Parent root = FXMLLoader.load(getClass().getResource("TelaConfig.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
+        stage.setTitle("Configurações");
+        stage.setScene(scene);
+        stage.showAndWait();
+        
+        setTema();
     }
 }

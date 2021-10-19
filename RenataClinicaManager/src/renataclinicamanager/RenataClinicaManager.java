@@ -6,6 +6,7 @@
 package renataclinicamanager;
 
 import db.Banco.Banco;
+import db.DAL.DAOConfig;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -30,7 +31,9 @@ public class RenataClinicaManager extends Application {
         
         Scene scene = new Scene(root);
         
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         stage.setScene(scene);

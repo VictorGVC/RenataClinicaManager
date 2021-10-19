@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
+import db.DAL.DAOConfig;
 import db.DAL.DAOConta;
 import db.Models.Conta;
 import java.io.IOException;
@@ -306,7 +307,9 @@ public class TelaPagamentosController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Despesa");
         stage.setScene(scene);
         stage.show();

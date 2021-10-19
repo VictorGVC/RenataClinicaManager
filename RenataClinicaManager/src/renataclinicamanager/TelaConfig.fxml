@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,10 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="default" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="renataclinicamanager.TelaConfigController">
+<AnchorPane id="AnchorPane" prefHeight="467.0" prefWidth="380.0" styleClass="default" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaConfigController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="228.0" layoutY="36.0" prefHeight="77.0" prefWidth="145.0" spacing="15.0">
+      <VBox alignment="TOP_CENTER" layoutX="118.0" layoutY="106.0" prefHeight="77.0" prefWidth="145.0" spacing="15.0">
          <children>
             <Label styleClass="labeli" text="Tema">
                <font>
@@ -22,7 +22,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="137.0">
                <children>
-                  <JFXButton fx:id="btdark" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#setThemeDark" prefHeight="43.0" prefWidth="71.0" ripplerFill="BLACK" style="-fx-background-color: grey; -fx-background-radius: 5 0 0 5;" text=" ">
+                  <JFXButton fx:id="btdark" alignment="CENTER" buttonType="RAISED" cache="true" cacheHint="QUALITY" contentDisplay="CENTER" onAction="#setThemeDark" prefHeight="43.0" prefWidth="71.0" style="-fx-background-color: grey; -fx-background-radius: 5 0 0 5;" text=" ">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,7 +34,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton fx:id="btlight" alignment="CENTER" contentDisplay="CENTER" onAction="#setThemeligth" prefHeight="43.0" prefWidth="71.0" style="-fx-background-color: white; -fx-background-radius: 0 5 5 0;" text=" ">
+                  <JFXButton fx:id="btlight" alignment="CENTER" cache="true" cacheHint="QUALITY" contentDisplay="CENTER" onAction="#setThemeligth" prefHeight="43.0" prefWidth="71.0" style="-fx-background-color: white; -fx-background-radius: 0 5 5 0;" text=" ">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -50,5 +50,25 @@
             </HBox>
          </children>
       </VBox>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="175.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/config.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txnome" alignment="CENTER" labelFloat="true" layoutX="86.0" layoutY="220.0" prefHeight="25.0" prefWidth="209.0" promptText="Nome da empresa" />
+      <JFXTextField fx:id="txendereco" alignment="CENTER" labelFloat="true" layoutX="86.0" layoutY="270.0" prefHeight="25.0" prefWidth="209.0" promptText="Endereço completo" />
+      <JFXTextField fx:id="txcidade" alignment="CENTER" labelFloat="true" layoutX="123.0" layoutY="326.0" promptText="Cidade" />
+      <JFXButton id="filtro" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="86.0" layoutY="396.0" onAction="#clkSalvaConfig" prefHeight="45.0" prefWidth="209.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/tooth-whitening.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

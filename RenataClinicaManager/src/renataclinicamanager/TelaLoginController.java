@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
+import db.DAL.DAOConfig;
 import db.DAL.DAOFuncionario;
 import db.Models.Funcionario;
 import java.io.IOException;
@@ -74,6 +75,7 @@ public class TelaLoginController implements Initializable
     
     private void chamaPrincipal() throws IOException 
     {    
+        DAOConfig dc = new DAOConfig();
         TelaPrincipalController.setSessao(sessao);
         Parent root = FXMLLoader.load(getClass().getResource("TelaPrincipal.fxml"));
         Scene scene = new Scene(root);
@@ -82,7 +84,7 @@ public class TelaLoginController implements Initializable
         //stage.setResizable(false);
         stage.setMaximized(true);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
-        scene.getStylesheets().add(getClass().getResource("/CSS/Dark.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Renata Clinica Manager");
         
         stage.setScene(scene);
