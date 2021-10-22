@@ -9,8 +9,11 @@ import db.Banco.Banco;
 import db.Models.Feriado;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -67,5 +70,40 @@ public class DAOFeriado
         sql = sql.replaceAll("#2", "" + f.getData().toString());
         
         return Banco.getCon().manipular(sql);
+    }
+    
+    public Feriado getFeriado(LocalDate dia) 
+    {
+        String sql = "SELECT * FROM feriado WHERE fer_dia = '"+dia+"'";
+        
+        Feriado aux = null;
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        try {
+            
+            if(rs.next())
+                aux = new Feriado(rs.getInt("fer_cod"), rs.getString("fer_nome"), rs.getDate("fer_dia").toLocalDate());
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
+    }
+    
+    public boolean isFeriado(LocalDate dia) 
+    {
+        String sql = "SELECT * FROM feriado WHERE fer_dia = '"+dia+"'";
+        
+        ResultSet rs = Banco.getCon().consultar(sql);
+
+        try {
+            if(rs.next())
+                return true;
+            else
+                return false;
+        } catch (SQLException ex) {
+            return false;
+        }
     }
 }

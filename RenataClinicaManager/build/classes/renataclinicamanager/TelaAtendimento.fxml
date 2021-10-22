@@ -18,20 +18,20 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pnprincipal" prefHeight="747.0" prefWidth="600.0" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAtendimentoController">
+<AnchorPane id="AnchorPane" fx:id="pnprincipal" prefHeight="604.0" prefWidth="573.0" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAtendimentoController">
    <children>
-      <JFXComboBox fx:id="cbfuncionario" editable="true" labelFloat="true" layoutX="183.0" layoutY="93.0" onKeyReleased="#pesquisaDentista" prefHeight="25.0" prefWidth="234.0" promptText="Dentista" />
-      <ImageView fitHeight="289.0" fitWidth="914.0" layoutX="29.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+      <JFXComboBox fx:id="cbfuncionario" editable="true" labelFloat="true" layoutX="169.0" layoutY="66.0" onKeyReleased="#pesquisaDentista" prefHeight="25.0" prefWidth="234.0" promptText="Dentista" />
+      <ImageView fitHeight="289.0" fitWidth="914.0" layoutX="15.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/dentes.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="txobservacoes" labelFloat="true" layoutX="29.0" layoutY="447.0" prefHeight="50.0" prefWidth="542.0" promptText="Observações" />
-      <JFXComboBox fx:id="cbitens" editable="true" labelFloat="true" layoutX="29.0" layoutY="519.0" onKeyReleased="#pesquisaMaterial" prefHeight="25.0" prefWidth="186.0" promptText="Material" />
-      <JFXTextField fx:id="txquantidade" labelFloat="true" layoutX="29.0" layoutY="561.0" prefHeight="25.0" prefWidth="186.0" promptText="Quantidade" />
-      <JFXButton id="filtro" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="605.0" onAction="#clkBtAddUsado" prefHeight="34.0" prefWidth="186.0" text=" ">
+      <JFXTextArea id="filtro" fx:id="txobservacoes" labelFloat="true" layoutX="16.0" layoutY="412.0" prefHeight="121.0" prefWidth="174.0" promptText="Observações" style="-fx-border-radius: 0; -fx-background-radius: 0;" />
+      <JFXComboBox fx:id="cbitens" editable="true" labelFloat="true" layoutX="203.0" layoutY="412.0" onKeyReleased="#pesquisaMaterial" prefHeight="25.0" prefWidth="137.0" promptText="Material" />
+      <JFXTextField fx:id="txquantidade" labelFloat="true" layoutX="203.0" layoutY="454.0" prefHeight="25.0" prefWidth="137.0" promptText="Quantidade" />
+      <JFXButton id="filtro" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="491.0" onAction="#clkBtAddUsado" prefHeight="42.0" prefWidth="137.0" text=" ">
          <graphic>
-            <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/add.png" />
                </image>
@@ -41,10 +41,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView fx:id="tvitensutilizados" layoutX="240.0" layoutY="519.0" prefHeight="128.0" prefWidth="331.0">
+      <TableView fx:id="tvitensutilizados" layoutX="353.0" layoutY="412.0" prefHeight="121.0" prefWidth="202.0">
         <columns>
-          <TableColumn fx:id="colproduto" prefWidth="244.0" text="Produto" />
-          <TableColumn fx:id="colqtde" minWidth="0.0" prefWidth="83.0" text="Quantidade" />
+          <TableColumn fx:id="colproduto" prefWidth="128.0" text="Produto" />
+          <TableColumn fx:id="colqtde" minWidth="0.0" prefWidth="70.0" text="Quantidade" />
         </columns>
          <contextMenu>
             <ContextMenu styleClass="cm">
@@ -54,9 +54,9 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXButton id="filtro" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="672.0" onAction="#clkBtRegistrarAt" prefHeight="54.0" prefWidth="542.0" text=" ">
+      <JFXButton id="filtro" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="15.0" layoutY="543.0" onAction="#clkBtRegistrarAt" prefHeight="44.0" prefWidth="542.0" text=" ">
          <graphic>
-            <ImageView fitHeight="51.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/tooth-whitening.png" />
                </image>
@@ -66,7 +66,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="1">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="15.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -74,7 +74,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="68.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="2">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="54.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="2">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -82,7 +82,7 @@
             <Insets bottom="40.0" right="4.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="107.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="45.0" style="-fx-background-color: black;" text="3">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="93.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="45.0" style="-fx-background-color: black;" text="3">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -90,7 +90,7 @@
             <Insets bottom="40.0" right="4.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="153.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="4">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="139.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="4">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -98,7 +98,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="181.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="5">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="167.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="5">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -106,7 +106,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="209.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="36.0" style="-fx-background-color: black;" text="6">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="195.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="36.0" style="-fx-background-color: black;" text="6">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -114,7 +114,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="245.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="22.0" style="-fx-background-color: black;" text="7">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="231.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="22.0" style="-fx-background-color: black;" text="7">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -122,7 +122,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="267.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="8">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="253.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="8">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -130,7 +130,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="298.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="9">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="284.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="9">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -138,7 +138,7 @@
             <Insets bottom="40.0" left="5.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="330.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="26.0" style="-fx-background-color: black;" text="10">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="316.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="26.0" style="-fx-background-color: black;" text="10">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -146,7 +146,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="356.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="11">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="342.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="11">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -154,7 +154,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="390.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="12">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="376.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="12">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -162,7 +162,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="13">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="404.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="13">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -170,7 +170,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="47.0" style="-fx-background-color: black;" text="14">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="432.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="47.0" style="-fx-background-color: black;" text="14">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -178,7 +178,7 @@
             <Insets bottom="40.0" left="5.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="493.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="15">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="479.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="15">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -186,7 +186,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="532.0" layoutY="144.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" ripplerFill="BLACK" style="-fx-background-color: black;" text="16">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="518.0" layoutY="109.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" ripplerFill="BLACK" style="-fx-background-color: black;" text="16">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -194,7 +194,7 @@
             <Insets bottom="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="29.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="17">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="15.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="17">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -202,7 +202,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="68.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="18">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="54.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="18">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -210,7 +210,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="107.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="45.0" style="-fx-background-color: black;" text="19">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="93.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="45.0" style="-fx-background-color: black;" text="19">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -218,7 +218,7 @@
             <Insets right="5.0" top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="153.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="20">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="139.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="20">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -226,7 +226,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="181.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="21">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="167.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="21">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -234,7 +234,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="209.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="36.0" style="-fx-background-color: black;" text="22">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="195.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="36.0" style="-fx-background-color: black;" text="22">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -242,7 +242,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="245.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="23">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="231.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="23">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -250,7 +250,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="271.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="24">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="257.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="24">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -258,7 +258,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="298.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="25">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="284.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="25">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -266,7 +266,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="324.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="26">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="310.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="26">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -274,7 +274,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="356.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="27">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="342.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="32.0" style="-fx-background-color: black;" text="27">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -282,7 +282,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="390.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="28">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="376.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="28">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -290,7 +290,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="29">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="404.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="28.0" style="-fx-background-color: black;" text="29">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -298,7 +298,7 @@
             <Insets top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="47.0" style="-fx-background-color: black;" text="30">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="432.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="47.0" style="-fx-background-color: black;" text="30">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -306,7 +306,7 @@
             <Insets left="5.0" top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="493.0" layoutY="302.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="31">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="479.0" layoutY="267.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="31">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -314,7 +314,7 @@
             <Insets right="3.0" top="40.0" />
          </padding>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="532.0" layoutY="301.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="32">
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="518.0" layoutY="266.0" onAction="#clkSelectDente" opacity="0.29" prefHeight="130.0" prefWidth="39.0" style="-fx-background-color: black;" text="32">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -322,7 +322,7 @@
             <Insets right="3.0" top="40.0" />
          </padding>
       </JFXButton>
-      <HBox alignment="CENTER" layoutX="-2.0" layoutY="23.0" prefHeight="42.0" prefWidth="600.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" layoutY="6.0" prefHeight="42.0" prefWidth="600.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="lbtratamento" alignment="CENTER" styleClass="labeli" text="Label">
                <font>
@@ -341,6 +341,6 @@
             </Label>
          </children>
       </HBox>
-      <Line endX="270.0" layoutX="298.0" layoutY="72.0" startX="-266.0" />
+      <Line endX="270.0" layoutX="284.0" layoutY="49.0" startX="-266.0" />
    </children>
 </AnchorPane>

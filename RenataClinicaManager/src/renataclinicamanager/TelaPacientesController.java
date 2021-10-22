@@ -32,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -48,7 +49,8 @@ import util.Util;
  */
 public class TelaPacientesController implements Initializable 
 {
-    Paciente pacatual;
+    private Paciente pacatual;
+    private int rea;
     
     @FXML
     private SplitPane pnprincipal;
@@ -204,6 +206,7 @@ public class TelaPacientesController implements Initializable
     
     private void setMascaras() 
     {
+        rea = 0;
         MaskFieldUtil.maxField(txnome, 30);
         MaskFieldUtil.cpfField(txcpf);
         MaskFieldUtil.foneField(txtelefone);
@@ -507,5 +510,20 @@ public class TelaPacientesController implements Initializable
                     break;
             }
         }
+    }
+
+    @FXML
+    private void clkrRea(KeyEvent event) 
+    {
+        rea++;
+        if(rea == 30)
+        {
+            tarea.appendText("\n");
+            rea = 0;
+        }
+        if(event.getCode() == KeyCode.BACK_SPACE)
+            rea-=2;
+        if(tarea.getText().isEmpty())
+            rea = 0;
     }
 }

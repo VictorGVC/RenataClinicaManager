@@ -37,6 +37,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -306,7 +307,7 @@ public class TelaPagamentosController implements Initializable {
         Stage stage = new Stage();
 
         stage.resizableProperty().setValue(Boolean.FALSE);
-        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
         
         scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
