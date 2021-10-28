@@ -32,7 +32,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -120,11 +119,6 @@ public class TelaPacientesController implements Initializable
         listaSexo();
         listaCategoria();
         initColTb();
-        colrea.setCellValueFactory(param -> 
-        {
-            String result = String.join("\n",param.getValue().getRea());
-            return new SimpleStringProperty(result);
-        });
         estado(true);
         cbcategoria.getSelectionModel().select(1);
     }    
@@ -151,13 +145,27 @@ public class TelaPacientesController implements Initializable
         cbcategoria.setItems(FXCollections.observableArrayList(list));
     }
     
+    private String AddBarraN(String ini)
+    {
+        int j = 0;
+        for (int i = 1; i < ini.length(); i++) 
+        {
+            if(i%36==0)
+            {
+                j++;
+                ini = ini.substring(0, j*35) + "\n" + ini.substring(j*36,ini.length()-1);
+            }
+        }
+        return ini;
+    }
+    
     private void initColTb() 
     {
         colcpf.setCellValueFactory(new PropertyValueFactory("cpf"));
         colnome.setCellValueFactory(new PropertyValueFactory("nome"));
         coltelefone.setCellValueFactory(new PropertyValueFactory("telefone"));
         colrua.setCellValueFactory(new PropertyValueFactory("rua"));
-        colrea.setCellValueFactory(new PropertyValueFactory("rea"));
+        colrea.setCellValueFactory((v) -> new SimpleStringProperty(AddBarraN(v.getValue().getRea())));
         colnum.setCellValueFactory(new PropertyValueFactory("numero"));
     }
     
@@ -468,12 +476,17 @@ public class TelaPacientesController implements Initializable
                 
                 txcpf.setText(p.getCpf());
                 txnome.setText(p.getNome());
-                if(p.getSexo() == 'M')
-                    cbsexo.getSelectionModel().selectFirst();
-                else if(p.getSexo() == 'F')
-                    cbsexo.getSelectionModel().selectLast();
-                else
-                    cbsexo.getSelectionModel().select(-1);
+                switch (p.getSexo()) {
+                    case 'M':
+                        cbsexo.getSelectionModel().selectFirst();
+                        break;
+                    case 'F':
+                        cbsexo.getSelectionModel().selectLast();
+                        break;
+                    default:
+                        cbsexo.getSelectionModel().select(-1);
+                        break;
+                }
                 dpdatanasc.setValue(p.getDtnacimento());
                 txtelefone.setText(p.getTelefone());
                 tarea.setText(p.getRea());
@@ -510,20 +523,5 @@ public class TelaPacientesController implements Initializable
                     break;
             }
         }
-    }
-
-    @FXML
-    private void clkrRea(KeyEvent event) 
-    {
-        rea++;
-        if(rea == 30)
-        {
-            tarea.appendText("\n");
-            rea = 0;
-        }
-        if(event.getCode() == KeyCode.BACK_SPACE)
-            rea-=2;
-        if(tarea.getText().isEmpty())
-            rea = 0;
     }
 }

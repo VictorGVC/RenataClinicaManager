@@ -39,7 +39,7 @@
                   <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="84.0" layoutY="121.0" prefHeight="32.0" prefWidth="171.0" promptText="Sexo" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txtelefone" focusColor="BLACK" labelFloat="true" layoutX="282.0" layoutY="121.0" prefHeight="32.0" prefWidth="250.0" promptText="Telefone *" unFocusColor="BLACK" />
                   <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="84.0" layoutY="184.0" prefHeight="32.0" prefWidth="171.0" promptText="Data de Nacimento" />
-                  <JFXTextArea fx:id="tarea" labelFloat="true" layoutX="282.0" layoutY="168.0" onKeyReleased="#clkrRea" prefHeight="49.0" prefWidth="250.0" promptText="Alergias e remedios" />
+                  <JFXTextArea fx:id="tarea" labelFloat="true" layoutX="282.0" layoutY="168.0" prefHeight="49.0" prefWidth="250.0" promptText="Alergias e remedios" />
                   <JFXTextField fx:id="txcidade" focusColor="BLACK" labelFloat="true" layoutX="687.0" layoutY="53.0" prefHeight="32.0" prefWidth="196.0" promptText="Cidade *" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txrua" focusColor="BLACK" labelFloat="true" layoutX="685.0" layoutY="121.0" prefHeight="32.0" prefWidth="183.0" promptText="Rua*" unFocusColor="BLACK" />
                   <JFXTextField fx:id="txnumero" focusColor="BLACK" labelFloat="true" layoutX="882.0" layoutY="121.0" prefHeight="32.0" prefWidth="55.0" promptText="Numero*" unFocusColor="BLACK" />
