@@ -19,8 +19,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
+import util.MaskFieldUtil;
 
 /**
  * FXML Controller class
@@ -44,7 +44,14 @@ public class TelaAddDespesaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        setMasks();
+    }
+    
+    private void setMasks()
+    {
+        MaskFieldUtil.maxField(txdescricao, 17);
+        MaskFieldUtil.maxField(txvalor, 10);
+        MaskFieldUtil.monetaryField(txvalor);
     }
     
     private void setCorAlert(JFXTextField tf, String cor) 
@@ -92,7 +99,7 @@ public class TelaAddDespesaController implements Initializable {
         {
             setNormalColor();
             Conta c = new Conta(dtvencimento.getValue(),
-                    Double.parseDouble(txvalor.getText().replace(".", "").replace(',', '.')),
+                    MaskFieldUtil.monetaryValueFromField(txvalor).doubleValue(),
                     txdescricao.getText());
             DAOConta dc = new DAOConta();
             

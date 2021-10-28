@@ -134,8 +134,9 @@ public class TelaTratamentoController implements Initializable
     
     private void setMascaras() 
     {
-        MaskFieldUtil.maxField(txnome, 30);
+        MaskFieldUtil.maxField(txnome, 40);
         MaskFieldUtil.monetaryField(txvalor);
+        MaskFieldUtil.maxField(txfiltro, 40);
     }
 
     @FXML

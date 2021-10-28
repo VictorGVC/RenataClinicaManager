@@ -17,8 +17,8 @@
                   <Label fx:id="lbobg" layoutX="179.0" layoutY="23.0" text="* Campos Obrigatórios" textFill="RED" />
                   <Pane layoutX="67.0" layoutY="59.0" prefHeight="475.0" prefWidth="345.0" styleClass="forth">
                      <children>
-                        <JFXTextArea fx:id="tacabecalho" layoutX="17.0" layoutY="14.0" prefHeight="137.0" prefWidth="311.0" promptText="Cabeçalho *" />
-                        <JFXTextArea fx:id="tarodape" layoutX="17.0" layoutY="338.0" prefHeight="123.0" prefWidth="311.0" promptText="Rodapé *" />
+                        <JFXTextArea fx:id="tacabecalho" labelFloat="true" layoutX="17.0" layoutY="14.0" prefHeight="137.0" prefWidth="311.0" promptText="Cabeçalho *" />
+                        <JFXTextArea fx:id="tarodape" labelFloat="true" layoutX="17.0" layoutY="338.0" prefHeight="123.0" prefWidth="311.0" promptText="Rodapé *" />
                      </children>
                   </Pane>
                </children>

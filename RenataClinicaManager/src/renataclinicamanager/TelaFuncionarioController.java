@@ -312,7 +312,7 @@ public class TelaFuncionarioController implements Initializable {
     
     private void setMascaras() 
     {
-        MaskFieldUtil.maxField(txnome, 30);
+        MaskFieldUtil.maxField(txnome, 40);
         MaskFieldUtil.foneField(txtelefone);
         MaskFieldUtil.maxField(txlogin, 30);
         MaskFieldUtil.maxField(txsenha, 20);

@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.util.Duration;
+import util.MaskFieldUtil;
 
 /**
  * FXML Controller class
@@ -43,7 +44,15 @@ public class TelaConfigController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initConfig();
+        setMasks();
     }    
+    
+    private void setMasks()
+    {
+        MaskFieldUtil.maxField(txcidade, 17);
+        MaskFieldUtil.maxField(txnome, 26);
+        MaskFieldUtil.maxField(txendereco, 40);
+    }
     
     private void initConfig()
     {

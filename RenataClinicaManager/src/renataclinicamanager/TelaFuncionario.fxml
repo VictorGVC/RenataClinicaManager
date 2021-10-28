@@ -58,7 +58,7 @@
                         <JFXTextField fx:id="txlogin" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="700.0" layoutY="88.0" promptText="Usuário *" unFocusColor="BLACK" />
                         <JFXPasswordField fx:id="txsenha" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="859.0" layoutY="88.0" promptText="Senha Atual *" unFocusColor="BLACK" />
                         <JFXPasswordField fx:id="txsenhan" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="776.0" layoutY="153.0" promptText="Nova Senha" unFocusColor="BLACK" />
-                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" layoutX="776.0" layoutY="213.0" prefHeight="32.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" labelFloat="true" layoutX="776.0" layoutY="213.0" prefHeight="32.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
                         <Label fx:id="lbobg" layoutX="245.0" layoutY="252.0" text="* Campos Obrigatorios" textFill="RED" />
                         <Label layoutX="265.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
                         <Label layoutX="798.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />

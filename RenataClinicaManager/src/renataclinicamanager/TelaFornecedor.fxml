@@ -47,7 +47,7 @@
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin></JFXComboBox>
-                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" prefHeight="38.0" prefWidth="455.0" promptText="Filtro" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" prefHeight="38.0" prefWidth="455.0" promptText="Filtro" unFocusColor="BLACK" />
                         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkBtFiltro" text=" ">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">

@@ -104,6 +104,7 @@ public class TelaFornecedorController implements Initializable {
         MaskFieldUtil.cnpjField(txcnpj);
         MaskFieldUtil.maxField(txnome, 35);
         MaskFieldUtil.foneField(txtelefone);
+        MaskFieldUtil.maxField(txfiltro, 20);
     }
 
     private void listaCategoria()

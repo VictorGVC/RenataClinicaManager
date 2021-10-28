@@ -175,6 +175,9 @@ public class TelaAtendimentoController implements Initializable {
     {
         MaskFieldUtil.numericField(txquantidade);
         MaskFieldUtil.maxField(txquantidade,4);
+        MaskFieldUtil.maxField(cbfuncionario.getEditor(), 50);
+        MaskFieldUtil.maxField(cbitens.getEditor(), 30);
+        MaskFieldUtil.numericField(txquantidade);
     }
 
     public static void setAtendimento(Atendimento t)

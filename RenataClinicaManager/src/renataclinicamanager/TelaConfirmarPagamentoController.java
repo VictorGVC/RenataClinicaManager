@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import util.MaskFieldUtil;
 
 public class TelaConfirmarPagamentoController implements Initializable {
 
@@ -27,7 +28,15 @@ public class TelaConfirmarPagamentoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setValues();
         conf = 'c';
+        setMasks();
     }    
+    
+    private void setMasks()
+    {
+        MaskFieldUtil.maxField(txvalor, 12);
+        MaskFieldUtil.monetaryField(txvalor);
+        MaskFieldUtil.dateField(dtpagamento.getEditor());
+    }
     
     private void setValues()
     {

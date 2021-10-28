@@ -28,6 +28,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import util.MaskFieldUtil;
 
 public class TelaAgendamentoInicialController implements Initializable 
 {
@@ -48,7 +49,16 @@ public class TelaAgendamentoInicialController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initCBPaciente();
+        setMasks();
     }  
+    
+    private void setMasks()
+    {
+        MaskFieldUtil.cpfField(txcpf);
+        MaskFieldUtil.monetaryField(txvalor);
+        MaskFieldUtil.maxField(cbpaciente.getEditor(), 50);
+        MaskFieldUtil.maxField(cbpaciente.getEditor(), 30);
+    }
     
     @FXML
     private void initCBPaciente()

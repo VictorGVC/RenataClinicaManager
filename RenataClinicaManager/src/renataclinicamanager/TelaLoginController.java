@@ -69,8 +69,8 @@ public class TelaLoginController implements Initializable
 
     private void setMascaras() 
     {
-        MaskFieldUtil.maxField(txusuario, 15);
-        MaskFieldUtil.maxField(txsenha, 15);
+        MaskFieldUtil.maxField(txusuario, 30);
+        MaskFieldUtil.maxField(txsenha, 20);
     }
     
     private void chamaPrincipal() throws IOException 

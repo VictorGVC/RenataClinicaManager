@@ -36,7 +36,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONString;
 import util.MaskFieldUtil;
 
 /**
@@ -207,7 +206,8 @@ public class TelaCargosController implements Initializable
     
     private void setMascaras() 
     {
-        MaskFieldUtil.maxField(txnome, 30);
+        MaskFieldUtil.maxField(txnome, 40);
+        MaskFieldUtil.maxField(txfiltro, 40);
     }
 
     @FXML

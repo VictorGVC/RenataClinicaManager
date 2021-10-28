@@ -33,7 +33,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
@@ -123,6 +122,9 @@ public class TelaControlarTratamentoController implements Initializable {
     private void setMascaras() 
     {
         MaskFieldUtil.cpfField(txcpf);
+        MaskFieldUtil.maxField(cbpaciente.getEditor(), 40);
+        MaskFieldUtil.maxField(cbtratamento.getEditor(), 20);
+        MaskFieldUtil.maxField(txfiltro, 40);
     }
     
     private void initColTb() 
