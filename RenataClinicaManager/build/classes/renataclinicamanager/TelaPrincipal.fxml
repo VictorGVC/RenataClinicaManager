@@ -58,6 +58,7 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#clkBackup" text="Backup" />
                         <MenuItem mnemonicParsing="false" onAction="#clkRestore" text="Restauração" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkCarregarFeriados" text="Carregar Feriados" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">

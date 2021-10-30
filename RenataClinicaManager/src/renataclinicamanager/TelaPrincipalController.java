@@ -39,6 +39,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -921,5 +922,22 @@ public class TelaPrincipalController implements Initializable {
         stage.showAndWait();
         
         setTema();
+    }
+
+    @FXML
+    private void clkCarregarFeriados(ActionEvent event) 
+    {
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        
+        a.setHeaderText("Carregamento de Calendário!");
+        a.setTitle("Alerta");
+        a.setContentText("Após a confirmação, todos os feriados cadastrados anteriormente serão apagados, você tem certeza que deseja fazer isso?");
+        a.getButtonTypes().clear();
+        a.getButtonTypes().add(ButtonType.NO);
+        a.getButtonTypes().add(ButtonType.YES);
+        if (a.showAndWait().get() == ButtonType.YES)
+        {
+            
+        }
     }
 }

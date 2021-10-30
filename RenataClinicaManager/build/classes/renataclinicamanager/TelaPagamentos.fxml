@@ -19,7 +19,7 @@
 
 <JFXTabPane prefHeight="580.0" prefWidth="800.0" stylesheets="@../CSS/estilotab.css" tabMinWidth="395.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaPagamentosController">
    <tabs>
-      <Tab fx:id="tabreceber" text="Contas a Pagar">
+      <Tab fx:id="tabapagar" text="Contas a Pagar">
          <content>
             <SplitPane fx:id="pnprincipalap" dividerPositions="0.24029574861367836" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="543.0" prefWidth="800.0">
                <items>

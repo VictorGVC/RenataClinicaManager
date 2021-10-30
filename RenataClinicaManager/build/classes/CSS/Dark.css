@@ -98,7 +98,7 @@
 .jfx-text-field 
 {
    -jfx-unfocus-color : #8fcfcf;
-   -jfx-focus-color: #4059a9;
+   -jfx-focus-color: #ffffff;
    -fx-prompt-text-fill: #8fcfcf;
    -fx-text-inner-color: #8fcfcf;
    -fx-highlight-fill: #8fcfcf;
@@ -107,7 +107,7 @@
 .jfx-text-area
 {
    -jfx-unfocus-color : #8fcfcf;
-   -jfx-focus-color: #4059a9;
+   -jfx-focus-color: #ffffff;
    -fx-prompt-text-fill: #8fcfcf;
    -fx-text-inner-color: #8fcfcf;
    -fx-highlight-fill: #8fcfcf;
@@ -115,7 +115,7 @@
 
 .jfx-password-field 
 {
-   -jfx-focus-color: #4059a9;
+   -jfx-focus-color: #ffffff;
    -jfx-unfocus-color : #8fcfcf;
    -fx-prompt-text-fill: #8fcfcf;
    -fx-text-inner-color: #8fcfcf;
@@ -150,7 +150,7 @@
 
 .jfx-combo-box 
 {
-   -jfx-focus-color: #4059a9;
+   -jfx-focus-color: #ffffff;
    -jfx-unfocus-color : #8fcfcf;
    -fx-prompt-text-fill: #8fcfcf;
    -fx-text-inner-color: #8fcfcf;

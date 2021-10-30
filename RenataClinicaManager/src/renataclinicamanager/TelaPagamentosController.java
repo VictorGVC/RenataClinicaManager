@@ -56,9 +56,6 @@ public class TelaPagamentosController implements Initializable {
     static Conta conap,conp;
     DateTimeFormatter form;
     
-    //CONTAS A PAGAR
-    @FXML
-    private Tab tabreceber;
     @FXML
     private TableView<Conta> tvpagamentosap;
     @FXML
@@ -135,6 +132,8 @@ public class TelaPagamentosController implements Initializable {
     private Tab tabpagas;
     @FXML
     private TableColumn<Conta, String> coldatapagamentop;
+    @FXML
+    private Tab tabapagar;
 
     
     @Override

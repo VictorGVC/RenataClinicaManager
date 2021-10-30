@@ -39,7 +39,7 @@
                         <HBox alignment="CENTER" prefHeight="66.0" prefWidth="868.0" spacing="50.0">
                            <children>
                               <JFXTextField fx:id="txcpf" onKeyReleased="#completaPaciente" prefHeight="25.0" prefWidth="105.0" promptText="CPF" />
-                              <JFXComboBox fx:id="cbpaciente" editable="true" onAction="#preencheCPF" onKeyReleased="#preenchePacientes" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
+                              <JFXComboBox fx:id="cbpaciente" editable="true" labelFloat="true" onAction="#preencheCPF" onKeyReleased="#preenchePacientes" prefHeight="25.0" prefWidth="236.0" promptText="Paciente*" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="20.0" />
@@ -55,7 +55,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXComboBox fx:id="cbtratamento" editable="true" onKeyReleased="#preencheTratamentos" prefHeight="25.0" prefWidth="344.0" promptText="Tratamento*" GridPane.columnIndex="1" />
+                              <JFXComboBox fx:id="cbtratamento" editable="true" labelFloat="true" onKeyReleased="#preencheTratamentos" prefHeight="25.0" prefWidth="344.0" promptText="Tratamento*" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                         <Label fx:id="lbobg" text="* Campos Obrigatórios" textFill="RED">

@@ -42,6 +42,7 @@
                         <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="374.0" layoutY="68.0" prefHeight="32.0" prefWidth="175.0" promptText="Telefone *" unFocusColor="BLACK" />
                         <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="78.0" layoutY="150.0" prefHeight="32.0" prefWidth="145.0" promptText="Data de Nacimento" />
                         <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="246.0" layoutY="150.0" prefHeight="32.0" prefWidth="121.0" promptText="Sexo" unFocusColor="BLACK" />
+                        <JFXTextField fx:id="txcrm" labelFloat="true" layoutX="407.0" layoutY="150.0" prefHeight="32.0" prefWidth="145.0" promptText="CRM" unFocusColor="BLACK" />
                         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="306.0" layoutY="206.0" onAction="#clkBtHrario" text=" " visible="false">
                            <padding>
                               <Insets left="5.0" />
@@ -58,11 +59,10 @@
                         <JFXTextField fx:id="txlogin" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="700.0" layoutY="88.0" promptText="Usuário *" unFocusColor="BLACK" />
                         <JFXPasswordField fx:id="txsenha" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="859.0" layoutY="88.0" promptText="Senha Atual *" unFocusColor="BLACK" />
                         <JFXPasswordField fx:id="txsenhan" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="776.0" layoutY="153.0" promptText="Nova Senha" unFocusColor="BLACK" />
-                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" layoutX="776.0" layoutY="213.0" prefHeight="32.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="cbCargo" focusColor="BLACK" labelFloat="true" layoutX="776.0" layoutY="213.0" prefHeight="32.0" prefWidth="135.0" promptText="Cargo *" unFocusColor="BLACK" />
                         <Label fx:id="lbobg" layoutX="245.0" layoutY="252.0" text="* Campos Obrigatorios" textFill="RED" />
                         <Label layoutX="265.0" layoutY="27.0" styleClass="labeli" text="Dados Pessoais" />
                         <Label layoutX="798.0" layoutY="27.0" styleClass="labeli" text="Dados Cadastrais" />
-                        <JFXTextField fx:id="txcrm" labelFloat="true" layoutX="407.0" layoutY="150.0" prefHeight="32.0" prefWidth="145.0" promptText="CRM" unFocusColor="BLACK" />
                      </children>
                   </Pane>
                </children>
