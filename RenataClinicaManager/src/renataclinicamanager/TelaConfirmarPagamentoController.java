@@ -1,5 +1,6 @@
 package renataclinicamanager;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOConta;
@@ -10,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import util.MaskFieldUtil;
 
@@ -23,13 +25,24 @@ public class TelaConfirmarPagamentoController implements Initializable {
     private JFXDatePicker dtpagamento;
     @FXML
     private JFXTextField txvalor;
+    @FXML
+    private JFXButton btconfirmar;
+    @FXML
+    private JFXButton btcancelar;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setValues();
         conf = 'c';
         setMasks();
+        setToolTip();
     }    
+    
+    private void setToolTip()
+    {
+        btconfirmar.setTooltip(new Tooltip("Confirmar"));
+        btcancelar.setTooltip(new Tooltip("Cancelar"));
+    }
     
     private void setMasks()
     {

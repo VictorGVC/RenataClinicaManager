@@ -33,6 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -74,6 +75,10 @@ public class TelaAtendimentoController implements Initializable {
     private TableColumn<Material, Integer> colqtde;
     @FXML
     private AnchorPane pnprincipal;
+    @FXML
+    private JFXButton btaddproduto;
+    @FXML
+    private JFXButton btconfirmar;
 
     /**
      * Initializes the controller class.
@@ -98,7 +103,14 @@ public class TelaAtendimentoController implements Initializable {
         success = false;
         setMasks();
         initTable();
+        setToolTip();
     }    
+    
+    private void setToolTip()
+    {
+        btaddproduto.setTooltip(new Tooltip("Adicionar Produto"));
+        btconfirmar.setTooltip(new Tooltip("Confirmar"));
+    }
     
     private void selecionaDentista(Funcionario c)
     {

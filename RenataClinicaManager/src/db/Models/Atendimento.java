@@ -11,6 +11,7 @@ public class Atendimento
     private String observacoes, dentes;
     private PacienteTratamento pt;
     private Funcionario dentista;
+    private Paciente paciente;
     
     private List <Material> itens;
 
@@ -44,6 +45,14 @@ public class Atendimento
         this.dentista = dentista;
         this.itens = itens;
         this.dentes = dentes;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public Atendimento(int codigo) {

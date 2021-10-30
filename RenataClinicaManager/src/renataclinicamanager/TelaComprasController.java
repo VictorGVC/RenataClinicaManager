@@ -38,6 +38,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -124,6 +125,12 @@ public class TelaComprasController implements Initializable
     private JFXTextField txalocadoparcelas;
     @FXML
     private AnchorPane pnparcelas;
+    @FXML
+    private JFXButton btfechar;
+    @FXML
+    private JFXButton btdefault;
+    @FXML
+    private JFXButton btconfirmarparcelas;
 
     /**
      * Initializes the controller class.
@@ -139,7 +146,15 @@ public class TelaComprasController implements Initializable
         estado(true);
         carregaFornecedores("");
         carregaMateriais("");
+        setToolTip();
     }    
+    
+    private void setToolTip()
+    {
+        btfechar.setTooltip(new Tooltip("Fechar"));
+        btdefault.setTooltip(new Tooltip("Recarrega Valores Padrão"));
+        btconfirmarparcelas.setTooltip(new Tooltip("Confirmar"));
+    }
     
     private void setDate()
     {
@@ -381,8 +396,6 @@ public class TelaComprasController implements Initializable
         atualizaTotal();
     }
     
-    
-    
     private void carregaTabelaProdutos(String filtro)
     {
         
@@ -506,7 +519,4 @@ public class TelaComprasController implements Initializable
             tvprodutos.setItems(FXCollections.observableList(tvcompra
                     .getSelectionModel().getSelectedItem().getProdutos()));
     }
-
-    
-
 }

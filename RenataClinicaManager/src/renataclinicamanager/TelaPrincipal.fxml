@@ -79,7 +79,7 @@
                   <Insets />
                </VBox.margin>
                <items>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkOpenConfig" text=" ">
+                  <JFXButton fx:id="btconfig" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkOpenConfig" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>

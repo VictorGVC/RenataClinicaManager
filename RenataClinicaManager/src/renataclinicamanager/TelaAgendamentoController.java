@@ -5,6 +5,7 @@
  */
 package renataclinicamanager;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
@@ -38,6 +39,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -80,6 +82,8 @@ public class TelaAgendamentoController implements Initializable {
     private Pane pnaviso;
     @FXML
     private TableColumn<Atendimento, String> colcontato;
+    @FXML
+    private JFXButton btagendar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,6 +93,7 @@ public class TelaAgendamentoController implements Initializable {
         initDate();
         initCB();
         carregaHorarios(dtpdata.getValue());
+        btagendar.setTooltip(new Tooltip("Confirmar Agendamento"));
     }    
     
     private void initCB()

@@ -25,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -65,6 +66,7 @@ public class TelaLoginController implements Initializable
         setMascaras();
         sessao = new Funcionario();
         teclaEnter();
+        btlogin.setTooltip(new Tooltip("Confirmar"));
     }
 
     private void setMascaras() 

@@ -96,7 +96,7 @@
             </columns>
          </TableView>
          <JFXTextField fx:id="txtotalparcelas" labelFloat="true" layoutX="274.0" layoutY="506.0" prefHeight="28.0" prefWidth="170.0" promptText="TOTAL" />
-         <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="27.0" layoutY="546.0" onAction="#clkBtConfirmaParcela" prefHeight="40.0" prefWidth="417.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+         <JFXButton fx:id="btconfirmarparcelas" buttonType="RAISED" contentDisplay="CENTER" layoutX="27.0" layoutY="546.0" onAction="#clkBtConfirmaParcela" prefHeight="40.0" prefWidth="417.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -109,7 +109,7 @@
             </cursor>
          </JFXButton>
          <JFXTextField fx:id="txalocadoparcelas" labelFloat="true" layoutX="27.0" layoutY="506.0" prefHeight="28.0" prefWidth="170.0" promptText="Falta Alocar" />
-         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="4.0" onAction="#clkBtFecharParcelas" style="-fx-background-radius: 10;" text=" ">
+         <JFXButton fx:id="btfechar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="4.0" onAction="#clkBtFecharParcelas" style="-fx-background-radius: 10;" text=" ">
             <graphic>
                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -127,7 +127,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </JFXButton>
-         <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="210.0" layoutY="500.0" onAction="#clkBtResetParcelas" prefHeight="40.0" prefWidth="52.0" style="-fx-border-color: #8fcfcf; -fx-background-radius: 8; -fx-border-radius: 8;" text=" ">
+         <JFXButton fx:id="btdefault" buttonType="RAISED" contentDisplay="CENTER" layoutX="210.0" layoutY="500.0" onAction="#clkBtResetParcelas" prefHeight="40.0" prefWidth="52.0" style="-fx-border-color: #8fcfcf; -fx-background-radius: 8; -fx-border-radius: 8;" text=" ">
             <graphic>
                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                   <image>

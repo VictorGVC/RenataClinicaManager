@@ -58,7 +58,7 @@
       <JFXTextField fx:id="txnome" alignment="CENTER" labelFloat="true" layoutX="86.0" layoutY="220.0" prefHeight="25.0" prefWidth="209.0" promptText="Nome da empresa" />
       <JFXTextField fx:id="txendereco" alignment="CENTER" labelFloat="true" layoutX="86.0" layoutY="270.0" prefHeight="25.0" prefWidth="209.0" promptText="Endereço completo" />
       <JFXTextField fx:id="txcidade" alignment="CENTER" labelFloat="true" layoutX="123.0" layoutY="326.0" promptText="Cidade" />
-      <JFXButton id="filtro" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="86.0" layoutY="396.0" onAction="#clkSalvaConfig" prefHeight="45.0" prefWidth="209.0" text=" ">
+      <JFXButton id="filtro" fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="86.0" layoutY="396.0" onAction="#clkSalvaConfig" prefHeight="45.0" prefWidth="209.0" text=" ">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

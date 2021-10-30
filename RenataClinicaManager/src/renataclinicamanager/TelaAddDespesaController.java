@@ -5,6 +5,7 @@
  */
 package renataclinicamanager;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import util.MaskFieldUtil;
@@ -37,6 +39,8 @@ public class TelaAddDespesaController implements Initializable {
     private JFXTextField txvalor;
     @FXML
     private AnchorPane pnprincipal;
+    @FXML
+    private JFXButton btconfirmar;
 
     /**
      * Initializes the controller class.
@@ -45,6 +49,7 @@ public class TelaAddDespesaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setMasks();
+        btconfirmar.setTooltip(new Tooltip("Confirmar"));
     }
     
     private void setMasks()

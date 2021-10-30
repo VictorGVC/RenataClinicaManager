@@ -15,7 +15,7 @@
       <JFXTextField fx:id="txvalor" layoutX="84.0" layoutY="76.0" prefHeight="28.0" prefWidth="142.0" promptText="Valor" />
       <JFXDatePicker fx:id="dtpagamento" layoutX="291.0" layoutY="76.0" prefHeight="25.0" prefWidth="171.0" promptText="Data Pagamento" />
       <Line endX="202.0" layoutX="301.0" layoutY="36.0" startX="-286.0" style="-fx-stroke: #8fcfcf;" />
-      <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="174.0" layoutY="143.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+      <JFXButton fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="174.0" layoutY="143.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
          </cursor>
       </JFXButton>
       <Label layoutX="199.0" layoutY="9.0" styleClass="labeli" text="Confirmar Pagamento" />
-      <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="268.0" layoutY="143.0" onAction="#clkBtCancelar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+      <JFXButton fx:id="btcancelar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="268.0" layoutY="143.0" onAction="#clkBtCancelar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>

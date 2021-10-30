@@ -17,6 +17,7 @@ import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
 import util.MaskFieldUtil;
 
@@ -37,6 +38,8 @@ public class TelaConfigController implements Initializable {
     private JFXTextField txendereco;
     @FXML
     private JFXTextField txcidade;
+    @FXML
+    private JFXButton btconfirmar;
 
     /**
      * Initializes the controller class.
@@ -45,6 +48,7 @@ public class TelaConfigController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initConfig();
         setMasks();
+        btconfirmar.setTooltip(new Tooltip("Confirmar"));
     }    
     
     private void setMasks()

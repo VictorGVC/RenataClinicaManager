@@ -5,6 +5,7 @@
  */
 package renataclinicamanager;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
 import db.DAL.DAOAgendamento;
 import db.DAL.DAOConfig;
@@ -46,6 +47,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -185,6 +187,8 @@ public class TelaPrincipalController implements Initializable {
     private Label lbcidade;
     @FXML
     private Label lbendereco;
+    @FXML
+    private JFXButton btconfig;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -194,6 +198,7 @@ public class TelaPrincipalController implements Initializable {
         initColTB();
         initTables();
         setInfo();
+        btconfig.setTooltip(new Tooltip("Configurações"));
     }  
     
     private boolean isSomethingSelected()

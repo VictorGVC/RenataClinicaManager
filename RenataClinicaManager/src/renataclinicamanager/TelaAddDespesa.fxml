@@ -13,7 +13,7 @@
       <JFXTextField fx:id="txdescricao" layoutX="42.0" layoutY="39.0" promptText="Descrição da Conta" />
       <JFXDatePicker fx:id="dtvencimento" layoutX="235.0" layoutY="37.0" prefHeight="28.0" prefWidth="164.0" promptText="Data de Vencimento" />
       <JFXTextField fx:id="txvalor" layoutX="144.0" layoutY="87.0" promptText="Valor" />
-      <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="184.0" layoutY="153.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+      <JFXButton fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="184.0" layoutY="153.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
