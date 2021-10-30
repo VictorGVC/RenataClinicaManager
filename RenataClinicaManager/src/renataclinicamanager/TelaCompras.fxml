@@ -32,14 +32,14 @@
              </HBox>
              <Pane fx:id="pndados" prefHeight="278.0" prefWidth="798.0">
                 <children>
-                   <JFXTextField fx:id="txtotal" editable="false" focusColor="BLACK" labelFloat="true" layoutX="55.0" layoutY="25.0" prefHeight="25.0" prefWidth="279.0" promptText="TOTAL" unFocusColor="BLACK" />
-                   <JFXComboBox fx:id="cbfornecedor" editable="true" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="79.0" onKeyReleased="#preencheFornecedores" prefHeight="25.0" prefWidth="131.0" promptText="Fornecedor*" unFocusColor="BLACK" />
-                   <JFXComboBox fx:id="cbproduto" editable="true" focusColor="BLACK" labelFloat="true" layoutX="201.0" layoutY="79.0" onKeyReleased="#preencheMateriais" prefHeight="25.0" prefWidth="131.0" promptText="Material*" unFocusColor="BLACK" />
-                   <JFXTextField fx:id="txquantidade" focusColor="BLACK" labelFloat="true" layoutX="56.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Quantidade *" unFocusColor="BLACK" />
-                   <JFXTextField fx:id="txpreco" focusColor="BLACK" labelFloat="true" layoutX="202.0" layoutY="134.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
-                   <JFXButton layoutX="111.0" layoutY="193.0" onAction="#clkBtAddItem" text="Adicionar" />
-                   <JFXButton layoutX="208.0" layoutY="193.0" onAction="#clkBtRemoverItem" text="Remover" />
-                   <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="10.0" prefHeight="259.0" prefWidth="470.0" scaleShape="false" styleClass="parelas">
+                   <JFXTextField fx:id="txtotal" alignment="CENTER" editable="false" focusColor="BLACK" labelFloat="true" layoutX="577.0" layoutY="239.0" prefHeight="25.0" prefWidth="131.0" promptText="TOTAL" unFocusColor="BLACK" />
+                   <JFXComboBox fx:id="cbfornecedor" editable="true" focusColor="BLACK" labelFloat="true" layoutX="54.0" layoutY="50.0" onKeyReleased="#preencheFornecedores" prefHeight="25.0" prefWidth="274.0" promptText="Fornecedor*" unFocusColor="BLACK" />
+                   <JFXComboBox fx:id="cbproduto" editable="true" focusColor="BLACK" labelFloat="true" layoutX="53.0" layoutY="101.0" onKeyReleased="#preencheMateriais" prefHeight="25.0" prefWidth="131.0" promptText="Material*" unFocusColor="BLACK" />
+                   <JFXTextField fx:id="txquantidade" focusColor="BLACK" labelFloat="true" layoutX="203.0" layoutY="101.0" prefHeight="25.0" prefWidth="125.0" promptText="Quantidade *" unFocusColor="BLACK" />
+                   <JFXTextField fx:id="txpreco" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="125.0" layoutY="147.0" prefHeight="25.0" prefWidth="131.0" promptText="Preço *" unFocusColor="BLACK" />
+                   <JFXButton layoutX="117.0" layoutY="201.0" onAction="#clkBtAddItem" text="Adicionar" />
+                   <JFXButton layoutX="201.0" layoutY="201.0" onAction="#clkBtRemoverItem" text="Remover" />
+                   <TableView fx:id="tvprodutos" layoutX="407.0" layoutY="13.0" prefHeight="215.0" prefWidth="470.0" scaleShape="false" styleClass="parelas">
                    <Label fx:id="lbobg" layoutX="133.0" layoutY="237.0" prefHeight="17.0" prefWidth="139.0" text="* Campos Obrigatorios" textFill="RED" />
                       <columns>
                          <TableColumn fx:id="colproduto" prefWidth="271.0" text="Produto" />

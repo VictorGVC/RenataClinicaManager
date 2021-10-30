@@ -340,23 +340,28 @@ public class TelaComprasController implements Initializable
     @FXML
     private void clkBtAddItem(ActionEvent event) 
     {
-        boolean flag = true;
-        Material m = new Material(Integer.parseInt(txquantidade.getText()), 
-                Double.parseDouble(txpreco.getText().replace(".", "").replace(',', '.')), 
-                ""+cbproduto.getValue());
-        for (Material produto : comatual.getProdutos()) 
+        if(cbproduto.getSelectionModel().getSelectedIndex() != -1 &&
+                !txquantidade.getText().isEmpty() &&
+                Double.parseDouble(txquantidade.getText()) > 0)
         {
-            if(produto.getNome().equals(m.getNome()) && produto.getValor() == m.getValor())
+            boolean flag = true;
+            Material m = new Material(Integer.parseInt(txquantidade.getText()), 
+                    Double.parseDouble(txpreco.getText().replace(".", "").replace(',', '.')), 
+                    ""+cbproduto.getValue());
+            for (Material produto : comatual.getProdutos()) 
             {
-                flag = false;
-                produto.setQtde(produto.getQtde()+m.getQtde());
+                if(produto.getNome().equals(m.getNome()) && produto.getValor() == m.getValor())
+                {
+                    flag = false;
+                    produto.setQtde(produto.getQtde()+m.getQtde());
+                }
             }
+            if(flag)
+                comatual.getProdutos().add(m);
+            tvprodutos.setItems(FXCollections.observableList(comatual.getProdutos()));
+            tvprodutos.refresh();
+            atualizaTotal();
         }
-        if(flag)
-            comatual.getProdutos().add(m);
-        tvprodutos.setItems(FXCollections.observableList(comatual.getProdutos()));
-        tvprodutos.refresh();
-        atualizaTotal();
     }
 
     @FXML

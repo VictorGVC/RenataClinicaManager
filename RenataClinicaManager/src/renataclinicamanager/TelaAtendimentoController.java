@@ -225,22 +225,27 @@ public class TelaAtendimentoController implements Initializable {
     @FXML
     private void clkBtAddUsado(ActionEvent event) 
     {
-        boolean flag = true;
-        Material m = new Material(cbitens.getItems().get(cbitens.getSelectionModel().getSelectedIndex()).getId()
-                ,Integer.parseInt(txquantidade.getText()), 
-            cbitens.getItems().get(cbitens.getSelectionModel().getSelectedIndex()).getNome());
-        for (Material produto : ate.getItens()) 
+        if(cbitens.getSelectionModel().getSelectedIndex() != -1 &&
+                !txquantidade.getText().isEmpty() && 
+                Double.parseDouble(txquantidade.getText()) > 0)
         {
-            if(produto.getNome().equals(m.getNome()))
+            boolean flag = true;
+            Material m = new Material(cbitens.getItems().get(cbitens.getSelectionModel().getSelectedIndex()).getId()
+                    ,Integer.parseInt(txquantidade.getText()), 
+                cbitens.getItems().get(cbitens.getSelectionModel().getSelectedIndex()).getNome());
+            for (Material produto : ate.getItens()) 
             {
-                flag = false;
-                produto.setQtde(produto.getQtde()+m.getQtde());
+                if(produto.getNome().equals(m.getNome()))
+                {
+                    flag = false;
+                    produto.setQtde(produto.getQtde()+m.getQtde());
+                }
             }
+            if(flag)
+                ate.getItens().add(m);
+            tvitensutilizados.setItems(FXCollections.observableList(ate.getItens()));
+            tvitensutilizados.refresh();
         }
-        if(flag)
-            ate.getItens().add(m);
-        tvitensutilizados.setItems(FXCollections.observableList(ate.getItens()));
-        tvitensutilizados.refresh();
     }
 
     @FXML
