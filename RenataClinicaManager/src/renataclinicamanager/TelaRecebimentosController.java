@@ -46,8 +46,8 @@ import javafx.stage.StageStyle;
  */
 public class TelaRecebimentosController implements Initializable {
 
-    static Conta conar,conr;
-    DateTimeFormatter form;
+    public static Conta conar,conr;
+    private DateTimeFormatter form;
     
     // A Receber
     @FXML

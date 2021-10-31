@@ -21,6 +21,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,6 +31,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -51,7 +53,7 @@ import util.MaskFieldUtil;
 
 public class TelaComprasController implements Initializable 
 {
-    Compra comatual;
+    private Compra comatual;
     
     @FXML
     private SplitPane pnprincipal;
@@ -100,7 +102,7 @@ public class TelaComprasController implements Initializable
     @FXML
     private TableColumn<Compra, Integer> colcod;
     @FXML
-    private TableColumn<Compra, LocalDate> coldata;
+    private TableColumn<Compra, String> coldata;
     @FXML
     private TableColumn<Compra, String> colfornecedor;
     @FXML
@@ -185,6 +187,8 @@ public class TelaComprasController implements Initializable
         MaskFieldUtil.monetaryField(txtotalparcelas);
         MaskFieldUtil.numericField(txqtdparcelas);
         MaskFieldUtil.monetaryField(txalocadoparcelas);
+        txtotal.setAlignment(Pos.CENTER);
+        txpreco.setAlignment(Pos.CENTER);
     }
     
     private void initColTb() 
@@ -194,7 +198,7 @@ public class TelaComprasController implements Initializable
         colpreco.setCellValueFactory(new PropertyValueFactory("valor"));
         colcod.setCellValueFactory(new PropertyValueFactory("id"));
         colfornecedor.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
-        coldata.setCellValueFactory(new PropertyValueFactory("dtcompra"));
+        coldata.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getDtcompra().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
         coltotal.setCellValueFactory(new PropertyValueFactory("total"));
         
         //Tabela de Parcelas
@@ -355,7 +359,7 @@ public class TelaComprasController implements Initializable
     @FXML
     private void clkBtAddItem(ActionEvent event) 
     {
-        if(cbproduto.getSelectionModel().getSelectedIndex() != -1 &&
+        if(!cbproduto.getEditor().getText().isEmpty() &&
                 !txquantidade.getText().isEmpty() &&
                 Double.parseDouble(txquantidade.getText()) > 0)
         {
@@ -395,20 +399,6 @@ public class TelaComprasController implements Initializable
         tvprodutos.setItems(FXCollections.observableList(comatual.getProdutos()));
         atualizaTotal();
     }
-    
-    private void carregaTabelaProdutos(String filtro)
-    {
-        
-    }
-
-    private void clkTabela(MouseEvent event) 
-    {
-        if(tvcompra.getSelectionModel().getSelectedIndex() >= 0)
-        {
-            if(tvcompra.getSelectionModel().getSelectedItem() != null)
-                comatual = tvcompra.getSelectionModel().getSelectedItem();
-        }
-    }
 
     @FXML
     private void clkTFiltroT(KeyEvent event) 
@@ -443,7 +433,7 @@ public class TelaComprasController implements Initializable
         DAOCompra dc = new DAOCompra();
         comatual.setFornecedor(cbfornecedor.getItems().get(cbfornecedor.getSelectionModel().getSelectedIndex()));
         comatual.setDtcompra(LocalDate.now());
-        comatual.setTotal(Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.')));
+        comatual.setTotal(MaskFieldUtil.monetaryValueFromField(txtotal).doubleValue());
 
         setNormalColor();
         String result = dc.gravar(comatual);
@@ -455,6 +445,7 @@ public class TelaComprasController implements Initializable
             estado(true);
             limparCampos();
             pnpesquisa.setDisable(false);
+            pnparcelas.setVisible(false);
             clkTFiltro(null);
         }
         else

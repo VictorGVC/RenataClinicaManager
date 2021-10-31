@@ -98,7 +98,7 @@ public class DAOCompra {
             {
                 aux = dm.get(" UPPER(mat_nome) LIKE '%"+produto.getNome().toUpperCase()+"%'");
                 int mid;
-                if(produto.getNome().equalsIgnoreCase(aux.getNome()))
+                if(aux != null)
                 {
                     sql = "UPDATE material SET mat_estoque="+(aux.getQtde()+produto.getQtde())+
                             " WHERE mat_cod="+aux.getId()+";\n";

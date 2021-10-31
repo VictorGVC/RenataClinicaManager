@@ -119,7 +119,7 @@ public class DAOConta
     
     public boolean pagar(Conta c)
     {
-        String sql = "UPDATE contaspagar SET pag_dtrecebimento = '#1', pag_valor=#2 WHERE pag_cod="+c.getCodigo();
+        String sql = "UPDATE contaspagar SET pag_dtpagamento = '#1', pag_valor=#2 WHERE pag_cod="+c.getCodigo();
         
         sql = sql.replaceAll("#1","" +c.getDtpagamento());
         sql = sql.replaceAll("#2","" +c.getValor());

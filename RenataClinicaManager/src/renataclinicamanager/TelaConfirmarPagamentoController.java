@@ -84,27 +84,26 @@ public class TelaConfirmarPagamentoController implements Initializable {
     @FXML
     private void clkBtConfirmar(ActionEvent event) 
     {
-        
-            con.setDtpagamento(dtpagamento.getValue());
-            con.setValor(Double.parseDouble(txvalor.getText().replace(".", "").replace(',', '.')));
-            DAOConta dc = new DAOConta();
-            
-            if(pr)
-            {
-                if(dc.pagar(con))
-                    conf = 'a';
-                else
-                    conf = 'n';
-            }
-            else
-            {
-                if(dc.receber(con))
-                    conf = 'a';
-                else
-                    conf = 'n';
-            }
+        con.setDtpagamento(dtpagamento.getValue());
+        con.setValor(MaskFieldUtil.monetaryValueFromField(txvalor).doubleValue());
+        DAOConta dc = new DAOConta();
 
-            Stage stage = (Stage) txvalor.getScene().getWindow();
-            stage.close();
+        if(pr)
+        {
+            if(dc.pagar(con))
+                conf = 'a';
+            else
+                conf = 'n';
+        }
+        else
+        {
+            if(dc.receber(con))
+                conf = 'a';
+            else
+                conf = 'n';
+        }
+
+        Stage stage = (Stage) txvalor.getScene().getWindow();
+        stage.close();
     }
 }

@@ -29,7 +29,7 @@
       <JFXTextArea id="filtro" fx:id="txobservacoes" labelFloat="true" layoutX="16.0" layoutY="412.0" prefHeight="121.0" prefWidth="174.0" promptText="Observações" style="-fx-border-radius: 0; -fx-background-radius: 0;" />
       <JFXComboBox fx:id="cbitens" editable="true" labelFloat="true" layoutX="203.0" layoutY="412.0" onKeyReleased="#pesquisaMaterial" prefHeight="25.0" prefWidth="137.0" promptText="Material" />
       <JFXTextField fx:id="txquantidade" labelFloat="true" layoutX="203.0" layoutY="454.0" prefHeight="25.0" prefWidth="137.0" promptText="Quantidade" />
-      <JFXButton id="filtro" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="491.0" onAction="#clkBtAddUsado" prefHeight="42.0" prefWidth="137.0" text=" ">
+      <JFXButton id="filtro" fx:id="btaddproduto" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="203.0" layoutY="491.0" onAction="#clkBtAddUsado" prefHeight="42.0" prefWidth="137.0" text=" ">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +54,7 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXButton id="filtro" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="15.0" layoutY="543.0" onAction="#clkBtRegistrarAt" prefHeight="44.0" prefWidth="542.0" text=" ">
+      <JFXButton id="filtro" fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="15.0" layoutY="543.0" onAction="#clkBtRegistrarAt" prefHeight="44.0" prefWidth="542.0" text=" ">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>

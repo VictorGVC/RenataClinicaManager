@@ -12,9 +12,13 @@ import db.DAL.DAOConfig;
 import db.DAL.DAOFeriado;
 import db.Models.Atendimento;
 import db.Models.Config;
+import db.Models.Feriado;
 import db.Models.Funcionario;
 import db.Models.PacienteTratamento;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -71,6 +75,7 @@ public class TelaPrincipalController implements Initializable {
     private LocalDate dia;
     private Atendimento sat;
     private DateTimeFormatter form;
+    private DateTimeFormatter formatter;
     
     private Label label;
     @FXML
@@ -189,6 +194,18 @@ public class TelaPrincipalController implements Initializable {
     private Label lbendereco;
     @FXML
     private JFXButton btconfig;
+    @FXML
+    private Label lbferseg;
+    @FXML
+    private Label lbferter;
+    @FXML
+    private Label lbferqua;
+    @FXML
+    private Label lbferqui;
+    @FXML
+    private Label lbfersex;
+    @FXML
+    private Label lbfersab;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -238,6 +255,7 @@ public class TelaPrincipalController implements Initializable {
     private void initDateFormat() 
     {
         form = DateTimeFormatter.ofPattern("dd/MM");
+        formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
     }
     
     private void setTimePattern()
@@ -276,9 +294,28 @@ public class TelaPrincipalController implements Initializable {
         colnomesab.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
     }
     
+    private void setEnableTv()
+    {
+        tvseg.setDisable(false);
+        tvter.setDisable(false);
+        tvqua.setDisable(false);
+        tvqui.setDisable(false);
+        tvsex.setDisable(false);
+        tvsab.setDisable(false);
+    }
+    
+    private void setLb()
+    {
+        lbferseg.setText("");
+        lbferter.setText("");
+        lbferqua.setText("");
+        lbferqui.setText("");
+        lbfersex.setText("");
+        lbfersab.setText("");
+    }
+    
     private void initTables()
     {
-        
         DAOAgendamento da = new DAOAgendamento();
         DAOFeriado df = new DAOFeriado();
         
@@ -291,52 +328,94 @@ public class TelaPrincipalController implements Initializable {
         LocalDate sex = dia.minusDays(day-4);
         LocalDate sab = dia.minusDays(day-5);
         
+        setEnableTv();
+        
+        setLb();
+        
+        lbseg.setText(seg.format(form));
+        lbter.setText(ter.format(form));
+        lbqua.setText(qua.format(form));
+        lbqui.setText(qui.format(form));
+        lbsex.setText(sex.format(form));
+        lbsab.setText(sab.format(form));
+        
         if(!df.isFeriado(seg))
         {
-            lbseg.setText(seg.format(form));
             List <Atendimento> agendaseg = geraLista(seg);
             agendaseg = getAgenda(seg, agendaseg);
             tvseg.setItems(FXCollections.observableArrayList(agendaseg));
         }
+        else
+        {
+            Feriado f = df.getFeriado(seg);
+            lbferseg.setText(f.getNome());
+            tvseg.setDisable(true);
+        }
         
         if(!df.isFeriado(ter))
         {
-            lbter.setText(ter.format(form));
             List <Atendimento> agendater = geraLista(ter);
             agendater = getAgenda(ter, agendater);
             tvter.setItems(FXCollections.observableArrayList(agendater));
         }
+        else
+        {
+            Feriado f = df.getFeriado(ter);
+            lbferter.setText(f.getNome());
+            tvter.setDisable(true);
+        }
         
         if(!df.isFeriado(qua))
         {
-            lbqua.setText(qua.format(form));
             List <Atendimento> agendaqua = geraLista(qua);
             agendaqua = getAgenda(qua, agendaqua);
             tvqua.setItems(FXCollections.observableArrayList(agendaqua));
         }
+        else
+        {
+            Feriado f = df.getFeriado(qua);
+            lbferqua.setText(f.getNome());
+            tvqua.setDisable(true);
+        }
         
         if(!df.isFeriado(qui))
         {
-            lbqui.setText(qui.format(form));
             List <Atendimento> agendaqui = geraLista(qui);
             agendaqui = getAgenda(qui, agendaqui);
             tvqui.setItems(FXCollections.observableArrayList(agendaqui));
         }
+        else
+        {
+            Feriado f = df.getFeriado(qui);
+            lbferqui.setText(f.getNome());
+            tvqui.setDisable(true);
+        }
         
         if(!df.isFeriado(sex))
         {
-            lbsex.setText(sex.format(form));
+            
             List <Atendimento> agendasex = geraLista(sex);
             agendasex = getAgenda(sex, agendasex);
             tvsex.setItems(FXCollections.observableArrayList(agendasex));
         }
+        else
+        {
+            Feriado f = df.getFeriado(sex);
+            lbfersex.setText(f.getNome());
+            tvsex.setDisable(true);
+        }
         
         if(!df.isFeriado(sab))
         {
-            lbsab.setText(sab.format(form));
             List <Atendimento> agendasab = geraLista(sab);
             agendasab = getAgenda(sab, agendasab);
             tvsab.setItems(FXCollections.observableArrayList(agendasab));
+        }
+        else
+        {
+            Feriado f = df.getFeriado(sab);
+            lbfersab.setText(f.getNome());
+            tvsab.setDisable(true);
         }
     }
     
@@ -627,7 +706,9 @@ public class TelaPrincipalController implements Initializable {
         scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Feriados");
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
+        
+        initTables();
     }
 
     @FXML
@@ -940,9 +1021,60 @@ public class TelaPrincipalController implements Initializable {
         a.getButtonTypes().clear();
         a.getButtonTypes().add(ButtonType.NO);
         a.getButtonTypes().add(ButtonType.YES);
+        boolean b = false;
         if (a.showAndWait().get() == ButtonType.YES)
         {
+            JSONArray ja = null;
+            try{
+                    URL url = new URL("https://api.calendario.com.br/?json=true&ano=2017&ibge=3529203&token=dmljZ2FicmllbDE3QGhvdG1haWwuY29tJmhhc2g9MjQ5MTAxMzk1&ano="+LocalDate.now().getYear());
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    if (conn.getResponseCode() != 200) {
+                            System.out.print("deu erro... HTTP error code : " + conn.getResponseCode());
+                    }
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+                    String output,json="";
+                    while ((output = br.readLine()) != null) {
+                            json+= output;
+                    }
+                    
+                    ja = new JSONArray(json);
+                    
+                    System.out.println(ja);
+                    conn.disconnect();
+                    b = true;
+            }
+            catch (Exception e) 
+            {
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setHeaderText("ERRO!");
+                a.setTitle("ERRO");
+                a.setContentText("Erro ao carregar feriados da web!");
+                a.getButtonTypes().clear();
+                a.getButtonTypes().add(ButtonType.OK);
+            }
             
+            DAOFeriado df = new DAOFeriado();
+            
+            if(b)
+            {
+                if(df.apagarTudo())
+                {
+                    for (int i = 0; i < ja.length(); i++) 
+                    {
+                        JSONObject json = ja.getJSONObject(i);
+                        int type = json.getInt("type_code");
+                        if(type == 1 || type == 2 || type == 3)
+                        {
+                            LocalDate date = LocalDate.parse(json.getString("date"),formatter);
+                            df.gravar(new Feriado(json.getString("name"),date));
+                        }
+                    }
+                }
+                
+            }
         }
     }
 }

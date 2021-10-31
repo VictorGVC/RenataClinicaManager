@@ -8,9 +8,11 @@ import db.DAL.DAOFeriado;
 import db.Models.Feriado;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +41,8 @@ import util.MaskFieldUtil;
  */
 public class TelaFeriadoController implements Initializable 
 {
-    Feriado feratual;
+    private DateTimeFormatter form;
+    private Feriado feratual;
     
     @FXML
     private SplitPane pnprincipal;
@@ -70,7 +73,7 @@ public class TelaFeriadoController implements Initializable
     @FXML
     private JFXTextField txfiltro;
     @FXML
-    private TableColumn<Feriado, Date> coldata;
+    private TableColumn<Feriado, String> coldata;
     @FXML
     private JFXDatePicker dpdata;
     @FXML
@@ -83,6 +86,7 @@ public class TelaFeriadoController implements Initializable
         initColTb();
         estado(true);
         initData();
+        form = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }  
     
     private void initData()
@@ -92,7 +96,7 @@ public class TelaFeriadoController implements Initializable
     
     private void initColTb() 
     {
-        coldata.setCellValueFactory(new PropertyValueFactory("data"));
+        coldata.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getData().format(form)));
         colnome.setCellValueFactory(new PropertyValueFactory("nome"));
     }
     
@@ -212,7 +216,6 @@ public class TelaFeriadoController implements Initializable
     @FXML
     private void clkBtConfirmar(ActionEvent event) 
     {
-        String id;
         boolean flag = false;
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         

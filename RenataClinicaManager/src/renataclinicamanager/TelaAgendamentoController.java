@@ -11,9 +11,11 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOAgendamento;
+import db.DAL.DAOFeriado;
 import db.DAL.DAOPaciente;
 import db.DAL.DAOTratamento;
 import db.Models.Atendimento;
+import db.Models.Feriado;
 import db.Models.Paciente;
 import db.Models.PacienteTratamento;
 import java.net.URL;
@@ -84,6 +86,8 @@ public class TelaAgendamentoController implements Initializable {
     private TableColumn<Atendimento, String> colcontato;
     @FXML
     private JFXButton btagendar;
+    @FXML
+    private Label lbferiado;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -373,20 +377,56 @@ public class TelaAgendamentoController implements Initializable {
     @FXML
     private void subDay(ActionEvent event) 
     {
+        tvagenda.setDisable(false);
+        lbferiado.setText("");
+        DAOFeriado df = new DAOFeriado();
         dtpdata.setValue(dtpdata.getValue().minusDays(1));
-        carregaHorarios(dtpdata.getValue());
+        if(!df.isFeriado(dtpdata.getValue()))
+            carregaHorarios(dtpdata.getValue());
+        else
+        {
+            Feriado f = df.getFeriado(dtpdata.getValue());
+            lbferiado.setText(f.getNome());
+            tvagenda.setDisable(true);
+        }
     }
 
     @FXML
     private void addDay(ActionEvent event) 
     {
+        tvagenda.setDisable(false);
+        lbferiado.setText("");
+        DAOFeriado df = new DAOFeriado();
         dtpdata.setValue(dtpdata.getValue().plusDays(1));
-        carregaHorarios(dtpdata.getValue());
+        if(!df.isFeriado(dtpdata.getValue()))
+            carregaHorarios(dtpdata.getValue());
+        else
+        {
+            Feriado f = df.getFeriado(dtpdata.getValue());
+            lbferiado.setText(f.getNome());
+            tvagenda.setDisable(true);
+        }
     }
 
     @FXML
     private void clkPreencheTratamentos(KeyEvent event) 
     {
         preencheTratamentos();
+    }
+
+    @FXML
+    private void selectDate(ActionEvent event) 
+    {
+        tvagenda.setDisable(false);
+        lbferiado.setText("");
+        DAOFeriado df = new DAOFeriado();
+        if(!df.isFeriado(dtpdata.getValue()))
+            carregaHorarios(dtpdata.getValue());
+        else
+        {
+            Feriado f = df.getFeriado(dtpdata.getValue());
+            lbferiado.setText(f.getNome());
+            tvagenda.setDisable(true);
+        }
     }
 }

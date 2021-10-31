@@ -79,7 +79,7 @@
                   <Insets />
                </VBox.margin>
                <items>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkOpenConfig" text=" ">
+                  <JFXButton fx:id="btconfig" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkOpenConfig" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -164,7 +164,7 @@
                                           <Label fx:id="lbsab" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli" />
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="pntables" alignment="CENTER" prefHeight="430.0" prefWidth="1280.0" spacing="2.0">
+                                    <HBox fx:id="pntables" alignment="CENTER" prefHeight="396.0" prefWidth="1280.0" spacing="2.0">
                                        <children>
                                           <TableView fx:id="tvseg" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
@@ -250,6 +250,40 @@
                                                 </ContextMenu>
                                              </contextMenu>
                                           </TableView>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="27.0" prefWidth="1280.0" spacing="2.0">
+                                       <children>
+                                          <Label fx:id="lbferseg" alignment="CENTER" contentDisplay="CENTER" maxWidth="204.0" minWidth="204.0" prefHeight="17.0" prefWidth="204.0" styleClass="labeli">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbferter" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbferqua" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbferqui" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbfersex" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbfersab" alignment="CENTER" maxWidth="204.0" minWidth="204.0" prefWidth="204.0" styleClass="labeli">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </HBox>
                                  </children>

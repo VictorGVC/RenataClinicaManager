@@ -70,7 +70,7 @@
             <HBox prefHeight="310.0" prefWidth="1022.0">
                <children>
                   <Pane prefHeight="381.0" prefWidth="18.0" />
-                  <TableView fx:id="tvagenda" prefHeight="330.0" prefWidth="553.0" styleClass="coluna">
+                  <TableView fx:id="tvagenda" prefHeight="270.0" prefWidth="553.0" styleClass="coluna">
                      <columns>
                         <TableColumn fx:id="colhorario" prefWidth="113.0" text="Horário" />
                         <TableColumn fx:id="colpaciente" prefWidth="206.0" text="Paciente" />
@@ -87,7 +87,7 @@
                   </TableView>
                   <AnchorPane prefHeight="378.0" prefWidth="452.0">
                      <children>
-                        <JFXDatePicker fx:id="dtpdata" layoutX="149.0" layoutY="106.0" prefHeight="35.0" prefWidth="171.0" />
+                        <JFXDatePicker fx:id="dtpdata" layoutX="149.0" layoutY="106.0" onAction="#selectDate" prefHeight="35.0" prefWidth="171.0" />
                         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="75.0" layoutY="109.0" onAction="#subDay" prefHeight="27.0" prefWidth="27.0" text=" ">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -129,6 +129,7 @@
                                  </image>
                               </ImageView>
                            </graphic></JFXButton>
+                        <Label fx:id="lbferiado" alignment="CENTER" layoutX="141.0" layoutY="48.0" prefHeight="17.0" prefWidth="171.0" styleClass="labeli" />
                      </children>
                   </AnchorPane>
                </children>

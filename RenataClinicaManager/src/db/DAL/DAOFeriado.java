@@ -106,4 +106,8 @@ public class DAOFeriado
             return false;
         }
     }
+
+    public boolean apagarTudo() {
+        return Banco.getCon().manipular("DELETE FROM Feriado");
+    }
 }
