@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import util.MaskFieldUtil;
 
 /**
@@ -112,6 +113,8 @@ public class TelaAddDespesaController implements Initializable {
             {      
                 JFXSnackbar sb = new JFXSnackbar(pnprincipal); 
                 sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Conta Gerada com Sucesso!")));
+                Stage stage = (Stage) btconfirmar.getScene().getWindow();
+                stage.close();
             }
             else
             { 

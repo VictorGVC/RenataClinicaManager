@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
 import db.DAL.DAOAgendamento;
 import db.DAL.DAOConfig;
+import db.DAL.DAOConta;
 import db.DAL.DAOFeriado;
 import db.Models.Atendimento;
 import db.Models.Config;
@@ -32,6 +33,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -216,7 +219,78 @@ public class TelaPrincipalController implements Initializable {
         initTables();
         setInfo();
         btconfig.setTooltip(new Tooltip("Configurações"));
+        notificacao();
     }  
+    
+    private void notificacao()
+    {
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        DAOConta dc = new DAOConta();
+        
+        if(dc.notificationPag())
+        {
+            a.setHeaderText("Alerta");
+            a.setTitle("Conta a vencer!");
+            a.setContentText("Existe uma ou mais pagamentos perto de vencer, gostaria de abrir a tela de pagamentos para pagar?");
+            a.getButtonTypes().clear();
+            a.getButtonTypes().add(ButtonType.NO);
+            a.getButtonTypes().add(ButtonType.YES);
+            if (a.showAndWait().get() == ButtonType.YES)
+            {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("TelaPagamentos.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.resizableProperty().setValue(Boolean.FALSE);
+                stage.setMaxWidth(804);
+                stage.setMaxHeight(610);
+                stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+                DAOConfig dcon = new DAOConfig();
+
+                scene.getStylesheets().add(getClass().getResource(dcon.getTema()).toExternalForm());
+                stage.setTitle("Pagamento");
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        
+        if(dc.notificationRec())
+        {
+            a.setHeaderText("Alerta");
+            a.setTitle("Conta a vencer!");
+            a.setContentText("Existe um ou mais recebimentos vencidos, gostaria de abrir a tela de recebimentos para visualizar as informações?");
+            a.getButtonTypes().clear();
+            a.getButtonTypes().add(ButtonType.NO);
+            a.getButtonTypes().add(ButtonType.YES);
+            if (a.showAndWait().get() == ButtonType.YES)
+            {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("TelaRecebimentos.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.resizableProperty().setValue(Boolean.FALSE);
+                stage.setMaxWidth(804);
+                stage.setMaxHeight(638);
+                stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+                DAOConfig dcon = new DAOConfig();
+
+                scene.getStylesheets().add(getClass().getResource(dcon.getTema()).toExternalForm());
+                stage.setTitle("Recebimento");
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+    }
     
     private boolean isSomethingSelected()
     {

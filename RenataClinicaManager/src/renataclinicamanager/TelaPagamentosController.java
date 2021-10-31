@@ -312,7 +312,7 @@ public class TelaPagamentosController implements Initializable {
         scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
         stage.setTitle("Despesa");
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
         
         clkTFiltroap(null);
         clkTFiltrop(null);
@@ -328,12 +328,12 @@ public class TelaPagamentosController implements Initializable {
                 case 1:
                     carregaTabelaap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
                            + txfiltroap.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
-                            + "AND c.pag_dtpagamento IS NULL");
+                            + "AND c.pag_dtpagamento IS NULL ORDER BY pag_dtvencimento");
                     break;
                 case 0:
                     carregaTabelaap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
                            + txfiltroap.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialap.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalap.getValue()+"' "
-                            + "AND c.pag_dtpagamento IS NULL");
+                            + "AND c.pag_dtpagamento IS NULL ORDER BY pag_dtvencimento");
                     break;
             }
         }
@@ -361,12 +361,12 @@ public class TelaPagamentosController implements Initializable {
                 case 1:
                     carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
-                                   + "AND c.pag_dtpagamento IS NOT NULL");
+                                   + "AND c.pag_dtpagamento IS NOT NULL ORDER BY pag_dtvencimento");
                     break;
                 case 0:
                     carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
-                                    + "AND c.pag_dtpagamento IS NOT NULL");
+                                    + "AND c.pag_dtpagamento IS NOT NULL ORDER BY pag_dtvencimento");
                     break;
             }
         }

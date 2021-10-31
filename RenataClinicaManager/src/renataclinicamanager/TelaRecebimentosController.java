@@ -320,7 +320,7 @@ public class TelaRecebimentosController implements Initializable {
                             "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod " +
                             "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(p.pac_nome) LIKE '%" 
                            + txfiltroar.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialar.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalar.getValue()+"' "
-                                   + "AND c.rec_dtrecebimento IS NULL");
+                                   + "AND c.rec_dtrecebimento IS NULL ORDER BY rec_dtvencimento");
                     break;
                 case 0:
                     carregaTabelaar("INNER JOIN agendamento a ON a.age_cod = c.age_cod " +
@@ -328,7 +328,7 @@ public class TelaRecebimentosController implements Initializable {
                             "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod " +
                             "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%" 
                            + txfiltroar.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialar.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalar.getValue()+"' "
-                                    + "AND c.rec_dtrecebimento IS NULL");
+                                    + "AND c.rec_dtrecebimento IS NULL ORDER BY rec_dtvencimento");
                     break;
             }
         }
@@ -353,7 +353,7 @@ public class TelaRecebimentosController implements Initializable {
                             + "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod"
                             + "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(p.pac_nome) LIKE '%" 
                            + txfiltror.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialr.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalr.getValue()+"' "
-                                   + "AND c.rec_dtrecebimento IS NOT NULL");
+                                   + "AND c.rec_dtrecebimento IS NOT NULL ORDER BY rec_dtvencimento");
                     break;
                 case 0:
                     carregaTabelar("INNER JOIN agendamento a ON a.age_cod = c.age_cod " +
@@ -361,7 +361,7 @@ public class TelaRecebimentosController implements Initializable {
                             "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod " +
                             "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%" 
                            + txfiltror.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialr.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalr.getValue()+"' "
-                                    + "AND c.rec_dtrecebimento IS NOT NULL");
+                                    + "AND c.rec_dtrecebimento IS NOT NULL ORDER BY rec_dtvencimento");
                     break;
             }
         }

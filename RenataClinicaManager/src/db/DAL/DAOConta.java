@@ -155,4 +155,38 @@ public class DAOConta
 
         return Banco.getCon().manipular(sql);
     }
+
+    public boolean notificationRec() 
+    {
+        String sql = "SELECT * FROM contasreceber WHERE rec_dtvencimento <= '"+LocalDate.now().plusDays(7)+"'"
+                + " AND rec_dtrecebimento IS NULL";
+        
+        ResultSet rs = Banco.getCon().consultar(sql);
+
+        try {
+            if(rs.next())
+                return true;
+            else
+                return false;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean notificationPag() 
+    {
+        String sql = "SELECT * FROM contaspagar WHERE pag_dtvencimento <= '"+LocalDate.now()+"'"
+                + " AND pag_dtpagamento IS NULL";
+        
+        ResultSet rs = Banco.getCon().consultar(sql);
+
+        try {
+            if(rs.next())
+                return true;
+            else
+                return false;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
 }
