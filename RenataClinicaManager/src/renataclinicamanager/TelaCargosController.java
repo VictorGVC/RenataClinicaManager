@@ -45,8 +45,8 @@ import util.MaskFieldUtil;
  */
 public class TelaCargosController implements Initializable 
 {
-    int codatual;
-    JSONArray ja;
+    private int codatual;
+    private JSONArray ja;
     
     @FXML
     private SplitPane pnprincipal;

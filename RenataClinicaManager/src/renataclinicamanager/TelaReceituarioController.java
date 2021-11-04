@@ -30,8 +30,6 @@ import javafx.scene.paint.Paint;
  */
 public class TelaReceituarioController implements Initializable 
 {
-    Feriado feratual;
-    
     @FXML
     private SplitPane pnprincipal;
     @FXML

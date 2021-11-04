@@ -44,7 +44,7 @@ import util.MaskFieldUtil;
 
 public class TelaControlarTratamentoController implements Initializable {
 
-    PacienteTratamento ptatual;
+    private PacienteTratamento ptatual;
     
     @FXML
     private SplitPane pnprincipal;

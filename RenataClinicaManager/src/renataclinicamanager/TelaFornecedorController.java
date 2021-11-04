@@ -45,7 +45,8 @@ import util.Util;
  */
 public class TelaFornecedorController implements Initializable {
 
-    Fornecedor foratual;
+    private Fornecedor foratual;
+    
     @FXML
     private SplitPane pnprincipal;
     @FXML

@@ -54,7 +54,7 @@ import javafx.stage.StageStyle;
 public class TelaPagamentosController implements Initializable {
 
     static Conta conap,conp;
-    DateTimeFormatter form;
+    private DateTimeFormatter form;
     
     @FXML
     private TableView<Conta> tvpagamentosap;

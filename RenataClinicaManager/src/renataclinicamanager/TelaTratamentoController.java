@@ -41,7 +41,7 @@ import util.MaskFieldUtil;
  */
 public class TelaTratamentoController implements Initializable 
 {
-    Tratamento traatual;
+    private Tratamento traatual;
     
     @FXML
     private SplitPane pnprincipal;
