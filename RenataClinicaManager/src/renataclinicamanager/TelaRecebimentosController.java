@@ -59,8 +59,6 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private HBox pnbotoesp;
     @FXML
-    private VBox pnpesquisap;
-    @FXML
     private Pane pnfiltrosp;
     @FXML
     private HBox pnbotoesap1;
@@ -124,6 +122,8 @@ public class TelaRecebimentosController implements Initializable {
     private SplitPane pnprincipalp;
     @FXML
     private TableView<Conta> tvrecebimentosr;
+    @FXML
+    private VBox pnpesquisar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -208,6 +208,20 @@ public class TelaRecebimentosController implements Initializable {
         tvrecebimentosr.refresh();
     }
     
+    private void miniGAlert(String txt, Pane p)
+    {
+        JFXSnackbar sb = new JFXSnackbar(p); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
+    
     @FXML
     private void clkBtEstornar(ActionEvent event) 
     {
@@ -225,10 +239,7 @@ public class TelaRecebimentosController implements Initializable {
             {
                 DAOConta dal = new DAOConta();
                 if(dal.estornarp(conr))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisap); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Estornado com Sucesso!")));
-                }
+                    miniGAlert("Estornado com sucesso!", pnpesquisar);
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);
@@ -268,10 +279,7 @@ public class TelaRecebimentosController implements Initializable {
             char conf = controller.getConfirmado();
             
             if(conf == 'a')
-            {      
-                JFXSnackbar sb = new JFXSnackbar(pnpesquisaar); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Recebido com Sucesso!")));
-            }
+                miniGAlert("Recebido com sucesso!", pnpesquisaar);
             else if(conf == 'n')
             { 
                 a.setAlertType(Alert.AlertType.ERROR);

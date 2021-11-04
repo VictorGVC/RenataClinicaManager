@@ -154,19 +154,44 @@ public class TelaFornecedorController implements Initializable {
         modelo = FXCollections.observableArrayList(res);
         tvFornecedores.setItems(modelo);
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
+    
+    private void miniAlert(String txt, Pane p)
+    {
+        JFXSnackbar sb = new JFXSnackbar(p); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: red;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void evtCnpjDigitado(KeyEvent event) 
     {
-        JFXSnackbar sb = new JFXSnackbar(pndados);
         if(txcnpj.getText().length() >= 18)
         {
             if(!Util.isCnpj(txcnpj.getText()))
             {
                 txcnpj.setFocusColor(Paint.valueOf("RED"));
-                Label lb = new Label("CPF inválido!");
-                lb.setStyle("-fx-text-fill: RED");
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(lb));
+                miniAlert("CNPJ invalido!",pndados);
             }
             else
                 txcnpj.setFocusColor(null);
@@ -219,10 +244,7 @@ public class TelaFornecedorController implements Initializable {
             txcnpj.requestFocus();
         }
         else
-        {
-            JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Selecione algum paciente!")));
-        }
+            miniAlert("Selecione algum fornecedor", pnpesquisa);
     }
 
     @FXML
@@ -245,10 +267,7 @@ public class TelaFornecedorController implements Initializable {
                 f = (Fornecedor)tvFornecedores.getSelectionModel().getSelectedItem();
                 String result = dal.apagar(f);
                 if(result.isEmpty())
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Excluído com Sucesso!")));
-                }
+                    miniGAlert("Excluido com sucesso!");
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);
@@ -318,8 +337,7 @@ public class TelaFornecedorController implements Initializable {
                 String error = dal.gravar(f);
                 if(error.isEmpty())
                 {
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
+                    miniGAlert("Salvo com sucesso!");
                     estado(true);
                     limparCampos();
                     pnpesquisa.setDisable(false);
@@ -336,8 +354,7 @@ public class TelaFornecedorController implements Initializable {
                 String error = dal.alterar(f,foratual.getCnpj());
                 if(error.isEmpty())
                 {
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Alterado com Sucesso!")));
+                    miniGAlert("Alterado com sucesso!");
                     estado(true);
                     limparCampos();
                     pnpesquisa.setDisable(false);

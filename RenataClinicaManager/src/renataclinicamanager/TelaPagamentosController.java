@@ -218,6 +218,20 @@ public class TelaPagamentosController implements Initializable {
         tvpagamentosp.setItems(modelo);
         tvpagamentosp.refresh();
     }
+    
+    private void miniGAlert(String txt, Pane p)
+    {
+        JFXSnackbar sb = new JFXSnackbar(p); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void clkBtLiquidar(ActionEvent event) throws IOException 
@@ -242,10 +256,7 @@ public class TelaPagamentosController implements Initializable {
             char conf = controller.getConfirmado();
             
             if(conf == 'a')
-            {      
-                JFXSnackbar sb = new JFXSnackbar(pnpesquisaap); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Pago com Sucesso!")));
-            }
+                miniGAlert("Pago com sucesso!", pnpesquisaap);
             else if(conf == 'n')
             { 
                 a.setAlertType(Alert.AlertType.ERROR);
@@ -278,10 +289,7 @@ public class TelaPagamentosController implements Initializable {
             {
                 DAOConta dal = new DAOConta();
                 if(dal.estornarp(conp))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisaap); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Estornado com Sucesso!")));
-                }
+                    miniGAlert("Estornado com sucesso!", pnpesquisap);
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);

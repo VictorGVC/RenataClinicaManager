@@ -216,6 +216,20 @@ public class TelaControlarTratamentoController implements Initializable {
         cbpaciente.setFocusColor(null);
         cbtratamento.setUnFocusColor(null);
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void clkBtNovo(ActionEvent event) 
@@ -256,10 +270,7 @@ public class TelaControlarTratamentoController implements Initializable {
                 PacienteTratamento pt;
                 pt = tvtratamentos.getSelectionModel().getSelectedItem();
                 if(dal.apagarPT(pt))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Excluído com Sucesso!")));
-                }
+                    miniGAlert("Excluido com sucesso!");
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);
@@ -355,8 +366,7 @@ public class TelaControlarTratamentoController implements Initializable {
 
             if(dal.iniciarTratamento(pt))
             {
-                JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Tratamento Iniciado com Sucesso!")));
+                miniGAlert("Tratamento iniciado com sucesso!");
                 estado(true);
                 limparCampos();
                 pnpesquisa.setDisable(false);
@@ -391,10 +401,7 @@ public class TelaControlarTratamentoController implements Initializable {
                 PacienteTratamento pt;
                 pt = tvtratamentos.getSelectionModel().getSelectedItem();
                 if(dal.desativarPT(pt))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Finalizado com Sucesso!")));
-                }
+                    miniGAlert("Tratamento finalizado com sucesso!");
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);

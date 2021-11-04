@@ -208,6 +208,20 @@ public class TelaAgendamentoController implements Initializable {
         modelo = FXCollections.observableArrayList(res);
         tvtratamentos.setItems(modelo);
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnaviso); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void preencheCPF(ActionEvent event) 
@@ -285,10 +299,7 @@ public class TelaAgendamentoController implements Initializable {
 
                             if(da.salvar(at))
                             {
-                                JFXSnackbar sb = new JFXSnackbar(pnaviso); 
-                                Label text = new Label("Agendado com Sucesso!");
-                                text.setStyle("-fx-text-fill: green");
-                                sb.enqueue(new JFXSnackbar.SnackbarEvent(text));
+                                miniGAlert("Agendado com sucesso!");
                             }
                             else
                             {

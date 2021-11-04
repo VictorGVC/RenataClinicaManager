@@ -305,6 +305,20 @@ public class TelaComprasController implements Initializable
         cbfornecedor.setFocusColor(null);
         cbfornecedor.setUnFocusColor(null);
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void clkBtNovo(ActionEvent event) 
@@ -440,8 +454,7 @@ public class TelaComprasController implements Initializable
 
         if (result.isEmpty())
         {
-            JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
+            miniGAlert("Salvo com sucesso!");
             estado(true);
             limparCampos();
             pnpesquisa.setDisable(false);

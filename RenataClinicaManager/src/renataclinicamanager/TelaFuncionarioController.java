@@ -383,6 +383,33 @@ public class TelaFuncionarioController implements Initializable {
         txsenha.setUnFocusColor(null);
     }
     
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
+    
+    private void miniAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: red;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void clkBtNovo(ActionEvent event) throws SQLException 
@@ -403,10 +430,7 @@ public class TelaFuncionarioController implements Initializable {
             txnome.requestFocus();
         }
         else
-        {
-            JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Selecione algum paciente!")));
-        }
+            miniAlert("Selecione um paciente!");
     }
     
     private void carregaTabela(String filtro) throws SQLException 
@@ -438,13 +462,10 @@ public class TelaFuncionarioController implements Initializable {
                 Funcionario f;
                 f = tvfuncionarios.getSelectionModel().getSelectedItem();
                 String result = dal.apagar(f);
-                if(result.isEmpty()){  
-                    
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Excluído com Sucesso!")));
-                }
-                else{ 
-                    
+                if(result.isEmpty())
+                    miniGAlert("Excluido com sucesso!");
+                else
+                {    
                     a.setAlertType(Alert.AlertType.ERROR);
                     a.getButtonTypes().clear();
                     a.getButtonTypes().add(ButtonType.OK);
@@ -478,13 +499,9 @@ public class TelaFuncionarioController implements Initializable {
                 String error;
                 error = dal.desativar(tvfuncionarios.getSelectionModel().getSelectedItem());
                 if(error.isEmpty())
-                    {
-                    
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Desativado com sucesso!")));
-                }
-                else{
-                    
+                    miniGAlert("Desativado com sucesso!");
+                else
+                {
                     Alert a = new Alert(Alert.AlertType.WARNING);
                     a.setContentText(error);
                     a.setHeaderText("Alerta");
@@ -494,17 +511,13 @@ public class TelaFuncionarioController implements Initializable {
             }
             else
             {
-                dal.ativar(tvfuncionarios.getSelectionModel().getSelectedItem());
-                JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Ativado com sucesso!")));
+                if(dal.ativar(tvfuncionarios.getSelectionModel().getSelectedItem()))
+                    miniGAlert("Ativado com sucesso!");
             }
             clkTFiltro(null);
         }
         else
-        {
-            JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Selecione algum funcionário!")));
-        }
+            miniAlert("Selecione algum funcionário!");
         clkTFiltro(null);
     }
 
@@ -575,8 +588,7 @@ public class TelaFuncionarioController implements Initializable {
                     
                     if (result.isEmpty())
                     {
-                        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                        sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
+                        miniGAlert("Salvo com sucesso!");
                         estado(true);
                         limparCampos();
                         pnpesquisa.setDisable(false);
@@ -608,8 +620,7 @@ public class TelaFuncionarioController implements Initializable {
                     
                     if (result.isEmpty())
                     {
-                        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                        sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Alterado com Sucesso!")));
+                        miniGAlert("Alterado com sucesso!");
                         estado(true);
                         limparCampos();
                         pnpesquisa.setDisable(false);

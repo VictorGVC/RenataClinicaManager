@@ -63,7 +63,20 @@ public class TelaReceituarioController implements Initializable
             tarodape.setText(m.getRodape());
         } catch (Exception e) {
         }
-        
+    }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pndados); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
     }
 
     @FXML
@@ -98,10 +111,7 @@ public class TelaReceituarioController implements Initializable
             setNormalColor();
             
             if(dm.salvarCRR(md))
-            {
-                JFXSnackbar sb = new JFXSnackbar(pndados); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
-            }
+                miniGAlert("Salvo com sucesso!");
             else
             {
                 a.setAlertType(Alert.AlertType.ERROR);

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="467.0" prefWidth="380.0" styleClass="default" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaConfigController">
+<AnchorPane id="AnchorPane" fx:id="pnprincipal" prefHeight="467.0" prefWidth="380.0" styleClass="default" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaConfigController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="118.0" layoutY="106.0" prefHeight="77.0" prefWidth="145.0" spacing="15.0">
          <children>

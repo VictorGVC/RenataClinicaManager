@@ -138,6 +138,34 @@ public class TelaTratamentoController implements Initializable
         MaskFieldUtil.monetaryField(txvalor);
         MaskFieldUtil.maxField(txfiltro, 40);
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
+    
+    private void miniAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: red;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void clkBtNovo(ActionEvent event) 
@@ -158,11 +186,7 @@ public class TelaTratamentoController implements Initializable
             txnome.requestFocus();
         }
         else
-        {
-            JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-            
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Selecione algum paciente!")));
-        }
+            miniAlert("Selecione algum tratamento!");
     }
 
     @FXML
@@ -184,10 +208,7 @@ public class TelaTratamentoController implements Initializable
                 Tratamento t;
                 t = tvpaciente.getSelectionModel().getSelectedItem();
                 if(dal.apagar(t.getCod()))
-                {      
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Excluído com Sucesso!")));
-                }
+                    miniGAlert("Excluido com sucesso!");
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);
@@ -240,8 +261,7 @@ public class TelaTratamentoController implements Initializable
             {
                 if(dal.gravar(t))
                 {
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Salvo com Sucesso!")));
+                    miniGAlert("Salvo com sucesso!");
                     estado(true);
                     limparCampos();
                     pnpesquisa.setDisable(false);
@@ -258,8 +278,7 @@ public class TelaTratamentoController implements Initializable
                 t.setCod(traatual.getCod());
                 if(dal.alterar(t))
                 {
-                    JFXSnackbar sb = new JFXSnackbar(pnpesquisa); 
-                    sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Alterado com Sucesso!")));
+                    miniGAlert("Alterado com sucesso!");
                     estado(true);
                     limparCampos();
                     pnpesquisa.setDisable(false);

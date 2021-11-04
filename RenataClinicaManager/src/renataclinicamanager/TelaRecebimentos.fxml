@@ -86,7 +86,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox fx:id="pnpesquisap" prefHeight="297.0" prefWidth="798.0">
+                  <VBox fx:id="pnpesquisar" prefHeight="297.0" prefWidth="798.0">
                      <children>
                         <Pane fx:id="pnfiltrosp" prefHeight="98.0" prefWidth="798.0">
                            <children>

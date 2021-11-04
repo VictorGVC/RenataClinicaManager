@@ -53,6 +53,20 @@ public class TelaAddDespesaController implements Initializable {
         btconfirmar.setTooltip(new Tooltip("Confirmar"));
     }
     
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnprincipal); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
+    
     private void setMasks()
     {
         MaskFieldUtil.maxField(txdescricao, 17);
@@ -111,10 +125,7 @@ public class TelaAddDespesaController implements Initializable {
             
             if(dc.gerarDespesa(c))
             {      
-                JFXSnackbar sb = new JFXSnackbar(pnprincipal); 
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(new Label("Conta Gerada com Sucesso!")));
-                Stage stage = (Stage) btconfirmar.getScene().getWindow();
-                stage.close();
+                miniGAlert("Conta Gerada com Sucesso!");
             }
             else
             { 

@@ -618,6 +618,20 @@ public class TelaPrincipalController implements Initializable {
             break;
         }
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnfade); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void clkChamaLogin(ActionEvent event) throws IOException 
@@ -939,8 +953,7 @@ public class TelaPrincipalController implements Initializable {
         if(isSomethingSelected() && !sat.getHorario().before(Timestamp.valueOf(LocalDate.now().atStartOfDay()))
                 && sat.getPt().getPaciente().getNome().equals(""))
         {
-            TelaAgendamentoInicialController controller = new TelaAgendamentoInicialController();
-            controller.setHorario(sat);
+            TelaAgendamentoInicialController.setHorario(sat);
             
             Parent root = FXMLLoader.load(getClass().getResource("TelaAgendamentoInicial.fxml"));
             Scene scene = new Scene(root);
@@ -954,13 +967,8 @@ public class TelaPrincipalController implements Initializable {
             stage.setTitle("Agendamento");
             stage.setScene(scene);
             stage.showAndWait();
-            if(controller.getAccepted())
-            {
-                JFXSnackbar sb = new JFXSnackbar(pnfade); 
-                Label text = new Label("Agendado com Sucesso!");
-                text.setStyle("-fx-text-fill: green");
-                sb.enqueue(new JFXSnackbar.SnackbarEvent(text));
-            }
+            if(TelaAgendamentoInicialController.getAccepted())
+                miniGAlert("Agendado com sucesso!");
             
             initTables();
         }
@@ -1057,12 +1065,7 @@ public class TelaPrincipalController implements Initializable {
         stage.showAndWait(); 
         
         if(controller.getSuccess())
-        {
-            JFXSnackbar sb = new JFXSnackbar(pnfade); 
-            Label text = new Label("Atendimento Salvo com Sucesso!");
-            text.setStyle("-fx-text-fill: green");
-            sb.enqueue(new JFXSnackbar.SnackbarEvent(text));
-        }
+            miniGAlert("Atendimento Salvo com sucesso!");
     }
 
     @FXML
@@ -1132,23 +1135,17 @@ public class TelaPrincipalController implements Initializable {
             
             DAOFeriado df = new DAOFeriado();
             
-            if(b)
-            {
-                if(df.apagarTudo())
+            if(b && df.apagarTudo())
+                for (int i = 0; i < ja.length(); i++) 
                 {
-                    for (int i = 0; i < ja.length(); i++) 
+                    JSONObject json = ja.getJSONObject(i);
+                    int type = json.getInt("type_code");
+                    if(type == 1 || type == 2 || type == 3)
                     {
-                        JSONObject json = ja.getJSONObject(i);
-                        int type = json.getInt("type_code");
-                        if(type == 1 || type == 2 || type == 3)
-                        {
-                            LocalDate date = LocalDate.parse(json.getString("date"),formatter);
-                            df.gravar(new Feriado(json.getString("name"),date));
-                        }
+                        LocalDate date = LocalDate.parse(json.getString("date"),formatter);
+                        df.gravar(new Feriado(json.getString("name"),date));
                     }
                 }
-                
-            }
         }
     }
 }

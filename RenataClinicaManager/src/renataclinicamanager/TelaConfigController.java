@@ -6,6 +6,7 @@
 package renataclinicamanager;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOConfig;
 import db.Models.Config;
@@ -17,7 +18,9 @@ import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import util.MaskFieldUtil;
 
@@ -40,6 +43,8 @@ public class TelaConfigController implements Initializable {
     private JFXTextField txcidade;
     @FXML
     private JFXButton btconfirmar;
+    @FXML
+    private AnchorPane pnprincipal;
 
     /**
      * Initializes the controller class.
@@ -94,6 +99,20 @@ public class TelaConfigController implements Initializable {
         };
         animation.play();
     }
+    
+    private void miniGAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnprincipal); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPrefSize(170, 10);
+        l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
 
     @FXML
     private void setThemeDark(ActionEvent event) 
@@ -116,6 +135,7 @@ public class TelaConfigController implements Initializable {
     {
         Config c = new Config(txnome.getText(), txendereco.getText(), txcidade.getText());
         DAOConfig df = new DAOConfig();
-        df.Salvar(c);
+        if(df.Salvar(c))
+            miniGAlert("Salvo com sucesso!");
     }
 }
