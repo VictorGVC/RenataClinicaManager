@@ -27,6 +27,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -225,7 +226,7 @@ public class TelaPagamentosController implements Initializable {
         Label l = new Label();
 
         l.setText(txt);
-        l.setPrefSize(170, 10);
+        l.setPadding(new Insets(0,15,0,15));
         l.setStyle("-fx-background-color: green;"
                 + "-fx-text-fill: white;"
                 + "-fx-background-radius: 5; -fx-border-radius: 5; "

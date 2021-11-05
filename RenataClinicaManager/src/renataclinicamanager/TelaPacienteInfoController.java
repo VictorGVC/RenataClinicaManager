@@ -76,13 +76,27 @@ public class TelaPacienteInfoController implements Initializable {
         lbdia.setText(""+age.getHorario().toLocalDateTime().toLocalDate().format(form));
         setTimePattern();
         lbhr.setText(timeParse(age.getHorario()));
-        lbbairro.setText(age.getPt().getPaciente().getBairro());
-        lbnumero.setText(""+age.getPt().getPaciente().getNumero());
-        lbpacnome.setText(age.getPt().getPaciente().getNome());
-        lbpactelefone.setText(age.getPt().getPaciente().getTelefone());
-        lbrea.setText(age.getPt().getPaciente().getRea());
-        lbrua.setText(age.getPt().getPaciente().getRua());
-        lbtranome.setText(age.getPt().getTratamento().getNome());
-        lbtrapreco.setText(""+age.getPt().getTratamento().getValor());
+        if(age.getPaciente() == null)
+        {
+            lbbairro.setText(age.getPt().getPaciente().getBairro());
+            lbnumero.setText(""+age.getPt().getPaciente().getNumero());
+            lbpacnome.setText(age.getPt().getPaciente().getNome());
+            lbpactelefone.setText(age.getPt().getPaciente().getTelefone());
+            lbrea.setText(age.getPt().getPaciente().getRea());
+            lbrua.setText(age.getPt().getPaciente().getRua());
+            lbtranome.setText(age.getPt().getTratamento().getNome());
+            lbtrapreco.setText(""+age.getPt().getTratamento().getValor());
+        }
+        else
+        {
+            lbbairro.setText(age.getPaciente().getBairro());
+            lbnumero.setText(""+age.getPaciente().getNumero());
+            lbpacnome.setText(age.getPaciente().getNome());
+            lbpactelefone.setText(age.getPaciente().getTelefone());
+            lbrea.setText(age.getPaciente().getRea());
+            lbrua.setText(age.getPaciente().getRua());
+            lbtranome.setText("Consulta");
+            lbtrapreco.setText("0");
+        }
     }
 }

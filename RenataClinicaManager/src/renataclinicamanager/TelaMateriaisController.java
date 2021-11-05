@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -168,7 +169,7 @@ public class TelaMateriaisController implements Initializable {
         Label l = new Label();
 
         l.setText(txt);
-        l.setPrefSize(170, 10);
+        l.setPadding(new Insets(0,15,0,15));
         l.setStyle("-fx-background-color: green;"
                 + "-fx-text-fill: white;"
                 + "-fx-background-radius: 5; -fx-border-radius: 5; "
@@ -182,7 +183,7 @@ public class TelaMateriaisController implements Initializable {
         Label l = new Label();
 
         l.setText(txt);
-        l.setPrefSize(170, 10);
+        l.setPadding(new Insets(0,15,0,15));
         l.setStyle("-fx-background-color: red;"
                 + "-fx-text-fill: white;"
                 + "-fx-background-radius: 5; -fx-border-radius: 5; "

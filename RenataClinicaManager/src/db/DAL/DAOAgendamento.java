@@ -8,6 +8,9 @@ package db.DAL;
 import db.Banco.Banco;
 import db.Models.Atendimento;
 import db.Models.Material;
+import db.Models.Paciente;
+import db.Models.PacienteTratamento;
+import db.Models.Tratamento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -33,22 +36,43 @@ public class DAOAgendamento
         DAOTratamento dt = new DAOTratamento();
         DAOFuncionario df = new DAOFuncionario();
         DAOMaterial dm = new DAOMaterial();
-        
+        DAOPaciente dp = new DAOPaciente();
         try {
             while(rs.next())
             {      
-                try {
+                
+                if(rs.getString("pt_cod") != null)
+                {
+                    try {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
+                                rs.getInt("age_cod"), 
+                                rs.getString("age_observacoes"), 
+                                dt.getPT(rs.getInt("pt_cod")), 
+                                df.getF(rs.getString("fun_login")), 
+                                dm.getItensAtendimento(rs.getInt("age_cod")),
+                                rs.getString("age_dentes")));
+                    } 
+                    catch (Exception e) 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dt.getPT(rs.getInt("pt_cod"))));
+                    }
+                }
+                else
+                {
+                    try {
                     aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
                             rs.getInt("age_cod"), 
                             rs.getString("age_observacoes"), 
-                            dt.getPT(rs.getInt("pt_cod")), 
                             df.getF(rs.getString("fun_login")), 
                             dm.getItensAtendimento(rs.getInt("age_cod")),
-                                    rs.getString("age_dentes")));
+                            rs.getString("age_dentes"),
+                            dp.get(rs.getString("pac_cpf")),
+                            new PacienteTratamento(new Paciente("","a"), new Tratamento())));
                 } 
                 catch (Exception e) 
                 {
-                    aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dt.getPT(rs.getInt("pt_cod"))));
+                    aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dp.get(rs.getString("pac_cod"))));
+                }
                 }
             }
         } 
@@ -66,6 +90,17 @@ public class DAOAgendamento
 
         sql = sql.replaceAll("#1", "" + a.getHorario());
         sql = sql.replaceAll("#2", "" + a.getPt().getCodigo());
+        
+        return Banco.getCon().manipular(sql);
+    }
+    
+    public boolean salvarAP(Atendimento a)
+    {
+        String sql = "INSERT INTO agendamento(age_dthr, pac_cpf) "
+                + "VALUES ('#1','#2'); ";
+
+        sql = sql.replaceAll("#1", "" + a.getHorario());
+        sql = sql.replaceAll("#2", "" + a.getPaciente().getCpf());
         
         return Banco.getCon().manipular(sql);
     }

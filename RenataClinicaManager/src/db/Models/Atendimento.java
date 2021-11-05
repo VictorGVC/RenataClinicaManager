@@ -18,16 +18,33 @@ public class Atendimento
     public Atendimento() {
         itens = new ArrayList<>();
     }
+
+    public Atendimento(Timestamp horario, int codigo, String observacoes, Funcionario dentista, List<Material> itens, String dentes, Paciente paciente, PacienteTratamento pt) {
+        this.horario = horario;
+        this.codigo = codigo;
+        this.observacoes = observacoes;
+        this.dentes = dentes;
+        this.dentista = dentista;
+        this.paciente = paciente;
+        this.itens = itens;
+        this.pt = pt;
+    }
+
+    public Atendimento(Timestamp horario, int codigo, Paciente paciente) {
+        this.horario = horario;
+        this.codigo = codigo;
+        this.paciente = paciente;
+    }
+
+    public Atendimento(Timestamp horario, Paciente paciente) {
+        this.horario = horario;
+        this.paciente = paciente;
+    }
     
     public Atendimento(Timestamp horario, int codigo, PacienteTratamento pt) {
         this.horario = horario;
         this.codigo = codigo;
         this.pt = pt;
-        itens = new ArrayList<>();
-    }
-
-    public Atendimento(Timestamp horario) {
-        this.horario = horario;
         itens = new ArrayList<>();
     }
 

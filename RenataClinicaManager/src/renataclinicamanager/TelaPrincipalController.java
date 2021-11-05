@@ -43,6 +43,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -352,20 +353,28 @@ public class TelaPrincipalController implements Initializable {
         return timeStr;
     }
     
+    private String returnNome(Atendimento a)
+    {
+        if(a.getPaciente() == null)
+            return a.getPt().getPaciente().getNome();
+        else
+            return a.getPaciente().getNome();
+    }
+    
     private void initColTB()
     {
         colhrseg.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colnomeseg.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
+        colnomeseg.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
         colhrter.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colnometer.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
+        colnometer.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
         colhrqua.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colnomequa.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
+        colnomequa.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
         colhrqui.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colnomequi.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
+        colnomequi.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
         colhrsex.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colnomesex.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
+        colnomesex.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
         colhrsab.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colnomesab.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
+        colnomesab.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
     }
     
     private void setEnableTv()
@@ -623,9 +632,9 @@ public class TelaPrincipalController implements Initializable {
     {
         JFXSnackbar sb = new JFXSnackbar(pnfade); 
         Label l = new Label();
-
+        
         l.setText(txt);
-        l.setPrefSize(170, 10);
+        l.setPadding(new Insets(0,15,0,15));
         l.setStyle("-fx-background-color: green;"
                 + "-fx-text-fill: white;"
                 + "-fx-background-radius: 5; -fx-border-radius: 5; "

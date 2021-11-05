@@ -35,6 +35,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -171,14 +172,38 @@ public class TelaAgendamentoController implements Initializable {
         MaskFieldUtil.cpfField(txcpf);
     }
     
+    private String returnNome(Atendimento a)
+    {
+        if(a.getPaciente() == null)
+            return a.getPt().getPaciente().getNome();
+        else
+            return a.getPaciente().getNome();
+    }
+    
+    private String returnTratamento(Atendimento a)
+    {
+        if(a.getPaciente() == null)
+            return a.getPt().getTratamento().getNome();
+        else
+            return "Consulta";
+    }
+    
+    private String returnContato(Atendimento a)
+    {
+        if(a.getPaciente() == null)
+            return a.getPt().getPaciente().getTelefone();
+        else
+            return a.getPaciente().getTelefone();
+    }
+    
     private void initColTb()
     {
         coltratamento.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getTratamento().getNome()));
         colvalor.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getTratamento().getValor()));
         colhorario.setCellValueFactory((v) -> new SimpleStringProperty(timeParse(v.getValue().getHorario())));
-        colpaciente.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
-        coltratamentoh.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getTratamento().getNome()));
-        colcontato.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getTelefone()));
+        colpaciente.setCellValueFactory((v) -> new SimpleStringProperty(returnNome(v.getValue())));
+        coltratamentoh.setCellValueFactory((v) -> new SimpleStringProperty(returnTratamento(v.getValue())));
+        colcontato.setCellValueFactory((v) -> new SimpleStringProperty(returnContato(v.getValue())));
     }
     
     private void carregaPacientes(String filtro)
@@ -215,7 +240,7 @@ public class TelaAgendamentoController implements Initializable {
         Label l = new Label();
 
         l.setText(txt);
-        l.setPrefSize(170, 10);
+        l.setPadding(new Insets(0,15,0,15));
         l.setStyle("-fx-background-color: green;"
                 + "-fx-text-fill: white;"
                 + "-fx-background-radius: 5; -fx-border-radius: 5; "
@@ -277,30 +302,48 @@ public class TelaAgendamentoController implements Initializable {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         if(util.Util.isCpf(txcpf.getText()))
         {
-            if(tvtratamentos.getSelectionModel().getSelectedIndex() != -1)
+            if(dtpdata.getValue().isAfter(LocalDate.now().minusDays(1)))
             {
-                if(dtpdata.getValue().isAfter(LocalDate.now().minusDays(1)))
+                if(tvagenda.getSelectionModel().getSelectedIndex() != -1)
                 {
-                    if(tvagenda.getSelectionModel().getSelectedIndex() != -1)
+                    if(!tvagenda.getSelectionModel().getSelectedItem().getPt().getPaciente().getNome().isEmpty())
                     {
-                        if(!tvagenda.getSelectionModel().getSelectedItem().getPt().getPaciente().getNome().isEmpty())
+                        a.setHeaderText("Alerta");
+                        a.setTitle("Alerta!");
+                        a.setContentText("Horário já agendado!");
+                        a.showAndWait();
+                    } 
+                    else
+                    {
+                        DAOAgendamento da = new DAOAgendamento();
+                        
+                        if(tvtratamentos.getSelectionModel().getSelectedIndex() != -1)
                         {
-                            a.setHeaderText("Alerta");
-                            a.setTitle("Alerta!");
-                            a.setContentText("Horário já agendado!");
-                            a.showAndWait();
-                        } 
-                        else
-                        {
-                            DAOAgendamento da = new DAOAgendamento();
                             Atendimento at = new Atendimento(
                                 tvagenda.getSelectionModel().getSelectedItem().getHorario(),
                                 tvtratamentos.getSelectionModel().getSelectedItem());
 
                             if(da.salvar(at))
-                            {
                                 miniGAlert("Agendado com sucesso!");
+                            else
+                            {
+                                a.setAlertType(Alert.AlertType.ERROR);
+                                a.getButtonTypes().clear();
+                                a.getButtonTypes().add(ButtonType.OK);
+                                a.setHeaderText("ERRO");
+                                a.setTitle("ERRO!");
+                                a.setContentText("Erro ao Agendar!");
+                                a.showAndWait();
                             }
+                        }
+                        else
+                        {
+                            Atendimento at = new Atendimento(
+                                tvagenda.getSelectionModel().getSelectedItem().getHorario(),
+                                cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()));
+                            
+                            if(da.salvarAP(at))
+                                miniGAlert("Agendado com sucesso!");
                             else
                             {
                                 a.setAlertType(Alert.AlertType.ERROR);
@@ -313,19 +356,12 @@ public class TelaAgendamentoController implements Initializable {
                             }
                         }
                     }
-                    else
-                    {
-                        a.setHeaderText("Alerta");
-                        a.setTitle("Alerta!");
-                        a.setContentText("Selecione um horário!");
-                        a.showAndWait();
-                    }
                 }
                 else
                 {
                     a.setHeaderText("Alerta");
                     a.setTitle("Alerta!");
-                    a.setContentText("Selecione uma data válida!");
+                    a.setContentText("Selecione um horário!");
                     a.showAndWait();
                 }
             }
@@ -333,7 +369,7 @@ public class TelaAgendamentoController implements Initializable {
             {
                 a.setHeaderText("Alerta");
                 a.setTitle("Alerta!");
-                a.setContentText("Selecione um tratamento!");
+                a.setContentText("Selecione uma data válida!");
                 a.showAndWait();
             }
         }

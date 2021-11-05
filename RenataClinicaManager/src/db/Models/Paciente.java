@@ -24,6 +24,11 @@ public class Paciente
         this.cpf = cpf;
     }
 
+    public Paciente(String cpf, String nome) {
+        this.cpf = cpf;
+        this.nome = nome;
+    }
+
     public Paciente(String cpf, String nome, String telefone, String rua, String cidade, String bairro, String rea, int numero, char sexo, LocalDate dtnacimento) {
         this.cpf = cpf;
         this.nome = nome;
