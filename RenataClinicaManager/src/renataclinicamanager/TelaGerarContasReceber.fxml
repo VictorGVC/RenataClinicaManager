@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="pnprincipal" prefHeight="304.0" prefWidth="488.0" style="-fx-border-color: #8fcfcf;" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaGerarContasReceberController">
+   <children>
+      <JFXDatePicker fx:id="dtvencimento" layoutX="274.0" layoutY="98.0" prefHeight="28.0" prefWidth="135.0" promptText="Vencimento" />
+      <JFXTextField fx:id="txvalor" alignment="CENTER" editable="false" labelFloat="true" layoutX="189.0" layoutY="163.0" prefHeight="25.0" prefWidth="110.0" promptText="Valor" />
+      <JFXButton fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="208.0" layoutY="231.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/correcttooth.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXComboBox fx:id="cbpaciente" editable="true" labelFloat="true" layoutX="274.0" layoutY="38.0" onAction="#clkSelecionaPaciente" onKeyReleased="#clkCarregaPaciente" prefHeight="25.0" prefWidth="135.0" promptText="Paciente" />
+      <JFXComboBox fx:id="cbtratamento" labelFloat="true" layoutX="79.0" layoutY="100.0" onAction="#clkSelecionaTratamento" onKeyReleased="#clkPreencheTratamento" prefHeight="25.0" prefWidth="135.0" promptText="Tratamento" />
+      <JFXTextField fx:id="txcpf" labelFloat="true" layoutX="79.0" layoutY="38.0" onKeyReleased="#clkSelecionaPaciente" promptText="CPF" />
+   </children>
+</AnchorPane>
