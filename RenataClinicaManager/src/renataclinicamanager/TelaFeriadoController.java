@@ -218,7 +218,7 @@ public class TelaFeriadoController implements Initializable
                 Feriado f;
                 f = tvferiado.getSelectionModel().getSelectedItem();
                 if(dal.apagar(f.getCod()))
-                    miniGAlert("Selecione um paciente!");
+                    miniGAlert("Apagado com sucesso!");
                 else
                 { 
                     a.setAlertType(Alert.AlertType.ERROR);

@@ -39,6 +39,7 @@ import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -1107,54 +1108,65 @@ public class TelaPrincipalController implements Initializable {
         a.getButtonTypes().clear();
         a.getButtonTypes().add(ButtonType.NO);
         a.getButtonTypes().add(ButtonType.YES);
-        boolean b = false;
+        
         if (a.showAndWait().get() == ButtonType.YES)
         {
-            JSONArray ja = null;
-            try{
-                    URL url = new URL("https://api.calendario.com.br/?json=true&ano=2017&ibge=3529203&token=dmljZ2FicmllbDE3QGhvdG1haWwuY29tJmhhc2g9MjQ5MTAxMzk1&ano="+LocalDate.now().getYear());
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-                    if (conn.getResponseCode() != 200) {
-                            System.out.print("deu erro... HTTP error code : " + conn.getResponseCode());
-                    }
-
-                    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
-                    String output,json="";
-                    while ((output = br.readLine()) != null) {
-                            json+= output;
-                    }
-                    
-                    ja = new JSONArray(json);
-                    
-                    System.out.println(ja);
-                    conn.disconnect();
-                    b = true;
-            }
-            catch (Exception e) 
+            Task task = new Task<Void>() 
             {
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setHeaderText("ERRO!");
-                a.setTitle("ERRO");
-                a.setContentText("Erro ao carregar feriados da web!");
-                a.getButtonTypes().clear();
-                a.getButtonTypes().add(ButtonType.OK);
-            }
-            
-            DAOFeriado df = new DAOFeriado();
-            
-            if(b && df.apagarTudo())
-                for (int i = 0; i < ja.length(); i++) 
+                boolean b = false;
+                @Override
+                protected Void call() 
                 {
-                    JSONObject json = ja.getJSONObject(i);
-                    int type = json.getInt("type_code");
-                    if(type == 1 || type == 2 || type == 3)
-                    {
-                        LocalDate date = LocalDate.parse(json.getString("date"),formatter);
-                        df.gravar(new Feriado(json.getString("name"),date));
+                    JSONArray ja = null;
+                    try{
+                            URL url = new URL("https://api.calendario.com.br/?json=true&ano=2017&ibge=3529203&token=dmljZ2FicmllbDE3QGhvdG1haWwuY29tJmhhc2g9MjQ5MTAxMzk1&ano="+LocalDate.now().getYear());
+                            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                            conn.setRequestMethod("GET");
+                            if (conn.getResponseCode() != 200) {
+                                    System.out.print("deu erro... HTTP error code : " + conn.getResponseCode());
+                            }
+
+                            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+                            String output,json="";
+                            while ((output = br.readLine()) != null) {
+                                    json+= output;
+                            }
+
+                            ja = new JSONArray(json);
+
+                            System.out.println(ja);
+                            conn.disconnect();
+                            b = true;
                     }
+                    catch (Exception e) 
+                    {
+                        a.setAlertType(Alert.AlertType.ERROR);
+                        a.setHeaderText("ERRO!");
+                        a.setTitle("ERRO");
+                        a.setContentText("Erro ao carregar feriados da web!");
+                        a.getButtonTypes().clear();
+                        a.getButtonTypes().add(ButtonType.OK);
+                    }
+
+                    DAOFeriado df = new DAOFeriado();
+
+                    if(b && df.apagarTudo())
+                        for (int i = 0; i < ja.length(); i++) 
+                        {
+                            JSONObject json = ja.getJSONObject(i);
+                            int type = json.getInt("type_code");
+                            if(type == 1 || type == 2 || type == 3)
+                            {
+                                LocalDate date = LocalDate.parse(json.getString("date"),formatter);
+                                df.gravar(new Feriado(json.getString("name"),date));
+                            }
+                        }
+                    initTables();
+                    return null;
                 }
+            };
+            new Thread(task).start();
         }
     }
 }

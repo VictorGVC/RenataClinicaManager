@@ -10,8 +10,8 @@
 <AnchorPane id="AnchorPane" fx:id="pnmain" prefHeight="289.0" prefWidth="440.0" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaAgendamentoInicialController">
    <children>
       <JFXTextField fx:id="txcpf" layoutX="77.0" layoutY="76.0" onKeyReleased="#preencherPaciente" prefHeight="25.0" prefWidth="92.0" promptText="CPF" />
-      <JFXComboBox fx:id="cbpaciente" editable="true" labelFloat="true" layoutX="206.0" layoutY="76.0" onAction="#preencherCPF" onKeyReleased="#initCBPaciente" prefHeight="25.0" prefWidth="157.0" promptText="Paciente" />
-      <JFXComboBox fx:id="cbtratamento" editable="true" labelFloat="true" layoutX="80.0" layoutY="127.0" onAction="#selectTratamento" prefHeight="25.0" prefWidth="195.0" promptText="Tratamento" />
+      <JFXComboBox fx:id="cbpaciente" editable="true" labelFloat="true" layoutX="206.0" layoutY="76.0" onAction="#preencherCPF" onKeyReleased="#carregaCBPaciente" prefHeight="25.0" prefWidth="157.0" promptText="Paciente" />
+      <JFXComboBox fx:id="cbtratamento" editable="true" labelFloat="true" layoutX="80.0" layoutY="127.0" onAction="#selectTratamento" onKeyReleased="#s" prefHeight="25.0" prefWidth="195.0" promptText="Tratamento" />
       <JFXTextField fx:id="txvalor" editable="false" layoutX="307.0" layoutY="127.0" prefHeight="25.0" prefWidth="56.0" promptText="Valor" />
       <JFXButton alignment="CENTER" layoutX="164.0" layoutY="200.0" onAction="#clkAgendar" prefHeight="39.0" prefWidth="112.0" text="Agendar">
          <graphic>

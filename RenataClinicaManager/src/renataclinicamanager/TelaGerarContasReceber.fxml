@@ -4,29 +4,92 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="pnprincipal" prefHeight="304.0" prefWidth="488.0" style="-fx-border-color: #8fcfcf;" styleClass="fifth" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaGerarContasReceberController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaGerarContasReceberController">
    <children>
-      <JFXDatePicker fx:id="dtvencimento" layoutX="274.0" layoutY="98.0" prefHeight="28.0" prefWidth="135.0" promptText="Vencimento" />
-      <JFXTextField fx:id="txvalor" alignment="CENTER" editable="false" labelFloat="true" layoutX="189.0" layoutY="163.0" prefHeight="25.0" prefWidth="110.0" promptText="Valor" />
-      <JFXButton fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="208.0" layoutY="231.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
-         <graphic>
-            <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/correcttooth.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXComboBox fx:id="cbpaciente" editable="true" labelFloat="true" layoutX="274.0" layoutY="38.0" onAction="#clkSelecionaPaciente" onKeyReleased="#clkCarregaPaciente" prefHeight="25.0" prefWidth="135.0" promptText="Paciente" />
-      <JFXComboBox fx:id="cbtratamento" labelFloat="true" layoutX="79.0" layoutY="100.0" onAction="#clkSelecionaTratamento" onKeyReleased="#clkPreencheTratamento" prefHeight="25.0" prefWidth="135.0" promptText="Tratamento" />
-      <JFXTextField fx:id="txcpf" labelFloat="true" layoutX="79.0" layoutY="38.0" onKeyReleased="#clkSelecionaPaciente" promptText="CPF" />
+      <AnchorPane id="AnchorPane" fx:id="pnprincipal" layoutX="10.0" layoutY="10.0" prefHeight="388.0" prefWidth="592.0" style="-fx-border-color: #8fcfcf;" styleClass="fifth" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTextField fx:id="txvalor" alignment="CENTER" labelFloat="true" layoutX="233.0" layoutY="316.0" prefHeight="25.0" prefWidth="135.0" promptText="Valor" />
+            <JFXButton fx:id="btconfirmar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="264.0" layoutY="390.0" onAction="#clkBtConfirmar" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/correcttooth.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXComboBox fx:id="cbpaciente" editable="true" labelFloat="true" layoutX="330.0" layoutY="180.0" onAction="#clkSelecionaPaciente" onKeyReleased="#clkCarregaPaciente" prefHeight="25.0" prefWidth="135.0" promptText="Paciente" />
+            <JFXComboBox fx:id="cbtratamento" labelFloat="true" layoutX="233.0" layoutY="249.0" onAction="#clkSelecionaTratamento" onKeyReleased="#clkPreencheTratamento" prefHeight="25.0" prefWidth="135.0" promptText="Tratamento" />
+            <JFXTextField fx:id="txcpf" labelFloat="true" layoutX="135.0" layoutY="180.0" onKeyReleased="#clkSelecionaPaciente" promptText="CPF" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnparcelas" layoutX="65.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="471.0" styleClass="fifth" visible="false">
+         <children>
+            <JFXTextField fx:id="txqtdparcelas" labelFloat="true" layoutX="27.0" layoutY="45.0" onKeyReleased="#atualizaParcelas" prefHeight="28.0" prefWidth="192.0" promptText="Quantidade de Parcelas" />
+            <JFXDatePicker fx:id="dtpparcelas" layoutX="252.0" layoutY="45.0" onAction="#atualizaParcelasD" prefHeight="28.0" prefWidth="192.0" promptText="Data do primeiro pagamento" />
+            <TableView fx:id="tvparcelas" layoutX="27.0" layoutY="92.0" prefHeight="396.0" prefWidth="417.0">
+               <columns>
+                  <TableColumn fx:id="colparcela" prefWidth="116.0" text="Parcela" />
+                  <TableColumn fx:id="coldtvencimentoparcela" prefWidth="190.0" text="Data Vencimento" />
+                  <TableColumn fx:id="colvalorparcela" prefWidth="107.0" text="Valor" />
+               </columns>
+            </TableView>
+            <JFXTextField fx:id="txtotalparcelas" labelFloat="true" layoutX="274.0" layoutY="506.0" prefHeight="28.0" prefWidth="170.0" promptText="TOTAL" />
+            <JFXButton fx:id="btconfirmarparcelas" buttonType="RAISED" contentDisplay="CENTER" layoutX="27.0" layoutY="546.0" onAction="#clkBtConfirmaParcela" prefHeight="40.0" prefWidth="417.0" style="-fx-border-color: #8fcfcf; -fx-border-radius: 8; -fx-background-radius: 8;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/correcttooth.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="txalocadoparcelas" labelFloat="true" layoutX="27.0" layoutY="506.0" prefHeight="28.0" prefWidth="170.0" promptText="Falta Alocar" />
+            <JFXButton fx:id="btfechar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="446.0" layoutY="4.0" onAction="#clkBtFecharParcelas" style="-fx-background-radius: 10;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/close.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btdefault" buttonType="RAISED" contentDisplay="CENTER" layoutX="210.0" layoutY="500.0" onAction="#clkBtResetParcelas" prefHeight="40.0" prefWidth="52.0" style="-fx-border-color: #8fcfcf; -fx-background-radius: 8; -fx-border-radius: 8;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/refresh%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

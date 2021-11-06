@@ -262,7 +262,7 @@ public class TelaAgendamentoController implements Initializable {
         Alert a = new Alert(Alert.AlertType.WARNING);
         
         setCorAlert(txcpf, "BLACK");
-        if(txcpf.getText().length() >= 13){
+        if(txcpf.getText().length() >= 14){
             
             Task task = new Task<Void>() {
                 

@@ -491,8 +491,7 @@ public class TelaPacientesController implements Initializable
             if(tvpaciente.getSelectionModel().getSelectedItem() != null)
             {
                 
-                Paciente p = new Paciente();
-                p = (Paciente)tvpaciente.getSelectionModel().getSelectedItem();
+                Paciente p = (Paciente)tvpaciente.getSelectionModel().getSelectedItem();
                 
                 txcpf.setText(p.getCpf());
                 txnome.setText(p.getNome());

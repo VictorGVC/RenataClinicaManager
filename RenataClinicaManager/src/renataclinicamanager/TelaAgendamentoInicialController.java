@@ -60,7 +60,6 @@ public class TelaAgendamentoInicialController implements Initializable
         MaskFieldUtil.maxField(cbpaciente.getEditor(), 30);
     }
     
-    @FXML
     private void initCBPaciente()
     {
         carregaPacientes("UPPER(pac_nome) LIKE '%%'");
@@ -111,7 +110,7 @@ public class TelaAgendamentoInicialController implements Initializable
         Alert a = new Alert(Alert.AlertType.WARNING);
         
         setCorAlert(txcpf, "BLACK");
-        if(txcpf.getText().length() >= 13){
+        if(txcpf.getText().length() >= 14){
             
             Task task = new Task<Void>() {
                 
@@ -220,8 +219,15 @@ public class TelaAgendamentoInicialController implements Initializable
         }
     }
 
-    private void initCBPaciente(KeyEvent event) 
+    @FXML
+    private void carregaCBPaciente(KeyEvent event) 
     {
         carregaPacientes("UPPER(pac_nome) LIKE '%" + cbpaciente.getValue() + "%'");
+    }
+
+    @FXML
+    private void carregaTratamentos(KeyEvent event) 
+    {
+        carregaCBTratamento();
     }
 }
