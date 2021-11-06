@@ -2,6 +2,33 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaMateriaisController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaAgendamentoInicialController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaPacientesController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaRecebimentosController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaComprasController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaFeriadoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaAtendimentoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaPrincipalController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaAddDespesaController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaTratamentoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaLoginController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaFuncionarioController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/Models/Atendimento.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaConfirmarPagamentoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaReceituarioController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/DAL/DAOAgendamento.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaCargosController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaPacienteInfoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaConfigController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaControlarTratamentoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaHistoricoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/db/Models/Paciente.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaFornecedorController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaPagamentosController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaAtestadoController.java</file>
+            <file>file:/C:/Users/vicga/OneDrive/Documentos/trampos/RenataClinicaManager/RenataClinicaManager/src/renataclinicamanager/TelaAgendamentoController.java</file>
+        </group>
     </open-files>
 </project-private>

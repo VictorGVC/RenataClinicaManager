@@ -168,10 +168,26 @@ public class TelaAgendamentoInicialController implements Initializable
             }
             else
             {
-                a.setHeaderText("Alerta");
-                a.setTitle("Alerta!");
-                a.setContentText("Selecione um Tratamento!");
-                a.showAndWait();
+                DAOAgendamento da = new DAOAgendamento();
+                age.setPaciente(cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()));
+
+                if(da.salvarAP(age))
+                {
+                    b = true;
+                    
+                    Stage stage = (Stage) cbpaciente.getScene().getWindow();
+                    stage.close();
+                }
+                else
+                {
+                    a.setAlertType(Alert.AlertType.ERROR);
+                    a.getButtonTypes().clear();
+                    a.getButtonTypes().add(ButtonType.OK);
+                    a.setHeaderText("ERRO");
+                    a.setTitle("ERRO!");
+                    a.setContentText("Erro ao Agendar!");
+                    a.showAndWait();
+                }
             }
         }
         else

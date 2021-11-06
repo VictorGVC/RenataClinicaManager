@@ -173,11 +173,11 @@ public class TelaFuncionarioController implements Initializable {
     private void initListas()
     {
         lseg = new ArrayList<String>();
-        lter = new ArrayList<String>();;
-        lqua = new ArrayList<String>();;
-        lqui = new ArrayList<String>();;
-        lsex = new ArrayList<String>();;
-        lsab = new ArrayList<String>();;
+        lter = new ArrayList<String>();
+        lqua = new ArrayList<String>();
+        lqui = new ArrayList<String>();
+        lsex = new ArrayList<String>();
+        lsab = new ArrayList<String>();
         
         List<String> hrarios = new ArrayList<String>();
         hrarios.add("06:00 - 07:00");
@@ -429,6 +429,7 @@ public class TelaFuncionarioController implements Initializable {
             estado(false);
             pnpesquisa.setDisable(false);
             txnome.requestFocus();
+            txsenhan.setVisible(true);
         }
         else
             miniAlert("Selecione um paciente!");
@@ -626,6 +627,7 @@ public class TelaFuncionarioController implements Initializable {
                         limparCampos();
                         pnpesquisa.setDisable(false);
                         clkTFiltro(null);
+                        txsenhan.setVisible(false);
                     }
                     else
                     {
