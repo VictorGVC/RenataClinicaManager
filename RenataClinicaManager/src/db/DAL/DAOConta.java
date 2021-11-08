@@ -173,7 +173,7 @@ public class DAOConta
 
     public boolean notificationPag() 
     {
-        String sql = "SELECT * FROM contaspagar WHERE pag_dtvencimento <= '"+LocalDate.now()+"'"
+        String sql = "SELECT * FROM contaspagar WHERE pag_dtvencimento <= '"+LocalDate.now().plusDays(7)+"'"
                 + " AND pag_dtpagamento IS NULL";
         
         ResultSet rs = Banco.getCon().consultar(sql);

@@ -211,6 +211,10 @@ public class TelaPrincipalController implements Initializable {
     private Label lbfersex;
     @FXML
     private Label lbfersab;
+    @FXML
+    private AnchorPane pnnotapagar;
+    @FXML
+    private AnchorPane pnnotareceber;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -231,66 +235,12 @@ public class TelaPrincipalController implements Initializable {
         
         if(dc.notificationPag())
         {
-            a.setHeaderText("Alerta");
-            a.setTitle("Conta a vencer!");
-            a.setContentText("Existe uma ou mais pagamentos perto de vencer, gostaria de abrir a tela de pagamentos para pagar?");
-            a.getButtonTypes().clear();
-            a.getButtonTypes().add(ButtonType.NO);
-            a.getButtonTypes().add(ButtonType.YES);
-            if (a.showAndWait().get() == ButtonType.YES)
-            {
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("TelaPagamentos.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(TelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-
-                stage.resizableProperty().setValue(Boolean.FALSE);
-                stage.setMaxWidth(804);
-                stage.setMaxHeight(610);
-                stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
-                DAOConfig dcon = new DAOConfig();
-
-                scene.getStylesheets().add(getClass().getResource(dcon.getTema()).toExternalForm());
-                stage.setTitle("Pagamento");
-                stage.setScene(scene);
-                stage.show();
-            }
+            pnnotapagar.setVisible(true);
         }
         
         if(dc.notificationRec())
         {
-            a.setHeaderText("Alerta");
-            a.setTitle("Conta a vencer!");
-            a.setContentText("Existe um ou mais recebimentos vencidos, gostaria de abrir a tela de recebimentos para visualizar as informações?");
-            a.getButtonTypes().clear();
-            a.getButtonTypes().add(ButtonType.NO);
-            a.getButtonTypes().add(ButtonType.YES);
-            if (a.showAndWait().get() == ButtonType.YES)
-            {
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("TelaRecebimentos.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(TelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-
-                stage.resizableProperty().setValue(Boolean.FALSE);
-                stage.setMaxWidth(804);
-                stage.setMaxHeight(638);
-                stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
-                DAOConfig dcon = new DAOConfig();
-
-                scene.getStylesheets().add(getClass().getResource(dcon.getTema()).toExternalForm());
-                stage.setTitle("Recebimento");
-                stage.setScene(scene);
-                stage.show();
-            }
+            pnnotareceber.setVisible(true);
         }
     }
     
@@ -688,12 +638,6 @@ public class TelaPrincipalController implements Initializable {
 
     @FXML
     private void clkRestore(ActionEvent event) 
-    {
-        
-    }
-
-    @FXML
-    private void clkConfiguracoes(ActionEvent event) 
     {
         
     }
@@ -1168,5 +1112,17 @@ public class TelaPrincipalController implements Initializable {
             };
             new Thread(task).start();
         }
+    }
+
+    @FXML
+    private void clkEscondeNotAPagar(ActionEvent event) 
+    {
+        pnnotapagar.setVisible(false);
+    }
+
+    @FXML
+    private void clkEscondeNotAReceber(ActionEvent event) 
+    {
+        pnnotareceber.setVisible(false);
     }
 }
