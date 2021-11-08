@@ -10,11 +10,14 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOAgendamento;
+import db.DAL.DAOConfig;
 import db.DAL.DAOFuncionario;
 import db.DAL.DAOMaterial;
 import db.Models.Atendimento;
 import db.Models.Funcionario;
 import db.Models.Material;
+import db.Models.PacienteTratamento;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -26,15 +29,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
@@ -261,7 +269,7 @@ public class TelaAtendimentoController implements Initializable {
     }
 
     @FXML
-    private void clkBtRegistrarAt(ActionEvent event) throws SQLException 
+    private void clkBtRegistrarAt(ActionEvent event) throws SQLException, IOException 
     {
         Alert a = new Alert(Alert.AlertType.WARNING);
         setNormalColor();
@@ -284,6 +292,31 @@ public class TelaAtendimentoController implements Initializable {
             String error = da.salvarAtendimento(ate);
             if(error.isEmpty())
             {
+                Alert b = new Alert(Alert.AlertType.CONFIRMATION);
+                b.setHeaderText("Recebimento");
+                b.setTitle("Recebimento");
+                b.setContentText("Gostaria de gerar uma conta a pagar para esse atendimento?");
+                b.getButtonTypes().clear();
+                b.getButtonTypes().add(ButtonType.NO);
+                b.getButtonTypes().add(ButtonType.YES);
+                if (b.showAndWait().get() == ButtonType.YES)
+                {
+                    TelaGerarContasReceberController.pt = ate.getPt();
+                    Parent root = FXMLLoader.load(getClass().getResource("TelaGerarContasReceber.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.resizableProperty().setValue(Boolean.FALSE);
+                    stage.setMaxWidth(804);
+                    stage.setMaxHeight(628);
+                    stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+                    DAOConfig dc = new DAOConfig();
+
+                    scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
+                    stage.setTitle("Adicionar Recebimento");
+                    stage.setScene(scene);
+                    stage.showAndWait();
+                }
                 success = true;
                 Stage stage = (Stage) txobservacoes.getScene().getWindow();
                 stage.close();

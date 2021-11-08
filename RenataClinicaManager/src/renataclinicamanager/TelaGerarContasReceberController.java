@@ -14,6 +14,7 @@ import db.DAL.DAOConta;
 import db.DAL.DAOPaciente;
 import db.DAL.DAOTratamento;
 import db.Models.Conta;
+import db.Models.Funcionario;
 import db.Models.Paciente;
 import db.Models.PacienteTratamento;
 import java.net.URL;
@@ -25,7 +26,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,7 +52,9 @@ import util.Util;
  */
 public class TelaGerarContasReceberController implements Initializable {
 
-    List<Conta> recatual;
+    public static PacienteTratamento pt;
+    
+    private List<Conta> recatual;
     
     @FXML
     private AnchorPane pnprincipal;
@@ -98,10 +100,50 @@ public class TelaGerarContasReceberController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setMasks();
         initCBPaciente();
+        setPT();
         btconfirmar.setTooltip(new Tooltip("Confirmar"));
         txvalor.setAlignment(Pos.CENTER);
         initColTable();
     }   
+    
+    private void setPT()
+    {
+        if(pt != null)
+        {
+            List<Paciente> aux = cbpaciente.getItems();
+            boolean b = true;
+            int index = -1;
+
+            for (int i = 0; i < aux.size() && b; i++) 
+            {
+                if(pt.getPaciente().getCpf().equals(aux.get(i).getCpf()))
+                {
+                    b = false;
+                    index = i;
+                }
+            }
+
+            cbpaciente.getSelectionModel().select(index);
+            carregaCBTratamento();
+            clkSelecionaPacientec(null);
+            
+            List<PacienteTratamento> aux1 = cbtratamento.getItems();
+            b = true;
+            index = -1;
+
+            for (int i = 0; i < aux1.size() && b; i++) 
+            {
+                if(pt.getCodigo() == aux1.get(i).getCodigo())
+                {
+                    b = false;
+                    index = i;
+                }
+            }
+
+            cbtratamento.getSelectionModel().select(index);
+            clkSelecionaTratamento(null);
+        }
+    }
     
     private void initColTable()
     {
@@ -265,7 +307,7 @@ public class TelaGerarContasReceberController implements Initializable {
     }
 
     @FXML
-    private void clkSelecionaPaciente(ActionEvent event) 
+    private void clkSelecionaPacientec(ActionEvent event) 
     {
         if(cbpaciente.getSelectionModel().getSelectedIndex()>=0)
         {

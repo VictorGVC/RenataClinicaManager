@@ -377,6 +377,7 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private void clkBtAddRecebimento(ActionEvent event) throws IOException 
     {
+        TelaGerarContasReceberController.pt = null;
         Parent root = FXMLLoader.load(getClass().getResource("TelaGerarContasReceber.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
