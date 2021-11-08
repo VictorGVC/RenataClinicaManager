@@ -10,12 +10,14 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
+import db.DAL.DAOConta;
 import db.DAL.DAOPaciente;
 import db.DAL.DAOTratamento;
 import db.Models.Conta;
 import db.Models.Paciente;
 import db.Models.PacienteTratamento;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,14 +29,19 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import util.MaskFieldUtil;
 import util.Util;
 
@@ -45,9 +52,10 @@ import util.Util;
  */
 public class TelaGerarContasReceberController implements Initializable {
 
+    List<Conta> recatual;
+    
     @FXML
     private AnchorPane pnprincipal;
-    private JFXDatePicker dtvencimento;
     @FXML
     private JFXTextField txvalor;
     @FXML
@@ -91,7 +99,16 @@ public class TelaGerarContasReceberController implements Initializable {
         setMasks();
         initCBPaciente();
         btconfirmar.setTooltip(new Tooltip("Confirmar"));
+        txvalor.setAlignment(Pos.CENTER);
+        initColTable();
     }   
+    
+    private void initColTable()
+    {
+        colvalorparcela.setCellValueFactory(new PropertyValueFactory("vvalor"));
+        coldtvencimentoparcela.setCellValueFactory(new PropertyValueFactory("vdtvencimento"));
+        colparcela.setCellValueFactory(new PropertyValueFactory("numero"));
+    }
     
     private void carregaPacientes(String filtro)
     {
@@ -114,8 +131,22 @@ public class TelaGerarContasReceberController implements Initializable {
         Label l = new Label();
 
         l.setText(txt);
-        l.setPrefSize(170, 10);
+        l.setPadding(new Insets(0,15,0,15));
         l.setStyle("-fx-background-color: green;"
+                + "-fx-text-fill: white;"
+                + "-fx-background-radius: 5; -fx-border-radius: 5; "
+                + "-fx-alignment: center;");
+        sb.enqueue(new JFXSnackbar.SnackbarEvent(l));
+    }
+    
+    private void miniAlert(String txt)
+    {
+        JFXSnackbar sb = new JFXSnackbar(pnprincipal); 
+        Label l = new Label();
+
+        l.setText(txt);
+        l.setPadding(new Insets(0,15,0,15));
+        l.setStyle("-fx-background-color: red;"
                 + "-fx-text-fill: white;"
                 + "-fx-background-radius: 5; -fx-border-radius: 5; "
                 + "-fx-alignment: center;");
@@ -125,7 +156,6 @@ public class TelaGerarContasReceberController implements Initializable {
     private void setMasks()
     {
         MaskFieldUtil.cpfField(txcpf);
-        MaskFieldUtil.dateField(dtvencimento.getEditor());
         MaskFieldUtil.maxField(txvalor, 10);
         MaskFieldUtil.monetaryField(txvalor);
     }
@@ -162,6 +192,36 @@ public class TelaGerarContasReceberController implements Initializable {
         
         modelo = FXCollections.observableArrayList(res);
         cbtratamento.setItems(modelo);
+    }
+    
+    private void initEvents(List<Conta> list)
+    {       
+        for (Conta conta : list) 
+        {
+            JFXTextField jtx = conta.getVvalor();
+            jtx.setOnKeyReleased((e)->
+            {
+                double total = MaskFieldUtil.monetaryValueFromField(txvalor).doubleValue();
+                double soma = 0; 
+                for (Conta parcela : list) 
+                {
+                    if(parcela.getVvalor().getText().isEmpty())
+                        parcela.setValor(0);
+                    else
+                    {
+                        parcela.setValor(Double.parseDouble(parcela.getVvalor()
+                            .getText().replace(".", "").replace(',', '.')));
+                        soma += parcela.getValor();
+                    }
+                }
+                double dif = total-soma;
+                if(dif<0)
+                    txalocadoparcelas.setUnFocusColor(Paint.valueOf("RED"));
+                else
+                    txalocadoparcelas.setUnFocusColor(Paint.valueOf("#8fcfcf"));
+                txalocadoparcelas.setText(String.format("%.2f", dif));
+            });
+        }
     }
 
     @FXML
@@ -207,32 +267,13 @@ public class TelaGerarContasReceberController implements Initializable {
     @FXML
     private void clkSelecionaPaciente(ActionEvent event) 
     {
-        Alert a = new Alert(Alert.AlertType.WARNING);
+        if(cbpaciente.getSelectionModel().getSelectedIndex()>=0)
+        {
+            txcpf.setText(
+                    cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()).getCpf());
         
-        setCorAlert(txcpf, "BLACK");
-        if(txcpf.getText().length() >= 13){
-            
-            Task task = new Task<Void>() {
-                
-                @Override
-                protected Void call() {
-                    
-                    if(!util.Util.isCpf(txcpf.getText()))
-                    {
-                        setCorAlert(txcpf, "RED");
-                        a.setTitle("Atenção!");
-                        a.setHeaderText("CPF");
-                        a.setContentText("CPF");
-                    }
-                    else
-                    {
-                        DAOPaciente dp = new DAOPaciente();
-                        cbpaciente.setValue(dp.get(txcpf.getText()));
-                    }
-                    return null;
-                }
-            };
-            new Thread(task).start();
+            txvalor.setText("");
+            carregaCBTratamento();
         }
     }
 
@@ -246,8 +287,8 @@ public class TelaGerarContasReceberController implements Initializable {
     private void clkSelecionaTratamento(ActionEvent event) 
     {
         if(cbtratamento.getSelectionModel().getSelectedIndex()>=0)
-            txvalor.setText(""+cbtratamento.getItems().get(
-                    cbtratamento.getSelectionModel().getSelectedIndex()).getTratamento().getValor());
+            txvalor.setText(String.format("%.2f",cbtratamento.getItems().get(
+                    cbtratamento.getSelectionModel().getSelectedIndex()).getTratamento().getValor()));
     }
 
     @FXML
@@ -259,13 +300,19 @@ public class TelaGerarContasReceberController implements Initializable {
     @FXML
     private void clkSelecionaPaciente(KeyEvent event) 
     {
-        if(cbpaciente.getSelectionModel().getSelectedIndex()>=0)
+        setCorAlert(txcpf, "BLACK");
+        if(txcpf.getText().length() >= 14)
         {
-            txcpf.setText(
-                    cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()).getCpf());
-        
-            txvalor.setText("");
-            carregaCBTratamento();
+            if(!util.Util.isCpf(txcpf.getText()))
+            {
+                setCorAlert(txcpf, "RED");
+                miniAlert("CPF invalido!");
+            }
+            else
+            {
+                DAOPaciente dp = new DAOPaciente();
+                cbpaciente.setValue(dp.get(txcpf.getText()));
+            }
         }
     }
 
@@ -275,23 +322,23 @@ public class TelaGerarContasReceberController implements Initializable {
         try 
         {
             int qtde = Integer.parseInt(txqtdparcelas.getText());
-            double total = Double.parseDouble(txtotal.getText().replace(".", "").replace(',', '.'));
+            double total = MaskFieldUtil.monetaryValueFromField(txvalor).doubleValue();
             double valpar = Double.parseDouble(new DecimalFormat("#.##").format(total/qtde).replace(',', '.'))
                     ,soma = 0;
 
-            comatual.setParcelas(new ArrayList<>());
+            recatual = new ArrayList<>();
             for (int i = 0; i < qtde; i++) 
             {
-                comatual.getParcelas().add(new Conta(i, dtpparcelas.getValue().plusMonths(i), valpar));
+                recatual.add(new Conta(i, dtpparcelas.getValue().plusMonths(i), valpar));
                 soma += valpar;
             }
             double dif = total-soma;
-            comatual.getParcelas().get(0).setValor(comatual.getParcelas().get(0).getValor()+dif);
-            comatual.getParcelas().get(0).getVvalor().setText(String.format("%.2f", comatual.getParcelas().get(0).getValor()));
+            recatual.get(0).setValor(recatual.get(0).getValor()+dif);
+            recatual.get(0).getVvalor().setText(String.format("%.2f", recatual.get(0).getValor()));
             txalocadoparcelas.setText(String.format("%.2f", 0.00));
-            initEvents(comatual);
+            initEvents(recatual);
 
-            tvparcelas.setItems(FXCollections.observableArrayList(comatual.getParcelas()));
+            tvparcelas.setItems(FXCollections.observableArrayList(recatual));
             tvparcelas.refresh();
         } 
         catch (Exception e) {}
@@ -304,32 +351,29 @@ public class TelaGerarContasReceberController implements Initializable {
     }
 
     @FXML
-    private void clkBtConfirmaParcela(ActionEvent event) 
+    private void clkBtConfirmaParcela(ActionEvent event) throws SQLException 
     {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        DAOCompra dc = new DAOCompra();
-        comatual.setFornecedor(cbfornecedor.getItems().get(cbfornecedor.getSelectionModel().getSelectedIndex()));
-        comatual.setDtcompra(LocalDate.now());
-        comatual.setTotal(MaskFieldUtil.monetaryValueFromField(txtotal).doubleValue());
-
-        setNormalColor();
-        String result = dc.gravar(comatual);
-
-        if (result.isEmpty())
+        if(cbtratamento.getSelectionModel().getSelectedIndex() != -1)
         {
-            miniGAlert("Salvo com sucesso!");
-            estado(true);
-            limparCampos();
-            pnpesquisa.setDisable(false);
-            pnparcelas.setVisible(false);
-            clkTFiltro(null);
-        }
-        else
-        {
-            a.getButtonTypes().clear();
-            a.getButtonTypes().add(ButtonType.OK);
-            a.setContentText(result);
-            a.showAndWait();
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            DAOConta dc = new DAOConta();
+
+            setNormalColor();
+            
+            if (dc.gravarRec(recatual,cbtratamento.getItems().get(cbtratamento.getSelectionModel().getSelectedIndex()).getCodigo()))
+            {
+                miniGAlert("Salvo com sucesso!");
+                pnparcelas.setVisible(false);
+                Stage stage = (Stage) btconfirmar.getScene().getWindow();
+                stage.close();
+            }
+            else
+            {
+                a.getButtonTypes().clear();
+                a.getButtonTypes().add(ButtonType.OK);
+                a.setContentText("Erro ao salvar contas!");
+                a.showAndWait();
+            }
         }
     }
 

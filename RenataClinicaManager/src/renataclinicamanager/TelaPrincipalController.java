@@ -854,7 +854,7 @@ public class TelaPrincipalController implements Initializable {
 
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setMaxWidth(804);
-        stage.setMaxHeight(638);
+        stage.setMaxHeight(600);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
         

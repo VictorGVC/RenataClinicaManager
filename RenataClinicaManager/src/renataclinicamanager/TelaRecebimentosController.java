@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
+import db.DAL.DAOConfig;
 import db.DAL.DAOConta;
 import db.Models.Conta;
 import java.io.IOException;
@@ -32,6 +33,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -88,9 +90,9 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private TableColumn<Conta, String> coldatavencar;
     @FXML
-    private TableColumn<Conta, String> coltipoar;
-    @FXML
     private TableColumn<Conta, String> colcontatoar;
+    @FXML
+    private TableColumn<Conta, String> coltratamentor;
     
     //Recebidas
     @FXML
@@ -114,8 +116,6 @@ public class TelaRecebimentosController implements Initializable {
     @FXML
     private TableColumn<Conta, String> coldatapagamentor;
     @FXML
-    private TableColumn<Conta, String> coltipor;
-    @FXML
     private TableColumn<Conta, String> colcontator;
     @FXML
     private JFXButton btestornar;
@@ -125,6 +125,8 @@ public class TelaRecebimentosController implements Initializable {
     private TableView<Conta> tvrecebimentosr;
     @FXML
     private VBox pnpesquisar;
+    @FXML
+    private TableColumn<Conta, String> coltratamentoar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -167,23 +169,23 @@ public class TelaRecebimentosController implements Initializable {
     private void initColAReceber() 
     {
         colcodar.setCellValueFactory(new PropertyValueFactory("codigo"));
-        colpacientear.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
+        colpacientear.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
         colparcelaar.setCellValueFactory(new PropertyValueFactory("numero"));
         colvalorar.setCellValueFactory((v) -> new SimpleStringProperty(""+String.format("%.2f", v.getValue().getValor())));
         coldatavencar.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getDtvencimento().format(form)));
-        coltipoar.setCellValueFactory(new PropertyValueFactory("tipo"));
-        colcontatoar.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getTelefone()));
+        coltratamentoar.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getTratamento().getNome()));
+        colcontatoar.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getTelefone()));
     }
     
     private void initColRecebidas() 
     {
         colcodr.setCellValueFactory(new PropertyValueFactory("codigo"));
-        colpacienter.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getNome()));
+        colpacienter.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getNome()));
         colparcelar.setCellValueFactory(new PropertyValueFactory("numero"));
         colvalorr.setCellValueFactory((v) -> new SimpleStringProperty(""+String.format("%.2f", v.getValue().getValor())));
         coldatapagamentor.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getDtpagamento().format(form)));
-        coltipor.setCellValueFactory(new PropertyValueFactory("tipo"));
-        colcontator.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getFornecedor().getTelefone()));
+        coltratamentor.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getTratamento().getNome()));
+        colcontator.setCellValueFactory((v) -> new SimpleStringProperty(""+v.getValue().getPt().getPaciente().getTelefone()));
     }
     
     private void carregaTabelaar(String filtro)
@@ -324,16 +326,14 @@ public class TelaRecebimentosController implements Initializable {
             switch (cbcategoriaar.getSelectionModel().getSelectedIndex()) 
             {
                 case 1:
-                    carregaTabelaar("INNER JOIN agendamento a ON a.age_cod = c.age_cod " +
-                            "INNER JOIN pessoatratamento pt ON pt.pt_cod = a.pt_cod " +
+                    carregaTabelaar("INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod " +
                             "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod " +
                             "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(p.pac_nome) LIKE '%" 
                            + txfiltroar.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialar.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalar.getValue()+"' "
                                    + "AND c.rec_dtrecebimento IS NULL ORDER BY rec_dtvencimento");
                     break;
                 case 0:
-                    carregaTabelaar("INNER JOIN agendamento a ON a.age_cod = c.age_cod " +
-                            "INNER JOIN pessoatratamento pt ON pt.pt_cod = a.pt_cod " +
+                    carregaTabelaar("INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod " +
                             "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod " +
                             "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%" 
                            + txfiltroar.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialar.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalar.getValue()+"' "
@@ -357,16 +357,14 @@ public class TelaRecebimentosController implements Initializable {
             switch (cbcategoriar.getSelectionModel().getSelectedIndex()) 
             {
                 case 1:
-                    carregaTabelar("INNER JOIN agendamento a ON a.age_cod = c.age_cod "
-                            + "INNER JOIN pessoatratamento pt ON pt.pt_cod = a.pt_cod "
+                    carregaTabelar("INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod "
                             + "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod"
                             + "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(p.pac_nome) LIKE '%" 
                            + txfiltror.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialr.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalr.getValue()+"' "
                                    + "AND c.rec_dtrecebimento IS NOT NULL ORDER BY rec_dtvencimento");
                     break;
                 case 0:
-                    carregaTabelar("INNER JOIN agendamento a ON a.age_cod = c.age_cod " +
-                            "INNER JOIN pessoatratamento pt ON pt.pt_cod = a.pt_cod " +
+                    carregaTabelar("INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod " +
                             "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod " +
                             "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%" 
                            + txfiltror.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialr.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalr.getValue()+"' "
@@ -374,5 +372,25 @@ public class TelaRecebimentosController implements Initializable {
                     break;
             }
         }
+    }
+
+    @FXML
+    private void clkBtAddRecebimento(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaGerarContasReceber.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setMaxWidth(804);
+        stage.setMaxHeight(628);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+        DAOConfig dc = new DAOConfig();
+        
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
+        stage.setTitle("Adicionar Recebimento");
+        stage.setScene(scene);
+        stage.showAndWait();
+        clkTFiltroar(null);
     }
 }

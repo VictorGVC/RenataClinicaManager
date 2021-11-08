@@ -74,8 +74,7 @@ public class DAOConta
         List <Conta> aux = new ArrayList();
         ResultSet rs = Banco.getCon().consultar(sql);
         
-        DAOPaciente dp = new DAOPaciente();
-        DAOTratamento dt = new DAOTratamento();
+        DAOTratamento dp = new DAOTratamento();
         try {
             LocalDate venc,rec;
             while(rs.next())
@@ -90,14 +89,13 @@ public class DAOConta
                 }  
                 try 
                 {
-                    rec = rs.getDate("rec_dtpagamento").toLocalDate();   
+                    rec = rs.getDate("rec_dtrecebimento").toLocalDate();   
                 } 
                 catch (Exception e) 
                 {
                     rec = null;
                 } 
-                aux.add(new Conta(rs.getInt("rec_cod"), rs.getInt("rec_parcela"), venc, rec, rs.getDouble("rec_valor"), 
-                        dt.get(rs.getInt("rec_cod")), dp.get("pac_cpf")));
+                aux.add(new Conta(rs.getInt("rec_cod"), rs.getInt("rec_parcela"), venc, rec, rs.getDouble("rec_valor"), dp.getPT(rs.getInt("pt_cod"))));
             }
         } 
         catch(SQLException ex) {
@@ -109,7 +107,7 @@ public class DAOConta
     
     public boolean receber(Conta c)
     {
-        String sql = "UPDATE contasreceber SET rec_dtpagamento = '#1', rec_valor=#2 WHERE rec_cod="+c.getCodigo();
+        String sql = "UPDATE contasreceber SET rec_dtrecebimento = '#1', rec_valor=#2 WHERE rec_cod="+c.getCodigo();
         
         sql = sql.replaceAll("#1","" +c.getDtpagamento());
         sql = sql.replaceAll("#2","" +c.getValor());
@@ -188,5 +186,37 @@ public class DAOConta
         } catch (SQLException ex) {
             return false;
         }
+    }
+
+    public boolean gravarRec(List<Conta> recs, int codigo) throws SQLException 
+    {
+        Banco.getCon().getConnect().setAutoCommit(false);
+        int i = 0;
+        String sql;
+        try
+        {
+            for (Conta parcela : recs) 
+            {
+                sql = "INSERT INTO contasreceber (rec_parcela, rec_dtvencimento, "
+                        + "rec_valor, pt_cod) VALUES(#1,'#2',#3,#4)";
+
+                sql = sql.replaceAll("#1", "" + (++i));
+                sql = sql.replaceAll("#2", "" + parcela.getDtvencimento());
+                sql = sql.replaceAll("#3", "" + parcela.getValor());
+                sql = sql.replaceAll("#4", "" + codigo);
+
+                if(!Banco.getCon().manipular(sql))
+                    return false;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+            Banco.getCon().getConnect().rollback();
+            return false;
+        }
+        
+        Banco.getCon().getConnect().commit();
+        return true;
     }
 }

@@ -13,8 +13,7 @@ public class Conta
     private double valor;
     private String tipo;
     private Fornecedor fornecedor;
-    private Tratamento tratamento;
-    private Paciente paciente;
+    private PacienteTratamento pt;
     
     //View
     private JFXDatePicker vdtvencimento;
@@ -70,21 +69,20 @@ public class Conta
         setVvalor(new JFXTextField(String.format("%.2f", valor)));
     }
 
-    public Conta(int codigo, int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, Tratamento tratamento, Paciente paciente) {
+    public Conta(int codigo, int numero, LocalDate dtvencimento, LocalDate dtpagamento, double valor, PacienteTratamento pt) {
         this.codigo = codigo;
         this.numero = numero;
         this.dtvencimento = dtvencimento;
         this.dtpagamento = dtpagamento;
         this.valor = valor;
-        this.tratamento = tratamento;
-        this.paciente = paciente;
+        this.pt = pt;
     }
 
     public Conta(LocalDate dtvencimento, double valor, String tipo) {
         this.dtvencimento = dtvencimento;
         this.valor = valor;
         this.tipo = tipo;
-    }    
+    }  
 
     public int getCodigo() {
         return codigo;
@@ -159,5 +157,13 @@ public class Conta
         this.vvalor = vvalor;
         this.vvalor.setMaxWidth(60);
         MaskFieldUtil.monetaryField(this.vvalor);
+    }
+
+    public PacienteTratamento getPt() {
+        return pt;
+    }
+
+    public void setPt(PacienteTratamento pt) {
+        this.pt = pt;
     }
 }
