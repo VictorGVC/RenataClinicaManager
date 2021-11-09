@@ -2,6 +2,7 @@ package db.Banco;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.sql.Connection;
@@ -20,6 +21,11 @@ public class Banco {
         if(banco == null)
             banco = new Banco();
         return banco;
+    }
+
+    public static void restore(String pg_restore, String backup) throws IOException 
+    {
+        
     }
     
     private Banco() {}

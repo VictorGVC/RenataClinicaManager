@@ -32,7 +32,7 @@ public class Funcionario
         this.login = login;
     }
 
-    public Funcionario(Cargo c, String nome, String telefone, JSONArray horarios, LocalDate dtnasc, char ativo, char sexo) {
+    public Funcionario(Cargo c, String nome, String telefone, LocalDate dtnasc, char ativo, char sexo) {
         this.c = c;
         this.nome = nome;
         this.telefone = telefone;
@@ -42,7 +42,7 @@ public class Funcionario
         this.sexo = sexo;
     }
 
-    public Funcionario(Cargo c, String nome, String login, String telefone, JSONArray horarios, LocalDate dtnasc, char ativo, char sexo, String crm) {
+    public Funcionario(Cargo c, String nome, String login, String telefone, LocalDate dtnasc, char ativo, char sexo, String crm) {
         this.c = c;
         this.nome = nome;
         this.login = login;

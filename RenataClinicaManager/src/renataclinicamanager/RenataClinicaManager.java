@@ -7,6 +7,7 @@ package renataclinicamanager;
 
 import db.Banco.Banco;
 import db.DAL.DAOConfig;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -23,8 +24,8 @@ import javax.swing.JOptionPane;
  *
  * @author vicga
  */
-public class RenataClinicaManager extends Application {
-    
+public class RenataClinicaManager extends Application 
+{
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
@@ -54,8 +55,8 @@ public class RenataClinicaManager extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws IOException 
+    {
         boolean b = true;
         Banco.conectar();
         
@@ -70,7 +71,7 @@ public class RenataClinicaManager extends Application {
                 else {
                     
                     JOptionPane.showMessageDialog(null, "Conexão Criada Com Sucesso, o Sistema Será Reiniciado");
-                    Banco.realizaBackupRestauracao("banco\\backup.bat");
+                    Banco.realizaBackupRestauracao("banco\\restoreinicial.bat");
                     b = true;
                 }
             }
@@ -80,5 +81,4 @@ public class RenataClinicaManager extends Application {
         else
             System.exit(0);
     } 
-    
 }

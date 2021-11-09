@@ -184,7 +184,7 @@ public class DAOFuncionario
                     ld = null;
                 }
                 aux.add(new Funcionario(dc.get(rs.getInt("car_cod")),rs.getString("fun_nome"), 
-                        rs.getString("fun_login"),rs.getString("fun_telefone"), new JSONArray(rs.getString("fun_horarios")),
+                        rs.getString("fun_login"),rs.getString("fun_telefone"),
                         ld,rs.getString("fun_ativo").charAt(0), rs.getString("fun_sexo").charAt(0),rs.getString("fun_crm")));
             }
         }
@@ -241,7 +241,7 @@ public class DAOFuncionario
                     ld = null;
                 }
                 aux = new Funcionario(dc.get(rs.getInt("car_cod")),rs.getString("fun_nome"), 
-                        rs.getString("fun_login"),rs.getString("fun_telefone"), new JSONArray(rs.getString("fun_horarios")),
+                        rs.getString("fun_login"),rs.getString("fun_telefone"), 
                         ld,rs.getString("fun_ativo").charAt(0), rs.getString("fun_sexo").charAt(0),rs.getString("fun_crm"));
             }
         } 

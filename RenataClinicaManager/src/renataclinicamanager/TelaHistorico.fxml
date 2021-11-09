@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1024.0" styleClass="default" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaHistoricoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="977.0" styleClass="default" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaHistoricoController">
    <children>
-      <VBox fx:id="pnpesquisa" prefHeight="589.0" prefWidth="1024.0">
+      <VBox fx:id="pnpesquisa" prefHeight="589.0" prefWidth="977.0">
          <children>
             <Pane prefHeight="249.0" prefWidth="1024.0">
                <children>
@@ -33,7 +33,7 @@
             </Pane>
             <Pane fx:id="pnfiltros" prefHeight="163.0" prefWidth="1024.0">
                <children>
-                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" layoutY="35.0" prefHeight="78.0" prefWidth="1024.0" spacing="50.0">
+                  <HBox id="filtro" fx:id="pnfiltro" alignment="CENTER" layoutY="35.0" prefHeight="78.0" prefWidth="977.0" spacing="50.0">
                      <children>
                         <JFXTextField fx:id="txfiltro" focusColor="BLACK" labelFloat="true" onKeyReleased="#clkBtFiltrarT" prefHeight="39.0" prefWidth="186.0" promptText="Tratamento" unFocusColor="BLACK">
                            <HBox.margin>
@@ -51,13 +51,13 @@
                   </HBox>
                </children>
             </Pane>
-            <TableView fx:id="tvhistorico" prefHeight="378.0" prefWidth="1024.0">
+            <TableView fx:id="tvhistorico" prefHeight="371.0" prefWidth="977.0">
                <columns>
                   <TableColumn fx:id="colpaciente" prefWidth="296.0" text="Paciente" />
                   <TableColumn fx:id="coldata" prefWidth="90.0" text="Data" />
                   <TableColumn fx:id="colhorario" prefWidth="89.0" text="Horário" />
                   <TableColumn fx:id="coltratamento" prefWidth="206.0" text="Tratamento" />
-                  <TableColumn fx:id="colobservacoes" prefWidth="342.0" text="Observações" />
+                  <TableColumn fx:id="colobservacoes" prefWidth="292.0" text="Observações" />
                </columns>
                <contextMenu>
                   <ContextMenu>

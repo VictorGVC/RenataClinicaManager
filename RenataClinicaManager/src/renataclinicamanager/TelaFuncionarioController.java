@@ -569,7 +569,7 @@ public class TelaFuncionarioController implements Initializable {
                 sexo = 'F';
             
             Funcionario f = new Funcionario(cbCargo.getValue(),txnome.getText(),
-                    txlogin.getText(),txtelefone.getText(),getJsonArray(),
+                    txlogin.getText(),txtelefone.getText(),
                     dpdatanasc.getValue(), 'S',sexo,txcrm.getText());
             DAOFuncionario dal = new DAOFuncionario();
             

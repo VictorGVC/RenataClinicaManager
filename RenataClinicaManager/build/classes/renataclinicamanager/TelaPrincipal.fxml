@@ -299,7 +299,7 @@
             <Insets left="10.0" />
          </padding>
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="505.0" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="457.0" spacing="20.0">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -308,12 +308,9 @@
                   <Label fx:id="lbdata" styleClass="labeli" text="Label" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="946.0" spacing="20.0">
-               <padding>
-                  <Insets right="40.0" />
-               </padding>
+            <HBox prefHeight="40.0" prefWidth="405.0">
                <children>
-                  <AnchorPane fx:id="pnnotapagar" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: red; -fx-background-radius: 5;" visible="false">
+                  <AnchorPane fx:id="pnnotapagar" prefHeight="30.0" prefWidth="163.0" style="-fx-background-color: red; -fx-background-radius: 5;" visible="false">
                      <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </HBox.margin>
@@ -333,10 +330,10 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <Label layoutX="8.0" layoutY="8.0" prefHeight="17.0" prefWidth="194.0" text="Conta a pagar perto do vencimento" textFill="WHITE" />
+                        <Label layoutX="8.0" layoutY="8.0" prefHeight="17.0" prefWidth="143.0" text="Conta a pagar a vencer" textFill="WHITE" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="pnnotareceber" prefHeight="30.0" prefWidth="249.0" style="-fx-background-color: red; -fx-background-radius: 5;" visible="false">
+                  <AnchorPane fx:id="pnnotareceber" prefHeight="30.0" prefWidth="171.0" style="-fx-background-color: red; -fx-background-radius: 5;" visible="false">
                      <children>
                         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutY="5.0" onAction="#clkEscondeNotAReceber" prefHeight="25.0" prefWidth="0.0" text=" " AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="5.0">
                            <graphic>
@@ -353,15 +350,22 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <Label layoutX="8.0" layoutY="8.0" prefHeight="17.0" prefWidth="208.0" text="Conta a receber perto do vencimento" textFill="WHITE" />
+                        <Label layoutX="8.0" layoutY="8.0" prefHeight="17.0" prefWidth="143.0" text="Conta a receber a vencer" textFill="WHITE" />
                      </children>
                      <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="30.0" top="5.0" />
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </AnchorPane>
-                  <Label fx:id="lbnomeempresa" styleClass="labeli" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="416.0" spacing="20.0">
+               <padding>
+                  <Insets right="40.0" />
+               </padding>
+               <children>
+                  <Label fx:id="lbnomeempresa" alignment="CENTER" prefHeight="17.0" prefWidth="124.0" styleClass="labeli" text="Label" />
                   <Label fx:id="lbcidade" styleClass="labeli" text="Label" />
-                  <Label fx:id="lbendereco" styleClass="labeli" text="Label" />
+                  <Label fx:id="lbendereco" alignment="CENTER" prefHeight="17.0" prefWidth="144.0" styleClass="labeli" text="Label" />
                </children>
             </HBox>
          </children>

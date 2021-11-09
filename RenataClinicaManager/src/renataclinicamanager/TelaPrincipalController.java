@@ -7,6 +7,7 @@ package renataclinicamanager;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
+import db.Banco.Banco;
 import db.DAL.DAOAgendamento;
 import db.DAL.DAOConfig;
 import db.DAL.DAOConta;
@@ -633,13 +634,13 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkBackup(ActionEvent event) 
     {
-        
+        Banco.realizaBackupRestauracao("banco\\backup.bat");
     }
 
     @FXML
     private void clkRestore(ActionEvent event) 
     {
-        
+        Banco.realizaBackupRestauracao("banco\\restore.bat");
     }
 
     @FXML
@@ -890,6 +891,8 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
+        stage.setMaxWidth(983);
+        stage.setMaxHeight(589);
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -1038,6 +1041,7 @@ public class TelaPrincipalController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
         
+        setInfo();
         setTema();
     }
 
