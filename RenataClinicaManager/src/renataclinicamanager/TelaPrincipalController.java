@@ -886,7 +886,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkAtendimento(ActionEvent event) throws IOException 
     {
-        Parent root = FXMLLoader.load(getClass().getResource("TelaAtendimento.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("TelaHistorico.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
@@ -895,7 +895,7 @@ public class TelaPrincipalController implements Initializable {
         DAOConfig dc = new DAOConfig();
         
         scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
-        stage.setTitle("Atendimento");
+        stage.setTitle("Histórico de atendimento");
         stage.setScene(scene);
         stage.show();
     }

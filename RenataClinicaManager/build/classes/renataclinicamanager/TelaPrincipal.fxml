@@ -47,7 +47,7 @@
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#clkControlarTratamento" text="Controlar Tratamento" />
                         <MenuItem mnemonicParsing="false" onAction="#clkAgendamento" text="Agendamento" />
-                        <MenuItem mnemonicParsing="false" onAction="#clkAtendimento" text="Atendimento" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkAtendimento" text="Histórico de Atendimentos" />
                       <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
                         <MenuItem mnemonicParsing="false" onAction="#clkCompra" text="Compra" />
                         <MenuItem mnemonicParsing="false" onAction="#clkPagamento" text="Pagamento" />
@@ -59,11 +59,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#clkBackup" text="Backup" />
                         <MenuItem mnemonicParsing="false" onAction="#clkRestore" text="Restauração" />
                         <MenuItem mnemonicParsing="false" onAction="#clkCarregarFeriados" text="Carregar Feriados" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#clkConfiguracoes" text="Configurações" />
                      </items>
                   </Menu>
                </menus>

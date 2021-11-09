@@ -43,7 +43,8 @@ public class DAOAgendamento
                 
                 if(rs.getString("pt_cod") != null)
                 {
-                    try {
+                    try 
+                    {
                         aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
                                 rs.getInt("age_cod"), 
                                 rs.getString("age_observacoes"), 
@@ -59,8 +60,9 @@ public class DAOAgendamento
                 }
                 else
                 {
-                    try {
-                    aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
+                    try 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
                             rs.getInt("age_cod"), 
                             rs.getString("age_observacoes"), 
                             df.getF(rs.getString("fun_login")), 
@@ -68,11 +70,11 @@ public class DAOAgendamento
                             rs.getString("age_dentes"),
                             dp.get(rs.getString("pac_cpf")),
                             new PacienteTratamento(new Paciente("","a"), new Tratamento())));
-                } 
-                catch (Exception e) 
-                {
-                    aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dp.get(rs.getString("pac_cod"))));
-                }
+                    } 
+                    catch (Exception e) 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dp.get(rs.getString("pac_cod"))));
+                    }
                 }
             }
         } 
@@ -169,6 +171,65 @@ public class DAOAgendamento
         
         Banco.getCon().getConnect().commit();
         return "";
+    }
+
+    public List<Atendimento> getAtendimentosPaciente(String filtro) throws SQLException 
+    {
+        String sql = "SELECT * FROM Agendamento a "+filtro;
+        
+        List <Atendimento> aux = new ArrayList();
+        ResultSet rs = Banco.getCon().consultar(sql);
+        
+        DAOTratamento dt = new DAOTratamento();
+        DAOFuncionario df = new DAOFuncionario();
+        DAOMaterial dm = new DAOMaterial();
+        DAOPaciente dp = new DAOPaciente();
+        try {
+            while(rs.next())
+            {      
+                
+                if(rs.getString("pt_cod") != null)
+                {
+                    try 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
+                                rs.getInt("age_cod"), 
+                                rs.getString("age_observacoes"), 
+                                dt.getPT(rs.getInt("pt_cod")), 
+                                df.getF(rs.getString("fun_login")), 
+                                dm.getItensAtendimento(rs.getInt("age_cod")),
+                                rs.getString("age_dentes")));
+                    } 
+                    catch (Exception e) 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dt.getPT(rs.getInt("pt_cod"))));
+                    }
+                }
+                else
+                {
+                    try 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), 
+                            rs.getInt("age_cod"), 
+                            rs.getString("age_observacoes"), 
+                            df.getF(rs.getString("fun_login")), 
+                            dm.getItensAtendimento(rs.getInt("age_cod")),
+                            rs.getString("age_dentes"),
+                            dp.get(rs.getString("pac_cpf")),
+                            new PacienteTratamento(new Paciente("","a"), new Tratamento())));
+                    } 
+                    catch (Exception e) 
+                    {
+                        aux.add(new Atendimento(rs.getTimestamp("age_dthr"), rs.getInt("age_cod"), dp.get(rs.getString("pac_cod"))));
+                    }
+                }
+            }
+        } 
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return aux;
     }
 
     
