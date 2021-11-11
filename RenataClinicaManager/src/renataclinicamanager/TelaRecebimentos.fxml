@@ -90,7 +90,7 @@
                               <TableColumn fx:id="colparcelaar" minWidth="8.0" prefWidth="48.0" text="Parcela" />
                               <TableColumn fx:id="colvalorar" prefWidth="76.0" text="Valor" />
                               <TableColumn fx:id="coldatavencar" prefWidth="119.0" text="Data de Vencimento" />
-                              <TableColumn fx:id="colcontatoar" prefWidth="115.0" text="Contato" />
+                              <TableColumn fx:id="colcontatoar" prefWidth="118.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>
@@ -150,7 +150,7 @@
                               <TableColumn fx:id="colparcelar" minWidth="8.0" prefWidth="55.0" text="Parcela" />
                               <TableColumn fx:id="colvalorr" prefWidth="81.0" text="Valor" />
                               <TableColumn fx:id="coldatapagamentor" prefWidth="121.0" text="Data de Pagamento" />
-                              <TableColumn fx:id="colcontator" prefWidth="102.0" text="Contato" />
+                              <TableColumn fx:id="colcontator" prefWidth="105.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>

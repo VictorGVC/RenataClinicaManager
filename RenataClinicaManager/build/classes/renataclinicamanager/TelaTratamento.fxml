@@ -75,7 +75,7 @@
                   <TableView fx:id="tvpaciente" layoutY="3.0" maxWidth="538.0" onMouseClicked="#clkTabela" prefHeight="344.0" prefWidth="536.0">
                      <columns>
                         <TableColumn fx:id="colnome" maxWidth="330.0" prefWidth="330.0" text="Nome" />
-                        <TableColumn fx:id="colvalor" maxWidth="202.0" prefWidth="202.0" text="Valor" />
+                        <TableColumn fx:id="colvalor" maxWidth="205.0" prefWidth="204.0" text="Valor" />
                      </columns>
                   </TableView>
                </children>

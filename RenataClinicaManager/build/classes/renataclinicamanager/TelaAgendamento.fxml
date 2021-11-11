@@ -57,7 +57,7 @@
                               <TableView fx:id="tvtratamentos" prefHeight="210.0" prefWidth="417.0">
                                 <columns>
                                     <TableColumn fx:id="coltratamento" prefWidth="308.0" text="Tratamento" />
-                                  <TableColumn fx:id="colvalor" prefWidth="105.0" text="Valor" />
+                                  <TableColumn fx:id="colvalor" prefWidth="107.0" text="Valor" />
                                 </columns>
                               </TableView>
                            </children>
@@ -75,7 +75,7 @@
                         <TableColumn fx:id="colhorario" prefWidth="113.0" text="Horário" />
                         <TableColumn fx:id="colpaciente" prefWidth="206.0" text="Paciente" />
                         <TableColumn fx:id="coltratamentoh" prefWidth="135.0" text="Tratamento" />
-                        <TableColumn fx:id="colcontato" prefWidth="95.0" text="Contato" />
+                        <TableColumn fx:id="colcontato" prefWidth="97.0" text="Contato" />
                      </columns>
                      <contextMenu>
                         <ContextMenu styleClass="cm">

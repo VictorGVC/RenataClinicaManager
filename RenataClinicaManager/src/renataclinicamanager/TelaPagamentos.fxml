@@ -76,7 +76,7 @@
                               <TableColumn fx:id="colvalorap" prefWidth="76.0" text="Valor" />
                               <TableColumn fx:id="coldatavencap" prefWidth="119.0" text="Data de Vencimento" />
                               <TableColumn fx:id="coltipoap" prefWidth="195.0" text="Tipo" />
-                              <TableColumn fx:id="colcontatoap" prefWidth="115.0" text="Contato" />
+                              <TableColumn fx:id="colcontatoap" prefWidth="118.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>
@@ -130,7 +130,7 @@
                               <TableColumn fx:id="colvalorp" prefWidth="84.0" text="Valor" />
                               <TableColumn fx:id="coldatapagamentop" prefWidth="152.0" text="Data de Pagamento" />
                               <TableColumn fx:id="coltipop" prefWidth="86.0" text="Tipo" />
-                              <TableColumn fx:id="colcontatop" prefWidth="115.0" text="Contato" />
+                              <TableColumn fx:id="colcontatop" prefWidth="118.0" text="Contato" />
                            </columns>
                         </TableView>
                      </children>

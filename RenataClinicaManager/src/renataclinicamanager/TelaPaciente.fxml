@@ -96,7 +96,7 @@
                   <TableColumn fx:id="colrea" prefWidth="277.0" text="Remedios e Alergias" />
                   <TableColumn fx:id="coltelefone" minWidth="2.0" prefWidth="116.0" text="Telefone" />
                   <TableColumn fx:id="colrua" prefWidth="125.0" text="Rua" />
-                  <TableColumn fx:id="colnum" maxWidth="44.0" prefWidth="43.0" text="Nº" />
+                  <TableColumn fx:id="colnum" maxWidth="46.0" prefWidth="46.0" text="Nº" />
                </columns>
             </TableView>
          </children>

@@ -164,7 +164,7 @@
                                           <TableView fx:id="tvseg" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
                                                 <TableColumn fx:id="colhrseg" prefWidth="36.0" text="Hora" />
-                                                <TableColumn fx:id="colnomeseg" prefWidth="164.0" text="Nome" />
+                                                <TableColumn fx:id="colnomeseg" prefWidth="166.0" text="Nome" />
                                              </columns>
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
@@ -178,7 +178,7 @@
                                           <TableView fx:id="tvter" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
                                                 <TableColumn fx:id="colhrter" prefWidth="36.0" text="Hora" />
-                                                <TableColumn fx:id="colnometer" prefWidth="164.0" text="Nome" />
+                                                <TableColumn fx:id="colnometer" prefWidth="166.0" text="Nome" />
                                              </columns>
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
@@ -192,7 +192,7 @@
                                           <TableView fx:id="tvqua" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
                                                 <TableColumn fx:id="colhrqua" prefWidth="36.0" text="Hora" />
-                                                <TableColumn fx:id="colnomequa" prefWidth="164.0" text="Nome" />
+                                                <TableColumn fx:id="colnomequa" prefWidth="166.0" text="Nome" />
                                              </columns>
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
@@ -206,7 +206,7 @@
                                           <TableView fx:id="tvqui" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
                                                 <TableColumn fx:id="colhrqui" prefWidth="36.0" text="Hora" />
-                                                <TableColumn fx:id="colnomequi" prefWidth="164.0" text="Nome" />
+                                                <TableColumn fx:id="colnomequi" prefWidth="166.0" text="Nome" />
                                              </columns>
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
@@ -220,7 +220,7 @@
                                           <TableView fx:id="tvsex" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
                                                 <TableColumn fx:id="colhrsex" prefWidth="36.0" text="Hora" />
-                                                <TableColumn fx:id="colnomesex" prefWidth="164.0" text="Nome" />
+                                                <TableColumn fx:id="colnomesex" prefWidth="166.0" text="Nome" />
                                              </columns>
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">
@@ -234,7 +234,7 @@
                                           <TableView fx:id="tvsab" maxWidth="204.0" minWidth="204.0" onMouseClicked="#clkSelect" prefHeight="466.0" prefWidth="204.0" HBox.hgrow="NEVER">
                                              <columns>
                                                 <TableColumn fx:id="colhrsab" prefWidth="36.0" text="Hora" />
-                                                <TableColumn fx:id="colnomesab" prefWidth="164.0" text="Nome" />
+                                                <TableColumn fx:id="colnomesab" prefWidth="166.0" text="Nome" />
                                              </columns>
                                              <contextMenu>
                                                 <ContextMenu styleClass="cm">

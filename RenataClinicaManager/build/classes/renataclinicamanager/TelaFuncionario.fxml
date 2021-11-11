@@ -22,7 +22,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="renataclinicamanager.TelaFuncionarioController">
    <children>
-      <SplitPane fx:id="pnprincipal" dividerPositions="0.4751958224543081" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="650.0" prefWidth="1024.0">
+      <SplitPane fx:id="pnprincipal" dividerPositions="0.48302469135802467" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="650.0" prefWidth="1024.0">
          <items>
             <VBox prefHeight="317.0" prefWidth="798.0">
                <children>
@@ -36,7 +36,7 @@
                         <JFXButton fx:id="btcancelar" onAction="#clkBtCancelar" text="Cancelar" />
                      </children>
                   </HBox>
-                  <Pane fx:id="pndados" prefHeight="358.0" prefWidth="1022.0">
+                  <Pane fx:id="pndados" prefHeight="289.0" prefWidth="1022.0">
                      <children>
                         <JFXTextField fx:id="txnome" labelFloat="true" layoutX="78.0" layoutY="68.0" prefHeight="32.0" prefWidth="239.0" promptText="Nome *" unFocusColor="BLACK" />
                         <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="374.0" layoutY="68.0" prefHeight="32.0" prefWidth="175.0" promptText="Telefone *" unFocusColor="BLACK" />
@@ -107,7 +107,7 @@
                               <TableColumn fx:id="colnome" prefWidth="431.0" text="Nome" />
                               <TableColumn fx:id="coltelefone" minWidth="8.0" prefWidth="215.0" text="Telefone" />
                               <TableColumn fx:id="colativo" minWidth="0.0" prefWidth="81.0" text="Ativo" />
-                              <TableColumn fx:id="colcargo" maxWidth="129.0" minWidth="0.0" prefWidth="129.0" text="Cargo" />
+                              <TableColumn fx:id="colcargo" maxWidth="132.0" minWidth="0.0" prefWidth="131.0" text="Cargo" />
                            </columns>
                         </TableView>
                      </children>

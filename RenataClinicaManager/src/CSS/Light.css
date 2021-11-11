@@ -1,16 +1,52 @@
 .split-pane:vertical > .split-pane-divider {
-    -fx-background-color: transparent;
- }
+   -fx-background-color: transparent;
+}
 
+.table-view .scroll-bar * {
+   -fx-min-width: 0;
+   -fx-pref-width: 0;
+   -fx-max-width: 0;
+
+   -fx-min-height: 0;
+   -fx-pref-height: 0;
+   -fx-max-height: 0;
+}
+ 
  .split-pane
  {
-    -fx-background-color:  #75d3d3;
+    -fx-background-color:  #3db6c8;
  }
 
  .table-view
  {
     -fx-background-color:  #8fcfcf;
  }
+
+.table-view .column-header
+{
+   -fx-background-color: black;
+}
+
+.table-view .column-header .label
+{
+   -fx-text-fill : #3b7c7c;
+}
+
+.table-view .table-cell
+{
+   -fx-alignment: CENTER;
+}
+
+.table-row-cell {
+   -fx-background: #328794;
+   -fx-table-cell-border-color: #328794;
+}
+
+.table-row-cell:selected
+{
+   -fx-background-color: #042f38; 
+   -fx-table-cell-border-color: #042f38;
+}
 
  .jfx-date-picker .date-picker-popup .calendar-grid .day-cell:hover,
 .jfx-date-picker .data-picker-list-cell:hover {
@@ -39,7 +75,7 @@
 
 .default
 {
-   -fx-background-color:  #75d3d3;
+   -fx-background-color:  #328794;
 }
 
 .labeli
@@ -49,5 +85,41 @@
 
 .forth
 {
-   -fx-background-color: #328794;
+   -fx-background-color: #3793a1;
+}
+
+.third 
+{
+   -fx-background-color: #3b7c7c;
+}
+
+.fifth
+{
+   -fx-background-color: #4ea9b8;
+}
+
+.lv
+{
+   -fx-background-color:#328794;
+}
+
+.lv .scroll-bar:vertical {
+   -fx-background-color: transparent;
+}
+
+.lv .list-cell:filled .text {
+   -fx-fill: #8fcfcf;
+}
+
+.lv .list-cell:filled {
+   -fx-background: #328794;
+   -fx-list-cell-border-color: #328794;
+}
+
+.lv .list-cell:selected{
+   -fx-background-color: #042f38;
+}
+
+.lv .list-cell:hover{
+   -fx-background-color: #042f38;
 }
