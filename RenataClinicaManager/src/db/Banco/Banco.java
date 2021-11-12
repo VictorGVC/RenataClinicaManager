@@ -22,11 +22,6 @@ public class Banco {
             banco = new Banco();
         return banco;
     }
-
-    public static void restore(String pg_restore, String backup) throws IOException 
-    {
-        
-    }
     
     private Banco() {}
     

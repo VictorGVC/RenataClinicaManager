@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelAtestado" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8239301b-2fbc-464a-a4a6-4b3f52f8a25e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="lei" class="java.lang.String"/>
+	<parameter name="justificativa" class="java.lang.String"/>
+	<parameter name="interessado" class="java.lang.String"/>
+	<parameter name="que" class="java.lang.String"/>
+	<parameter name="rg" class="java.lang.String"/>
+	<parameter name="rua" class="java.lang.String"/>
+	<parameter name="numero" class="java.lang.String"/>
+	<parameter name="bairro" class="java.lang.String"/>
+	<parameter name="cidade" class="java.lang.String"/>
+	<parameter name="estado" class="java.lang.String"/>
+	<parameter name="periodo" class="java.lang.String"/>
+	<parameter name="dia" class="java.lang.String"/>
+	<parameter name="retorno" class="java.lang.String"/>
+	<parameter name="cid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from atestado]]>
+	</queryString>
+	<field name="ate_rodape" class="java.lang.String"/>
+	<field name="ate_cabecalho" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="90" uuid="3cdd2638-e9bc-43bf-b1ad-1ad90afc3408"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ate_cabecalho}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="677" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="51" width="555" height="523" uuid="93615546-8dae-4503-9ddc-05f458773708"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Atesto, para o fim específico de:\n\n"+$P{justificativa}+"\n\n"+
+"A pedido do, "+$P{interessado}+"\nque "+$P{que}+", \nportador do RG nº "
++$P{rg}+", \nresidente e domiciliado na "+$P{rua}+", nº"+$P{numero}+
+", bairro "+$P{bairro}+", \nna cidade e comarca de "+$P{cidade}+
+", estado de "+$P{estado}+", \nesteve sob meus cuidados profissionais, no período da "
++$P{periodo}+" horas, no dia "+$P{dia}+", devendo:\n"+
+$P{retorno}+"\n\nCID:"+$P{cid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="40f0b6c9-4dfb-44a8-81af-dced04192797"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lei}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="35">
+			<textField>
+				<reportElement x="335" y="15" width="220" height="20" uuid="00d14d0f-4be1-4628-999f-786edcaa6b10"/>
+				<textFieldExpression><![CDATA[$F{ate_rodape}+", "+$P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

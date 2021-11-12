@@ -57,7 +57,7 @@
                   <TableColumn fx:id="coldata" prefWidth="90.0" text="Data" />
                   <TableColumn fx:id="colhorario" prefWidth="89.0" text="Horário" />
                   <TableColumn fx:id="coltratamento" prefWidth="206.0" text="Tratamento" />
-                  <TableColumn fx:id="colobservacoes" prefWidth="292.0" text="Observações" />
+                  <TableColumn fx:id="colobservacoes" prefWidth="295.0" text="Observações" />
                </columns>
                <contextMenu>
                   <ContextMenu>

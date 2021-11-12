@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelReceituario" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2fc78464-c061-48af-ad56-c56745b8bc8a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<parameter name="content" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from receita]]>
+	</queryString>
+	<field name="rec_cabecalho" class="java.lang.String"/>
+	<field name="rec_rodape" class="java.lang.String"/>
+	<detail>
+		<band height="555">
+			<textField>
+				<reportElement x="16" y="27" width="345" height="55" uuid="b99b7cd1-042d-4920-98c7-e397693b9c19"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{rec_cabecalho}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="399" y="0" width="1" height="555" uuid="14391adb-b1ab-4bf2-bcb8-03632fee5260"/>
+			</line>
+			<textField>
+				<reportElement x="16" y="104" width="345" height="352" uuid="ecd69fee-371d-40c0-afb4-420b81ab79e0"/>
+				<textFieldExpression><![CDATA[$P{content}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="27" width="355" height="55" uuid="87caaebd-ad06-497e-a7b9-92965c932a2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{rec_cabecalho}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="104" width="355" height="352" uuid="d0a844d2-5910-439f-9aac-26c6609d9e2b"/>
+				<textFieldExpression><![CDATA[$P{content}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="475" width="345" height="65" uuid="9209687b-99c2-4522-bf26-65f46e6b67bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{rec_rodape}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="475" width="355" height="65" uuid="6dcabd7f-9152-42e2-8a95-be7fa280f97a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{rec_rodape}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

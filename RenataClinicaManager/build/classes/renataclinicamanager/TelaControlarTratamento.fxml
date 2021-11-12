@@ -108,7 +108,7 @@
                         <TableColumn fx:id="colpaciente" prefWidth="345.0" text="Paciente" />
                         <TableColumn fx:id="coltratamento" prefWidth="293.0" text="Tratamento" />
                         <TableColumn fx:id="colvalor" prefWidth="109.0" text="Valor" />
-                        <TableColumn fx:id="colfinalizado" prefWidth="117.0" text="Ativo" />
+                        <TableColumn fx:id="colfinalizado" prefWidth="120.0" text="Ativo" />
                      </columns>
                   </TableView>
                </children>
