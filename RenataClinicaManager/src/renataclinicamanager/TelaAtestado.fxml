@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.HBox?>
@@ -19,6 +20,7 @@
                      <children>
                         <JFXTextArea fx:id="tacabecalho" labelFloat="true" layoutX="17.0" layoutY="14.0" prefHeight="137.0" prefWidth="311.0" promptText="Cabeçalho *" />
                         <JFXTextArea fx:id="tarodape" labelFloat="true" layoutX="17.0" layoutY="338.0" prefHeight="123.0" prefWidth="311.0" promptText="Rodapé *" />
+                        <JFXTextField fx:id="txlei" layoutX="17.0" layoutY="168.0" prefHeight="25.0" prefWidth="311.0" promptText="Lei" />
                      </children>
                   </Pane>
                </children>

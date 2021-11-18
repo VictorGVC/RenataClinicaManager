@@ -24,7 +24,7 @@ public class DAOModelos
         try{
             
             if(rs.next())
-                aux = new Modelos(rs.getString("ate_rodape"),rs.getString("ate_cabecalho"));
+                aux = new Modelos(rs.getString("ate_lei"), rs.getString("ate_rodape"),rs.getString("ate_cabecalho"));
         } 
         catch(SQLException ex) {
             System.out.println(ex);
@@ -55,18 +55,20 @@ public class DAOModelos
         String sql = "";
         if(getAtestado()== null)
         {
-            sql = "INSERT INTO atestado(ate_cabecalho, ate_rodape) "
-                + "VALUES ('#1','#2'); ";
+            sql = "INSERT INTO atestado(ate_cabecalho, ate_rodape, ate_lei) "
+                + "VALUES ('#1','#2','#3'); ";
 
             sql = sql.replaceAll("#1", "" + m.getCabecalho());
             sql = sql.replaceAll("#2", "" + m.getRodape());
+            sql = sql.replaceAll("#3", "" + m.getConteudo());
         }
         else
         {
-            sql = "UPDATE atestado SET ate_cabecalho='#1',ate_rodape='#2'";
+            sql = "UPDATE atestado SET ate_cabecalho='#1',ate_rodape='#2', ate_lei='#3'";
         
             sql = sql.replaceAll("#1", "" + m.getCabecalho());
             sql = sql.replaceAll("#2", "" + m.getRodape());
+            sql = sql.replaceAll("#3", "" + m.getConteudo());
         }
         return Banco.getCon().manipular(sql);
     }

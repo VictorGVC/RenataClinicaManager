@@ -15,7 +15,7 @@
          <children>
             <AnchorPane prefHeight="431.0" prefWidth="600.0">
                <children>
-                  <JFXTextArea fx:id="tareceita" layoutX="8.0" layoutY="13.0" prefHeight="484.0" prefWidth="584.0" style="-fx-border-color: #578d8d; -fx-border-radius: 5;" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="13.0" />
+                  <JFXTextArea fx:id="tareceita" layoutX="8.0" layoutY="13.0" prefHeight="484.0" prefWidth="584.0" promptText="Medicamentos" style="-fx-border-color: #578d8d; -fx-border-radius: 5;" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="13.0" />
                </children>
             </AnchorPane>
             <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkBtEmiteReceituario" prefHeight="54.0" prefWidth="584.0" styleClass="third" text=" ">

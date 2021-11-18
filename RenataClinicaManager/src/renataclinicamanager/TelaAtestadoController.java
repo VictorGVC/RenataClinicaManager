@@ -8,6 +8,7 @@ package renataclinicamanager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import db.DAL.DAOModelos;
 import db.Models.Feriado;
 import db.Models.Modelos;
@@ -45,6 +46,8 @@ public class TelaAtestadoController implements Initializable
     private JFXTextArea tacabecalho;
     @FXML
     private JFXTextArea tarodape;
+    @FXML
+    private JFXTextField txlei;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -60,6 +63,7 @@ public class TelaAtestadoController implements Initializable
         try {
             tacabecalho.setText(m.getCabecalho());
             tarodape.setText(m.getRodape());
+            txlei.setText(m.getConteudo());
         } catch (Exception e) {
         }
     }
@@ -95,6 +99,11 @@ public class TelaAtestadoController implements Initializable
             flag = true;
             setCorAlert(tarodape, "RED");
         }
+        if(txlei.getText().isEmpty())
+        {
+            flag = true;
+            setCorAlert(txlei, "RED");
+        }
         if(flag)
         {
             a.setContentText("Campos obrigatórios não preenchidos!");
@@ -104,7 +113,7 @@ public class TelaAtestadoController implements Initializable
         }
         else
         {
-            Modelos md = new Modelos(tarodape.getText(), tacabecalho.getText());
+            Modelos md = new Modelos(txlei.getText(), tarodape.getText(), tacabecalho.getText());
             DAOModelos dm = new DAOModelos();
 
             setNormalColor();
@@ -128,6 +137,12 @@ public class TelaAtestadoController implements Initializable
     }
     
     private void setCorAlert(JFXTextArea tf, String cor) 
+    {
+        tf.setFocusColor(Paint.valueOf(cor));
+        tf.setUnFocusColor(Paint.valueOf(cor));
+    }
+    
+    private void setCorAlert(JFXTextField tf, String cor) 
     {
         tf.setFocusColor(Paint.valueOf(cor));
         tf.setUnFocusColor(Paint.valueOf(cor));

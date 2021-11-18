@@ -4,10 +4,8 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="date" class="java.lang.String"/>
-	<parameter name="lei" class="java.lang.String"/>
 	<parameter name="justificativa" class="java.lang.String"/>
 	<parameter name="interessado" class="java.lang.String"/>
-	<parameter name="que" class="java.lang.String"/>
 	<parameter name="rg" class="java.lang.String"/>
 	<parameter name="rua" class="java.lang.String"/>
 	<parameter name="numero" class="java.lang.String"/>
@@ -23,6 +21,7 @@
 	</queryString>
 	<field name="ate_rodape" class="java.lang.String"/>
 	<field name="ate_cabecalho" class="java.lang.String"/>
+	<field name="ate_lei" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -46,10 +45,10 @@
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Atesto, para o fim específico de:\n\n"+$P{justificativa}+"\n\n"+
-"A pedido do, "+$P{interessado}+"\nque "+$P{que}+", \nportador do RG nº "
+"A pedido do, "+$P{interessado}+",\nportador do RG nº "
 +$P{rg}+", \nresidente e domiciliado na "+$P{rua}+", nº"+$P{numero}+
 ", bairro "+$P{bairro}+", \nna cidade e comarca de "+$P{cidade}+
-", estado de "+$P{estado}+", \nesteve sob meus cuidados profissionais, no período da "
+", estado de "+$P{estado}+", \nesteve sob meus cuidados profissionais, \nno período da "
 +$P{periodo}+" horas, no dia "+$P{dia}+", devendo:\n"+
 $P{retorno}+"\n\nCID:"+$P{cid}]]></textFieldExpression>
 			</textField>
@@ -58,7 +57,7 @@ $P{retorno}+"\n\nCID:"+$P{cid}]]></textFieldExpression>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{lei}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ate_lei}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
