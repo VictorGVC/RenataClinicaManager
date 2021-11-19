@@ -1213,7 +1213,7 @@ public class TelaPrincipalController implements Initializable {
                 JasperPrint jp = JasperFillManager.fillReport("./reports/RelPacientes.jasper", parameters, Banco.getCon().getConnect());
                 JasperViewer.viewReport(jp,false); 
 
-            } catch (Exception e) 
+            } catch (Exception e)
             {
                 System.out.println(e);
             }

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="RenataClinicaManager.jar" size="825871" download="eager" />
+    <jar href="RenataClinicaManager.jar" size="828815" download="eager" />
     <jar href="lib\ant-1.7.1.jar" size="1323005" download="eager" />
     <jar href="lib\antlr-2.7.6.jar" size="443432" download="eager" />
     <jar href="lib\asm-attrs.jar" size="16777" download="eager" />
