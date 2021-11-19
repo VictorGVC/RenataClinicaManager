@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Manual do Usuário</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png"/>
+    <script src="script.js"></script>
+    <script src="introducao.js"></script>
+</head>
+<body>
+    <nav>
+        <label id="logo">Manual Do Usuário</label>
+    </nav>
+    <section>
+        <div id="indice">
+            <label id="title">Índice</label>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Introdução</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="navegacao(this)">Navegação</li>
+                    <li class="option" onclick="camposObrigatorios(this)">Campos Obrigatórios</li>
+                    <li class="option" onclick="camposLista(this)">Campos do Tipo Lista</li>
+                    <li class="option" onclick="camposData(this)">Campos de Data</li>
+                    <li class="option" onclick="camposEntrada(this)">Campos de Texto</li>
+                    <li class="option" onclick="">Mensagens de Erro</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Cadastros</label>
+                </summary>
+                <ul class="data">
+                    <li class="option">Funcionários</li>
+                    <li class="option">Cargos</li>
+                    <li class="option">Pacientes</li>
+                    <li class="option">Materiais</li>
+                    <li class="option">Fornecedores</li>
+                    <li class="option">Tratamentos</li>
+                    <li class="option">Feriados</li>
+                    <li class="option">Modelo de atestado</li>
+                    <li class="option">Modelo de receituário</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Funcionalidades</label>
+                </summary>
+                <ul class="data">
+                    <li class="option">Controlar tratamento</li>
+                    <li class="option">Agendamento</li>
+                    <li class="option">Histórico de atendimentos</li>
+                    <li class="option">Recebimento</li>
+                    <li class="option">Compra</li>
+                    <li class="option">Pagamento</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Relatórios</label>
+                </summary>
+                <ul class="data">
+                    <li class="option">Receituário</li>
+                    <li class="option">Atestado</li>
+                    <li class="option">Pacientes</li>
+                    <li class="option">Fornecedores</li>
+                    <li class="option">Recebimentos</li>
+                    <li class="option">Pagamentos</li>
+                    <li class="option">Relação lucro</li>
+                </ul>
+            </div>
+        </div>
+        <div id="conteudo">
+        </div>
+    </section>
+</body>
+</html>
