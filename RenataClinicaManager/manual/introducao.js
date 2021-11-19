@@ -22,6 +22,7 @@ function navegacao(object) {
     document.querySelector('#conteudo').style.visibility = 'visible';
 }
 
+/*
 function camposObrigatorios(object) {
     validaStyle();
     selected = object;
@@ -107,3 +108,4 @@ function camposEntrada(object) {
     document.querySelector('#conteudo').innerHTML = html;
     document.querySelector('#conteudo').style.visibility = 'visible';
 }
+*/
