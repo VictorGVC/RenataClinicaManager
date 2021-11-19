@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelPacientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d8462aa-da42-4c7d-b1cf-b40c59773511">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ativo" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA['S']]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pessoatratamento pt inner join paciente p on p.pac_cpf = pt.pac_cpf inner join tratamento t
+on pt.tra_cod = t.tra_cod where pt_ativo = $P{ativo}]]>
+	</queryString>
+	<field name="tra_cod" class="java.lang.Integer"/>
+	<field name="pac_cpf" class="java.lang.String"/>
+	<field name="pt_ativo" class="java.lang.String"/>
+	<field name="pt_cod" class="java.lang.Integer"/>
+	<field name="pac_nome" class="java.lang.String"/>
+	<field name="pac_telefone" class="java.lang.String"/>
+	<field name="pac_cidade" class="java.lang.String"/>
+	<field name="pac_rua" class="java.lang.String"/>
+	<field name="pac_numero" class="java.lang.Integer"/>
+	<field name="pac_bairro" class="java.lang.String"/>
+	<field name="pac_data" class="java.sql.Date"/>
+	<field name="pac_rea" class="java.lang.String"/>
+	<field name="pac_sexo" class="java.lang.String"/>
+	<field name="tra_nome" class="java.lang.String"/>
+	<field name="tra_valor" class="java.math.BigDecimal"/>
+	<group name="Group1">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="71">
+			<frame>
+				<reportElement mode="Opaque" x="-19" y="-20" width="593" height="80" backcolor="#006699" uuid="d6f004f6-7320-4d99-9d72-7f9068d3a803"/>
+				<image>
+					<reportElement x="455" y="16" width="64" height="64" uuid="002d052c-8fe8-4ca6-93b6-ddce2e7d0072"/>
+					<imageExpression><![CDATA["C:\\Users\\vicga\\OneDrive\\Área de Trabalho\\tooth-outline.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="4f94beae-5534-4f7e-a776-0c49ee8e9e27"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pacientes]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="354" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="bc64efde-6491-4ed1-b5c6-42fe9a253771"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Clinica Renata]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="714">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="10" y="0" width="211" height="20" uuid="f55a8d7f-0c0a-4971-8361-7c594ece2e16"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pac_nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1" uuid="8ed138a6-ae42-4da7-b80d-e2f096bcbc2a"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="221" y="1" width="179" height="20" uuid="67d53d15-a399-4f88-a863-1fad7f0cd460"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tra_nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="400" y="1" width="143" height="20" uuid="3dd15b0d-5089-44cd-aa5f-3846d6a21212"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tra_valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="7f951ca3-b4a6-4897-acc8-2ae8784add40"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="51d49db4-7a3e-4dfa-b718-3111a3a0ba37"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="f6de5a53-e274-473b-b2bf-283ba705a9ae"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

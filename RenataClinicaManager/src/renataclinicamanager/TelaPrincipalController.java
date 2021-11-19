@@ -69,7 +69,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import net.sf.jasperreports.engine.JREmptyDataSource;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -1177,5 +1178,45 @@ public class TelaPrincipalController implements Initializable {
         stage.setTitle("Atestado");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void clkRelPacientes(ActionEvent event) 
+    {
+        Object[] options1 = { "Tratamentos ativos", "Tratamentos encerrados"};
+
+        JPanel panel = new JPanel();
+
+        int result = JOptionPane.showOptionDialog(null, panel, "Pacientes",
+                JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options1, null);
+        if (result == JOptionPane.YES_OPTION)
+        {
+            try
+            {
+
+                JasperPrint jp = JasperFillManager.fillReport("./reports/RelPacientes.jasper", null, Banco.getCon().getConnect());
+                JasperViewer.viewReport(jp,false); 
+
+            } catch (Exception e) 
+            {
+                System.out.println(e);
+            }
+        }
+        else
+        {
+            try
+            {
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                    parameters.put("ativo", "N");
+
+                JasperPrint jp = JasperFillManager.fillReport("./reports/RelPacientes.jasper", parameters, Banco.getCon().getConnect());
+                JasperViewer.viewReport(jp,false); 
+
+            } catch (Exception e) 
+            {
+                System.out.println(e);
+            }
+        }
     }
 }

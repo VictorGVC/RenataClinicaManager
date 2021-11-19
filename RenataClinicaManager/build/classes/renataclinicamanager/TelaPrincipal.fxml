@@ -57,6 +57,7 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#clkRelReceituario" text="Receituário" />
                         <MenuItem mnemonicParsing="false" onAction="#clkRelAtestado" text="Atestado" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkRelPacientes" text="Pacientes" />
                      </items></Menu>
                   <Menu mnemonicParsing="false" text="Ferramentas">
                      <items>
