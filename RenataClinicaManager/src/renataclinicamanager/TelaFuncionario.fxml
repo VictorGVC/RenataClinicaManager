@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -13,7 +12,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -42,19 +40,7 @@
                         <JFXTextField fx:id="txtelefone" labelFloat="true" layoutX="374.0" layoutY="68.0" prefHeight="32.0" prefWidth="175.0" promptText="Telefone *" unFocusColor="BLACK" />
                         <JFXDatePicker fx:id="dpdatanasc" defaultColor="BLACK" layoutX="78.0" layoutY="150.0" prefHeight="32.0" prefWidth="145.0" promptText="Data de Nacimento" />
                         <JFXComboBox fx:id="cbsexo" focusColor="BLACK" labelFloat="true" layoutX="246.0" layoutY="150.0" prefHeight="32.0" prefWidth="121.0" promptText="Sexo" unFocusColor="BLACK" />
-                        <JFXTextField fx:id="txcrm" labelFloat="true" layoutX="407.0" layoutY="150.0" prefHeight="32.0" prefWidth="145.0" promptText="CRM" unFocusColor="BLACK" />
-                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="306.0" layoutY="206.0" onAction="#clkBtHrario" text=" " visible="false">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/schedule.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
+                        <JFXTextField fx:id="txcrm" labelFloat="true" layoutX="407.0" layoutY="150.0" prefHeight="32.0" prefWidth="145.0" promptText="CRO" unFocusColor="BLACK" />
                         <Line endX="-11.0" endY="177.0" layoutX="641.0" layoutY="74.0" startX="-11.0" startY="-32.0" />
                         <JFXTextField fx:id="txlogin" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="700.0" layoutY="88.0" promptText="Usuário *" unFocusColor="BLACK" />
                         <JFXPasswordField fx:id="txsenha" alignment="CENTER" focusColor="BLACK" labelFloat="true" layoutX="859.0" layoutY="88.0" promptText="Senha Atual *" unFocusColor="BLACK" />
@@ -116,38 +102,5 @@
             </VBox>
          </items>
       </SplitPane>
-      <AnchorPane fx:id="pnhrarios" layoutX="175.0" layoutY="188.0" prefHeight="368.0" prefWidth="748.0" styleClass="fifth" visible="false">
-         <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="363.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/schedule.png" />
-               </image>
-            </ImageView>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="551.0" onAction="#clkBtFecharHrarios" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/close.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets top="1.0" />
-               </padding>
-            </JFXButton>
-            <JFXListView fx:id="lvsegunda" layoutX="31.0" layoutY="140.0" onMouseClicked="#clkSegunda" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
-            <JFXListView fx:id="lvquarta" layoutX="263.0" layoutY="140.0" onMouseClicked="#clkQuarta" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
-            <JFXListView fx:id="lvterca" layoutX="147.0" layoutY="140.0" onMouseClicked="#clkTerca" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
-            <JFXListView fx:id="lvquinta" layoutX="379.0" layoutY="140.0" onMouseClicked="#clkQuinta" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
-            <JFXListView fx:id="lvsexta" layoutX="495.0" layoutY="140.0" onMouseClicked="#clkSexta" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
-            <JFXListView fx:id="lvsabado" layoutX="611.0" layoutY="140.0" onMouseClicked="#clkSabado" prefHeight="201.0" prefWidth="110.0" styleClass="lv" />
-            <Label layoutX="63.0" layoutY="109.0" styleClass="labeli" text="Segunda" />
-            <Label layoutX="188.0" layoutY="109.0" styleClass="labeli" text="Terça" />
-            <Label layoutX="300.0" layoutY="109.0" styleClass="labeli" text="Quarta" />
-            <Label layoutX="416.0" layoutY="109.0" styleClass="labeli" text="Quinta" />
-            <Label layoutX="536.0" layoutY="109.0" styleClass="labeli" text="Sexta" />
-            <Label layoutX="646.0" layoutY="109.0" styleClass="labeli" text="Sábado" />
-         </children>
-      </AnchorPane>
    </children>
 </Pane>

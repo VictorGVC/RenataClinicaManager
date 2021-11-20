@@ -645,13 +645,37 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkBackup(ActionEvent event) 
     {
-        Banco.realizaBackupRestauracao("banco\\backup.bat");
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        
+        a.setHeaderText("Backup!");
+        a.setTitle("Alerta");
+        a.setContentText("Após a confirmação, o backup anterior será perdido, você tem certeza que deseja fazer isso?");
+        a.getButtonTypes().clear();
+        a.getButtonTypes().add(ButtonType.NO);
+        a.getButtonTypes().add(ButtonType.YES);
+        
+        if (a.showAndWait().get() == ButtonType.YES)
+        {
+            Banco.realizaBackupRestauracao("banco\\backup.bat");
+        }
     }
 
     @FXML
     private void clkRestore(ActionEvent event) 
     {
-        Banco.realizaBackupRestauracao("banco\\restore.bat");
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        
+        a.setHeaderText("Restauração!");
+        a.setTitle("Alerta");
+        a.setContentText("Após a confirmação, todos os dados atuais serão retornados na versão do ultimo backup, você tem certeza que deseja fazer isso?");
+        a.getButtonTypes().clear();
+        a.getButtonTypes().add(ButtonType.NO);
+        a.getButtonTypes().add(ButtonType.YES);
+        
+        if (a.showAndWait().get() == ButtonType.YES)
+        {
+            Banco.realizaBackupRestauracao("banco\\restore.bat");
+        }
     }
 
     @FXML

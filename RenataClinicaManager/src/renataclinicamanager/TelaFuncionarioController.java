@@ -8,7 +8,6 @@ package renataclinicamanager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
@@ -35,20 +34,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import util.MaskFieldUtil;
 import util.Util;
 
@@ -122,20 +117,6 @@ public class TelaFuncionarioController implements Initializable {
     @FXML
     private JFXTextField txtelefone;
     @FXML
-    private JFXListView<String> lvsegunda;
-    @FXML
-    private JFXListView<String> lvquarta;
-    @FXML
-    private JFXListView<String> lvterca;
-    @FXML
-    private JFXListView<String> lvquinta;
-    @FXML
-    private JFXListView<String> lvsexta;
-    @FXML
-    private JFXListView<String> lvsabado;
-    @FXML
-    private AnchorPane pnhrarios;
-    @FXML
     private JFXTextField txfiltro;
     @FXML
     private HBox pnfiltro;
@@ -152,7 +133,7 @@ public class TelaFuncionarioController implements Initializable {
         setMascaras();
         initColTb();
         initCB();
-        initListas();
+        //initListas();
         try {
             estado(true);
         } catch (SQLException ex) {
@@ -170,43 +151,43 @@ public class TelaFuncionarioController implements Initializable {
         coltelefone.setCellValueFactory(new PropertyValueFactory("telefone"));
     }
     
-    private void initListas()
-    {
-        lseg = new ArrayList<String>();
-        lter = new ArrayList<String>();
-        lqua = new ArrayList<String>();
-        lqui = new ArrayList<String>();
-        lsex = new ArrayList<String>();
-        lsab = new ArrayList<String>();
-        
-        List<String> hrarios = new ArrayList<String>();
-        hrarios.add("06:00 - 07:00");
-        hrarios.add("07:00 - 08:00");
-        hrarios.add("08:00 - 09:00");
-        hrarios.add("09:00 - 10:00");
-        hrarios.add("10:00 - 11:00");
-        hrarios.add("11:00 - 12:00");
-        hrarios.add("12:00 - 13:00");
-        hrarios.add("13:00 - 14:00");
-        hrarios.add("14:00 - 15:00");
-        hrarios.add("15:00 - 16:00");
-        hrarios.add("16:00 - 17:00");
-        hrarios.add("17:00 - 18:00");
-        hrarios.add("18:00 - 19:00");
-        
-        lvsegunda.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        lvsegunda.setItems(FXCollections.observableArrayList(hrarios));
-        lvterca.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        lvterca.setItems(FXCollections.observableArrayList(hrarios));
-        lvquarta.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        lvquarta.setItems(FXCollections.observableArrayList(hrarios));
-        lvquinta.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        lvquinta.setItems(FXCollections.observableArrayList(hrarios));
-        lvsexta.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        lvsexta.setItems(FXCollections.observableArrayList(hrarios));
-        lvsabado.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        lvsabado.setItems(FXCollections.observableArrayList(hrarios));
-    }
+//    private void initListas()
+//    {
+//        lseg = new ArrayList<String>();
+//        lter = new ArrayList<String>();
+//        lqua = new ArrayList<String>();
+//        lqui = new ArrayList<String>();
+//        lsex = new ArrayList<String>();
+//        lsab = new ArrayList<String>();
+//        
+//        List<String> hrarios = new ArrayList<String>();
+//        hrarios.add("06:00 - 07:00");
+//        hrarios.add("07:00 - 08:00");
+//        hrarios.add("08:00 - 09:00");
+//        hrarios.add("09:00 - 10:00");
+//        hrarios.add("10:00 - 11:00");
+//        hrarios.add("11:00 - 12:00");
+//        hrarios.add("12:00 - 13:00");
+//        hrarios.add("13:00 - 14:00");
+//        hrarios.add("14:00 - 15:00");
+//        hrarios.add("15:00 - 16:00");
+//        hrarios.add("16:00 - 17:00");
+//        hrarios.add("17:00 - 18:00");
+//        hrarios.add("18:00 - 19:00");
+//        
+//        lvsegunda.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lvsegunda.setItems(FXCollections.observableArrayList(hrarios));
+//        lvterca.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lvterca.setItems(FXCollections.observableArrayList(hrarios));
+//        lvquarta.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lvquarta.setItems(FXCollections.observableArrayList(hrarios));
+//        lvquinta.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lvquinta.setItems(FXCollections.observableArrayList(hrarios));
+//        lvsexta.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lvsexta.setItems(FXCollections.observableArrayList(hrarios));
+//        lvsabado.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lvsabado.setItems(FXCollections.observableArrayList(hrarios));
+//    }
     
     private void selecionaCargo(Cargo c)
     {
@@ -226,49 +207,49 @@ public class TelaFuncionarioController implements Initializable {
         cbCargo.getSelectionModel().select(index);
     }
     
-    private void setListsJson()
-    {
-        JSONArray aux = funatual.getHorarios();
-        JSONArray jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("segunda"));
-        lseg.clear();
-        lseg.addAll(jaux.toList());
-        
-        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("terca"));
-        lter.clear();
-        lter.addAll(jaux.toList());
-        
-        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("quarta"));
-        lqua.clear();
-        lqua.addAll(jaux.toList());
-        
-        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("quinta"));
-        lqui.clear();
-        lqui.addAll(jaux.toList());
-        
-        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("sexta"));
-        lsex.clear();
-        lsex.addAll(jaux.toList());
-        
-        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("sabado"));
-        lsab.clear();
-        lsab.addAll(jaux.toList());
-    }
-    
-    private JSONArray getJsonArray()
-    {
-        JSONArray full = new JSONArray();
-        JSONObject jo = new JSONObject();
-        jo.put("segunda", lseg);
-        jo.put("terca", lter);
-        jo.put("quarta", lqua);
-        jo.put("quinta", lqui);
-        jo.put("sexta", lsex);
-        jo.put("sabado", lsab);
-        
-        full.put(jo);
-        
-        return full;
-    }
+//    private void setListsJson()
+//    {
+//        JSONArray aux = funatual.getHorarios();
+//        JSONArray jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("segunda"));
+//        lseg.clear();
+//        lseg.addAll(jaux.toList());
+//        
+//        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("terca"));
+//        lter.clear();
+//        lter.addAll(jaux.toList());
+//        
+//        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("quarta"));
+//        lqua.clear();
+//        lqua.addAll(jaux.toList());
+//        
+//        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("quinta"));
+//        lqui.clear();
+//        lqui.addAll(jaux.toList());
+//        
+//        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("sexta"));
+//        lsex.clear();
+//        lsex.addAll(jaux.toList());
+//        
+//        jaux = new JSONArray(aux.getJSONObject(0).getJSONArray("sabado"));
+//        lsab.clear();
+//        lsab.addAll(jaux.toList());
+//    }
+//    
+//    private JSONArray getJsonArray()
+//    {
+//        JSONArray full = new JSONArray();
+//        JSONObject jo = new JSONObject();
+//        jo.put("segunda", lseg);
+//        jo.put("terca", lter);
+//        jo.put("quarta", lqua);
+//        jo.put("quinta", lqui);
+//        jo.put("sexta", lsex);
+//        jo.put("sabado", lsab);
+//        
+//        full.put(jo);
+//        
+//        return full;
+//    }
     
     private void estado(boolean b) throws SQLException 
     {
@@ -677,116 +658,8 @@ public class TelaFuncionarioController implements Initializable {
                 selecionaCargo(f.getC());
                 txcrm.setText(f.getCrm());
                 dpdatanasc.setValue(f.getDtnasc());
-                setListsJson();
+                //setListsJson();
             }
-        }
-    }
-
-    @FXML
-    private void clkBtHrario(ActionEvent event) 
-    {
-        selectListObjects(lvsegunda, lseg);
-        selectListObjects(lvterca, lter);
-        selectListObjects(lvquarta, lqua);
-        selectListObjects(lvquinta, lqui);
-        selectListObjects(lvsexta, lsex);
-        selectListObjects(lvsabado, lsab);
-        pnhrarios.setVisible(true);
-    }
-
-    @FXML
-    private void clkBtFecharHrarios(ActionEvent event) 
-    {
-        pnhrarios.setVisible(false);
-    }
-
-    @FXML
-    private void clkSegunda(MouseEvent event) 
-    {
-        if(listContais(lseg, lvsegunda.getSelectionModel().getSelectedItem()))
-        {
-            lseg.remove(lvsegunda.getSelectionModel().getSelectedItem());
-            selectListObjects(lvsegunda, lseg);
-        }
-        else
-        {
-            lseg.add(lvsegunda.getSelectionModel().getSelectedItem());
-            selectListObjects(lvsegunda, lseg);
-        }
-    }
-
-    @FXML
-    private void clkQuarta(MouseEvent event) 
-    {
-        if(listContais(lqua, lvquarta.getSelectionModel().getSelectedItem()))
-        {
-            lqua.remove(lvquarta.getSelectionModel().getSelectedItem());
-            selectListObjects(lvquarta, lqua);
-        }
-        else
-        {
-            lqua.add(lvquarta.getSelectionModel().getSelectedItem());
-            selectListObjects(lvquarta, lqua);
-        }
-    }
-
-    @FXML
-    private void clkTerca(MouseEvent event) 
-    {
-        if(listContais(lter, lvterca.getSelectionModel().getSelectedItem()))
-        {
-            lter.remove(lvterca.getSelectionModel().getSelectedItem());
-            selectListObjects(lvterca, lter);
-        }
-        else
-        {
-            lter.add(lvterca.getSelectionModel().getSelectedItem());
-            selectListObjects(lvterca, lter);
-        }
-    }
-
-    @FXML
-    private void clkQuinta(MouseEvent event) 
-    {
-        if(listContais(lqui, lvquinta.getSelectionModel().getSelectedItem()))
-        {
-            lqui.remove(lvquinta.getSelectionModel().getSelectedItem());
-            selectListObjects(lvquinta, lqui);
-        }
-        else
-        {
-            lqui.add(lvquinta.getSelectionModel().getSelectedItem());
-            selectListObjects(lvquinta, lqui);
-        }
-    }
-
-    @FXML
-    private void clkSexta(MouseEvent event) 
-    {
-        if(listContais(lsex, lvsexta.getSelectionModel().getSelectedItem()))
-        {
-            lsex.remove(lvsexta.getSelectionModel().getSelectedItem());
-            selectListObjects(lvsexta, lsex);
-        }
-        else
-        {
-            lsex.add(lvsexta.getSelectionModel().getSelectedItem());
-            selectListObjects(lvsexta, lsex);
-        }
-    }
-
-    @FXML
-    private void clkSabado(MouseEvent event) 
-    {
-        if(listContais(lsab, lvsabado.getSelectionModel().getSelectedItem()))
-        {
-            lsab.remove(lvsabado.getSelectionModel().getSelectedItem());
-            selectListObjects(lvsabado, lsab);
-        }
-        else
-        {
-            lsab.add(lvsabado.getSelectionModel().getSelectedItem());
-            selectListObjects(lvsabado, lsab);
         }
     }
 
