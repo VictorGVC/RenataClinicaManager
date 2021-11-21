@@ -24,7 +24,7 @@
             <JFXComboBox fx:id="cbpaciente" labelFloat="true" prefHeight="25.0" prefWidth="480.0" promptText="Paciente" />
             <AnchorPane prefHeight="30.0" prefWidth="555.0">
                <children>
-                  <JFXTextField fx:id="txprocedimento" alignment="CENTER" labelFloat="true" layoutX="38.0" layoutY="4.0" prefHeight="25.0" prefWidth="480.0" promptText="representante legal" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="37.0" />
+                  <JFXTextField fx:id="txprocedimento" alignment="CENTER" labelFloat="true" layoutX="41.0" layoutY="4.0" prefHeight="25.0" prefWidth="474.0" promptText="representante legal" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="40.0" />
                </children>
             </AnchorPane>
             <HBox alignment="CENTER" prefHeight="34.0" prefWidth="555.0" spacing="25.0">
@@ -40,7 +40,7 @@
                   <JFXTextField fx:id="txretorno" disable="true" labelFloat="true" prefHeight="25.0" prefWidth="225.0" />
                </children>
             </HBox>
-            <JFXDatePicker fx:id="dtpdia" promptText="Data" />
+            <JFXDatePicker fx:id="dtpdia" promptText="Data do procedimento" />
             <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkBtEmiteAtestado" prefHeight="54.0" prefWidth="483.0" styleClass="third" text=" ">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">

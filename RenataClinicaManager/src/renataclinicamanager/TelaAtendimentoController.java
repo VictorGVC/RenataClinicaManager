@@ -205,7 +205,7 @@ public class TelaAtendimentoController implements Initializable {
         ate = t;
     }
     
-    public boolean getSuccess()
+    public static boolean getSuccess()
     {
         return success;
     }

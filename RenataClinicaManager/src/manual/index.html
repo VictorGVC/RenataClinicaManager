@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Manual do Usuário</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png"/>
+    <script src="script.js"></script>
+    <script src="introducao.js"></script>
+    <script src="configuracoes.js"></script>
+    <script src="ferramentas.js"></script>
+    <script src="funcionalidades.js"></script>
+    <script src="modelos.js"></script>
+    <script src="impressao.js"></script>
+    <script src="requisitos.js"></script>
+
+</head>
+<body>
+    <nav>
+        <label id="logo">Manual Do Usuário</label>
+    </nav>
+    <section>
+        <div id="indice">
+            <label id="title">Índice</label>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Introdução</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="navegacao(this)">Navegação</li>
+                    <li class="option" onclick="cadastros(this)">Cadastros</li>
+                    <li class="option" onclick="camposObrigatorios(this)">Campos Obrigatórios</li>
+                    <li class="option" onclick="camposLista(this)">Campos do Tipo Lista</li>
+                    <li class="option" onclick="camposData(this)">Campos de Data</li>
+                    <li class="option" onclick="mensagensErro(this)">Mensagens de Erro</li>
+                    <li class="option" onclick="notificacoes(this)">Notificações</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Modelos</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="modeloAtestado(this)">Modelo de atestado</li>
+                    <li class="option" onclick="modeloReceituario(this)"> Modelo de receituário</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Funcionalidades</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="tratamento(this)">Controlar tratamento</li>
+                    <li class="option" onclick="agendamento(this)">Agendamento</li>
+                    <li class="option" onclick="historico(this)">Histórico de atendimentos</li>
+                    <li class="option" onclick="recebimento(this)">Recebimento</li>
+                    <li class="option" onclick="compra(this)">Compra</li>
+                    <li class="option" onclick="pagamento(this)">Pagamento</li>
+                    <li class="option" onclick="atendimento(this)">Registrar Atendimento</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Configurações</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="tema(this)">Tema</li>
+                    <li class="option" onclick="informacoes(this)">Informações da Empresa</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Ferramentas</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="backup(this)">Backup</li>
+                    <li class="option" onclick="restore(this)">Restauração</li>
+                    <li class="option" onclick="feriados(this)">Carregar Feriados</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Impressão</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="atestado(this)">Atestado</li>
+                    <li class="option" onclick="receituario(this)">Receituário</li>
+                </ul>
+            </div>
+            <div class="combos">
+                <summary onclick="onChange(this, 'fas')">
+                    <i class="fas fa-angle-right"></i>
+                    <label>Requisitos</label>
+                </summary>
+                <ul class="data">
+                    <li class="option" onclick="postgreSQL(this)">Banco de Dados</li>
+                    <li class="option" onclick="JRE(this)">Java</li>
+                </ul>
+            </div>
+        </div>
+        <div id="conteudo">
+        </div>
+    </section>
+</body>
+</html>

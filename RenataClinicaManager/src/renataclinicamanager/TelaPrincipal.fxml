@@ -91,6 +91,18 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
+                  <JFXButton fx:id="bthelp" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#clkOpenHelp" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
                </items>
             </ToolBar>
          </children>

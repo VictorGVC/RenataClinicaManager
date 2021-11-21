@@ -17,10 +17,14 @@ import db.Models.Config;
 import db.Models.Feriado;
 import db.Models.Funcionario;
 import db.Models.PacienteTratamento;
+import java.awt.Desktop;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -36,18 +40,20 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -56,6 +62,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
@@ -66,6 +73,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -227,6 +236,8 @@ public class TelaPrincipalController implements Initializable {
     private AnchorPane pnnotapagar;
     @FXML
     private AnchorPane pnnotareceber;
+    @FXML
+    private JFXButton bthelp;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -1006,8 +1017,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkMostrarInfo(ActionEvent event) throws IOException 
     {
-        TelaPacienteInfoController controller = new TelaPacienteInfoController();
-        controller.setInfo(sat);
+        TelaPacienteInfoController.setInfo(sat);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaPacienteInfo.fxml"));
         Parent root = loader.load();
@@ -1040,8 +1050,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void clkRegistraAtendimento(ActionEvent event) throws IOException 
     {
-        TelaAtendimentoController controller = new TelaAtendimentoController();
-        controller.setAtendimento(sat);
+        TelaAtendimentoController.setAtendimento(sat);
         
         Parent root = FXMLLoader.load(getClass().getResource("TelaAtendimento.fxml"));
         Scene scene = new Scene(root);
@@ -1056,7 +1065,7 @@ public class TelaPrincipalController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait(); 
         
-        if(controller.getSuccess())
+        if(TelaAtendimentoController.getSuccess())
             miniGAlert("Atendimento Salvo com sucesso!");
     }
 
@@ -1242,5 +1251,11 @@ public class TelaPrincipalController implements Initializable {
                 System.out.println(e);
             }
         }
+    }
+
+    @FXML
+    private void clkOpenHelp(ActionEvent event) throws URISyntaxException, IOException 
+    {
+        java.awt.Desktop.getDesktop().browse(new File("manual/index.html").toURI());
     }
 }
