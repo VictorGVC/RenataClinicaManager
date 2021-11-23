@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="RenataClinicaManager.jar" size="887488" download="eager" />
+    <jar href="RenataClinicaManager.jar" size="837640" download="eager" />
     <jar href="lib\commons-digester-2.1.jar" size="196768" download="eager" />
     <jar href="lib\commons-digester3-3.2.jar" size="241614" download="eager" />
     <jar href="lib\groovy_3.0.7.jar" size="7949807" download="eager" />

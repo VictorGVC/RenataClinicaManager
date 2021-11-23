@@ -26,6 +26,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXRadioButton fx:id="rbrp" layoutX="170.0" layoutY="99.0" styleClass="labeli" text=" " />
+      <JFXRadioButton fx:id="rbrp" layoutX="170.0" layoutY="99.0" selected="true" styleClass="labeli" text=" " />
    </children>
 </AnchorPane>

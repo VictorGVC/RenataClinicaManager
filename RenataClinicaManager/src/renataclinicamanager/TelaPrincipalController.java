@@ -1143,7 +1143,9 @@ public class TelaPrincipalController implements Initializable {
 
                     DAOFeriado df = new DAOFeriado();
 
-                    if(b && df.apagarTudo())
+                    if(b)
+                    {
+                        df.apagarTudo();
                         for (int i = 0; i < ja.length(); i++) 
                         {
                             JSONObject json = ja.getJSONObject(i);
@@ -1154,7 +1156,9 @@ public class TelaPrincipalController implements Initializable {
                                 df.gravar(new Feriado(json.getString("name"),date));
                             }
                         }
+                    }
                     initTables();
+                    miniGAlert("Feriados cadastrados com sucesso!");
                     return null;
                 }
             };
