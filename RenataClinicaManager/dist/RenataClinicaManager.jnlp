@@ -8,14 +8,15 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="RenataClinicaManager.jar" size="1405417" download="eager" />
-    <jar href="lib\commons-collections-3.2.1.jar" size="575389" download="eager" />
+    <jar href="RenataClinicaManager.jar" size="885324" download="eager" />
     <jar href="lib\commons-digester-2.1.jar" size="196768" download="eager" />
-    <jar href="lib\commons-logging-1.1.jar" size="52592" download="eager" />
-    <jar href="lib\groovy-all-2.0.1.jar" size="6191960" download="eager" />
-    <jar href="lib\jasperreports-5.6.0.jar" size="4989676" download="eager" />
+    <jar href="lib\commons-digester3-3.2.jar" size="241614" download="eager" />
+    <jar href="lib\groovy_3.0.7.jar" size="7949807" download="eager" />
+    <jar href="lib\jasperreports-6.18.1.jar" size="5634011" download="eager" />
     <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
     <jar href="lib\json.jar" size="69710" download="eager" />
+    <jar href="lib\org.apache.commons.commons-collections4_4.4.0.jar" size="751914" download="eager" />
+    <jar href="lib\org.apache.commons.logging_1.2.0.v20180409-1502.jar" size="73163" download="eager" />
     <jar href="lib\postgresql-9.4.1209.jar" size="678049" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="RenataClinicaManager" >

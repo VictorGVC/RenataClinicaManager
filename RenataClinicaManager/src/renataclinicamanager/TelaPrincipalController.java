@@ -1258,4 +1258,21 @@ public class TelaPrincipalController implements Initializable {
     {
         java.awt.Desktop.getDesktop().browse(new File("manual/index.html").toURI());
     }
+
+    @FXML
+    private void clkOpenLucro(ActionEvent event) throws IOException 
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("TelaLucroAnual.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.resizableProperty().setValue(Boolean.FALSE);
+//        stage.setMaxWidth(917);
+//        stage.setMaxHeight(643);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+        
+        stage.setTitle("Lucro");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

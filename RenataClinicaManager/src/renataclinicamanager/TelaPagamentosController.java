@@ -206,7 +206,6 @@ public class TelaPagamentosController implements Initializable {
         modelo = FXCollections.observableArrayList(res);
         tvpagamentosap.setItems(modelo);
         tvpagamentosap.refresh();
-        tvpagamentosap.getItems();
     }
     
     private void carregaTabelap(String filtro)
@@ -218,6 +217,7 @@ public class TelaPagamentosController implements Initializable {
         modelo = FXCollections.observableArrayList(res);
         tvpagamentosp.setItems(modelo);
         tvpagamentosp.refresh();
+        tvpagamentosp.getItems();
     }
     
     private void miniGAlert(String txt, Pane p)
@@ -368,12 +368,12 @@ public class TelaPagamentosController implements Initializable {
             switch (cbcategoriap.getSelectionModel().getSelectedIndex()) 
             {
                 case 1:
-                    carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
+                    carregaTabelap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(f.for_nome) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
                                    + "AND c.pag_dtpagamento IS NOT NULL ORDER BY pag_dtvencimento");
                     break;
                 case 0:
-                    carregaTabelap("INNER JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
+                    carregaTabelap("LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE UPPER(c.pag_tipo) LIKE '%" 
                            + txfiltrop.getText().toUpperCase() + "%' AND c.pag_dtvencimento >= '"+dpdatainicialp.getValue()+"' AND c.pag_dtvencimento <= '"+dpdatafinalp.getValue()+"' "
                                     + "AND c.pag_dtpagamento IS NOT NULL ORDER BY pag_dtvencimento");
                     break;

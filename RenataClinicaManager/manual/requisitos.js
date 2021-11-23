@@ -57,7 +57,7 @@ function JRE(object){
     html += `<label id="title">Requisitos</label>
             <label class="sub-title">Java</label>
             <p>Para conseguir executar o programa é necessário que o JRE 1.8.0 esteja instalado na máquina, 
-            para baixar acesse esse <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">link</a>, 
+            para baixar acesse esse <a href="https://www.java.com/pt-BR/download/manual.jsp">link</a>, 
             e clique para baixar como indicado a baixo</p>
             <div id="imagens">
                 <img src="./images/javadownload.png" alt="JRE download"/>

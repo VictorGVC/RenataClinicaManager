@@ -241,7 +241,7 @@ public class TelaRecebimentosController implements Initializable {
             if (a.showAndWait().get() == ButtonType.YES)
             {
                 DAOConta dal = new DAOConta();
-                if(dal.estornarp(conr))
+                if(dal.estornarr(conr))
                     miniGAlert("Estornado com sucesso!", pnpesquisar);
                 else
                 { 
@@ -358,7 +358,7 @@ public class TelaRecebimentosController implements Initializable {
             {
                 case 1:
                     carregaTabelar("INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod "
-                            + "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod"
+                            + "INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod "
                             + "INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(p.pac_nome) LIKE '%" 
                            + txfiltror.getText().toUpperCase() + "%' AND c.rec_dtvencimento >= '"+dpdatainicialr.getValue()+"' AND c.rec_dtvencimento <= '"+dpdatafinalr.getValue()+"' "
                                    + "AND c.rec_dtrecebimento IS NOT NULL ORDER BY rec_dtvencimento");

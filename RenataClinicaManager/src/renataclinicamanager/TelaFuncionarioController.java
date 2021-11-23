@@ -54,12 +54,12 @@ import util.Util;
  */
 public class TelaFuncionarioController implements Initializable {
 
-    private List lseg;
-    private List lter;
-    private List lqua;
-    private List lqui;
-    private List lsex;
-    private List lsab;
+//    private List lseg;
+//    private List lter;
+//    private List lqua;
+//    private List lqui;
+//    private List lsex;
+//    private List lsab;
     private Funcionario funatual;
     
     @FXML
@@ -332,20 +332,20 @@ public class TelaFuncionarioController implements Initializable {
         }
         cbCargo.getSelectionModel().select(-1);
         cbsexo.getSelectionModel().select(-1);
-        setListNull();
+        //setListNull();
         dpdatanasc.setValue(null);
         cbcategoria.getSelectionModel().select(0);
     }
     
-    private void setListNull()
-    {
-        lseg.clear();
-        lter.clear();
-        lqua.clear();
-        lqui.clear();
-        lsex.clear();
-        lsab.clear();
-    }
+//    private void setListNull()
+//    {
+//        lseg.clear();
+//        lter.clear();
+//        lqua.clear();
+//        lqui.clear();
+//        lsex.clear();
+//        lsab.clear();
+//    }
     
     private void setCorAlert(JFXTextField tf, String cor) 
     {

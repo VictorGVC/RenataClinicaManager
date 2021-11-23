@@ -51,6 +51,7 @@
                       <MenuItem mnemonicParsing="false" onAction="#clkRecebimento" text="Recebimento" />
                         <MenuItem mnemonicParsing="false" onAction="#clkCompra" text="Compra" />
                         <MenuItem mnemonicParsing="false" onAction="#clkPagamento" text="Pagamento" />
+                        <MenuItem mnemonicParsing="false" onAction="#clkOpenLucro" text="Visualizar Lucros" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Relatórios">

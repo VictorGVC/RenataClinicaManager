@@ -71,15 +71,14 @@ public class DAOFuncionario
         if(cont == 0){
 
             sql = "INSERT INTO Funcionario(fun_login, fun_senha, fun_sexo, fun_nome, fun_telefone, "
-                    + "fun_horarios, fun_dtnasc, fun_ativo,car_cod,fun_crm) "
-                + "VALUES ('#1','#2','#3','#4','#5','#6','#7','S',#8,#9); ";
+                    + "fun_dtnasc, fun_ativo,car_cod,fun_crm) "
+                + "VALUES ('#1','#2','#3','#4','#5','#7','S',#8,'#9'); ";
 
             sql = sql.replaceAll("#1", "" + f.getLogin());
             sql = sql.replaceAll("#2", "" + senha);
             sql = sql.replaceAll("#3", "" + f.getSexo());
             sql = sql.replaceAll("#4", "" + f.getNome());
             sql = sql.replaceAll("#5", "" + f.getTelefone());
-            sql = sql.replaceAll("#6", "" + f.getHorarios().toString());
             sql = sql.replaceAll("#7", "" + f.getDtnasc().toString());
             sql = sql.replaceAll("#8", "" + f.getC().getCod());
             sql = sql.replaceAll("#9", "" + f.getCrm());
@@ -117,18 +116,17 @@ public class DAOFuncionario
                 String sql;
                 if(!senhan.isEmpty())
                     sql = "UPDATE Funcionario SET fun_login='#1', fun_senha= '#2', fun_nome='#3', fun_telefone = '#4', "
-                            + "fun_horarios='#5', fun_dtnasc='#6', car_cod=#7, fun_sexo='#8', fun_crm='#9' "
+                            + " fun_dtnasc='#6', car_cod=#7, fun_sexo='#8', fun_crm='#9' "
                         + "WHERE fun_login = '" + logina + "'; ";
                 else
                     sql = "UPDATE Funcionario SET fun_login='#1', fun_nome='#3', fun_telefone = '#4', "
-                            + "fun_horarios='#5', fun_dtnasc='#6', car_cod=#7, fun_sexo='#8', fun_crm='#9' "
+                            + " fun_dtnasc='#6', car_cod=#7, fun_sexo='#8', fun_crm='#9' "
                         + "WHERE fun_login = '" + logina + "'; ";
 
                 sql = sql.replaceAll("#1", "" + f.getLogin());
                 sql = sql.replaceAll("#2", "" + senhan);
                 sql = sql.replaceAll("#3", "" + f.getNome());
                 sql = sql.replaceAll("#4", f.getTelefone());
-                sql = sql.replaceAll("#5", f.getHorarios().toString());
                 sql = sql.replaceAll("#6", f.getDtnasc().toString());
                 sql = sql.replaceAll("#7", ""+f.getC().getCod());
                 sql = sql.replaceAll("#8", ""+f.getSexo());

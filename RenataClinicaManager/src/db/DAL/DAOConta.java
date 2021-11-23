@@ -219,4 +219,104 @@ public class DAOConta
         Banco.getCon().getConnect().commit();
         return true;
     }
+    
+    public List<Double> getGastos(String ano) throws SQLException
+    {
+        List<Double> list = new ArrayList<>();
+        int dia;
+        for (int i = 1; i <= 9; i++) 
+        {
+            switch(i)
+            {
+                case 2:
+                   dia = 28;
+                break;
+                case 4:
+                case 6:
+                case 9:
+                    dia = 30;
+                break;
+                default:
+                    dia = 31;
+            }
+            String sql = "SELECT sum(pag_valor) as gastos\n"
+                    + "FROM contaspagar \n "
+                    + "where pag_dtpagamento >=  '"+ano+"-0"+i+"-01' \n"
+                    + "AND pag_dtpagamento <= '"+ano+"-0"+i+"-"+dia+"'";
+            
+            ResultSet rs = Banco.getCon().consultar(sql);
+            
+            if(rs.next())
+                list.add(rs.getDouble("gastos"));
+        }
+        
+        for (int i = 10; i <= 12; i++) 
+        {
+            if(i == 11)
+                dia = 30;
+            else
+                dia = 31;
+            String sql = "SELECT sum(pag_valor) as gastos\n"
+                    + "FROM contaspagar \n "
+                    + "where pag_dtpagamento >=  '"+ano+"-"+i+"-01' \n"
+                    + "AND pag_dtpagamento <= '"+ano+"-"+i+"-"+dia+"'";
+            
+            ResultSet rs = Banco.getCon().consultar(sql);
+            
+            if(rs.next())
+                list.add(rs.getDouble("gastos"));
+        }
+        
+        return list;
+    }
+    
+    public List<Double> getGanhos(String ano) throws SQLException
+    {
+        List<Double> list = new ArrayList<>();
+        int dia;
+        for (int i = 1; i <= 9; i++) 
+        {
+            switch(i)
+            {
+                case 2:
+                   dia = 28;
+                break;
+                case 4:
+                case 6:
+                case 9:
+                    dia = 30;
+                break;
+                default:
+                    dia = 31;
+            }
+            String sql = "SELECT sum(rec_valor) as ganhos\n"
+                    + "FROM contasreceber \n "
+                    + "where rec_dtrecebimento >=  '"+ano+"-0"+i+"-01' \n"
+                    + "AND rec_dtrecebimento <= '"+ano+"-0"+i+"-"+dia+"'";
+            
+            ResultSet rs = Banco.getCon().consultar(sql);
+            
+            if(rs.next())
+                list.add(rs.getDouble("ganhos"));
+        }
+        
+        for (int i = 10; i <= 12; i++) 
+        {
+            if(i == 11)
+                dia = 30;
+            else
+                dia = 31;
+            String sql = "SELECT sum(rec_valor) as ganhos\n"
+                    + "FROM contasreceber \n "
+                    + "where rec_dtrecebimento >=  '"+ano+"-"+i+"-01' \n"
+                    + "AND rec_dtrecebimento <= '"+ano+"-"+i+"-"+dia+"'";
+            
+            ResultSet rs = Banco.getCon().consultar(sql);
+            
+            if(rs.next())
+                list.add(rs.getDouble("ganhos"));
+        }
+        
+        return list;
+    }
 }

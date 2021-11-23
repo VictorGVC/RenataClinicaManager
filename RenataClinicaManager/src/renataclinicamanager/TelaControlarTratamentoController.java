@@ -291,7 +291,8 @@ public class TelaControlarTratamentoController implements Initializable {
     @FXML
     private void preencheCPF(ActionEvent event) 
     {
-        txcpf.setText(cbpaciente.getSelectionModel().getSelectedItem().getCpf());
+        if(cbpaciente.getSelectionModel().getSelectedIndex() != -1)
+            txcpf.setText(cbpaciente.getItems().get(cbpaciente.getSelectionModel().getSelectedIndex()).getCpf());
     }
 
     @FXML

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelReceber" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d34c7648-246d-46de-aa25-eac6b1e8c511">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bancorenata"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="dataini" class="java.util.Date"/>
+	<parameter name="datafim" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT * FROM contasreceber c INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%%' AND c.rec_dtvencimento >=  $P{dataini} AND c.rec_dtvencimento <=  $P{datafim}  AND c.rec_dtrecebimento IS NULL ORDER BY rec_dtvencimento]]>
+	</queryString>
+	<field name="rec_cod" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="rec_cod"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_cod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="rec_parcela" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="rec_parcela"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_parcela"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="rec_dtvencimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="rec_dtvencimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_dtvencimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="rec_dtrecebimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="rec_dtrecebimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_dtrecebimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="rec_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rec_tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="rec_valor" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="rec_valor"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="pt_cod" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pt_cod"/>
+		<property name="com.jaspersoft.studio.field.label" value="pt_cod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contasreceber"/>
+	</field>
+	<field name="tra_cod" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="tra_cod"/>
+		<property name="com.jaspersoft.studio.field.label" value="tra_cod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoatratamento"/>
+	</field>
+	<field name="pac_cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoatratamento"/>
+	</field>
+	<field name="pt_ativo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pt_ativo"/>
+		<property name="com.jaspersoft.studio.field.label" value="pt_ativo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoatratamento"/>
+	</field>
+	<field name="COLUMN_11" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pt_cod"/>
+		<property name="com.jaspersoft.studio.field.label" value="pt_cod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pessoatratamento"/>
+	</field>
+	<field name="COLUMN_12" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="tra_cod"/>
+		<property name="com.jaspersoft.studio.field.label" value="tra_cod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tratamento"/>
+	</field>
+	<field name="tra_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tra_nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="tra_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tratamento"/>
+	</field>
+	<field name="tra_valor" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="tra_valor"/>
+		<property name="com.jaspersoft.studio.field.label" value="tra_valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tratamento"/>
+	</field>
+	<field name="COLUMN_15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_telefone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_telefone"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_telefone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_cidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_rua" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_rua"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_rua"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pac_numero"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_numero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_bairro"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_bairro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_data" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="pac_data"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_data"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_rea" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_rea"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_rea"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="pac_sexo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pac_sexo"/>
+		<property name="com.jaspersoft.studio.field.label" value="pac_sexo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="241d5a37-18df-4e57-b146-9157937f1aaf"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="f395214a-ecdf-47be-be18-33d4855090ab"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Recebimentos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="39de67bc-7b00-4e63-9156-d31e0b815bc6"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Clinica Renata]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" forecolor="#666666" uuid="20cb265e-07b7-4acd-96b3-67eb493874c4"/>
+			</line>
+			<textField>
+				<reportElement x="180" y="3" width="150" height="20" uuid="2365c3ee-2ce8-47ed-8cac-3cb71bb2e8bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tratamento"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="3" width="100" height="20" uuid="9943d5ce-0fd0-45e8-ae43-75b6b8b606f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Valor"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="3" width="125" height="20" uuid="4c341ba1-e2e8-44cb-83a5-314340a1980a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Vencimento"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="3" width="180" height="20" uuid="8c4d1f53-058f-49dd-837a-2ed2c602731a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Paciente"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39">
+			<textField>
+				<reportElement x="180" y="8" width="150" height="20" uuid="4a4770ba-3bee-484e-bdcd-fbfbcba7abe5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d28d4324-311b-4ad2-8a59-29dfff3033d4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tra_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="8" width="100" height="20" uuid="e3816b34-5d59-43b6-9d50-32435972017e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e97ac0d2-4828-43bf-b7c1-724392932e9f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rec_valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="8" width="125" height="20" uuid="56c50108-4bd3-49ff-a2d0-13ab9c595494">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="135fc62e-b4b3-4125-ba55-bb57d905bbdb"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rec_dtvencimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="8" width="180" height="20" uuid="648635d9-2ccb-4977-937f-542aaad98ecc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3b67a6c-8c13-4ffb-a693-8a23637cc8f3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pac_nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ede51fa6-66c3-4472-ae2c-d028057e556e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="699a84b0-a39c-4f73-ab03-e6aee8185088"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="80a09786-9100-4ebe-be5d-bbfdc9011323"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -251,9 +251,12 @@ public class TelaAgendamentoController implements Initializable {
     @FXML
     private void preencheCPF(ActionEvent event) 
     {
-        txcpf.setText(cbpaciente.getSelectionModel().getSelectedItem().getCpf());
+        if(cbpaciente.getSelectionModel().getSelectedIndex() != -1)
+        {
+            txcpf.setText(cbpaciente.getSelectionModel().getSelectedItem().getCpf());
         
-        preencheTratamentos();
+            preencheTratamentos();
+        }
     }
 
     @FXML
@@ -280,6 +283,7 @@ public class TelaAgendamentoController implements Initializable {
                     {
                         DAOPaciente dp = new DAOPaciente();
                         cbpaciente.setValue(dp.get(txcpf.getText()));
+                        preencheTratamentos();
                     }
                     return null;
                 }

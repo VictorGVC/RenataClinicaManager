@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="974.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="renataclinicamanager.TelaLucroAnualController">
+   <children>
+      <JFXTextField fx:id="txano" alignment="CENTER" labelFloat="true" layoutX="363.0" layoutY="14.0" promptText="Ano" />
+      <JFXButton buttonType="RAISED" layoutX="515.0" layoutY="14.0" onAction="#calcularLucro" text="Calcular">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <BarChart fx:id="bcgg" animated="false" layoutY="52.0" prefHeight="362.0" prefWidth="581.0">
+        <xAxis>
+          <CategoryAxis label="Meses" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart fx:id="bclucro" animated="false" layoutX="592.0" layoutY="52.0" prefHeight="362.0" prefWidth="382.0">
+        <xAxis>
+          <CategoryAxis label="Meses" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>
