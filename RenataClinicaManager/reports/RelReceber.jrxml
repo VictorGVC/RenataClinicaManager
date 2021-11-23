@@ -6,7 +6,7 @@
 	<parameter name="dataini" class="java.util.Date"/>
 	<parameter name="datafim" class="java.util.Date"/>
 	<queryString>
-		<![CDATA[SELECT * FROM contasreceber c INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%%' AND c.rec_dtvencimento >=  $P{dataini} AND c.rec_dtvencimento <=  $P{datafim}  AND c.rec_dtrecebimento IS NULL ORDER BY rec_dtvencimento]]>
+		<![CDATA[SELECT * FROM contasreceber c INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE c.rec_dtvencimento >=  $P{dataini} AND c.rec_dtvencimento <=  $P{datafim}  AND c.rec_dtrecebimento IS NULL ORDER BY rec_dtvencimento]]>
 	</queryString>
 	<field name="rec_cod" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="rec_cod"/>
@@ -179,7 +179,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Vencimento"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Data Vencimento"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="3" width="180" height="20" uuid="8c4d1f53-058f-49dd-837a-2ed2c602731a"/>

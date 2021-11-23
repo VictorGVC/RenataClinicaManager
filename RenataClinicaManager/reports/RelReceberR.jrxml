@@ -6,7 +6,9 @@
 	<parameter name="dataini" class="java.util.Date"/>
 	<parameter name="datafim" class="java.util.Date"/>
 	<queryString>
-		<![CDATA[SELECT * FROM contasreceber c INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE UPPER(t.tra_nome) LIKE '%%' AND c.rec_dtrecebimento >=  $P{dataini} AND c.rec_dtrecebimento <=  $P{datafim}  AND c.rec_dtrecebimento IS NOT NULL ORDER BY rec_dtvencimento]]>
+		<![CDATA[SELECT *, (SELECT sum(rec_valor) from contasreceber
+	where rec_dtrecebimento >=  $P{dataini} AND rec_dtrecebimento <=  $P{datafim}) as ganhos 
+	 FROM contasreceber c INNER JOIN pessoatratamento pt ON pt.pt_cod = c.pt_cod INNER JOIN tratamento t ON t.tra_cod = pt.tra_cod INNER JOIN paciente p ON p.pac_cpf = pt.pac_cpf WHERE c.rec_dtrecebimento >=  $P{dataini} AND c.rec_dtrecebimento <=  $P{datafim}  AND c.rec_dtrecebimento IS NOT NULL ORDER BY rec_dtvencimento]]>
 	</queryString>
 	<field name="rec_cod" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="rec_cod"/>
@@ -128,6 +130,10 @@
 		<property name="com.jaspersoft.studio.field.label" value="pac_sexo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
 	</field>
+	<field name="ganhos" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ganhos"/>
+		<property name="com.jaspersoft.studio.field.label" value="ganhos"/>
+	</field>
 	<background>
 		<band/>
 	</background>
@@ -179,7 +185,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Recebimento"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Data Recebimento"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="3" width="180" height="20" uuid="8c4d1f53-058f-49dd-837a-2ed2c602731a"/>
@@ -220,7 +226,7 @@
 				<textFieldExpression><![CDATA[$F{pac_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="9" width="125" height="19" uuid="a23a1430-f7c5-4c33-8022-9a7a7232c14c">
+				<reportElement x="430" y="8" width="125" height="20" uuid="a23a1430-f7c5-4c33-8022-9a7a7232c14c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d67e8a26-3e86-4b4d-ae8a-19d6684cb3b4"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -238,7 +244,7 @@
 			<textField>
 				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ede51fa6-66c3-4472-ae2c-d028057e556e"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Total de ganhos: "+$F{ganhos}+"           "+"Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="699a84b0-a39c-4f73-ab03-e6aee8185088"/>

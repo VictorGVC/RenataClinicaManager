@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelReceber" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d34c7648-246d-46de-aa25-eac6b1e8c511">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bancorenata"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="dataini" class="java.util.Date"/>
+	<parameter name="datafim" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT for_nome,  pag_tipo, pag_valor, pag_dtpagamento, 
+(SELECT sum(pag_valor)  
+            FROM contaspagar 
+            WHERE pag_dtpagamento >=  $P{dataini} 
+            AND pag_dtpagamento <= $P{datafim}) 
+as gastos FROM contaspagar c LEFT JOIN fornecedor f ON f.for_cnpj = c.for_cnpj WHERE c.pag_dtpagamento >=  $P{dataini}  AND c.pag_dtpagamento <= $P{datafim}   AND c.pag_dtpagamento IS NOT NULL ORDER BY pag_dtpagamento]]>
+	</queryString>
+	<field name="for_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="for_nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="for_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fornecedor"/>
+	</field>
+	<field name="pag_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pag_tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="pag_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contaspagar"/>
+	</field>
+	<field name="pag_valor" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="pag_valor"/>
+		<property name="com.jaspersoft.studio.field.label" value="pag_valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contaspagar"/>
+	</field>
+	<field name="pag_dtpagamento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="pag_dtpagamento"/>
+		<property name="com.jaspersoft.studio.field.label" value="pag_dtpagamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contaspagar"/>
+	</field>
+	<field name="gastos" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="gastos"/>
+		<property name="com.jaspersoft.studio.field.label" value="gastos"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="241d5a37-18df-4e57-b146-9157937f1aaf"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="f395214a-ecdf-47be-be18-33d4855090ab"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pagamentos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="39de67bc-7b00-4e63-9156-d31e0b815bc6"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Clinica Renata]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" forecolor="#666666" uuid="20cb265e-07b7-4acd-96b3-67eb493874c4"/>
+			</line>
+			<textField>
+				<reportElement x="180" y="3" width="150" height="20" uuid="2365c3ee-2ce8-47ed-8cac-3cb71bb2e8bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Descrição"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="3" width="100" height="20" uuid="9943d5ce-0fd0-45e8-ae43-75b6b8b606f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Valor"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="3" width="125" height="20" uuid="4c341ba1-e2e8-44cb-83a5-314340a1980a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data Pagamento"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="3" width="180" height="20" uuid="8c4d1f53-058f-49dd-837a-2ed2c602731a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fornecedor"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="10" width="180" height="20" uuid="425f8afe-4906-4a69-b99a-d44a3e4f926f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="08502fad-f8b2-46e3-a529-59032265f9c1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{for_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="10" width="150" height="20" uuid="3c4a924b-6d38-477d-b607-fe19aba10aff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8573dc13-68c1-463a-b9aa-bcb09d309ff4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pag_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="10" width="100" height="20" uuid="fc24b97e-23ba-4128-9248-7fb7e2655a72">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d074fc57-9444-4fa8-baa3-a4896daf9e87"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pag_valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="10" width="124" height="20" uuid="b54a0951-9860-4845-9ab9-01b44dff852a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e888ed0-fafa-4519-9f20-48a79dd19583"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pag_dtpagamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ede51fa6-66c3-4472-ae2c-d028057e556e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Total de gastos: "+$F{gastos}+"            "+"Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="699a84b0-a39c-4f73-ab03-e6aee8185088"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="80a09786-9100-4ebe-be5d-bbfdc9011323"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

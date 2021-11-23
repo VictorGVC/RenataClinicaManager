@@ -642,7 +642,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(850);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -696,7 +696,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(1030);
 //        stage.setMaxHeight(678);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -715,7 +715,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(1030);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -733,7 +733,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(800);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -751,7 +751,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(555);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -769,7 +769,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(544);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -787,7 +787,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(544);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -807,7 +807,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(555);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -825,7 +825,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(555);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
@@ -843,7 +843,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(804);
 //        stage.setMaxHeight(600);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -862,7 +862,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(876);
 //        stage.setMaxHeight(589);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -881,7 +881,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(917);
 //        stage.setMaxHeight(643);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -900,7 +900,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(804);
 //        stage.setMaxHeight(610);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -919,7 +919,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/schedule.png")));
         DAOConfig dc = new DAOConfig();
         
@@ -939,7 +939,7 @@ public class TelaPrincipalController implements Initializable {
 
 //        stage.setMaxWidth(983);
 //        stage.setMaxHeight(589);
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
         
@@ -962,7 +962,7 @@ public class TelaPrincipalController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
-            stage.resizableProperty().setValue(Boolean.FALSE);
+            stage.setResizable(false);
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/schedule.png")));
             DAOConfig dc = new DAOConfig();
         
@@ -1056,7 +1056,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         DAOConfig dc = new DAOConfig();
         
@@ -1076,7 +1076,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/config.png")));
         DAOConfig dc = new DAOConfig();
         
@@ -1181,7 +1181,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(917);
 //        stage.setMaxHeight(643);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -1201,7 +1201,7 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(917);
 //        stage.setMaxHeight(643);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
@@ -1266,12 +1266,52 @@ public class TelaPrincipalController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setResizable(false);
 //        stage.setMaxWidth(917);
 //        stage.setMaxHeight(643);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
         
         stage.setTitle("Lucro");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void clkRelRecebimentos(ActionEvent event) throws IOException 
+    {
+        TelaRelContaController.contarp = true;
+        Parent root = FXMLLoader.load(getClass().getResource("TelaRelConta.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.setResizable(false);
+//        stage.setMaxWidth(917);
+//        stage.setMaxHeight(643);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+        
+        DAOConfig dc = new DAOConfig();
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
+        stage.setTitle("Contas");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void clkRelPagamentos(ActionEvent event) throws IOException 
+    {
+        TelaRelContaController.contarp = false;
+        Parent root = FXMLLoader.load(getClass().getResource("TelaRelConta.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.setResizable(false);
+//        stage.setMaxWidth(917);
+//        stage.setMaxHeight(643);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/logo32.png")));
+        
+        DAOConfig dc = new DAOConfig();
+        scene.getStylesheets().add(getClass().getResource(dc.getTema()).toExternalForm());
+        stage.setTitle("Contas");
         stage.setScene(scene);
         stage.show();
     }
